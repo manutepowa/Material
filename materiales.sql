@@ -33,3 +33,19 @@ CREATE TABLE IF NOT EXISTS `prestamo` (
   FOREIGN KEY (id_persona) REFERENCES persona(id_persona),
   FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
 );
+
+-- Datos para la tabla `material`
+insert into material (descripcion) values ("Cámara de video");
+insert into material (descripcion) values ("Grabadora manual");
+insert into material (descripcion) values ("Ordenador portátil");
+
+-- Datos para la tabla `persona`
+insert into persona (nombre) values ("Ángel Fuentes Mirete");
+insert into persona (nombre) values ("Alberto García Guilló");
+insert into persona (nombre) values ("Manuel Tercero Soria");
+
+-- Datos para la tabla `lugar`
+insert into lugar (lugar) values ("ELCHE");
+insert into lugar (lugar) values ("SAN JUAN");
+insert into lugar (lugar) values ("ORIHUELA");
+insert into lugar (lugar) values ("ALTEA");
