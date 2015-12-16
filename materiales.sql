@@ -1,6 +1,6 @@
--- Base de datos: `materiales`
-CREATE DATABASE IF NOT EXISTS `materiales` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `materiales`;
+-- -- Base de datos: `materiales`
+-- CREATE DATABASE IF NOT EXISTS `materiales` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+-- USE `materiales`;
 
 
 -- Estructura de la tabla `material`
@@ -29,5 +29,7 @@ CREATE TABLE IF NOT EXISTS `prestamo` (
   `id_lugar` int(4) NOT NULL,
   `fecha_prestamo` DATE NOT NULL,
   `fecha_devolucion` DATE,
-  FOREIGN KEY (id_material, id_persona, id_lugar) REFERENCES material(id_material), persona(id_persona), lugar(id_lugar)
+  FOREIGN KEY (id_material) REFERENCES material(id_material),
+  FOREIGN KEY (id_persona) REFERENCES persona(id_persona),
+  FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
 );
