@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Prueba Semantic UI</title>
-	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-	<script src="semantic/dist/semantic.min.js"></script>
-</head>
-<body>
-	<div class="ui card">
+<?php 
+	require_once('header.php');
+ ?>
+
+ <div class="ui card">
 	  <div class="image">
 	    <img src="/images/avatar2/large/kristy.png">
 	  </div>
@@ -27,5 +22,5 @@
 	    </a>
 	  </div>
 	</div>
-</body>
-</html>
+
+<?php require_once('footer.php'); ?>
