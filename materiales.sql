@@ -49,3 +49,5 @@ insert into lugar (lugar) values ("ELCHE");
 insert into lugar (lugar) values ("SAN JUAN");
 insert into lugar (lugar) values ("ORIHUELA");
 insert into lugar (lugar) values ("ALTEA");
+
+-- Datos para la tabla `prestamo`
