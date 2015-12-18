@@ -28,7 +28,7 @@
   }
 
   else {
-    header('Location: /Material/listar.php');
+    header('Location: ../views/listar.php');
   }
 
  ?>

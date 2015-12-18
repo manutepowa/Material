@@ -9,21 +9,7 @@
  	<link rel="shortcut icon" href="site_map/images/favicon.png">
  	<link rel="stylesheet" href="site_map/Semantic-UI-CSS-master/semantic.min.css">
  	<link rel="stylesheet" href="site_map/js/main.js">
-
- 	<style type="text/css">
-    body {
-      background-color: #DADADA;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    }
-  </style>
+ 	<style type="text/css">body {background-color: #DADADA;}body > .grid {height: 100%;}.image {margin-top: -100px;}.column {max-width: 450px;}.powers{font-size: 7pt;text-align: center;}</style>
  </head>
  <body>
  	<div class="ui middle aligned center aligned grid">
@@ -77,7 +63,7 @@
 	</div>
 
 
-	<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+	<div class="powers">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
  	<script src="site_map/js/jquery-1.11.3.min.js"></script>
 	<script src="site_map/Semantic-UI-CSS-master/semantic.min.js"></script>
 	<script src="site_map/js/main.js"></script>
