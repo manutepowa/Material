@@ -49,20 +49,23 @@
 	          </div>
 	        </div>
 	        <?php
-	        	if ($_SESSION["errusu"] == "SI" || $_SESSION["errcon"] == "SI") {
-	        		if ($_SESSION["errusu"] == "SI") {
-		        		echo "<div class='ui error message visible'>
-						    <p><b>ERROR:</b> Usuario incorrecto.</p>
-						</div>";
-					}
-					else {
-		        		echo "<div class='ui error message visible'>
-						    <p><b>ERROR:</b> Contrase&ntilde;a incorrecta.</p>
-						</div>";
+
+	        	if(isset($_SESSION["errusu"]) && isset($_SESSION["errcon"])){
+	        		if ($_SESSION["errusu"] == "SI" || $_SESSION["errcon"] == "SI") {
+		        		if ($_SESSION["errusu"] == "SI") {
+			        		echo "<div class='ui error message visible'>
+							    <p><b>ERROR:</b> Usuario incorrecto.</p>
+							</div>";
+						}
+						else {
+			        		echo "<div class='ui error message visible'>
+							    <p><b>ERROR:</b> Contrase&ntilde;a incorrecta.</p>
+							</div>";
+			        	}
 		        	}
+		        	$_SESSION["errusu"]="NO";
+	      			$_SESSION["errcon"]="NO";
 	        	}
-	        	$_SESSION["errusu"]="NO";
-      			$_SESSION["errcon"]="NO";
 			?>
 	        <button class="ui fluid large teal submit button">Acceder</button>
 	      </div>
