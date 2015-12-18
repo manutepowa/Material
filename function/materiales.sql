@@ -40,8 +40,8 @@ insert into material (descripcion) values ("Grabadora manual");
 insert into material (descripcion) values ("Ordenador portátil");
 
 -- Datos para la tabla `persona`
-insert into persona (nombre) values ("Ángel Fuentes Mirete");
-insert into persona (nombre) values ("Alberto García Guilló");
+insert into persona (nombre) values ("Angel Fuentes Mirete");
+insert into persona (nombre) values ("Alberto García Guillo");
 insert into persona (nombre) values ("Manuel Tercero Soria");
 
 -- Datos para la tabla `lugar`
