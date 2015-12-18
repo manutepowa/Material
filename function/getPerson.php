@@ -7,23 +7,20 @@
 		echo "Error";
 	}
 
+//BORRAR
+	// $query = "UPDATE material.persona SET nombre = 'Alberto' WHERE id_persona = 2";
+	// $conexion->query($query)or die(mysql_error());
+
+
 	$query = "SELECT nombre FROM material.persona";
 	// $p = array("nombre" => "Angel", "edad" => "23");
 	$row = $conexion->query($query)or die(mysql_error());
 
 	$jsonData = array();
-	// while($consulta = $row->fetch_assoc()) {
- //    	// array_push($jsonData, $consulta);
- //    	$jsonData[] = $consulta;
-	// }
-	// $rows = array();
+	
 	while($rows[] = $row->fetch_assoc());
-	// $consulta = $row->fetch_array();
-	// var_dump($rows);
-	// array_push($jsonData, $consulta);
-	// var_dump($jsonData);
+	
 	array_pop($rows);
-	echo htmlspecialchars_decode(json_encode($rows));
-	// echo '1';
-	// var_dump($jsonEvent);
+	echo json_encode($rows);
+	
 ?>
