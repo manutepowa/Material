@@ -12,7 +12,7 @@
 	// $conexion->query($query)or die(mysql_error());
 
 
-	$query = "SELECT nombre FROM material.persona";
+	$query = "SELECT * FROM material.persona";
 	// $p = array("nombre" => "Angel", "edad" => "23");
 	$row = $conexion->query($query)or die(mysql_error());
 
@@ -21,6 +21,6 @@
 	while($rows[] = $row->fetch_assoc());
 	
 	array_pop($rows);
-	echo json_encode($rows);
+	print_r( json_encode($rows));
 	
 ?>

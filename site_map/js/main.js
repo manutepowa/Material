@@ -10,21 +10,51 @@ $(document).ready(function(){
 			
 	// });
 
-
+var content = [
+				  { title: 'Andorra' },
+				  { title: 'United Arab Emirates' },
+				  { title: 'Afghanistan' },
+				  { title: 'Antigua' },
+				  { title: 'Anguilla' },
+				  { title: 'Albania' },
+				  { title: 'Armenia' },
+				  { title: 'Netherlands Antilles' },
+				  { title: 'Angola' },
+				  { title: 'Argentina' },
+				  { title: 'American Samoa' },
+				  { title: 'Austria' },
+				  { title: 'Australia' },
+				  { title: 'Aruba' },
+				  { title: 'Aland Islands' },
+				  { title: 'Azerbaijan' },
+				  { title: 'Bosnia' },
+				  { title: 'Barbados' },
+				  { title: 'Bangladesh' },
+				  { title: 'Belgium' },
+				  { title: 'Burkina Faso' },
+				  { title: 'Bulgaria' },
+				  { title: 'Bahrain' },
+				  { title: 'Burundi' }
+				  // etc
+			];
 //MEDIO BUENO
 $('.ui.search')
   .search({
-    apiSettings: {
-    	url: '../function/getPerson.php',
-    	onResponse: function(eq) {
-    		var stringified = JSON.stringify(eq);
-    		console.log(stringified);
-    		return stringified;
-    	}
-    },
-    fields: {
-      title   : 'nombre'
-    }
+    searchFields: [
+      'title'
+    ],
+    source: content
+   //  searchFullText: false,
+   //  apiSettings: {
+   //  	url: '../function/getPerson.php',
+   //  	onResponse: function(eq) {
+   //  		
+   //  		// var stringified = eq;
+   //  		console.log(content);
+   //  		// $('.content').html(stringified);
+   //  		return content;
+   //  	}
+   //  }
 });
 	
 

@@ -10,6 +10,7 @@
   <div class="results"></div>
 </div>
 
+<div class="content"></div>
   
 </div>
 
