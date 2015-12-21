@@ -40,22 +40,69 @@ var content = [
 //MEDIO BUENO
 $('.ui.search')
   .search({
-    searchFields: [
-      'title'
-    ],
-    source: content
-   //  searchFullText: false,
-   //  apiSettings: {
-   //  	url: '../function/getPerson.php',
-   //  	onResponse: function(eq) {
-   //  		
-   //  		// var stringified = eq;
-   //  		console.log(content);
-   //  		// $('.content').html(stringified);
-   //  		return content;
-   //  	}
-   //  }
+    apiSettings: {
+    	url: '../function/getPerson.php',
+    	onResponse: function(eq) {
+    		var response = {hola:{}};
+    		// var stringified = JSON.stringify(eq);
+    		$.each(eq, function(index, item) {
+    			console.log(item)
+
+    			response.hola[item.id_persona].push({
+    				nom: item.nombre
+    			});
+
+    			console.log(JSON.parse(response));
+    		});
+    		
+    		// $('.content').html(stringified);
+    		return response;
+    	}
+    }
 });
 	
+
+
+// $('.ui.search')
+//   .search({
+//     type          : 'category',
+//     minCharacters : 3,
+//     apiSettings   : {
+//       onResponse: function(githubResponse) {
+//         var
+//           response = {
+//             results : {}
+//           }
+//         ;
+//         // translate GitHub API response to work with search
+//         $.each(githubResponse.items, function(index, item) {
+//           var
+//             language   = item.language || 'Unknown',
+//             maxResults = 8
+//           ;
+//           if(index >= maxResults) {
+//             return false;
+//           }
+//           // create new language category
+//           if(response.results[language] === undefined) {
+//             response.results[language] = {
+//               name    : language,
+//               results : []
+//             };
+//           }
+//           // add result to category
+//           response.results[language].results.push({
+//             title       : item.name,
+//             description : item.description,
+//             url         : item.html_url
+//           });
+//         });
+//         console.log(response);
+//         return response;
+//       },
+//       url: '//api.github.com/search/repositories?q={query}'
+//     }
+//   })
+// ;
 
 });

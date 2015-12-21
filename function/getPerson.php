@@ -21,6 +21,6 @@
 	while($rows[] = $row->fetch_assoc());
 	
 	array_pop($rows);
-	print_r( json_encode($rows));
+	echo json_encode($rows);
 	
 ?>
