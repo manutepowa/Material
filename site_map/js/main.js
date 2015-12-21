@@ -37,29 +37,49 @@ var content = [
 				  { title: 'Burundi' }
 				  // etc
 			];
-//MEDIO BUENO
+
+
+console.log(content);
+
+
 $('.ui.search')
   .search({
     apiSettings: {
-    	url: '../function/getPerson.php',
-    	onResponse: function(eq) {
-    		var response = {hola:{}};
-    		// var stringified = JSON.stringify(eq);
-    		$.each(eq, function(index, item) {
-    			console.log(item)
+      url: '../function/getPerson.php?q={query}'
+    },
+    fields: {
+      results : '0',
+      title   : '1'
+    },
+    minCharacters : 3
+  })
+;
+//MEDIO BUENO
+// $('.ui.search')
+//   .search({
+//   	minCharacters : 3,
+//     apiSettings: {
+//     	url: '../function/getPerson.php',
+//     	onResponse: function(eq) {
+//     		console.log(eq[0]);
+//     		var response = {hola:{}};
+//     		var stringified = JSON.stringify(eq[0]);
+//     		$('.content').html(stringified);
+//     		// $.each(eq, function(index, item) {
+//     		// 	console.log(item)
 
-    			response.hola[item.id_persona].push({
-    				nom: item.nombre
-    			});
+//     		// 	response.hola[item.id_persona].push({
+//     		// 		nom: item.nombre
+//     		// 	});
 
-    			console.log(JSON.parse(response));
-    		});
+//     		// 	console.log(JSON.parse(stringified));
+//     		// });
     		
-    		// $('.content').html(stringified);
-    		return response;
-    	}
-    }
-});
+//     		// 
+//     		// return response;
+//     	}
+//     }
+// });
 	
 
 
