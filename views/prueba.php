@@ -3,10 +3,24 @@
  ?>
 
   <div class="cabecera">
-    <a href="salir.php">Cerrar sesión</a>
+    <div class="ui container">
+      <!-- <div class="lmenu"> -->
+        <img src="../site_map/images/logo.png" alt="logo">
+        Materiales SC
+      <!-- </div> -->
+      <!-- <div class="rmenu"> -->
+        <a href="salir.php">Cerrar sesión</a>
+      <!-- </div> -->
+    </div>
   </div>
 
   <div class="ui container">
+
+Filtrar por:
+  <div class="ui search">
+  <input class="prompt" type="text" placeholder="Common passwords...">
+  <div class="results"></div>
+</div>
 
     <table class="ui teal table">
       <thead>
