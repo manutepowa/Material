@@ -17,7 +17,7 @@
 	    <h2 class="ui teal image header">
 	      <img src="site_map/images/iconLogin.png" height="128" width="128" class="image">
 	      <div class="content">
-	        Itroduce los datos de usuario
+	        Introduce los datos de usuario
 	      </div>
 	    </h2>
 	    <form action="function/login.php" class="ui large form" method="POST">
