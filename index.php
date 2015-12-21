@@ -8,7 +8,6 @@
  	<title>Materiales OC</title>
  	<link rel="shortcut icon" href="site_map/images/favicon.png">
  	<link rel="stylesheet" href="site_map/Semantic-UI-CSS-master/semantic.min.css">
- 	<link rel="stylesheet" href="site_map/js/main.js">
  	<style type="text/css">body {background-color: #DADADA;}body > .grid {height: 100%;}.image {margin-top: -100px;}.column {max-width: 450px;}.powers{font-size: 7pt;text-align: center;}</style>
  </head>
  <body>
