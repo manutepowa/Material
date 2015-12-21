@@ -2,34 +2,121 @@
 	require_once($_SERVER['DOCUMENT_ROOT'].'/Material/views/header.php');
  ?>
 
-<div class="ui bottom attached segment pushable">
-  <div class="ui visible inverted left vertical sidebar menu">
-    <a class="item">
-      <i class="home icon"></i>
-      Home
-    </a>
-    <a class="item">
-      <i class="block layout icon"></i>
-      Topics
-    </a>
-    <a class="item">
-      <i class="smile icon"></i>
-      Friends
-    </a>
-    <a class="item">
-      <i class="calendar icon"></i>
-      History
-    </a>
+  <div class="cabecera">
+    <a href="salir.php">Cerrar sesión</a>
   </div>
-  <div class="pusher">
-    <div class="ui basic segment">
-      <h3 class="ui header">Application Content</h3>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-    </div>
+
+  <div class="ui container">
+
+    <table class="ui teal table">
+      <thead>
+        <tr>
+          <th>MATERIAL</th>
+          <th>PERSONA</th>
+          <th>LUGAR</th>
+          <th>F. PRÉSTAMO</th>
+          <th>F. DEVOLUCIÓN</th>
+          <th>ACCIÓN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Camara Sony X10 Photo</td>
+          <td>Alberto García Guilló</td>
+          <td>Elche</td>
+          <td>18/12/2015</td>
+          <td>18/12/2015</td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Grabadora de mano Z6</td>
+          <td>Ángel Fuentes Mirete</td>
+          <td>Alicante</td>
+          <td>18/12/2015</td>
+          <td>19/12/2015</td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Camara Sony X10 Photo</td>
+          <td>Alberto García Guilló</td>
+          <td>Elche</td>
+          <td>19/12/2015</td>
+          <td></td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Grabadora de mano Z6</td>
+          <td>Ángel Fuentes Mirete</td>
+          <td>Alicante</td>
+          <td>20/12/2015</td>
+          <td></td>
+          <td>editar/borrar</td>
+        </tr><tr>
+          <td>Camara Sony X10 Photo</td>
+          <td>Alberto García Guilló</td>
+          <td>Elche</td>
+          <td>18/12/2015</td>
+          <td>18/12/2015</td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Grabadora de mano Z6</td>
+          <td>Ángel Fuentes Mirete</td>
+          <td>Alicante</td>
+          <td>18/12/2015</td>
+          <td>19/12/2015</td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Camara Sony X10 Photo</td>
+          <td>Alberto García Guilló</td>
+          <td>Elche</td>
+          <td>19/12/2015</td>
+          <td></td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Grabadora de mano Z6</td>
+          <td>Ángel Fuentes Mirete</td>
+          <td>Alicante</td>
+          <td>20/12/2015</td>
+          <td></td>
+          <td>editar/borrar</td>
+        </tr><tr>
+          <td>Camara Sony X10 Photo</td>
+          <td>Alberto García Guilló</td>
+          <td>Elche</td>
+          <td>18/12/2015</td>
+          <td>18/12/2015</td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Grabadora de mano Z6</td>
+          <td>Ángel Fuentes Mirete</td>
+          <td>Alicante</td>
+          <td>18/12/2015</td>
+          <td>19/12/2015</td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Camara Sony X10 Photo</td>
+          <td>Alberto García Guilló</td>
+          <td>Elche</td>
+          <td>19/12/2015</td>
+          <td></td>
+          <td>editar/borrar</td>
+        </tr>
+        <tr>
+          <td>Grabadora de mano Z6</td>
+          <td>Ángel Fuentes Mirete</td>
+          <td>Alicante</td>
+          <td>20/12/2015</td>
+          <td></td>
+          <td>editar/borrar</td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
-</div>
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'].'/Material/views/footer.php'); ?>
