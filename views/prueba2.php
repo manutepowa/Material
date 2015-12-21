@@ -5,23 +5,25 @@
 
   <div class="cabecera">
     <div class="ui container">
-      <!-- <div class="lmenu"> -->
         <img src="../site_map/images/logo.png" alt="logo">
         Materiales SC
-      <!-- </div> -->
-      <!-- <div class="rmenu"> -->
         <a href="salir.php">Cerrar sesión</a>
-      <!-- </div> -->
-      </div>
-      </div>
+    </div>
+  </div>
 
 <div class="ui container">
 
-Filtrar por:
+
   <div class="ui search">
-  <input class="prompt" type="text" placeholder="Common passwords...">
-  <div class="results"></div>
-</div>
+    <button class="ui teal button"><i class="add icon"></i>Préstamo</button>
+    Filtrar por:
+    <input class="prompt" type="text" placeholder="Material...">
+    <input class="prompt" type="text" placeholder="Persona...">
+    <input class="prompt" type="text" placeholder="Lugar...">
+    <input class="prompt" type="text" placeholder="Fecha préstamo...">
+    <input class="prompt" type="text" placeholder="Fecha devolución...">
+    <div class="results"></div>
+  </div>
 
     <table class="ui teal table">
       <thead>
