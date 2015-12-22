@@ -19,7 +19,7 @@
 		  <div class="item">
 			<div class="ui search medium" id="per">
 			  <div class="ui icon input">
-			    <input class="prompt" type="text" placeholder="Buscar material...">
+			    <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
 			    <i class="search icon"></i>
 			  </div>
 			  <div class="results"></div>
@@ -33,7 +33,7 @@
 		  <div class="item">
 		  	<div class="ui search medium" id="mat">
 			  <div class="ui icon input">
-			    <input class="prompt" type="text" placeholder="Buscar Material...">
+			    <input id="material" class="prompt" type="text" placeholder="Buscar Material...">
 			    <i class="search icon"></i>
 			  </div>
 			  <div class="results"></div>
@@ -47,7 +47,7 @@
 		  <div class="item">
 			<div class="ui search medium" id="lug">
 			  <div class="ui icon input">
-			    <input class="prompt" type="text" placeholder="Buscar Lugar...">
+			    <input id="lugar" class="prompt" type="text" placeholder="Buscar Lugar...">
 			    <i class="search icon"></i>
 			  </div>
 			  <div class="results"></div>
@@ -61,7 +61,7 @@
 		  <div class="item">
 		  	<div class="ui search medium" id="dat">
 			  	<div class="ui left icon input">
-				  <input type="date" placeholder="Fecha">
+				  <input type="date" placeholder="Fecha" id="date">
 				  <i class="calendar icon"></i>
 				</div>
 			</div>
@@ -77,10 +77,18 @@
     <div class="ui black deny button">
       Cancelar
     </div>
-    <div class="ui positive right labeled icon button">
+    <div class="ui positive right labeled icon button" id="addPrestamo">
       Añadir préstamo
       <i class="checkmark icon"></i>
     </div>
+  </div>
+</div>
+
+
+<div class="ui positive message">
+  <i class="close icon"></i>
+  <div class="header">
+    Préstamo añadido con éxito!
   </div>
 </div>
 
