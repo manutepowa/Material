@@ -2,8 +2,15 @@ $(document).ready(function(){
 
 	$('#op-modal').click(function(event) {
 		$('.ui.modal')
-		  .modal('show')
+			.modal({blurring:true})
+			.modal('show')
 		;
+	});
+
+	$(document).on('click', '.results', function(){
+		var desc = $(this).parents('.search').siblings('.content').find('.description');
+		var value = $(this).siblings('.input').find('input').val();
+		desc.html(value);
 	});
 
 	$('#per')
@@ -21,6 +28,11 @@ $(document).ready(function(){
 		},
 	  })
 	;
+
+	$('input[type=date]').blur(function(event) {
+		var desc = $(this).parents('.search').siblings('.content').find('.description');
+		desc.html('Prestado el: '+$(this).val());
+	});
 
 	$('#mat')
 	  .search({

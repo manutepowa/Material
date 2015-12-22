@@ -8,7 +8,7 @@
 	<i class="plus icon"></i>
 </button>
 
-<div class="ui modal">
+<div class="ui small modal">
   <div class="header">
     Añadir Préstamo
   </div>
