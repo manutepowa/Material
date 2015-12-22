@@ -82,6 +82,7 @@
 .ourColor{
 	background-color: #00B5AD !important;
 	color: white !important;
+	border: 2px solid #00B5AD !important;
 }
 .ourColor:hover{
 	background-color: white !important;
@@ -89,3 +90,4 @@
 	transition: .2s !important;
 	border: 2px solid #00B5AD;
 }
+

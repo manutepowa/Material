@@ -85,7 +85,7 @@
 </div>
 
 
-<div class="ui positive message">
+<div class="ui positive message" id="adv">
   <i class="close icon"></i>
   <div class="header">
     Préstamo añadido con éxito!
