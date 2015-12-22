@@ -28,6 +28,7 @@
   }
 
   else {
+    $_SESSION["autentificado"]="SI";
     header('Location: ../views/listar.php');
   }
 

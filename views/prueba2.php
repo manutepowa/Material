@@ -7,7 +7,7 @@
     <div class="ui container">
         <img src="../site_map/images/logo.png" alt="logo">
         Materiales SC
-        <a href="salir.php">Cerrar sesión</a>
+        <a href="../function/salir.php">Cerrar sesión</a>
     </div>
   </div>
 
