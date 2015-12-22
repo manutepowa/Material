@@ -1,26 +1,73 @@
 $(document).ready(function(){
 
+	$('.message .close')
+	  .on('click', function() {
+	    $(this)
+	    	.closest('.message')
+	    	.transition('fade')
+	    	;
+	})
+	;
+
 	$('#op-modal').click(function(event) {
 		$('.ui.modal')
-		  .modal('show')
+			.modal({blurring:true})
+			.modal('show')
 		;
 	});
 
+	$(document).on('click', '.results', function(){
+		var desc = $(this).parents('.search').siblings('.content').find('.description');
+		var value = $(this).siblings('.input').find('input').val();
+		desc.html(value);
+	});
+
+	
+
+	$('input[type=date]').blur(function(event) {
+		var desc = $(this).parents('.search').siblings('.content').find('.description');
+		desc.html('Prestado el: '+$(this).val());
+	});
+
+	$('#addPrestamo').click(function(event) {
+
+		var persona = $('#persona').val();
+		var lugar = $('#lugar').val();
+		var material = $('#material').val();
+		var date = $('#date').val();
+
+		$.ajax({
+			url: '../function/addPrestamo.php',
+			type: 'POST',
+			data: {per: persona, lug: lugar, mat: material, dat: date},
+			success: function(event){
+				if(event == '1'){
+					$('.ui.modal').close();
+					$('#persona').val('');
+					$('#lugar').val('');
+					$('#material').val('');
+					$('#date').val('');
+				}
+			}
+		});
+		
+	});
+
 	$('#per')
-	  .search({
-	    apiSettings: {
-	      url: '../function/getPerson.php?q={query}'
-	    },
-	    fields: {
-	      results : '0',
-	      title   : '1'
-	    },
-	    minCharacters : 3,
-	    error : {
-	    	noResults   : 'No se encuentra la persona. :('
-		},
-	  })
-	;
+		  .search({
+		    apiSettings: {
+		      url: '../function/getPerson.php?q={query}'
+		    },
+		    fields: {
+		      results : '0',
+		      title   : '1'
+		    },
+		    minCharacters : 3,
+		    error : {
+		    	noResults   : 'No se encuentra la persona. :('
+			},
+		  })
+		;
 
 	$('#mat')
 	  .search({
