@@ -8,9 +8,9 @@ h1{
 	font-size: 24pt;
 }
 
-div.modal{
+/*div.modal{
 	width: 500px !important;
-	/*margin: 100px auto !important;*/
-}
+	/*margin: 100px auto !important;
+}*/
 
 div.search.medium{float: left; margin-right: 25px;}
