@@ -14,7 +14,7 @@
 <div class="ui container">
 
 
-  <div class="ui search">
+  <!-- <div class="ui search">
     <button class="ui teal button"><i class="add icon"></i>Préstamo</button>
     Filtrar por:
     <input class="prompt" type="text" placeholder="Material...">
@@ -23,7 +23,35 @@
     <input class="prompt" type="text" placeholder="Fecha préstamo...">
     <input class="prompt" type="text" placeholder="Fecha devolución...">
     <div class="results"></div>
+  </div> -->
+  <div class="filtros">
+    <div class="nprestamo">
+      <button class="ui teal button"><i class="add icon"></i>Préstamo</button>
+      <span>Filtrar por:</span>
+    </div>
+    <div class="filtro">
+      <input class="prompt" type="text" placeholder="Material...">
+      <!-- <div class="results"></div> -->
+    </div>
+    <div class="filtro">
+      <input class="prompt" type="text" placeholder="Persona...">
+      <!-- <div class="results"></div> -->
+    </div>
+    <div class="filtro">
+      <input class="prompt" type="text" placeholder="Lugar...">
+      <!-- <div class="results"></div> -->
+    </div>
+    <div class="filtro">
+      <input class="prompt" type="text" placeholder="Fecha préstamo...">
+      <!-- <div class="results"></div> -->
+    </div>
+    <div class="filtro">
+      <input class="prompt" type="text" placeholder="Fecha devolución...">
+      <!-- <div class="results"></div> -->
+    </div>
   </div>
+  <!-- <div class="results"></div> -->
+  <!-- </div> -->
 
     <table class="ui teal table">
       <thead>
