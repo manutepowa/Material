@@ -9,8 +9,8 @@
 
 
 	//Recoje del post
-	// $descripcion = $_POST['descripcion'];
-	$descripcion = 'Camara Sony X10 Photo';
+	$descripcion = $_POST['descripcion'];
+	// $descripcion = 'Camara Sony X10 Photo';
 
 	$query = "INSERT INTO material(descripcion) VALUES('".$descripcion."')";
 	$conexion->query($query)or die(mysql_error());
