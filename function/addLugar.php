@@ -9,8 +9,8 @@
 
 
 	//Recoje del post
-	// $lugar = $_POST['lugar'];
-	$lugar = 'Radio UMH';
+	$lugar = $_POST['lugar'];
+	// $lugar = 'Radio UMH';
 
 	$query = "INSERT INTO lugar(lugar) VALUES('".$lugar."')";
 	$conexion->query($query)or die(mysql_error());

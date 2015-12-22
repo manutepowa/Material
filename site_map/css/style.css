@@ -69,3 +69,23 @@
 	text-align: right;
 	margin-left: 8px;
 }
+
+.paddingContent{
+	padding: 38px !important;
+}
+
+.rightAlign{
+	right: 0;
+  	position: absolute;
+}
+
+.ourColor{
+	background-color: #00B5AD !important;
+	color: white !important;
+}
+.ourColor:hover{
+	background-color: white !important;
+	color: #00B5AD !important;
+	transition: .2s !important;
+	border: 2px solid #00B5AD;
+}

@@ -1,0 +1,16 @@
+body{
+	background: #f0f0f0;
+}
+
+h1{
+	font-family: 'Open Sans' !important;
+	text-align: center;
+	font-size: 24pt;
+}
+
+div.modal{
+	width: 500px !important;
+	/*margin: 100px auto !important;*/
+}
+
+div.search.medium{float: left; margin-right: 25px;}
