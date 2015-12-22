@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	$('.message').fadeOut(0);
+
 	$('.message .close')
 	  .on('click', function() {
 	    $(this)
@@ -42,6 +44,7 @@ $(document).ready(function(){
 			data: {per: persona, lug: lugar, mat: material, dat: date},
 			success: function(event){
 				if(event == '1'){
+					$('.message').fadeIn('500');
 					$('.ui.modal').close();
 					$('#persona').val('');
 					$('#lugar').val('');
