@@ -104,4 +104,26 @@ $(document).ready(function(){
 	  })
 	;
 
+	var urlprestamo = '../function/getPrestamo.php';
+
+	$("#prestamos tbody").html("");
+
+	$.getJSON(urlprestamo, function(prest){
+		for (var j = 0; j < urlprestamo.length; j++) {
+			$.each(prest, function(i, p){
+				var fDev;
+				if(p[j][5]){fDev=p[j][5];}else{fDev="no devuelto";}
+				
+				var newRow = "<tr value='"+p[j][0]+"'>"
+								+"<td>"+p[j][1]+"</td>"
+								+"<td>"+p[j][2]+"</td>"
+								+"<td>"+p[j][3]+"</td>"
+								+"<td>"+p[j][4]+"</td>"
+								+"<td>"+fDev+"</td>"
+								+"<td>modificar/eliminar</td>"
+							+"</tr>";
+				$(newRow).appendTo("#prestamos tbody");
+			});
+		};
+	});
 });

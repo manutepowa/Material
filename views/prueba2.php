@@ -53,7 +53,7 @@
   <!-- <div class="results"></div> -->
   <!-- </div> -->
 
-    <table class="ui teal table">
+    <table id="prestamos" class="ui teal table">
       <thead>
         <tr>
           <th>MATERIAL</th>
@@ -65,100 +65,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Camara Sony X10 Photo</td>
-          <td>Alberto García Guilló</td>
-          <td>Elche</td>
-          <td>18/12/2015</td>
-          <td>18/12/2015</td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Grabadora de mano Z6</td>
-          <td>Ángel Fuentes Mirete</td>
-          <td>Alicante</td>
-          <td>18/12/2015</td>
-          <td>19/12/2015</td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Camara Sony X10 Photo</td>
-          <td>Alberto García Guilló</td>
-          <td>Elche</td>
-          <td>19/12/2015</td>
-          <td></td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Grabadora de mano Z6</td>
-          <td>Ángel Fuentes Mirete</td>
-          <td>Alicante</td>
-          <td>20/12/2015</td>
-          <td></td>
-          <td>editar/borrar</td>
-        </tr><tr>
-          <td>Camara Sony X10 Photo</td>
-          <td>Alberto García Guilló</td>
-          <td>Elche</td>
-          <td>18/12/2015</td>
-          <td>18/12/2015</td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Grabadora de mano Z6</td>
-          <td>Ángel Fuentes Mirete</td>
-          <td>Alicante</td>
-          <td>18/12/2015</td>
-          <td>19/12/2015</td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Camara Sony X10 Photo</td>
-          <td>Alberto García Guilló</td>
-          <td>Elche</td>
-          <td>19/12/2015</td>
-          <td></td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Grabadora de mano Z6</td>
-          <td>Ángel Fuentes Mirete</td>
-          <td>Alicante</td>
-          <td>20/12/2015</td>
-          <td></td>
-          <td>editar/borrar</td>
-        </tr><tr>
-          <td>Camara Sony X10 Photo</td>
-          <td>Alberto García Guilló</td>
-          <td>Elche</td>
-          <td>18/12/2015</td>
-          <td>18/12/2015</td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Grabadora de mano Z6</td>
-          <td>Ángel Fuentes Mirete</td>
-          <td>Alicante</td>
-          <td>18/12/2015</td>
-          <td>19/12/2015</td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Camara Sony X10 Photo</td>
-          <td>Alberto García Guilló</td>
-          <td>Elche</td>
-          <td>19/12/2015</td>
-          <td></td>
-          <td>editar/borrar</td>
-        </tr>
-        <tr>
-          <td>Grabadora de mano Z6</td>
-          <td>Ángel Fuentes Mirete</td>
-          <td>Alicante</td>
-          <td>20/12/2015</td>
-          <td></td>
-          <td>editar/borrar</td>
-        </tr>
+      <!-- http://bootsnipp.com/snippets/featured/panel-table-with-filters-per-column -->
       </tbody>
     </table>
 
