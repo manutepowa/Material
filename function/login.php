@@ -20,16 +20,20 @@
     $_SESSION["errcon"]="NO";
     if ($usuario != $u) {
       $_SESSION["errusu"]="SI";
+      echo "-1";
     }
     else {
       $_SESSION["errcon"]="SI";
+      echo "-2";
     }
-    header('Location: /Material/index.php');
+    // header('Location: /Material/index.php');
+
   }
 
   else {
     $_SESSION["autentificado"]="SI";
     header('Location: ../views/listar.php');
+    echo "1";
   }
 
  ?>
