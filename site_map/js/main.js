@@ -65,9 +65,9 @@ $(document).ready(function(){
 		      results : '0',
 		      title   : '1'
 		    },
-		    minCharacters : 3,
+		    minCharacters : 1,
 		    error : {
-		    	noResults   : 'No se encuentra la persona. :('
+		    	noResults   : 'No se encuentra la persona. :(<button>Añadir Persona</button>'
 			},
 		  })
 		;
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	      results : '0',
 	      title   : '1'
 	    },
-	    minCharacters : 3,
+	    minCharacters : 1,
 	    error : {
 	    	noResults   : 'No se encuentra el material. :('
 		},
@@ -97,7 +97,7 @@ $(document).ready(function(){
 	      results : '0',
 	      title   : '1'
 	    },
-	    minCharacters : 3,
+	    minCharacters : 1,
 	    error : {
 	    	noResults   : 'No se encuentra el lugar. :('
 		},

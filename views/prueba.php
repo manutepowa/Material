@@ -3,7 +3,7 @@
  ?>
 
 
-<div class="ui modal btnAddUser">
+<div class="ui small modal btnAddUser">
   <i class="close icon"></i>
   <div class="header">
     Añadir Persona
@@ -31,7 +31,7 @@
 </div>
 
 
-<div class="ui modal btnAddMaterial">
+<div class="ui small modal btnAddMaterial">
   <i class="close icon"></i>
   <div class="header">
     Añadir Material
@@ -58,7 +58,7 @@
   </div>
 </div>
 
-<div class="ui modal btnAddLugar">
+<div class="ui small modal btnAddLugar">
   <i class="close icon"></i>
   <div class="header">
     Añadir Lugar
