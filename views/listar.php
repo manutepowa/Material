@@ -139,7 +139,7 @@
   <!-- <div class="results"></div> -->
   <!-- </div> -->
 
-    <table id="prestamos" class="ui teal table">
+    <table id="prestamos" class="ui selectable celled teal table">
       <thead>
         <tr>
           <th>MATERIAL</th>
@@ -147,7 +147,6 @@
           <th>LUGAR</th>
           <th>F. PRÉSTAMO</th>
           <th>F. DEVOLUCIÓN</th>
-          <th>ACCIÓN</th>
         </tr>
       </thead>
       <tbody>

@@ -11,6 +11,13 @@ $(document).ready(function(){
 	})
 	;
 
+	$('#prestamos tr')
+	  .on('click', function() {
+	    $('#op-modal')
+	    	.modal('show')
+	})
+	;
+
 	$('#op-modal').click(function(event) {
 		$('.ui.modal')
 			.modal({blurring:true})
@@ -124,7 +131,6 @@ $(document).ready(function(){
 									+"<td>"+p[j][3]+"</td>"
 									+"<td>"+p[j][4]+"</td>"
 									+"<td>"+fDev+"</td>"
-									+"<td>modificar/eliminar</td>"
 								+"</tr>";
 					$(newRow).appendTo("#prestamos tbody");
 
@@ -135,3 +141,10 @@ $(document).ready(function(){
 		};
 	});
 });
+
+// <div class='ui animated fade button' tabindex='0'>
+//   <div class='visible content'>Sign-up for a Pro account</div>
+//   <div class='hidden content'>
+//     $12.99 a month
+//   </div>
+// </div>
