@@ -22,14 +22,30 @@
 	}
 
 	echo '<div class="ui pagination menu">';
+	echo '<a class="item"><i class="angle left icon"></i></a>';
 
-	for ($i=1; $i <= $num_botones; $i++) {
-		if($i == 1)
-			echo '<a class="active item">'.$i.'</a>';
-		else
-			echo '<a class="item">'.$i.'</a>';
+	if($num_botones > 5){
+		for ($i=1; $i <= 5; $i++) {
+			if($i == 1)
+				echo '<a class="active item">'.$i.'</a>';
+			else
+				echo '<a class="item">'.$i.'</a>';
+		}
+		echo '<div class="disabled item">...</div>';
+		echo '<a class="item">'.($num_botones-1).'</a>';
+		echo '<a class="item">'.($num_botones).'</a>';
+	}
+	else{
+		for ($i=1; $i <= $num_botones; $i++) {
+			if($i == 1)
+				echo '<a class="active item">'.$i.'</a>';
+			else
+				echo '<a class="item">'.$i.'</a>';
+		}
 	}
 
+		
+	echo '<a class="item"><i class="angle right icon"></i></a>';
 	echo "</div>";
 
 
