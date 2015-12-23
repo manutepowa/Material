@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../site_map/Semantic-UI-CSS-master/semantic.min.css">
-	<title></title>
-</head>
-<body>
 <?php 
 
 	require_once($_SERVER['DOCUMENT_ROOT'].'/Material/function/connect_mysqli.php');
@@ -43,9 +35,4 @@
 
 
 ?>
-
-<script src="../site_map/js/jquery-1.11.3.min.js"></script>
-<script src="../site_map/Semantic-UI-CSS-master/semantic.min.js"></script>
-</body>
-</html>
 
