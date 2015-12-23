@@ -10,7 +10,7 @@
 
   // Usuario y contraseña para acceder
   $u = "oficina";
-  $c = "c0mun1c4c10n";
+  $c = "comun1cac1on";
 
   $usuario = $_POST["usuario"];
   $contrasena = $_POST["contrasena"];

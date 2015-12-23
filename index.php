@@ -47,7 +47,6 @@
 	<div class="powers">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
  	<script src="site_map/js/jquery-1.11.3.min.js"></script>
 	<script src="site_map/Semantic-UI-CSS-master/semantic.min.js"></script>
-	<!--<script src="site_map/js/main.js"></script>-->
 	<script src="site_map/js/login.js"></script>
 	
 </body>
