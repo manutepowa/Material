@@ -112,6 +112,79 @@ $(document).ready(function(){
 	  })
 	;
 
+	$('#modPrestamo').click(function(event) {
+
+		var mpersona = $('#mpersona').val();
+		var mlugar = $('#mlugar').val();
+		var mmaterial = $('#mmaterial').val();
+		var mdate = $('#mdate').val();
+
+		$.ajax({
+			url: '../function/modPrestamo.php',
+			type: 'POST',
+			data: {per: mpersona, lug: mlugar, mat: mmaterial, dat: mdate},
+			success: function(event){
+				if(event == '1'){
+					$('.message').fadeIn('500');
+					$('.ui.modal').close();
+					$('#mpersona').val('');
+					$('#mlugar').val('');
+					$('#mmaterial').val('');
+					$('#mdate').val('');
+				}
+			}
+		});
+		
+	});
+
+	$('#mper')
+		  .search({
+		    apiSettings: {
+		      url: '../function/getPerson.php?q={query}'
+		    },
+		    fields: {
+		      results : '0',
+		      title   : '1'
+		    },
+		    minCharacters : 1,
+		    error : {
+		    	noResults   : 'No se encuentra la persona. :(<button>Añadir Persona</button>'
+			},
+		  })
+		;
+
+	$('#mmat')
+	  .search({
+	    apiSettings: {
+	      url: '../function/getMaterial.php?q={query}'
+	    },
+	    fields: {
+	      results : '0',
+	      title   : '1'
+	    },
+	    minCharacters : 1,
+	    error : {
+	    	noResults   : 'No se encuentra el material. :('
+		},
+	  })
+	;
+
+	$('#mlug')
+	  .search({
+	    apiSettings: {
+	      url: '../function/getLugar.php?q={query}'
+	    },
+	    fields: {
+	      results : '0',
+	      title   : '1'
+	    },
+	    minCharacters : 1,
+	    error : {
+	    	noResults   : 'No se encuentra el lugar. :('
+		},
+	  })
+	;
+
 	var urlprestamo = '../function/getPrestamo.php';
 
 	$("#prestamos tbody").html("");
