@@ -93,9 +93,24 @@
     <div class="ui container">
         <img src="../site_map/images/logo.png" alt="logo">
         Materiales SC
-        <a href="../function/salir.php">Cerrar sesión</a>
+		<div class="right menu">
+			<div class="item">
+			  <a href="../function/salir.php"><img src="../site_map/images/power.png" alt="cerrar sesion"></a>
+			</div>
+		</div>
     </div>
   </div>
+
+<!-- <div class="ui menu">
+  <img src="../site_map/images/logo.png" alt="logo">
+        Materiales SC
+  <div class="right menu">
+    <a class="ui item">
+      <a href="../function/salir.php"><img src="../site_map/images/power.png" alt="cerrar sesion"></a>
+    </a>
+  </div>
+</div> -->
+
 
 <div class="ui container">
 

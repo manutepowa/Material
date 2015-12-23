@@ -1,5 +1,4 @@
 <?php 
-
 	//Comprobamos que el usuario se ha autentificado previamente
 	if ($_SESSION["autentificado"] != "SI") {
 
