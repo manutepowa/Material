@@ -117,7 +117,7 @@ $(document).ready(function(){
 
 				if(cnt != 12){
 					var fDev;
-					if(p[j][5]){fDev=p[j][5];}else{fDev="no devuelto"; error_field=1;}
+					if(p[j][5]){fDev=p[j][5];}else{fDev="no devuelto"; error_field = 1;}
 					
 					var newRow = "<tr value='"+p[j][0]+"'>"
 									+"<td>"+p[j][1]+"</td>"
@@ -126,13 +126,13 @@ $(document).ready(function(){
 									+"<td>"+p[j][4]+"</td>";
 
 					if(error_field == 1){
-						newRow += +"<td class='negative'>"+fDev+"</td>"
+						newRow += "<td class='negative'>"+fDev+"</td>"
 								+"</tr>";
 
 						error_field = 0;
 					}
 					else{
-						newRow += +"<td>"+fDev+"</td>"
+						newRow += "<td>"+fDev+"</td>"
 								+"</tr>";
 					}
 									
