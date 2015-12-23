@@ -159,6 +159,83 @@
 </div>
 
 
+<div class="ui small modal" id="modal-mod-prest">
+  <div class="header">
+    Modificar Préstamo
+  </div>
+  <div class="content">
+    
+    <div class="description">
+      <div class="ui relaxed divided list">
+      <div class="item">
+      <div class="ui search medium" id="mper">
+        <div class="ui icon input">
+          <input id="mpersona" class="prompt" type="text" placeholder="Buscar Persona...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+        <i class="large user big aligned icon"></i>
+        <div class="content">
+          <div class="description">No hay usuario añadido</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ui search medium" id="mmat">
+        <div class="ui icon input">
+          <input id="mmaterial" class="prompt" type="text" placeholder="Buscar Material...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+        <i class="large archive big aligned icon"></i>
+        <div class="content">
+          <div class="description">no hay material añadido</div>
+        </div>
+      </div>
+
+      <div class="item">
+      <div class="ui search medium" id="mlug">
+        <div class="ui icon input">
+          <input id="mlugar" class="prompt" type="text" placeholder="Buscar Lugar...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+        <i class="large world big aligned icon"></i>
+        <div class="content">
+          <div class="description">No hay lugar añadido</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ui search medium" id="mdat">
+          <div class="ui left icon input">
+          <input type="date" placeholder="Fecha" id="mdate">
+          <i class="calendar icon"></i>
+        </div>
+      </div>
+        <i class="large calendar big aligned icon"></i>
+        <div class="content">
+          <div class="description">No hay hecha añadida</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancelar
+    </div>
+    <div class="ui positive right labeled icon button" id="modPrestamo">
+      Modificar préstamo
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+
 <div class="ui positive message" id="adv">
   <i class="close icon"></i>
   <div class="header">

@@ -18,6 +18,14 @@ $(document).ready(function(){
 		;
 	});
 
+	$(document).on('click', 'tr', function(event) {
+		console.log($(this).data('value'));
+		$('#modal-mod-prest')
+			.modal({blurring:true})
+			.modal('show')
+		;
+	});
+
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('.search').siblings('.content').find('.description');
 		var value = $(this).siblings('.input').find('input').val();
@@ -120,12 +128,12 @@ $(document).ready(function(){
 					if(p[j][5]){fDev=p[j][5];}else{fDev="no devuelto"; error_field = 1;}
 
 					if(error_field == 1){
-						var newRow = "<tr class='negative' value='"+p[j][0]+"'>";
+						var newRow = "<tr class='negative' data-value='"+p[j][0]+"'>";
 
 						error_field = 0;
 					}
 					else{
-						var newRow = "<tr value='"+p[j][0]+"'>";
+						var newRow = "<tr data-value='"+p[j][0]+"'>";
 					}
 					
 					newRow += 	"<td>"+p[j][1]+"</td>"
