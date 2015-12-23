@@ -11,15 +11,8 @@ $(document).ready(function(){
 	})
 	;
 
-	$('#prestamos tr')
-	  .on('click', function() {
-	    $('#op-modal')
-	    	.modal('show')
-	})
-	;
-
 	$('#op-modal').click(function(event) {
-		$('.ui.modal')
+		$('#modal-add-prest')
 			.modal({blurring:true})
 			.modal('show')
 		;

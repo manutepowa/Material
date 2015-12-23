@@ -3,7 +3,6 @@
  ?>
 
 <div class="ui small modal btnAddUser">
-  <i class="close icon"></i>
   <div class="header">
     Añadir Persona
   </div>
@@ -31,7 +30,6 @@
 
 
 <div class="ui small modal btnAddMaterial">
-  <i class="close icon"></i>
   <div class="header">
     Añadir Material
   </div>
@@ -58,7 +56,6 @@
 </div>
 
 <div class="ui small modal btnAddLugar">
-  <i class="close icon"></i>
   <div class="header">
     Añadir Lugar
   </div>
@@ -85,7 +82,7 @@
 </div>
 
 
-<div class="ui small modal">
+<div class="ui small modal" id="modal-add-prest">
   <div class="header">
     Añadir Préstamo
   </div>
