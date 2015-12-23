@@ -3,13 +3,15 @@ jQuery(document).ready(function($) {
 	
 
 	$('form').submit(function(event) {
-		var user = $('input')[0].value;
-		var pass = $('input')[1].value;
+		// var user = $('input')[0].value;
+		// var pass = $('input')[1].value;
+
+		var data = $(this).serialize();
 
 		$.ajax({
 			url: 'function/login.php',
 			type: 'POST',
-			data: {usuario: user, contrasena: pass},
+			data: data,
 			success: function(event){
 				if(event == '1'){
 					window.location = 'views/listar.php';
