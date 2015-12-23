@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 			data: {usuario: user, contrasena: pass},
 			success: function(event){
 				if(event == '1'){
-					window.location = '../../views/listar.php';
+					window.location = 'views/listar.php';
 				}
 				else if(event == '-1'){
 					$('#error').html('<div class="ui error message visible"><p><b>ERROR:</b> Usuario incorrecto.</p></div>');
