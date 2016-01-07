@@ -75,7 +75,7 @@ $(document).ready(function(){
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : 'No se encuentra la persona. :(<button>Añadir Persona</button>'
+		    	noResults   : 'No se encuentra la persona. :(<br><button class="ui button teal">Añadir Persona</button>'
 			},
 		  })
 		;
@@ -148,7 +148,7 @@ $(document).ready(function(){
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : 'No se encuentra la persona. :(<button>Añadir Persona</button>'
+		    	noResults   : 'No se encuentra la persona. :(<div><button class="ui button teal">Añadir Persona</button></div>'
 			},
 		  })
 		;
