@@ -310,8 +310,6 @@
       </tbody>
     </table>
 
-  <?php require_once('../function/pagination.php'); ?>
-
   </div>
 
 

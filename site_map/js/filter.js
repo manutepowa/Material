@@ -18,7 +18,7 @@ $(document).ready(function(){
             $allInfo = $table.find('tbody tr');
         }
         else{
-            
+            $partialRows = $table.find('tbody tr');
         }
 
         if (code  == '8'){
@@ -43,6 +43,7 @@ $(document).ready(function(){
 		$table.find('tbody .no-result').remove();
         
         // $rows.show();
+        $('tbody').html($rows);
         $filteredRows.remove();
 
         

@@ -198,7 +198,7 @@ $(document).ready(function(){
 
 				if(cnt != 12){
 					var fDev;
-					if(p[j][5]){fDev=p[j][5];}else{fDev="no devuelto"; error_field = 1;}
+					if(p[j][5]){fDev=p[j][5];}else{fDev="No devuelto"; error_field = 1;}
 
 					if(error_field == 1){
 						var newRow = "<tr class='negative' data-value='"+p[j][0]+"'>";
