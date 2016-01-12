@@ -18,13 +18,13 @@ $(document).ready(function(){
 		;
 	});
 
-	// $(document).on('click', 'tr', function(event) {
-	// 	console.log($(this).data('value'));
-	// 	$('#modal-mod-prest')
-	// 		.modal({blurring:true})
-	// 		.modal('show')
-	// 	;
-	// });
+	$(document).on('click', 'tr', function(event) {
+		console.log($(this).data('value'));
+		$('#modal-mod-prest')
+			.modal({blurring:true})
+			.modal('show')
+		;
+	});
 
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('.search').siblings('.content').find('.description');
@@ -233,7 +233,7 @@ $(document).ready(function(){
 		$field = $(this);
 		$info = $field.html();
 
-		if($info.indexOf('button') != -1) return;
+		if($info.indexOf('button') != -1 || $info.indexOf('No devuelto') != -1) return;
 
 		$field.html('<div class="ui action input"><input type="text" value="'+$info+'"><button class="ui icon button"><i class="ui icon save"></i></button></div>');
 	});
@@ -241,6 +241,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.dev', function(event) {
 		event.preventDefault();
+		alert('Atento manolo, salen dos modal');
 		$('#mod-dev').modal('show');
 	});
 

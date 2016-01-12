@@ -250,7 +250,7 @@
   <div class="content">
     <p>¿Quiere usar la fecha y hora actual?</p>
     <button class="ui button teal">Confirmar</button>
-    <p>Si no quiere utilizar la fecha y hora actual, indique uno aquí:</p>
+    <p>Si no quiere utilizar la fecha y hora actual, indique una aquí:</p>
     <div class="ui action input">
       <input type="date" name="dat-dev">
       <button class="ui icon button">
