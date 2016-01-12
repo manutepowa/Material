@@ -18,13 +18,13 @@ $(document).ready(function(){
 		;
 	});
 
-	$(document).on('click', 'tr', function(event) {
-		console.log($(this).data('value'));
-		$('#modal-mod-prest')
-			.modal({blurring:true})
-			.modal('show')
-		;
-	});
+	// $(document).on('click', 'tr', function(event) {
+	// 	console.log($(this).data('value'));
+	// 	$('#modal-mod-prest')
+	// 		.modal({blurring:true})
+	// 		.modal('show')
+	// 	;
+	// });
 
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('.search').siblings('.content').find('.description');
@@ -214,6 +214,7 @@ $(document).ready(function(){
 								+"<td>"+p[j][3]+"</td>"
 								+"<td>"+p[j][4]+"</td>"
 								+"<td>"+fDev+"</td>"
+								+"<td><input type='hidden' name='id-prest' value='"+p[j][0]+"'/><button class='dev ui button'>Devolver</button></td>"
 								+"</tr>";
 
 					
@@ -226,6 +227,23 @@ $(document).ready(function(){
 			});
 		};
 	});
+
+	$(document).on('dblclick', 'td', function(event) {
+		event.preventDefault();
+		$field = $(this);
+		$info = $field.html();
+
+		if($info.indexOf('button') != -1) return;
+
+		$field.html('<div class="ui action input"><input type="text" value="'+$info+'"><button class="ui icon button"><i class="ui icon save"></i></button></div>');
+	});
+
+
+	$(document).on('click', '.dev', function(event) {
+		event.preventDefault();
+		$('#mod-dev').modal('show');
+	});
+
 });
 
 // <div class='ui animated fade button' tabindex='0'>

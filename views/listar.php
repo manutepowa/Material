@@ -243,7 +243,22 @@
   </div>
 </div>
 
-
+<div class="ui small modal" id="mod-dev">
+  <div class="header">
+    Devolución de Préstamo
+  </div>
+  <div class="content">
+    <p>¿Quiere usar la fecha y hora actual?</p>
+    <button class="ui button teal">Confirmar</button>
+    <p>Si no quiere utilizar la fecha y hora actual, indique uno aquí:</p>
+    <div class="ui action input">
+      <input type="date" name="dat-dev">
+      <button class="ui icon button">
+      Devolver
+      </button>
+    </div>
+  </div>
+</div>
 
 <div class="cabecera">
     <div class="ui container">
@@ -303,6 +318,7 @@
           <th>LUGAR</th>
           <th>F. PRÉSTAMO</th>
           <th>F. DEVOLUCIÓN</th>
+          <th>DEVOLVER</th>
         </tr>
       </thead>
       <tbody>
