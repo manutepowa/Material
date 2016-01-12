@@ -18,13 +18,13 @@ $(document).ready(function(){
 		;
 	});
 
-	$(document).on('click', 'tr', function(event) {
-		console.log($(this).data('value'));
-		$('#modal-mod-prest')
-			.modal({blurring:true})
-			.modal('show')
-		;
-	});
+	// $(document).on('click', 'tr', function(event) {
+	// 	console.log($(this).data('value'));
+	// 	$('#modal-mod-prest')
+	// 		.modal({blurring:true})
+	// 		.modal('show')
+	// 	;
+	// });
 
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('.search').siblings('.content').find('.description');
@@ -214,7 +214,11 @@ $(document).ready(function(){
 								+"<td>"+p[j][3]+"</td>"
 								+"<td>"+p[j][4]+"</td>"
 								+"<td>"+fDev+"</td>"
-								+"<td><input type='hidden' name='id-prest' value='"+p[j][0]+"'/><button class='dev ui button'>Devolver</button></td>"
+								+"<td style='text-align:center'><input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
+								+"<button title='Devolver' class='dev ui blue icon button'><i class='large icon attach'></i></button>"
+								+"<button title='Modificar' class='mod ui green icon button'><i class='large icon edit'></i></button>"
+								+"<button title='Borrar' class='del ui red icon button'><i class='large icon trash'></i></button>"
+								+"</td>"
 								+"</tr>";
 
 					
@@ -228,21 +232,29 @@ $(document).ready(function(){
 		};
 	});
 
-	$(document).on('dblclick', 'td', function(event) {
-		event.preventDefault();
-		$field = $(this);
-		$info = $field.html();
+	// $(document).on('dblclick', 'td', function(event) {
+	// 	event.preventDefault();
+	// 	$field = $(this);
+	// 	$info = $field.html();
 
-		if($info.indexOf('button') != -1 || $info.indexOf('No devuelto') != -1) return;
+	// 	if($info.indexOf('button') != -1 || $info.indexOf('No devuelto') != -1) return;
 
-		$field.html('<div class="ui action input"><input type="text" value="'+$info+'"><button class="ui icon button"><i class="ui icon save"></i></button></div>');
-	});
+	// 	$field.html('<div class="ui action input"><input type="text" value="'+$info+'"><button class="ui icon button"><i class="ui icon save"></i></button></div>');
+	// });
 
 
 	$(document).on('click', '.dev', function(event) {
 		event.preventDefault();
-		alert('Atento manolo, salen dos modal');
+		
 		$('#mod-dev').modal('show');
+	});
+
+	$(document).on('click', '.mod', function(event) {
+		event.preventDefault();
+		$('#modal-mod-prest')
+			.modal({blurring:true})
+			.modal('show')
+		;
 	});
 
 });
