@@ -7,12 +7,13 @@
 		echo "Error";
 	}
 
-	$persona = $_POST['per'];
-	$material = $_POST['mat'];
-	$lugar = $_POST['lug'];
+	$id = $_POST['id-prest'];
 	$date = $_POST['dat'];
+	$per = $_POST['per'];
+	$lug = $_POST['lug'];
+	$mat = $_POST['mat'];
 
-	$data_POST = array(0 => $material, 1 => $persona, 2 => $lugar);
+	$data_POST = array(0 => $mat, 1 => $per, 2 => $lug);
 	$data_table =  array(0 => 'material', 1 => 'persona', 2 => 'lugar');
 	$data_field =  array(0 => 'descripcion', 1 => 'nombre', 2 => 'lugar');
 
@@ -28,11 +29,10 @@
 
 	}
 
+	$query = "UPDATE material.prestamo SET fecha_prestamo = '".$date."', id_lugar = ".$data_id[2].", id_persona = ".$data_id[1].", id_material = ".$data_id[0]." WHERE id_prestamo = ".$id;
 
-	$insert = 'INSERT INTO material.prestamo(id_material,id_persona,id_lugar,fecha_prestamo) VALUES('.$data_id[0].','.$data_id[1].', '.$data_id[2].', "'.$date.'")';
-	$conexion->query($insert)or die(mysql_error());
+	$conexion->query($query)or die(mysql_error());
 
-	echo "1";
 
 
 ?>

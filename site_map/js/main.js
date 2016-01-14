@@ -18,21 +18,11 @@ $(document).ready(function(){
 		;
 	});
 
-	// $(document).on('click', 'tr', function(event) {
-	// 	console.log($(this).data('value'));
-	// 	$('#modal-mod-prest')
-	// 		.modal({blurring:true})
-	// 		.modal('show')
-	// 	;
-	// });
-
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('.search').siblings('.content').find('.description');
 		var value = $(this).siblings('.input').find('input').val();
 		desc.html(value);
 	});
-
-	
 
 	$('input[type=date]').blur(function(event) {
 		var desc = $(this).parents('.search').siblings('.content').find('.description');
@@ -53,12 +43,14 @@ $(document).ready(function(){
 			success: function(event){
 				if(event == '1'){
 					$('.message').fadeIn('500');
-					$('.ui.modal').close();
 					$('#persona').val('');
 					$('#lugar').val('');
 					$('#material').val('');
 					$('#date').val('');
 				}
+
+				loadList();
+
 			}
 		});
 		
@@ -119,19 +111,21 @@ $(document).ready(function(){
 		var mmaterial = $('#mmaterial').val();
 		var mdate = $('#mdate').val();
 
+		if(mpersona == undefined || mlugar == undefined || mmaterial == undefined || mdate == undefined) return;
+
 		$.ajax({
 			url: '../function/modPrestamo.php',
 			type: 'POST',
-			data: {per: mpersona, lug: mlugar, mat: mmaterial, dat: mdate},
+			data: {'per': mpersona, 'lug': mlugar, 'mat': mmaterial, 'dat': mdate, 'id-prest':id},
 			success: function(event){
-				if(event == '1'){
-					$('.message').fadeIn('500');
-					$('.ui.modal').close();
-					$('#mpersona').val('');
-					$('#mlugar').val('');
-					$('#mmaterial').val('');
-					$('#mdate').val('');
-				}
+
+				$('.message').fadeIn('500');
+				$('#mpersona').val('');
+				$('#mlugar').val('');
+				$('#mmaterial').val('');
+				$('#mdate').val('');
+				loadList();
+				
 			}
 		});
 		
@@ -185,6 +179,85 @@ $(document).ready(function(){
 	  })
 	;
 
+	loadList();
+
+	var id;
+
+	$(document).on('click', '.dev', function(event) {
+		event.preventDefault();
+		id = $(this).siblings('input').val();
+		$('#mod-dev').modal('show');
+	});
+
+	$(document).on('click', '.del', function(event) {
+		event.preventDefault();
+		id = $(this).siblings('input').val();
+		$('#mod-del').modal('show');
+	});
+
+	$(document).on('click', '.mod', function(event) {
+		event.preventDefault();
+		id = $(this).siblings('input').val();
+		$('#modal-mod-prest')
+			.modal({blurring:true})
+			.modal('show')
+		;
+	});
+
+	$(document).on('click', '#actual-date', function(event){
+		event.preventDefault();
+
+		var d = new Date();
+		var  month = d.getMonth()+1;
+		var date = d.getFullYear()+'-'+month+'-'+d.getDate();
+
+		$.ajax({
+			url: '../function/addDevolucion.php',
+			type: 'POST',
+			data: {'dat-dev': date, 'id-prest':id},
+			success: function(e){
+				$('#mod-dev').modal('hide')
+				loadList();
+			}
+		});
+		
+	});
+
+	$(document).on('click', '#date-select', function(event) {
+		event.preventDefault();
+
+		var date = $(this).siblings('input[type=date]').val();
+		if(date == undefined) return;
+
+		$.ajax({
+			url: '../function/addDevolucion.php',
+			type: 'POST',
+			data: {'dat-dev': date, 'id-prest':id},
+			success: function(e){
+				$('#mod-dev').modal('hide')
+				loadList();
+			}
+		});
+
+	});
+
+	$(document).on('click', '.approve', function(event) {
+		event.preventDefault();
+		$.ajax({
+			url: '../function/delPrestamo.php',
+			type: 'POST',
+			data: {'id-prest': id},
+			success: function(event){
+				loadList();
+			}
+		})
+		;
+		
+	});
+
+});
+
+function loadList(){
 	var urlprestamo = '../function/getPrestamo.php';
 
 	$("#prestamos tbody").html("");
@@ -214,10 +287,11 @@ $(document).ready(function(){
 								+"<td>"+p[j][3]+"</td>"
 								+"<td>"+p[j][4]+"</td>"
 								+"<td>"+fDev+"</td>"
-								+"<td style='text-align:center'><input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
-								+"<button title='Devolver' class='dev ui blue icon button'><i class='large icon attach'></i></button>"
-								+"<button title='Modificar' class='mod ui green icon button'><i class='large icon edit'></i></button>"
-								+"<button title='Borrar' class='del ui red icon button'><i class='large icon trash'></i></button>"
+								+"<td style='text-align:center'>"
+									+"<button title='Devolver' class='dev ui blue icon button'><i class='large icon attach'></i></button>"
+									+"<button title='Modificar' class='mod ui green icon button'><i class='large icon edit'></i></button>"
+									+"<button title='Borrar' class='del ui red icon button'><i class='large icon trash'></i></button>"
+									+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
 								+"</td>"
 								+"</tr>";
 
@@ -231,37 +305,4 @@ $(document).ready(function(){
 			});
 		};
 	});
-
-	// $(document).on('dblclick', 'td', function(event) {
-	// 	event.preventDefault();
-	// 	$field = $(this);
-	// 	$info = $field.html();
-
-	// 	if($info.indexOf('button') != -1 || $info.indexOf('No devuelto') != -1) return;
-
-	// 	$field.html('<div class="ui action input"><input type="text" value="'+$info+'"><button class="ui icon button"><i class="ui icon save"></i></button></div>');
-	// });
-
-
-	$(document).on('click', '.dev', function(event) {
-		event.preventDefault();
-		
-		$('#mod-dev').modal('show');
-	});
-
-	$(document).on('click', '.mod', function(event) {
-		event.preventDefault();
-		$('#modal-mod-prest')
-			.modal({blurring:true})
-			.modal('show')
-		;
-	});
-
-});
-
-// <div class='ui animated fade button' tabindex='0'>
-//   <div class='visible content'>Sign-up for a Pro account</div>
-//   <div class='hidden content'>
-//     $12.99 a month
-//   </div>
-// </div>
+}

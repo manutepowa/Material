@@ -71,7 +71,7 @@
       <form class="ui form" action="../function/addLugar.php" method="POST">
           <div class="field">
             <label>Lugar</label>
-            <input type="text" name="lugar" id="lugar" placeholder="Nombre y apellidos">
+            <input type="text" name="lugar" id="alugar" placeholder="Nombre y apellidos">
           </div>
           <div class="ui rightAlign">
             <button class="ourColor ui right aligned button" type="submit">Añadir</button>
@@ -250,15 +250,28 @@
   <div class="content row">
     <div class="column">
       <p>¿Quiere usar la fecha y hora actual?</p>
-      <button class="ui button teal">Confirmar</button>
+      <button class="ui button teal" id="actual-date">Confirmar</button>
     </div>
     <div class="column">
       <p>Si no quiere utilizar la fecha y hora actual, indique una aquí:</p>
       <div class="ui action input">
         <input type="date" name="dat-dev">
-        <button class="ui icon button">Devolver</button>
+        <button class="ui icon button" id="date-select">Devolver</button>
       </div>
     </div> 
+  </div>
+</div>
+
+<div class="ui small modal" id="mod-del">
+  <div class="header">
+    Borrar Préstamo
+  </div>
+  <div class="content">
+    ¿Está seguro de que quiere borrar el préstamo?
+  </div>
+  <div class="actions">
+    <div class="ui approve red button" id="accept-del">Aceptar</div>
+    <div class="ui cancel button">Cancelar</div>
   </div>
 </div>
 
