@@ -1,5 +1,14 @@
 $(document).ready(function(){
 
+
+	//BORRADO AUTOMÁTICO PARA UN FUTURO
+	// var dat = new Date();
+
+	// var actual-month = dat.getMonth();
+
+	// if()
+
+
 	$('.message').fadeOut(0);
 
 	$('.message .close')
