@@ -164,7 +164,12 @@
     Modificar Préstamo
   </div>
   <div class="content">
-    
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        No se puede modificar un préstamo con campos vacíos
+      </div>
+    </div>
     <div class="description">
       <div class="ui relaxed divided list">
       <div class="item">
@@ -279,7 +284,8 @@
     <div class="ui container">
         <img src="../site_map/images/logo.png" alt="logo">
         Materiales SC
-        <a href="../function/salir.php">Cerrar sesión</a>
+        <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
+        <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
     </div>
   </div>
 
@@ -297,10 +303,14 @@
     <div class="results"></div>
   </div> -->
   <div class="filtros">
-    <div class="nprestamo">
-      <button id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</button>
-      <span>Filtrar por:</span>
-    </div>
+    <!-- <div class="filtro">
+      No devueltos: <br>
+      <div class="ui fitted toggle checkbox">
+        <input type="checkbox">
+        <label></label>
+      </div>
+    </div> -->
+    
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Material...">
       <!-- <div class="results"></div> -->
@@ -321,6 +331,7 @@
       <input class="prompt" type="text" placeholder="Fecha devolución...">
       <!-- <div class="results"></div> -->
     </div>
+    <div class="filtro"></div>
   </div>
   <!-- <div class="results"></div> -->
   <!-- </div> -->

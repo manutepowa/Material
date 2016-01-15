@@ -67,7 +67,7 @@ $(document).ready(function(){
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : 'No se encuentra la persona. :(<br><button class="ui button teal">Añadir Persona</button>'
+		    	noResults   : 'No se encuentra la persona. :(<br><button class="ui button teal add">Añadir Persona</button>'
 			},
 		  })
 		;
@@ -104,6 +104,8 @@ $(document).ready(function(){
 	  })
 	;
 
+	$('.modal .message').hide();
+
 	$('#modPrestamo').click(function(event) {
 
 		var mpersona = $('#mpersona').val();
@@ -111,7 +113,11 @@ $(document).ready(function(){
 		var mmaterial = $('#mmaterial').val();
 		var mdate = $('#mdate').val();
 
-		if(mpersona == undefined || mlugar == undefined || mmaterial == undefined || mdate == undefined) return;
+		if(mpersona == undefined || mlugar == undefined || mmaterial == undefined || mdate == undefined) return function(){
+
+			$('.modal .message').fadeIn(300);
+
+		};
 
 		$.ajax({
 			url: '../function/modPrestamo.php',
@@ -125,7 +131,7 @@ $(document).ready(function(){
 				$('#mmaterial').val('');
 				$('#mdate').val('');
 				loadList();
-				
+
 			}
 		});
 		
@@ -142,7 +148,7 @@ $(document).ready(function(){
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : 'No se encuentra la persona. :(<div><button class="ui button teal">Añadir Persona</button></div>'
+		    	noResults   : 'No se encuentra la persona. :(<div><button class="ui button teal add">Añadir Persona</button></div>'
 			},
 		  })
 		;
@@ -255,6 +261,33 @@ $(document).ready(function(){
 		
 	});
 
+	$(document).on('click', '.add', function(event) {
+		event.preventDefault();
+		
+		var valor = $(this).parents('.results').siblings('.icon.input').find('.prompt').val();
+		var modal = $(this).parents('.modal');
+
+		$.ajax({
+			url: '../function/addPerson.php',
+			type: 'POST',
+			data: {'nombre': valor},
+			success: function(event){
+				modal.modal('hide');
+			}
+		});
+		
+
+	});
+
+	// $('.toggle').change(function(event) {
+	// 	if($(this)[0].checked){
+	// 		alert('hola');
+	// 	}
+	// 	else{
+	// 		loadList();
+	// 	}
+	// });
+
 });
 
 function loadList(){
@@ -288,9 +321,9 @@ function loadList(){
 								+"<td>"+p[j][4]+"</td>"
 								+"<td>"+fDev+"</td>"
 								+"<td style='text-align:center'>"
-									+"<button title='Devolver' class='dev ui blue icon button'><i class='large icon attach'></i></button>"
-									+"<button title='Modificar' class='mod ui green icon button'><i class='large icon edit'></i></button>"
-									+"<button title='Borrar' class='del ui red icon button'><i class='large icon trash'></i></button>"
+									+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
+									+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
 									+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
 								+"</td>"
 								+"</tr>";
