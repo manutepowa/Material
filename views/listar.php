@@ -303,13 +303,13 @@
     <div class="results"></div>
   </div> -->
   <div class="filtros">
-    <!-- <div class="filtro">
+    <div class="filtro">
       No devueltos: <br>
       <div class="ui fitted toggle checkbox">
         <input type="checkbox">
         <label></label>
       </div>
-    </div> -->
+    </div>
     
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Material...">
