@@ -311,7 +311,7 @@ function loadList(){
 		for (var j = 0; j < urlprestamo.length; j++) {
 			$.each(prest, function(i, p){
 
-				if(cnt != 12){
+				if(cnt != p.length){
 					var fDev;
 					if(p[j][5]){fDev=p[j][5];}else{fDev="No devuelto"; error_field = 1;}
 

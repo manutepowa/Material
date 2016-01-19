@@ -5,10 +5,10 @@ $(document).ready(function(){
 		var code = e.keyCode || e.which;
         if (code == '9') return;
         
-        var $input = $(this),
+        var $input = $(this);
         inputContent = $input.val().toLowerCase();
         $panel = $input.parents('.filtros');
-        column = $panel.find($input.parents('div')).index() - 1;
+        column = $panel.find($input.parents('div')).index();
 
         $container = $panel.parents('.container');
         $table = $container.find('.table');
@@ -33,11 +33,15 @@ $(document).ready(function(){
             }
         }
 
+        console.log($rows);
+
 		var $filteredRows = $rows.filter(function(){
             var value = $(this).find('td').eq(column).text().toLowerCase();
             return value.indexOf(inputContent) === -1;
         });
         // console.log($filteredRows);
+
+        console.log($filteredRows)
 
 
 		$table.find('tbody .no-result').remove();
