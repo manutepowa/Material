@@ -7,9 +7,14 @@
 		echo "Error";
 	}
 
-	// $search = $_GET['q'];
+	$q = $_GET['q'];
 
-	$query = "SELECT prestamo.id_prestamo, material.descripcion, persona.nombre, lugar.lugar, prestamo.fecha_prestamo, prestamo.fecha_devolucion FROM material.prestamo, material.material, material.persona, material.lugar WHERE prestamo.id_material = material.id_material AND prestamo.id_persona = persona.id_persona AND prestamo.id_lugar = lugar.id_lugar ORDER BY prestamo.fecha_prestamo DESC;";
+	if ($q==0) {
+		$query = "SELECT prestamo.id_prestamo, material.descripcion, persona.nombre, lugar.lugar, prestamo.fecha_prestamo, prestamo.fecha_devolucion FROM material.prestamo, material.material, material.persona, material.lugar WHERE prestamo.id_material = material.id_material AND prestamo.id_persona = persona.id_persona AND prestamo.id_lugar = lugar.id_lugar ORDER BY prestamo.fecha_prestamo DESC;";
+	}
+	else{
+		$query = "SELECT prestamo.id_prestamo, material.descripcion, persona.nombre, lugar.lugar, prestamo.fecha_prestamo, prestamo.fecha_devolucion FROM material.prestamo, material.material, material.persona, material.lugar WHERE prestamo.id_material = material.id_material AND prestamo.id_persona = persona.id_persona AND prestamo.id_lugar = lugar.id_lugar AND prestamo.fecha_devolucion IS NULL ORDER BY prestamo.fecha_prestamo DESC;";
+	}
 	
 	$row = $conexion->query($query)or die(mysql_error());
 	

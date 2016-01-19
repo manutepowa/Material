@@ -58,7 +58,7 @@ $(document).ready(function(){
 					$('#date').val('');
 				}
 
-				loadList();
+				loadList(0);
 
 			}
 		});
@@ -139,7 +139,7 @@ $(document).ready(function(){
 				$('#mlugar').val('');
 				$('#mmaterial').val('');
 				$('#mdate').val('');
-				loadList();
+				loadList(0);
 
 			}
 		});
@@ -194,7 +194,7 @@ $(document).ready(function(){
 	  })
 	;
 
-	loadList();
+	loadList(0);
 
 	var id;
 
@@ -232,7 +232,7 @@ $(document).ready(function(){
 			data: {'dat-dev': date, 'id-prest':id},
 			success: function(e){
 				$('#mod-dev').modal('hide')
-				loadList();
+				loadList(0);
 			}
 		});
 		
@@ -250,7 +250,7 @@ $(document).ready(function(){
 			data: {'dat-dev': date, 'id-prest':id},
 			success: function(e){
 				$('#mod-dev').modal('hide')
-				loadList();
+				loadList(0);
 			}
 		});
 
@@ -263,7 +263,7 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'id-prest': id},
 			success: function(event){
-				loadList();
+				loadList(0);
 			}
 		})
 		;
@@ -288,19 +288,19 @@ $(document).ready(function(){
 
 	});
 
-	// $('.toggle').change(function(event) {
-	// 	if($(this)[0].checked){
-	// 		alert('hola');
-	// 	}
-	// 	else{
-	// 		loadList();
-	// 	}
-	// });
+	$('.toggle').change(function(event) {
+		if($(this).checkbox('is checked')){
+			loadList(1);
+		}
+		else{
+			loadList(0);
+		}
+	});
 
 });
 
-function loadList(){
-	var urlprestamo = '../function/getPrestamo.php';
+function loadList(q){
+	var urlprestamo = '../function/getPrestamo.php?q='+q;
 
 	$("#prestamos tbody").html("");
 

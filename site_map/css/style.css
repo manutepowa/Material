@@ -54,11 +54,12 @@
     transition: background-color .1s ease,color .1s ease,box-shadow .1s ease,border-color .1s ease;
 }
 
-.filtro:focus {
+
+/*.filtro:focus {
     border-color: rgba(34,36,38,.35);
     background: #FFF;
     color: rgba(0,0,0,.95);
-}
+}*/
 
 .nprestamo{
 	width: 18%;
