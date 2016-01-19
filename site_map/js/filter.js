@@ -33,15 +33,10 @@ $(document).ready(function(){
             }
         }
 
-        console.log($rows);
-
 		var $filteredRows = $rows.filter(function(){
             var value = $(this).find('td').eq(column).text().toLowerCase();
             return value.indexOf(inputContent) === -1;
         });
-        // console.log($filteredRows);
-
-        console.log($filteredRows)
 
 
 		$table.find('tbody .no-result').remove();
