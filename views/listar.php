@@ -31,7 +31,7 @@
 
 <div class="ui small modal btnAddMaterial">
   <div class="header">
-    Añadir Material
+    Añadir nuevo material
   </div>
   <div class="paddingContent ui grid centered">
     <div class="five wide column">
@@ -57,7 +57,7 @@
 
 <div class="ui small modal btnAddLugar">
   <div class="header">
-    Añadir Lugar
+    Añadir nuevo lugar
   </div>
   <div class="paddingContent ui grid centered">
     <div class="five wide column">
@@ -84,7 +84,7 @@
 
 <div class="ui small modal" id="modal-add-prest">
   <div class="header">
-    Añadir Préstamo
+    Añadir nuevo préstamo
   </div>
   <div class="content">
     
@@ -114,7 +114,7 @@
 			</div>
 		    <i class="large archive big aligned icon"></i>
 		    <div class="content">
-		      <div class="description">no hay material añadido</div>
+		      <div class="description">No hay material añadido</div>
 		    </div>
 		  </div>
 
@@ -141,7 +141,7 @@
 			</div>
 		    <i class="large calendar big aligned icon"></i>
 		    <div class="content">
-		      <div class="description">No hay hecha añadida</div>
+		      <div class="description">No hay fecha añadida</div>
 		    </div>
 		  </div>
 		</div>
@@ -161,7 +161,7 @@
 
 <div class="ui small modal" id="modal-mod-prest">
   <div class="header">
-    Modificar Préstamo
+    Modificar préstamo
   </div>
   <div class="content">
     <div class="ui negative message">
@@ -196,7 +196,7 @@
       </div>
         <i class="large archive big aligned icon"></i>
         <div class="content">
-          <div class="description">no hay material añadido</div>
+          <div class="description">No hay material añadido</div>
         </div>
       </div>
 
@@ -223,7 +223,7 @@
       </div>
         <i class="large calendar big aligned icon"></i>
         <div class="content">
-          <div class="description">No hay hecha añadida</div>
+          <div class="description">No hay fecha añadida</div>
         </div>
       </div>
     </div>
@@ -244,21 +244,21 @@
 <div class="ui positive message" id="adv">
   <i class="close icon"></i>
   <div class="header">
-    Préstamo añadido con éxito!
+    ¡Préstamo añadido con éxito!
   </div>
 </div>
 
 <div class="ui small modal" id="mod-dev">
   <div class="header">
-    Devolución de Préstamo
+    Devolución del préstamo
   </div>
   <div class="content row">
     <div class="column">
-      <p>¿Quiere usar la fecha y hora actual?</p>
+      <p>¿Quiere usar la fecha actual?</p>
       <button class="ui button teal" id="actual-date">Confirmar</button>
     </div>
     <div class="column">
-      <p>Si no quiere utilizar la fecha y hora actual, indique una aquí:</p>
+      <p>Si no quiere utilizar la fecha actual, indique una aquí:</p>
       <div class="ui action input">
         <input type="date" name="dat-dev">
         <button class="ui icon button" id="date-select">Devolver</button>
@@ -269,7 +269,7 @@
 
 <div class="ui small modal" id="mod-del">
   <div class="header">
-    Borrar Préstamo
+    Borrar préstamo
   </div>
   <div class="content">
     ¿Está seguro de que quiere borrar el préstamo?

@@ -8,6 +8,7 @@ $(document).ready(function(){
 
 	// if()
 
+	$('.toggle').checkbox('set checked')
 
 	$('.message').fadeOut(0);
 
