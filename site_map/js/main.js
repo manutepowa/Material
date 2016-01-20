@@ -58,7 +58,14 @@ $(document).ready(function(){
 					$('#date').val('');
 				}
 
-				loadList(0);
+				if($('.toggle').checkbox('is checked')){
+					loadList(1);
+				}
+				else{
+					loadList(0);
+				}
+
+				// loadList(0);
 
 			}
 		});
@@ -139,7 +146,13 @@ $(document).ready(function(){
 				$('#mlugar').val('');
 				$('#mmaterial').val('');
 				$('#mdate').val('');
-				loadList(0);
+				if($('.toggle').checkbox('is checked')){
+					loadList(1);
+				}
+				else{
+					loadList(0);
+				}
+				// loadList(0);
 
 			}
 		});
@@ -194,7 +207,14 @@ $(document).ready(function(){
 	  })
 	;
 
-	loadList(0);
+	if($('.toggle').checkbox('is checked')){
+		loadList(1);
+	}
+	else{
+		loadList(0);
+	}
+
+	// loadList(0);
 
 	var id;
 
@@ -232,7 +252,13 @@ $(document).ready(function(){
 			data: {'dat-dev': date, 'id-prest':id},
 			success: function(e){
 				$('#mod-dev').modal('hide')
-				loadList(0);
+				// loadList(0);
+				if($('.toggle').checkbox('is checked')){
+					loadList(1);
+				}
+				else{
+					loadList(0);
+				}
 			}
 		});
 		
@@ -250,7 +276,13 @@ $(document).ready(function(){
 			data: {'dat-dev': date, 'id-prest':id},
 			success: function(e){
 				$('#mod-dev').modal('hide')
-				loadList(0);
+				// loadList(0);
+				if($('.toggle').checkbox('is checked')){
+					loadList(1);
+				}
+				else{
+					loadList(0);
+				}
 			}
 		});
 
@@ -263,7 +295,13 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'id-prest': id},
 			success: function(event){
-				loadList(0);
+				// loadList(0);
+				if($('.toggle').checkbox('is checked')){
+					loadList(1);
+				}
+				else{
+					loadList(0);
+				}
 			}
 		})
 		;
