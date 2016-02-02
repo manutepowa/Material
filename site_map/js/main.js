@@ -7,7 +7,15 @@ $(document).ready(function(){
 	// var actual-month = dat.getMonth();
 
 	// if()
-
+/*
+	DEBUG
+ */
+ 	function o(debug){
+ 		console.log(debug);
+ 	}
+/*
+	END DEBUG
+*/
 	$('.toggle').checkbox('set checked')
 
 	$('.message').fadeOut(0);
@@ -234,10 +242,21 @@ $(document).ready(function(){
 	$(document).on('click', '.mod', function(event) {
 		event.preventDefault();
 		id = $(this).siblings('input').val();
+		var dataRow = $(this).parent().parent(); 
+		
+		var nombreMod = dataRow.children('td').eq(1).text();
+		var materialMod = dataRow.children('td').eq(0).text(); 
+		var lugarMod = dataRow.children('td').eq(2).text(); 
+		o(lugarMod + ' --- ' + materialMod + ' --- ' + nombreMod);
+
+		$('#modal-mod-prest').find('#mpersona').val(nombreMod);
+		$('#modal-mod-prest').find('#mmaterial').val(materialMod);
+		$('#modal-mod-prest').find('#mlugar').val(lugarMod);
+
+
 		$('#modal-mod-prest')
 			.modal({blurring:true})
-			.modal('show')
-		;
+			.modal('show');
 	});
 
 	$(document).on('click', '#actual-date', function(event){
@@ -363,20 +382,44 @@ function loadList(q){
 						var newRow = "<tr data-value='"+p[j][0]+"'>";
 					}
 					
+					// newRow += 	"<td>"+p[j][1]+"</td>"
+					// 			+"<td>"+p[j][2]+"</td>"
+					// 			+"<td>"+p[j][3]+"</td>"
+					// 			+"<td>"+p[j][4]+"</td>"
+					// 			+"<td>"+fDev+"</td>"
+					// 			+"<td style='text-align:center'>"
+					// 				+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
+					// 				+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+					// 				+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+					// 				+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
+					// 			+"</td>"
+					// 			+"</tr>";
+
 					newRow += 	"<td>"+p[j][1]+"</td>"
 								+"<td>"+p[j][2]+"</td>"
 								+"<td>"+p[j][3]+"</td>"
 								+"<td>"+p[j][4]+"</td>"
-								+"<td>"+fDev+"</td>"
-								+"<td style='text-align:center'>"
+								+"<td>"+fDev+"</td>";
+							if (fDev !== 'No devuelto') {
+								newRow +=	"<td style='text-align:center'>"
+									+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon attach'></i></button>"
+									+"<button title='Modificar' class='mod ui icon button' disabled><i class='large icon edit'></i></button>"
+									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
+								+"</td>"
+								+"</tr>";
+							}
+							else{
+								newRow +=	"<td style='text-align:center'>"
 									+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
 									+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
 									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
 									+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
 								+"</td>"
 								+"</tr>";
-
+							};
 					
+					console.log(fDev);
 									
 					$(newRow).appendTo("#prestamos tbody");
 

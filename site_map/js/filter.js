@@ -34,7 +34,7 @@ $(document).ready(function(){
         }
 
 		var $filteredRows = $rows.filter(function(){
-            var value = $(this).find('td').eq(column).text().toLowerCase();
+            var value = $(this).find('td').eq(column-1).text().toLowerCase();
             return value.indexOf(inputContent) === -1;
         });
 
