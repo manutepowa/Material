@@ -146,6 +146,18 @@
 		  </div>
 		</div>
     </div>
+    <div id="erraddpres" class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        No se puede añadir un préstamo con campos vacíos.
+      </div>
+    </div>
+    <div id="erraddprescrear" class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        Rellene todos los campos. Si algún campo no se encuentra, deberá crearlo.
+      </div>
+    </div>
   </div>
   <div class="actions">
     <div class="ui black deny button">
@@ -228,10 +240,16 @@
       </div>
     </div>
     </div>
-    <div class="ui negative message">
+    <div id="errmodpres" class="ui negative message">
       <i class="close icon"></i>
       <div class="header">
-        No se puede modificar un préstamo con campos vacíos
+        No se puede modificar un préstamo con campos vacíos.
+      </div>
+    </div>
+    <div id="errmodprescrear" class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        Rellene todos los campos. Si algún campo no se encuentra, deberá crearlo.
       </div>
     </div>
   </div>
@@ -280,17 +298,23 @@
   </div>
   <div class="content row">
       <p>Indique si quiere usar la fecha actual o una fecha diferente.</p>
-    <!-- <div class="column"> -->
+    <div class="columna">
       <!-- <p>¿Quiere usar la fecha actual?</p> -->
-      <button class="ui button teal" id="actual-date">Confirmar</button>
-    <!-- </div> -->
-    <!-- <div class="column"> -->
+      <button class="ui button teal" id="actual-date">Devolver hoy</button>
+    </div>
+    <div class="columna">
       <!-- <p>Si no quiere utilizar la fecha actual, indique una aquí:</p> -->
       <div class="ui action input">
         <input type="date" name="dat-dev">
-        <button class="ui icon button" id="date-select">Devolver</button>
+        <button class="ui icon button" id="date-select">Devolver este día</button>
       </div>
-    <!-- </div>  -->
+    </div> 
+    <div id="errdevpres" class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        Debe indicar la fecha de devolución.
+      </div>
+    </div>
   </div>
 </div>
 

@@ -7,29 +7,32 @@ $(document).ready(function(){
 	// var actual-month = dat.getMonth();
 
 	// if()
-/*
-	DEBUG
- */
+
+/* DEBUG */
  	function o(debug){
  		console.log(debug);
  	}
-/*
-	END DEBUG
-*/
+/* END DEBUG */
+
 	$('.toggle').checkbox('set checked');
 
 	$('.message').fadeOut(0);
 
 	$('.message .close')
 	  .on('click', function() {
-	    $(this)
-	    	.closest('.message')
-	    	.transition('fade')
-	    	;
+	    // $(this)
+	    // 	.closest('.message')
+	    // 	.transition('fade')
+	    // 	;
+
+	    $('.message').fadeOut(300);
+
+	    // $('.modal .message').fadeOut(300);
 	})
 	;
 
 	$('#op-modal').click(function(event) {
+		$('.modal .message').fadeOut(000);
 		$('#modal-add-prest')
 			.modal({blurring:true})
 			.modal('show')
@@ -49,13 +52,16 @@ $(document).ready(function(){
 
 	$('#addPrestamo').click(function(event) {
 
+		// $('.modal .message').fadeOut(000);
+
 		var persona = $('#persona').val();
 		var lugar = $('#lugar').val();
 		var material = $('#material').val();
 		var date = $('#date').val();
 			
 		if(persona == "" || lugar == "" || material == "" || date == ""){
-			alert("¡Rellene todos los campos!");
+			// alert("¡Rellene todos los campos!");
+			$('#erraddpres').fadeIn(000);
 			return false;
 		}
 
@@ -74,13 +80,21 @@ $(document).ready(function(){
 					// $('.content .description').val('');
 					// $('.content .description').val('');
 					// $('.content .description').val('');
-				}
-
-				if($('.toggle').checkbox('is checked')){
-					loadList(1);
+				
+					if($('.toggle').checkbox('is checked')){
+						loadList(1);
+					}
+					else{
+						loadList(0);
+					}
 				}
 				else{
-					loadList(0);
+					// alert("¡¡error!!");
+					// return false;
+					$('.modal .message').fadeOut(000);
+
+					$('#modal-add-prest').modal('show');
+					$('#erraddprescrear').fadeIn(000);
 				}
 			}
 		});
@@ -88,20 +102,20 @@ $(document).ready(function(){
 	});
 
 	$('#per')
-		  .search({
-		    apiSettings: {
-		      url: '../function/getPerson.php?q={query}'
-		    },
-		    fields: {
-		      results : '0',
-		      title   : '1'
-		    },
-		    minCharacters : 1,
-		    error : {
-		    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addp">Crear persona</button>'
-			},
-		  })
-		;
+	  .search({
+	    apiSettings: {
+	      url: '../function/getPerson.php?q={query}'
+	    },
+	    fields: {
+	      results : '0',
+	      title   : '1'
+	    },
+	    minCharacters : 1,
+	    error : {
+	    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addp">Crear persona</button>'
+		},
+	  })
+	;
 
 	$('#mat')
 	  .search({
@@ -139,6 +153,8 @@ $(document).ready(function(){
 
 	$('#modPrestamo').click(function(event) {
 
+		$('.modal .message').fadeOut(000);
+
 		var mpersona = $('#mpersona').val();
 		var mlugar = $('#mlugar').val();
 		var mmaterial = $('#mmaterial').val();
@@ -147,7 +163,7 @@ $(document).ready(function(){
 		console.log("Persona: "+mpersona+" | Lugar: "+mlugar+" | Material: "+mmaterial+" | Fecha: "+mdate);
 
 		if(mpersona == "" || mlugar == "" || mmaterial == "" || mdate == ""){
-			$('.modal .message').fadeIn(300);
+			$('#errmodpres').fadeIn(000);
 			return false;
 		}
 
@@ -156,19 +172,28 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'per': mpersona, 'lug': mlugar, 'mat': mmaterial, 'dat': mdate, 'id-prest':id},
 			success: function(event){
-				$('#advmod').fadeIn('500').delay(5000).fadeOut();
-				$('#mpersona').val('');
-				$('#mlugar').val('');
-				$('#mmaterial').val('');
-				$('#mdate').val('');
-				if($('.toggle').checkbox('is checked')){
-					loadList(1);
+				if(event == '1'){
+					$('#advmod').fadeIn('500').delay(5000).fadeOut();
+					$('#mpersona').val('');
+					$('#mlugar').val('');
+					$('#mmaterial').val('');
+					$('#mdate').val('');
+					if($('.toggle').checkbox('is checked')){
+						loadList(1);
+					}
+					else{
+						loadList(0);
+					}
+					// loadList(0);
 				}
 				else{
-					loadList(0);
-				}
-				// loadList(0);
+					// alert("¡¡error!!");
+					// return false;
+					$('.modal .message').fadeOut(000);
 
+					$('#modal-mod-prest').modal('show');
+					$('#errmodprescrear').fadeIn(000);
+				}
 			}
 		});
 		
@@ -235,6 +260,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.dev', function(event) {
 		event.preventDefault();
+		$('.modal .message').fadeOut(000);
 		id = $(this).siblings('input').val();
 		$('#mod-dev').modal('show');
 	});
@@ -303,12 +329,17 @@ $(document).ready(function(){
 		
 	});
 
+	$(document).on('change', 'input[name$="dat-dev"]', function(event) {
+		$('.modal .message').fadeOut(000);
+	});
+
 	$(document).on('click', '#date-select', function(event) {
 		event.preventDefault();
 
 		var date = $(this).siblings('input[type=date]').val();
 		if(date == ""){
-			alert("¡Seleccione la fecha de devolución!");
+			// alert("¡Seleccione la fecha de devolución!");
+			$('#errdevpres').fadeIn(300);
 			return false;
 		}
 
@@ -328,7 +359,7 @@ $(document).ready(function(){
 				}
 			}
 		});
-
+		$(this).siblings('input[type=date]').val("0000-00-00");
 	});
 
 	$(document).on('click', '.approve', function(event) {
@@ -356,6 +387,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		
 		var valor = $(this).parents('.results').siblings('.icon.input').find('.prompt').val();
+		// o(valor);
 		var modal = $(this).parents('.modal');
 
 		$.ajax({

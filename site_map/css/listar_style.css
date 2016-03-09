@@ -13,12 +13,23 @@ h1{
 	/*margin: 100px auto !important;
 }*/
 
+.columna{
+	display: inline-block;
+	width: 45%;
+	text-align: center;
+}
+
 .center{
 	text-align: center;
 }
 
 .bold{
 	font-weight: bold;
+}
+
+#mod-dev > .content > .negative{
+	width: 70%;
+	margin-left: 15%;
 }
 
 div.search.medium{float: left; margin-right: 25px;}
