@@ -7,7 +7,6 @@
 		echo "Error";
 	}
 
-
 	//Recoje del post
 	$nombre = $_POST['nombre'];
 	// $nombre = 'Pepe Saez Perez';

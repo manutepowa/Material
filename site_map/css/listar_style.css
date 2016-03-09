@@ -13,13 +13,29 @@ h1{
 	/*margin: 100px auto !important;
 }*/
 
+.center{
+	text-align: center;
+}
+
+.bold{
+	font-weight: bold;
+}
+
 div.search.medium{float: left; margin-right: 25px;}
-#adv{
+
+#advadd, #advmod, #advdev, #advdel{
 	width: 300px;
 	position: absolute !important;
 	right: 15px;
-	top: 15px;
+	top: 40px;
 	box-shadow: 0px 3px 5px #ccc !important;
+	z-index: 99;
 	/*display: none;*/
 }
+
+#addp, #addm, #addl{
+	display: block;
+	margin: 0 auto;
+}
+
 /*div.message.empty{background: #f0f0f0 !important;}*/

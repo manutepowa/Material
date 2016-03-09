@@ -7,7 +7,6 @@
 		echo "Error";
 	}
 
-
 	//Recoje del post
 	$lugar = $_POST['lugar'];
 	// $lugar = 'Radio UMH';

@@ -164,12 +164,12 @@
     Modificar préstamo
   </div>
   <div class="content">
-    <div class="ui negative message">
+    <!-- <div class="ui negative message">
       <i class="close icon"></i>
       <div class="header">
         No se puede modificar un préstamo con campos vacíos
       </div>
-    </div>
+    </div> -->
     <div class="description">
       <div class="ui relaxed divided list">
       <div class="item">
@@ -217,7 +217,7 @@
       <div class="item">
         <div class="ui search medium" id="mdat">
           <div class="ui left icon input">
-          <input type="date" placeholder="Fecha" id="mdate">
+          <input id="mdate" type="date" placeholder="Fecha">
           <i class="calendar icon"></i>
         </div>
       </div>
@@ -227,6 +227,12 @@
         </div>
       </div>
     </div>
+    </div>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        No se puede modificar un préstamo con campos vacíos
+      </div>
     </div>
   </div>
   <div class="actions">
@@ -240,11 +246,31 @@
   </div>
 </div>
 
-
-<div class="ui positive message" id="adv">
+<div class="ui positive message" id="advadd">
   <i class="close icon"></i>
   <div class="header">
     ¡Préstamo añadido con éxito!
+  </div>
+</div>
+
+<div class="ui positive message" id="advmod">
+  <i class="close icon"></i>
+  <div class="header">
+    ¡Préstamo modificado con éxito!
+  </div>
+</div>
+
+<div class="ui positive message" id="advdev">
+  <i class="close icon"></i>
+  <div class="header">
+    ¡Préstamo devuelto con éxito!
+  </div>
+</div>
+
+<div class="ui positive message" id="advdel">
+  <i class="close icon"></i>
+  <div class="header">
+    ¡Préstamo eliminado con éxito!
   </div>
 </div>
 
@@ -253,17 +279,18 @@
     Devolución del préstamo
   </div>
   <div class="content row">
-    <div class="column">
-      <p>¿Quiere usar la fecha actual?</p>
+      <p>Indique si quiere usar la fecha actual o una fecha diferente.</p>
+    <!-- <div class="column"> -->
+      <!-- <p>¿Quiere usar la fecha actual?</p> -->
       <button class="ui button teal" id="actual-date">Confirmar</button>
-    </div>
-    <div class="column">
-      <p>Si no quiere utilizar la fecha actual, indique una aquí:</p>
+    <!-- </div> -->
+    <!-- <div class="column"> -->
+      <!-- <p>Si no quiere utilizar la fecha actual, indique una aquí:</p> -->
       <div class="ui action input">
         <input type="date" name="dat-dev">
         <button class="ui icon button" id="date-select">Devolver</button>
       </div>
-    </div> 
+    <!-- </div>  -->
   </div>
 </div>
 

@@ -7,7 +7,6 @@
 		echo "Error";
 	}
 
-
 	//Recoje del post
 	$descripcion = $_POST['descripcion'];
 	// $descripcion = 'Camara Sony X10 Photo';
