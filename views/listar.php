@@ -1,6 +1,4 @@
-<?php 
-	require_once('header.php');
- ?>
+<?php require_once('header.php'); ?>
 
 <div class="ui small modal btnAddUser">
   <div class="header">
@@ -27,7 +25,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="ui small modal btnAddMaterial">
   <div class="header">
@@ -80,7 +77,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="ui small modal" id="modal-add-prest">
   <div class="header">
@@ -170,18 +166,11 @@
   </div>
 </div>
 
-
 <div class="ui small modal" id="modal-mod-prest">
   <div class="header">
     Modificar préstamo
   </div>
   <div class="content">
-    <!-- <div class="ui negative message">
-      <i class="close icon"></i>
-      <div class="header">
-        No se puede modificar un préstamo con campos vacíos
-      </div>
-    </div> -->
     <div class="description">
       <div class="ui relaxed divided list">
       <div class="item">
@@ -299,11 +288,9 @@
   <div class="content row">
       <p>Indique si quiere usar la fecha actual o una fecha diferente.</p>
     <div class="columna">
-      <!-- <p>¿Quiere usar la fecha actual?</p> -->
       <button class="ui button teal" id="actual-date">Devolver hoy</button>
     </div>
     <div class="columna">
-      <!-- <p>Si no quiere utilizar la fecha actual, indique una aquí:</p> -->
       <div class="ui action input">
         <input type="date" name="dat-dev">
         <button class="ui icon button" id="date-select">Devolver este día</button>
@@ -323,7 +310,7 @@
     Borrar préstamo
   </div>
   <div class="content">
-    ¿Está seguro de que quiere borrar el préstamo?
+    ¿Desea realmente borrar el préstamo? No habrá vuelta atrás.
   </div>
   <div class="actions">
     <div class="ui approve red button" id="accept-del">Aceptar</div>
@@ -341,18 +328,6 @@
   </div>
 
 <div class="ui container">
-
-
-  <!-- <div class="ui search">
-    <button class="ui teal button"><i class="add icon"></i>Préstamo</button>
-    Filtrar por:
-    <input class="prompt" type="text" placeholder="Material...">
-    <input class="prompt" type="text" placeholder="Persona...">
-    <input class="prompt" type="text" placeholder="Lugar...">
-    <input class="prompt" type="text" placeholder="Fecha préstamo...">
-    <input class="prompt" type="text" placeholder="Fecha devolución...">
-    <div class="results"></div>
-  </div> -->
   <div class="filtros">
     <div class="filtro">
       No devueltos: <br>
@@ -364,28 +339,21 @@
     
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Material...">
-      <!-- <div class="results"></div> -->
     </div>
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Persona...">
-      <!-- <div class="results"></div> -->
     </div>
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Lugar...">
-      <!-- <div class="results"></div> -->
     </div>
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Fecha préstamo...">
-      <!-- <div class="results"></div> -->
     </div>
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Fecha devolución...">
-      <!-- <div class="results"></div> -->
     </div>
     <div class="filtro"></div>
   </div>
-  <!-- <div class="results"></div> -->
-  <!-- </div> -->
 
     <table id="prestamos" class="ui selectable celled teal table">
       <thead>
@@ -404,7 +372,5 @@
     </table>
 
   </div>
-
-
 
 <?php require_once('footer.php'); ?>

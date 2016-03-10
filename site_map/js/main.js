@@ -32,7 +32,7 @@ $(document).ready(function(){
 	;
 
 	$('#op-modal').click(function(event) {
-		$('.modal .message').fadeOut(000);
+		$('.modal .message').fadeOut(0);
 		$('#modal-add-prest')
 			.modal({blurring:true})
 			.modal('show')
@@ -52,16 +52,18 @@ $(document).ready(function(){
 
 	$('#addPrestamo').click(function(event) {
 
-		// $('.modal .message').fadeOut(000);
+		// $('.modal .message').fadeOut(0);
 
 		var persona = $('#persona').val();
 		var lugar = $('#lugar').val();
 		var material = $('#material').val();
 		var date = $('#date').val();
+
+		o("Persona: "+persona+" | Lugar: "+lugar+" | Material: "+material+" | Fecha: "+date);
 			
 		if(persona == "" || lugar == "" || material == "" || date == ""){
-			// alert("¡Rellene todos los campos!");
-			$('#erraddpres').fadeIn(000);
+			$('#erraddprescrear').fadeOut(0);
+			$('#erraddpres').fadeIn(0);
 			return false;
 		}
 
@@ -76,10 +78,6 @@ $(document).ready(function(){
 					$('#lugar').val('');
 					$('#material').val('');
 					$('#date').val('');
-					// $('.content > .description').val('');
-					// $('.content .description').val('');
-					// $('.content .description').val('');
-					// $('.content .description').val('');
 				
 					if($('.toggle').checkbox('is checked')){
 						loadList(1);
@@ -89,12 +87,9 @@ $(document).ready(function(){
 					}
 				}
 				else{
-					// alert("¡¡error!!");
-					// return false;
-					$('.modal .message').fadeOut(000);
-
+					$('.modal .message').fadeOut(0);
 					$('#modal-add-prest').modal('show');
-					$('#erraddprescrear').fadeIn(000);
+					$('#erraddprescrear').fadeIn(0);
 				}
 			}
 		});
@@ -153,17 +148,18 @@ $(document).ready(function(){
 
 	$('#modPrestamo').click(function(event) {
 
-		$('.modal .message').fadeOut(000);
+		$('.modal .message').fadeOut(0);
 
 		var mpersona = $('#mpersona').val();
 		var mlugar = $('#mlugar').val();
 		var mmaterial = $('#mmaterial').val();
 		var mdate = $('#mdate').val();
 
-		console.log("Persona: "+mpersona+" | Lugar: "+mlugar+" | Material: "+mmaterial+" | Fecha: "+mdate);
+		o("Persona: "+mpersona+" | Lugar: "+mlugar+" | Material: "+mmaterial+" | Fecha: "+mdate);
 
 		if(mpersona == "" || mlugar == "" || mmaterial == "" || mdate == ""){
-			$('#errmodpres').fadeIn(000);
+			$('#errmodprescrear').fadeOut(0);
+			$('#errmodpres').fadeIn(0);
 			return false;
 		}
 
@@ -184,15 +180,11 @@ $(document).ready(function(){
 					else{
 						loadList(0);
 					}
-					// loadList(0);
 				}
 				else{
-					// alert("¡¡error!!");
-					// return false;
-					$('.modal .message').fadeOut(000);
-
+					$('.modal .message').fadeOut(0);
 					$('#modal-mod-prest').modal('show');
-					$('#errmodprescrear').fadeIn(000);
+					$('#errmodprescrear').fadeIn(0);
 				}
 			}
 		});
@@ -210,7 +202,7 @@ $(document).ready(function(){
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addp">Crear persona</button>'
+		    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addmp">Crear persona</button>'
 			},
 		  })
 		;
@@ -226,7 +218,7 @@ $(document).ready(function(){
 	    },
 	    minCharacters : 1,
 	    error : {
-	    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addm">Crear material</button>'
+	    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>'
 		},
 	  })
 	;
@@ -242,7 +234,7 @@ $(document).ready(function(){
 	    },
 	    minCharacters : 1,
 	    error : {
-	    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addl">Crear lugar</button>'
+	    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addml">Crear lugar</button>'
 		},
 	  })
 	;
@@ -260,7 +252,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.dev', function(event) {
 		event.preventDefault();
-		$('.modal .message').fadeOut(000);
+		$('.modal .message').fadeOut(0);
 		id = $(this).siblings('input').val();
 		$('#mod-dev').modal('show');
 	});
@@ -330,7 +322,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on('change', 'input[name$="dat-dev"]', function(event) {
-		$('.modal .message').fadeOut(000);
+		$('.modal .message').fadeOut(0);
 	});
 
 	$(document).on('click', '#date-select', function(event) {
@@ -388,14 +380,16 @@ $(document).ready(function(){
 		
 		var valor = $(this).parents('.results').siblings('.icon.input').find('.prompt').val();
 		// o(valor);
-		var modal = $(this).parents('.modal');
+		// var modal = $(this).parents('.modal');
 
 		$.ajax({
 			url: '../function/addPerson.php',
 			type: 'POST',
 			data: {'nombre': valor},
 			success: function(event){
+				if(event != '1'){alert("¡Error al añadir la nueva persona!"); return false;}
 				// modal.modal('hide');
+				$('#persona').focus();
 			}
 		});
 	
@@ -405,14 +399,16 @@ $(document).ready(function(){
 		event.preventDefault();
 		
 		var valor = $(this).parents('.results').siblings('.icon.input').find('.prompt').val();
-		var modal = $(this).parents('.modal');
+		// var modal = $(this).parents('.modal');
 
 		$.ajax({
 			url: '../function/addMaterial.php',
 			type: 'POST',
 			data: {'descripcion': valor},
 			success: function(event){
-				modal.modal('hide');
+				if(event != '1'){alert("¡Error al añadir el nuevo material!"); return false;}
+				// modal.modal('hide');
+				$('#material').focus();
 			}
 		});
 	
@@ -422,14 +418,16 @@ $(document).ready(function(){
 		event.preventDefault();
 		
 		var valor = $(this).parents('.results').siblings('.icon.input').find('.prompt').val();
-		var modal = $(this).parents('.modal');
+		// var modal = $(this).parents('.modal');
 
 		$.ajax({
 			url: '../function/addLugar.php',
 			type: 'POST',
 			data: {'lugar': valor},
 			success: function(event){
-				modal.modal('hide');
+				if(event != '1'){alert("¡Error al añadir el nuevo lugar!"); return false;}
+				// modal.modal('hide');
+				$('#lugar').focus();
 			}
 		});
 	

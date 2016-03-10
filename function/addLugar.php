@@ -14,6 +14,9 @@
 	$query = "INSERT INTO lugar(lugar) VALUES('".$lugar."')";
 	$conexion->query($query)or die(mysql_error());
 
-	header('Location: /Material/views/listar.php');
+	if($conexion) echo "1";
+	else echo "0";
+
+	// header('Location: /Material/views/listar.php');
 
  ?>

@@ -23,14 +23,10 @@
 
 		$select = 'SELECT id_'.$data_table[$i].' FROM material.'.$data_table[$i].' WHERE '.$data_field[$i].' = "'.$data_POST[$i].'"';
 		$row = $conexion->query($select)or die(mysql_error());
-
-		if($row) echo "1";
-		else echo "0";
 		
 		$info = $row->fetch_array();
 		
 		array_push($data_id, $info[0]);
-
 	}
 
 	$query = "UPDATE material.prestamo SET fecha_prestamo = '".$date."', id_lugar = ".$data_id[2].", id_persona = ".$data_id[1].", id_material = ".$data_id[0]." WHERE id_prestamo = ".$id;
