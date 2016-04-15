@@ -2,6 +2,12 @@
 -- CREATE DATABASE IF NOT EXISTS `materiales` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 -- USE `materiales`;
 
+drop table if exists material.lineas_prestamo;
+drop table if exists material.prestamo;
+drop table if exists material.persona;
+drop table if exists material.lugar;
+drop table if exists material.material;
+drop table if exists material.usuario;
 
 -- Estructura de la tabla `material`
 CREATE TABLE IF NOT EXISTS `material` (
@@ -35,14 +41,16 @@ CREATE TABLE IF NOT EXISTS `prestamo` (
   `id_lugar` int(4) NOT NULL,
   `fecha_prestamo` DATE NOT NULL,
   `fecha_devolucion` DATE,
+  `eliminado` BOOLEAN,
   FOREIGN KEY (id_persona) REFERENCES persona(id_persona),
   FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
 );
 
 -- Estructura de la tabla `lineas_prestamo`
 CREATE TABLE IF NOT EXISTS `lineas_prestamo` (
-  `id_prestamo` int(4) NOT NULL PRIMARY KEY,
-  `id_material` int(4) NOT NULL PRIMARY KEY,
+  `id_prestamo` int(4) NOT NULL,
+  `id_material` int(4) NOT NULL,
+  PRIMARY KEY (id_prestamo, id_material),
   FOREIGN KEY (id_prestamo) REFERENCES prestamo(id_prestamo),
   FOREIGN KEY (id_material) REFERENCES material(id_material)
 );
@@ -75,11 +83,11 @@ insert into lugar (lugar) values ("Ed. La Galia - Elche");
 insert into lugar (lugar) values ("Desamparados - Orihuela");
 
 -- Datos para la tabla `prestamo`
-insert into prestamo values (1, 1, 1, "2015-01-15", "2015-02-15");
-insert into prestamo values (2, 2, 2, "2015-03-15", "2015-04-15");
-insert into prestamo values (3, 3, 3, "2015-05-15", "2015-05-15");
-insert into prestamo values (4, 4, 4, "2015-06-15", "2015-07-15");
-insert into prestamo values (5, 5, 5, "2015-08-15", "2015-09-15");
+insert into prestamo values (1, 1, 1, "2015-01-15", "2015-02-15", 0);
+insert into prestamo values (2, 2, 2, "2015-03-15", NULL, 0);
+insert into prestamo values (3, 3, 3, "2015-05-15", "2015-05-15", 1);
+insert into prestamo values (4, 4, 4, "2015-06-15", "2015-07-15", 0);
+insert into prestamo values (5, 5, 5, "2015-08-15", NULL, 0);
 
 -- Datos para la tabla `lineas_prestamo`
 insert into lineas_prestamo values (1, 1);

@@ -13,6 +13,18 @@ h1{
 	/*margin: 100px auto !important;
 }*/
 
+#prestamos{
+	margin-bottom: 30px;
+}
+
+.ui.table thead tr:first-child>th:last-child{
+	width: 16%;
+}
+
+.ui.celled.table tr td:nth-child(4), .ui.celled.table tr th:nth-child(4), .ui.celled.table tr td:nth-child(5), .ui.celled.table tr th:nth-child(5){
+	width: 11%;
+}
+
 .columna{
 	display: inline-block;
 	width: 45%;
@@ -25,6 +37,53 @@ h1{
 
 .bold{
 	font-weight: bold;
+}
+
+.icrowmat{
+	float: right;
+}
+
+.icpres{
+	margin-left: 20px;
+}
+
+/*.btnmat{
+	display: inline-block;
+	width: 20%;
+}*/
+
+#modal-add-prest > .content > .description > .ui.relaxed.divided.list > .item > .minus.circle.icon .add.circle.icon{
+	color: blue;
+}
+
+.addlistadomat td:nth-child(3), .maddlistadomat td:nth-child(3), .modper td:nth-child(3), .modlug td:nth-child(3), .moddate td:nth-child(3), .addper td:nth-child(3), .addlug td:nth-child(3), .adddate td:nth-child(3){
+	width: 50%;
+	padding-left: 5px;
+}
+
+.add.circle.icon{
+	/*color: #21ba45;*/
+	font-size: 2em;
+	padding-top: 7px;
+}
+
+.add.circle.icon:hover{
+	color: #16AB39;
+}
+
+.minus.circle.icon{
+	/*color: #db2828;*/
+	font-size: 2em;
+	padding-top: 7px;
+}
+
+.minus.circle.icon:hover{
+	color: #D01919;
+}
+
+.ui.list .list>.item>.icon+.content, .ui.list .list>.item>.image+.content, .ui.list>.item>.icon+.content, .ui.list>.item>.image+.content{
+	vertical-align: bottom;
+	padding-bottom: 2px;
 }
 
 #mod-dev > .content > .negative{

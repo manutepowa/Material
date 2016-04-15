@@ -79,82 +79,206 @@
 </div>
 
 <div class="ui small modal" id="modal-add-prest">
+  
   <div class="header">
     Añadir nuevo préstamo
   </div>
+
   <div class="content">
     
     <div class="description">
+
       <div class="ui relaxed divided list">
-		  <div class="item">
-			<div class="ui search medium" id="per">
-			  <div class="ui icon input">
-			    <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
-			    <i class="search icon"></i>
-			  </div>
-			  <div class="results"></div>
-			</div>
-		    <i class="large user big aligned icon"></i>
-		    <div class="content">
-		      <div class="description">No hay usuario añadido</div>
-		    </div>
+
+  		  <div class="item">
+<!--         
+    			<div class="ui search medium" id="per">
+    			  <div class="ui icon input">
+    			    <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
+    			    <i class="search icon"></i>
+    			  </div>
+    			  <div class="results"></div>
+    			</div>
+  		    <i class="large user big aligned icon icpres"></i>
+  		    <div class="content">
+  		      <div class="description">No hay persona añadida</div>
+  		    </div>
+ -->
+          <table class="addper">
+            <tr>
+              <td>
+                <div class="ui search medium" id="per">
+                  <div class="ui icon input">
+                    <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large user big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay persona añadida</div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+  		  </div>
+
+  		  <div class="item">
+          <table class="addlug">
+            <tr>
+              <td>
+                <div class="ui search medium" id="lug">
+                  <div class="ui icon input">
+                    <input id="lugar" class="prompt" type="text" placeholder="Buscar Lugar...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large world big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay lugar añadido</div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+  		  </div>
+
+  		  <div class="item">
+          <table class="adddate">
+            <tr>
+              <td>
+                <div class="ui search medium" id="dat">
+                  <div class="ui left icon input">
+                    <input type="date" placeholder="Fecha" id="date">
+                    <i class="calendar icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large calendar big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay fecha añadida</div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+  		  </div>
+
+        <div class="item">
+          <table class="addlistadomat">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mat_0">
+                  <div class="ui icon input">
+                    <input id="material_0" name="material[]" class="prompt" type="text" placeholder="Buscar Material...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large archive big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay material añadido</div>
+                </div>
+              </td>
+              <td>
+                <i id="addRowMat" class="add circle icon"></i>
+              </td>
+            </tr>
+          </table>  
+        </div>
+
+        <!-- <div class="item">
+          <table class="addlistadomat">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mat_0">
+                  <div class="ui icon input">
+                    <input id="material_0" name="material[]" class="prompt" type="text" placeholder="Buscar Material...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large archive big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay material añadido</div>
+                </div>
+              </td>
+              <td>
+                <i class="minus circle icon"></i>
+              </td>
+            </tr>
+          </table>  
+        </div>
+
+        <div class="item">
+          <table class="addlistadomat">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mat_1">
+                  <div class="ui icon input">
+                    <input id="material_1" name="material[]" class="prompt" type="text" placeholder="Buscar Material...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large archive big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay material añadido</div>
+                </div>
+              </td>
+              <td>
+                <i id="addRowMat" class="add circle icon"></i>
+              </td>
+            </tr>
+          </table>  
+        </div> -->
+
 		  </div>
 
-		  <div class="item">
-		  	<div class="ui search medium" id="mat">
-			  <div class="ui icon input">
-			    <input id="material" class="prompt" type="text" placeholder="Buscar Material...">
-			    <i class="search icon"></i>
-			  </div>
-			  <div class="results"></div>
-			</div>
-		    <i class="large archive big aligned icon"></i>
-		    <div class="content">
-		      <div class="description">No hay material añadido</div>
-		    </div>
-		  </div>
-
-		  <div class="item">
-			<div class="ui search medium" id="lug">
-			  <div class="ui icon input">
-			    <input id="lugar" class="prompt" type="text" placeholder="Buscar Lugar...">
-			    <i class="search icon"></i>
-			  </div>
-			  <div class="results"></div>
-			</div>
-		    <i class="large world big aligned icon"></i>
-		    <div class="content">
-		      <div class="description">No hay lugar añadido</div>
-		    </div>
-		  </div>
-
-		  <div class="item">
-		  	<div class="ui search medium" id="dat">
-			  	<div class="ui left icon input">
-				  <input type="date" placeholder="Fecha" id="date">
-				  <i class="calendar icon"></i>
-				</div>
-			</div>
-		    <i class="large calendar big aligned icon"></i>
-		    <div class="content">
-		      <div class="description">No hay fecha añadida</div>
-		    </div>
-		  </div>
-		</div>
     </div>
+
     <div id="erraddpres" class="ui negative message">
       <i class="close icon"></i>
       <div class="header">
         No se puede añadir un préstamo con campos vacíos.
       </div>
     </div>
+
     <div id="erraddprescrear" class="ui negative message">
       <i class="close icon"></i>
       <div class="header">
         Rellene todos los campos. Si algún campo no se encuentra, deberá crearlo.
       </div>
     </div>
+
   </div>
+
   <div class="actions">
     <div class="ui black deny button">
       Cancelar
@@ -164,84 +288,170 @@
       <i class="checkmark icon"></i>
     </div>
   </div>
+
 </div>
 
 <div class="ui small modal" id="modal-mod-prest">
+
   <div class="header">
     Modificar préstamo
   </div>
+
   <div class="content">
+
     <div class="description">
+
       <div class="ui relaxed divided list">
-      <div class="item">
-      <div class="ui search medium" id="mper">
-        <div class="ui icon input">
-          <input id="mpersona" class="prompt" type="text" placeholder="Buscar Persona...">
-          <i class="search icon"></i>
+
+        <div class="item">
+<!--         
+          <div class="ui search medium" id="per">
+            <div class="ui icon input">
+              <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+          <i class="large user big aligned icon icpres"></i>
+          <div class="content">
+            <div class="description">No hay persona añadida</div>
+          </div>
+ -->
+          <table class="modper">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mper">
+                  <div class="ui icon input">
+                    <input id="mpersona" class="prompt" type="text" placeholder="Buscar Persona...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large user big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay persona añadida</div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </table>
         </div>
-        <div class="results"></div>
-      </div>
-        <i class="large user big aligned icon"></i>
-        <div class="content">
-          <div class="description">No hay usuario añadido</div>
+
+        <!-- <div class="item">
+          <div class="ui search medium" id="mmat">
+            <div class="ui icon input">
+              <input id="mmaterial" class="prompt" type="text" placeholder="Buscar Material...">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+          <i class="large archive big aligned icon"></i>
+          <div class="content">
+            <div class="description">No hay material añadido</div>
+          </div>
+        </div> -->
+
+        <div class="item">
+          <table class="modlug">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mlug">
+                  <div class="ui icon input">
+                    <input id="mlugar" class="prompt" type="text" placeholder="Buscar Lugar...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large world big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay lugar añadido</div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </table>
         </div>
+
+        <div class="item">
+          <table class="moddate">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mdat">
+                  <div class="ui left icon input">
+                    <input type="date" placeholder="Fecha" id="mdate">
+                    <i class="calendar icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large calendar big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay fecha añadida</div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- <div class="item">
+          <table class="modlistadomat">
+            <tr>
+              <td>
+                <div class="ui search medium" id="mmat">
+                  <div class="ui icon input">
+                    <input id="mmaterial_0" name="mmaterial[]" class="prompt" type="text" placeholder="Buscar Material...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
+              </td>
+              <td>
+                <i class="large archive big aligned icon icpres"></i>
+              </td>
+              <td>
+                <div class="content">
+                  <div class="description">No hay material añadido</div>
+                </div>
+              </td>
+              <td>
+                <i id="maddRowMat" class="add circle icon"></i>
+              </td>
+            </tr>
+          </table>  
+        </div> -->
+
       </div>
 
-      <div class="item">
-        <div class="ui search medium" id="mmat">
-        <div class="ui icon input">
-          <input id="mmaterial" class="prompt" type="text" placeholder="Buscar Material...">
-          <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-      </div>
-        <i class="large archive big aligned icon"></i>
-        <div class="content">
-          <div class="description">No hay material añadido</div>
-        </div>
-      </div>
-
-      <div class="item">
-      <div class="ui search medium" id="mlug">
-        <div class="ui icon input">
-          <input id="mlugar" class="prompt" type="text" placeholder="Buscar Lugar...">
-          <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-      </div>
-        <i class="large world big aligned icon"></i>
-        <div class="content">
-          <div class="description">No hay lugar añadido</div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="ui search medium" id="mdat">
-          <div class="ui left icon input">
-          <input id="mdate" type="date" placeholder="Fecha">
-          <i class="calendar icon"></i>
-        </div>
-      </div>
-        <i class="large calendar big aligned icon"></i>
-        <div class="content">
-          <div class="description">No hay fecha añadida</div>
-        </div>
-      </div>
     </div>
-    </div>
+
     <div id="errmodpres" class="ui negative message">
       <i class="close icon"></i>
       <div class="header">
         No se puede modificar un préstamo con campos vacíos.
       </div>
     </div>
+
     <div id="errmodprescrear" class="ui negative message">
       <i class="close icon"></i>
       <div class="header">
         Rellene todos los campos. Si algún campo no se encuentra, deberá crearlo.
       </div>
     </div>
+
   </div>
+
   <div class="actions">
     <div class="ui black deny button">
       Cancelar
@@ -251,6 +461,7 @@
       <i class="checkmark icon"></i>
     </div>
   </div>
+
 </div>
 
 <div class="ui positive message" id="advadd">
@@ -286,7 +497,7 @@
     Devolución del préstamo
   </div>
   <div class="content row">
-      <p>Indique si quiere usar la fecha actual o una fecha diferente.</p>
+      <p>Indique si quiere usar la fecha actual o una fecha diferente como fecha de devolución del préstamo.</p>
     <div class="columna">
       <button class="ui button teal" id="actual-date">Devolver hoy</button>
     </div>
@@ -319,16 +530,18 @@
 </div>
 
 <div class="cabecera">
-    <div class="ui container">
-        <img src="../site_map/images/logo.png" alt="logo">
-        Materiales SC
-        <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
-        <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
-    </div>
+  <div class="ui container">
+      <img src="../site_map/images/logo.png" alt="logo">
+      Materiales SC
+      <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
+      <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
   </div>
+</div>
 
 <div class="ui container">
+
   <div class="filtros">
+
     <div class="filtro">
       No devueltos: <br>
       <div class="ui fitted toggle checkbox">
@@ -352,25 +565,24 @@
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Fecha devolución...">
     </div>
-    <div class="filtro"></div>
+    <!-- <div class="filtro"></div> -->
   </div>
 
-    <table id="prestamos" class="ui selectable celled teal table">
-      <thead>
-        <tr>
-          <th>MATERIAL</th>
-          <th>PERSONA</th>
-          <th>LUGAR</th>
-          <th>F. PRÉSTAMO</th>
-          <th>F. DEVOLUCIÓN</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-      <!-- http://bootsnipp.com/snippets/featured/panel-table-with-filters-per-column -->
-      </tbody>
-    </table>
+  <table id="prestamos" class="ui selectable celled teal table">
+    <thead>
+      <tr>
+        <th>MATERIALES</th>
+        <th>PERSONA</th>
+        <th>LUGAR</th>
+        <th>F. PRÉSTAMO</th>
+        <th>F. DEVOLUCIÓN</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 
-  </div>
+</div>
 
 <?php require_once('footer.php'); ?>

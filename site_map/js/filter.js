@@ -12,7 +12,6 @@ $(document).ready(function(){
 
         $container = $panel.parents('.container');
         $table = $container.find('.table');
-        
 
         if(first == 1){
             $allInfo = $table.find('tbody tr');
@@ -38,22 +37,16 @@ $(document).ready(function(){
             return value.indexOf(inputContent) === -1;
         });
 
-
 		$table.find('tbody .no-result').remove();
         
         // $rows.show();
-        $('tbody').html($rows);
+        $('.table tbody').html($rows);
         $filteredRows.remove();
 
-        
-
         if ($filteredRows.length === $rows.length) {
-            $table.find('tbody').prepend($('<tr class="no-result text-center"><td>No hay resultados</td></tr>'));
+            $table.find('tbody').prepend($("<tr class='center'><td colspan='6'>No hay préstamos que cumplan con las características indicadas.</td></tr>"));
         }
 
         first = 0;
-        
-
     });
-
 });

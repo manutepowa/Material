@@ -9,7 +9,11 @@
 
 	$id = $_POST['id-prest'];
 
-	$query = "DELETE FROM material.prestamo WHERE id_prestamo = ".$id;
+	// En un futuro, para los admin, sí eliminarán definitivamente de la BBDD los prestamos
+	// $query = "DELETE FROM material.prestamo WHERE id_prestamo = ".$id;
+
+	// En lugar de eliminarlo, le pondrán el campo 'eliminado' a 1
+	$query = "update material.prestamo set prestamo.eliminado = 1 where prestamo.id_prestamo = ".$id;
 
 	$conexion->query($query)or die(mysql_error());
 
