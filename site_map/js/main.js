@@ -8,6 +8,29 @@ $(document).ready(function(){
  		console.log(debug);
  	}
 
+ // 	$('.small.modal').modal('show');
+
+ 	$('.coupled.modal')
+	  .modal({
+	    allowMultiple: false
+	  })
+	;
+	// attach events to buttons
+	$('.second.modal')
+	  .modal('attach events', '.first.modal .button')
+	;
+	// show first now
+	$('.first.modal')
+	  .modal('show')
+	;
+
+ 	//$('.ui.dimmer.modals.page.transition.visible.active').css('overflowY','auto');
+ 	//$('.ui.dimmer.modals.page.transition.visible.active').on('click', function(){
+ 	// $(document).on('click', '.ui.dimmer.modals.page.transition.visible.active', function(event) {
+		// alert("aaaaa");
+ 	// });
+ 	//$('#modal-mod-prest').css('overflowY','auto');
+
 	var addPrestamoReset = "<div class='ui relaxed divided list'>"
 							+"<div class='item'>"
 					          +"<table class='addper'>"
@@ -194,7 +217,7 @@ $(document).ready(function(){
 					        //   +"<table class='modlistadomat'>"
 					        //     +"<tr>"
 					        //      +" <td>"
-					        //        +"<div class='ui search medium' id='mmat'>"
+					        //        +"<div class='ui search medium' id='mmat_"+presactual+"'>"
 					        //           +"<div class='ui icon input'>"
 					        //             +"<input id='mmaterial_0' name='mmaterial[]' class='prompt' type='text' placeholder='Buscar Material...'>"
 					        //             +"<i class='search icon'></i>"
@@ -309,7 +332,7 @@ $(document).ready(function(){
 				          +"<table class='maddlistadomat'>"
 				            +"<tr>"
 				              +"<td>"
-				                +"<div class='ui search medium' id='mmat'>"
+				                +"<div class='ui search medium' id='mmat_"+presactual+"'>"
 				                  +"<div class='ui icon input'>"
 				                    +"<input id='mmaterial_"+presactual+"' name='mmaterial[]' class='prompt' type='text' placeholder='Buscar Material...'>"
 				                    +"<i class='search icon'></i>"
@@ -337,14 +360,20 @@ $(document).ready(function(){
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('tr').find('.description');
 		var value = $(this).siblings('.input').find('input').val();
-		o(value);
+		//o(value);
 		desc.html(value);
 	});
 
-	$('input[type=date]').bind('change', function(event) {
+	// $('input[type=date]').bind('change', function(event) {
+	// 	var desc = $(this).parents('tr').find('.description');
+	// 	desc.html('Prestado el '+$(this).val());
+	// });
+
+	$(document).on('change', 'input[type=date]', function(){
 		var desc = $(this).parents('tr').find('.description');
-		desc.html('Prestado el: '+$(this).val());
+		desc.html('Prestado el '+$(this).val());
 	});
+
 
 	// $('#addPrestamo').click(function(event) {
 	$(document).on('click', '#addPrestamo', function(event) {
@@ -456,21 +485,24 @@ $(document).ready(function(){
 	//   })
 	// ;
 
-	$('div[id ^= mat]')
-	  .search({
-	    apiSettings: {
-	      url: '../function/getMaterial.php?q={query}'
-	    },
-	    fields: {
-	      results : '0',
-	      title   : '1'
-	    },
-	    minCharacters : 1,
-	    error : {
-	    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>'
-		},
-	  })
-	;
+	
+	$(document).on('keyup','div[id ^= mat]',function(){
+		$(this)
+		  .search({
+		    apiSettings: {
+		      url: '../function/getMaterial.php?q={query}'
+		    },
+		    fields: {
+		      results : '0',
+		      title   : '1'
+		    },
+		    minCharacters : 1,
+		    error : {
+		    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addm">Crear material</button>'
+			},
+		  })
+		;
+	});
 
 	$('.modal .message').hide();
 
@@ -480,7 +512,7 @@ $(document).ready(function(){
 
 		var mpersona = $('#mpersona').val();
 		var mlugar = $('#mlugar').val();
-		var mmaterial = $('#mmaterial').val();
+		//var mmaterial = $('#mmaterial').val();
 
 		var allmMat = $("input[name='mmaterial[]']");
 		var mmaterial = [];
@@ -497,6 +529,7 @@ $(document).ready(function(){
 		if(mpersona == "" || mlugar == "" || mmaterial == "" || mdate == ""){
 			$('#errmodprescrear').fadeOut(0);
 			$('#errmodpres').fadeIn(0);
+			o("error campo vacio");
 			return false;
 		}
 
@@ -509,10 +542,10 @@ $(document).ready(function(){
 			success: function(event){
 				if(event == '1'){
 					$('#advmod').fadeIn('500').delay(5000).fadeOut();
-					$('#mpersona').val('');
+					/*$('#mpersona').val('');
 					$('#mlugar').val('');
 					$('#mmaterial').val('');
-					$('#mdate').val('');
+					$('#mdate').val('');*/
 					if($('.toggle').checkbox('is checked')){
 						loadList(1);
 					}
@@ -530,6 +563,8 @@ $(document).ready(function(){
 					o("Error delete material.lineas_prestamo");
 				}
 				else{
+					//o(event);
+					o("error ajax");
 					$('.modal .message').fadeOut(0);
 					$('#modal-mod-prest').modal('show');
 					$('#errmodprescrear').fadeIn(0);
@@ -538,7 +573,9 @@ $(document).ready(function(){
 		});
 	});
 
-	$('#mper')
+	//$('#mper')
+	$(document).on('keyup','#mper',function(){
+		$(this)
 		  .search({
 		    apiSettings: {
 		      url: '../function/getPerson.php?q={query}'
@@ -553,42 +590,64 @@ $(document).ready(function(){
 			},
 		  })
 		;
+	});
 
-	$('div[id ^= mmat]')
-	  .search({
-	    apiSettings: {
-	      url: '../function/getMaterial.php?q={query}'
-	    },
-	    fields: {
-	      results : '0',
-	      title   : '1'
-	    },
-	    minCharacters : 1,
-	    error : {
-	    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>'
-		},
-	  })
-	;
+	// $('div[id ^= mmat]')
+	//   .search({
+	//     apiSettings: {
+	//       url: '../function/getMaterial.php?q={query}'
+	//     },
+	//     fields: {
+	//       results : '0',
+	//       title   : '1'
+	//     },
+	//     minCharacters : 1,
+	//     error : {
+	//     	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>'
+	// 	},
+	//   })
+	// ;
 // // $('div[id ^= item]')
 // 	$(document).on('click', 'div[id ^= mmat]', function(event) {
 // 		o("es un mmat :DD");
 // 	});
 
-	$('#mlug')
-	  .search({
-	    apiSettings: {
-	      url: '../function/getLugar.php?q={query}'
-	    },
-	    fields: {
-	      results : '0',
-	      title   : '1'
-	    },
-	    minCharacters : 1,
-	    error : {
-	    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addml">Crear lugar</button>'
-		},
-	  })
-	;
+	//$('#mlug')
+	$(document).on('keyup','#mlug',function(){
+		$(this)
+		  .search({
+		    apiSettings: {
+		      url: '../function/getLugar.php?q={query}'
+		    },
+		    fields: {
+		      results : '0',
+		      title   : '1'
+		    },
+		    minCharacters : 1,
+		    error : {
+		    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addml">Crear lugar</button>'
+			},
+		  })
+		;
+	});
+
+	$(document).on('keyup','div[id ^= mmat]',function(){
+		$(this)
+		  .search({
+		    apiSettings: {
+		      url: '../function/getMaterial.php?q={query}'
+		    },
+		    fields: {
+		      results : '0',
+		      title   : '1'
+		    },
+		    minCharacters : 1,
+		    error : {
+		    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>'
+			},
+		  })
+		;
+	});
 
 	if($('.toggle').checkbox('is checked')){
 		loadList(1);
@@ -616,6 +675,9 @@ $(document).ready(function(){
 
 	$(document).on('click', '.mod', function(event) {
 		event.preventDefault();
+
+		//$('.ui.dimmer.modals.page.transition.visible.active').css('overflowY','auto');
+
 		id = $(this).siblings('input').val();
 		o("id:"+id);
 		var dataRow = $(this).parent().parent(); 
@@ -637,7 +699,7 @@ $(document).ready(function(){
 							          +"<table class='maddlistadomat'>"
 							            +"<tr>"
 							              +"<td>"
-							                +"<div class='ui search medium' id='mmat'>"
+							                +"<div class='ui search medium' id='mmat_"+presactual+"'>"
 							                  +"<div class='ui icon input'>"
 							                    +"<input id='mmaterial_"+presactual+"' name='mmaterial[]' data-idmat='"+p[j][0]+"' value='"+p[j][1]+"' class='prompt' type='text' placeholder='Buscar Material...'>"
 							                    +"<i class='search icon'></i>"
@@ -661,7 +723,7 @@ $(document).ready(function(){
 							        +"</div>";
 						$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
 						//estructura+=newMat;
-						presactual++;
+						//presactual++;
 
 						for(var k=0; k<2; k++){
 							o("mat["+j+"]["+k+"]: "+p[j][k]);
@@ -674,7 +736,7 @@ $(document).ready(function(){
 								          +"<table class='maddlistadomat'>"
 								            +"<tr>"
 								              +"<td>"
-								                +"<div class='ui search medium' id='mmat'>"
+								                +"<div class='ui search medium' id='mmat_"+presactual+"'>"
 								                  +"<div class='ui icon input'>"
 								                    +"<input id='mmaterial_"+presactual+"' name='mmaterial[]' data-idmat='"+p[j][0]+"' value='"+p[j][1]+"' class='prompt' type='text' placeholder='Buscar Material...'>"
 								                    +"<i class='search icon'></i>"
@@ -698,12 +760,14 @@ $(document).ready(function(){
 								        +"</div>";
 						$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
 						//estructura+=newMat;
-						presactual++;
+						//presactual++;
 
 						for(var k=0; k<2; k++){
 							o("mat["+j+"]["+k+"]: "+p[j][k]);
 						}
 					}
+					$('#mmaterial_'+presactual).parents('table').find('.description').html(p[j][1]);
+					presactual++;
 				}
 				
 			});
@@ -721,18 +785,12 @@ $(document).ready(function(){
 		$('.modal .message').fadeOut(0);
 
 		$('#modal-mod-prest').find('#mpersona').val(nombreMod);
-		$('#modal-mod-prest').find('#mmaterial').val(materialMod);
 		$('#modal-mod-prest').find('#mlugar').val(lugarMod);
 		$('#modal-mod-prest').find('#mdate').val(fprestamoMod);
 
-		var descp = $('#mpersona').parents('.search').siblings('.content').find('.description');
-		descp.html($('#mpersona').val());
-		var descm = $('#mmaterial').parents('.search').siblings('.content').find('.description');
-		descm.html($('#mmaterial').val());
-		var descl = $('#mlugar').parents('.search').siblings('.content').find('.description');
-		descl.html($('#mlugar').val());
-		var descd = $('#mdate').parents('.search').siblings('.content').find('.description');
-		descd.html('Prestado el: '+$('#mdate').val());
+		$('#mpersona').parents('tr').find('.description').html(nombreMod);
+		$('#mlugar').parents('tr').find('.description').html(lugarMod);
+		$('#mdate').parents('tr').find('.description').html('Prestado el '+fprestamoMod);
 
 		$('#modal-mod-prest')
 			.modal({blurring:true})
@@ -843,6 +901,13 @@ $(document).ready(function(){
 
 	$(document).on('click', '#addm, #addmm', function(event) {
 		event.preventDefault();
+		//o($(this).parents('#mat_0').find('#material_0').val());
+		// var actual = "#"+$(this).attr('id')+"";
+		var actual = $(this);
+		//o(actual);
+		//o(actual)
+		o("antes "+$(this).attr('id'));
+		o("antes "+$(actual).parents('#mat_0').find('#material_0').val());
 		
 		var valor = $(this).parents('.results').siblings('.icon.input').find('.prompt').val();
 		// var modal = $(this).parents('.modal');
@@ -852,13 +917,26 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'descripcion': valor},
 			success: function(event){
+		//o($(actual).attr('id'));
 				if(event != '1'){alert("¡Error al añadir el nuevo material!"); return false;}
+				o("dentro "+$(actual).attr('id'));
+				o("dentro "+$(actual).parents('#mat_0').find('#material_0').val());
 				// modal.modal('hide');
-				$('#material').focus();
-				$('#mmaterial').focus();
+				//o($('#material_0').val());
+				
+				//$(actual).parents('.results').siblings('.icon.input').find('.prompt').focus();
+				//o($(this).parents('div[id ^= mat_]').find('input[id ^= material_]').val());
+				//o($(this).id);
+				//o($(actual).parents('#mat_0').find('#material_0').val());
+				//$(actual).parents('.results').siblings('.icon.input').find('.prompt').focus();
+				//$(actual).parents('div[id ^= mat_]').find('input[id ^= material_]').focus();
+				//$(this).parents('div[id ^= mmat_]').find('input[id ^= mmaterial_]').focus();
+				// $('#material').focus();
+				// $('#mmaterial').focus();
 			}
 		});
-	
+		o("despues "+$(actual).attr('id'));
+		o("despues "+$(actual).parents('#mat_0').find('#material_0').val());
 	});
 
 	$(document).on('click', '#addl, #addml', function(event) {

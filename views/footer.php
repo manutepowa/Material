@@ -3,6 +3,7 @@
 	<script src="../site_map/Semantic-UI-CSS-master/semantic.min.js"></script>
 	<script src="../site_map/js/main.js"></script>
 	<script src="../site_map/js/filter.js"></script>
+	<script src="../site_map/js/admin.js"></script>
 	
 </body>
 </html>
