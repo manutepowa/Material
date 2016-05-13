@@ -20,7 +20,7 @@
  	<link rel="stylesheet" href="../site_map/Semantic-UI-CSS-master/semantic.min.css">
  	<link rel="stylesheet" href="../site_map/css/listar_style.css">
  	<link rel="stylesheet" href="../site_map/css/style.css">
- 	<link rel="stylesheet" href="../site_map/css/admin.css">
+ 	<!-- <link rel="stylesheet" href="../site_map/css/admin.css"> -->
 
  </head>
  <body>
