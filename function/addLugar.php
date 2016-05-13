@@ -7,16 +7,12 @@
 		echo "Error";
 	}
 
-	//Recoje del post
 	$lugar = $_POST['lugar'];
-	// $lugar = 'Radio UMH';
 
 	$query = "INSERT INTO lugar(lugar) VALUES('".$lugar."')";
 	$conexion->query($query)or die(mysql_error());
 
 	if($conexion) echo "1";
 	else echo "0";
-
-	// header('Location: /Material/views/listar.php');
 
  ?>

@@ -62,7 +62,6 @@ $(document).ready(function(){
 
 		$table.find('tbody .no-result').remove();
         
-        // $rows.show();
         $('.table tbody').html($rows);
         console.log($filteredRows);
         $filteredRows.remove();

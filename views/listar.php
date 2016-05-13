@@ -91,19 +91,7 @@
       <div class="ui relaxed divided list">
 
   		  <div class="item">
-<!--         
-    			<div class="ui search medium" id="per">
-    			  <div class="ui icon input">
-    			    <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
-    			    <i class="search icon"></i>
-    			  </div>
-    			  <div class="results"></div>
-    			</div>
-  		    <i class="large user big aligned icon icpres"></i>
-  		    <div class="content">
-  		      <div class="description">No hay persona añadida</div>
-  		    </div>
- -->
+
           <table class="addper">
             <tr>
               <td>
@@ -205,60 +193,6 @@
           </table>  
         </div>
 
-        <!-- <div class="item">
-          <table class="addlistadomat">
-            <tr>
-              <td>
-                <div class="ui search medium" id="mat_0">
-                  <div class="ui icon input">
-                    <input id="material_0" name="material[]" class="prompt" type="text" placeholder="Buscar Material...">
-                    <i class="search icon"></i>
-                  </div>
-                  <div class="results"></div>
-                </div>
-              </td>
-              <td>
-                <i class="large archive big aligned icon icpres"></i>
-              </td>
-              <td>
-                <div class="content">
-                  <div class="description">No hay material añadido</div>
-                </div>
-              </td>
-              <td>
-                <i class="minus circle icon"></i>
-              </td>
-            </tr>
-          </table>  
-        </div>
-
-        <div class="item">
-          <table class="addlistadomat">
-            <tr>
-              <td>
-                <div class="ui search medium" id="mat_1">
-                  <div class="ui icon input">
-                    <input id="material_1" name="material[]" class="prompt" type="text" placeholder="Buscar Material...">
-                    <i class="search icon"></i>
-                  </div>
-                  <div class="results"></div>
-                </div>
-              </td>
-              <td>
-                <i class="large archive big aligned icon icpres"></i>
-              </td>
-              <td>
-                <div class="content">
-                  <div class="description">No hay material añadido</div>
-                </div>
-              </td>
-              <td>
-                <i id="addRowMat" class="add circle icon"></i>
-              </td>
-            </tr>
-          </table>  
-        </div> -->
-
 		  </div>
 
     </div>
@@ -304,19 +238,7 @@
       <div class="ui relaxed divided list">
 
         <div class="item">
-<!--         
-          <div class="ui search medium" id="per">
-            <div class="ui icon input">
-              <input id="persona" class="prompt" type="text" placeholder="Buscar Persona...">
-              <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
-          </div>
-          <i class="large user big aligned icon icpres"></i>
-          <div class="content">
-            <div class="description">No hay persona añadida</div>
-          </div>
- -->
+
           <table class="modper">
             <tr>
               <td>
@@ -340,20 +262,6 @@
             </tr>
           </table>
         </div>
-
-        <!-- <div class="item">
-          <div class="ui search medium" id="mmat">
-            <div class="ui icon input">
-              <input id="mmaterial" class="prompt" type="text" placeholder="Buscar Material...">
-              <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
-          </div>
-          <i class="large archive big aligned icon"></i>
-          <div class="content">
-            <div class="description">No hay material añadido</div>
-          </div>
-        </div> -->
 
         <div class="item">
           <table class="modlug">
@@ -404,33 +312,6 @@
             </tr>
           </table>
         </div>
-
-        <!-- <div class="item">
-          <table class="modlistadomat">
-            <tr>
-              <td>
-                <div class="ui search medium" id="mmat">
-                  <div class="ui icon input">
-                    <input id="mmaterial_0" name="mmaterial[]" class="prompt" type="text" placeholder="Buscar Material...">
-                    <i class="search icon"></i>
-                  </div>
-                  <div class="results"></div>
-                </div>
-              </td>
-              <td>
-                <i class="large archive big aligned icon icpres"></i>
-              </td>
-              <td>
-                <div class="content">
-                  <div class="description">No hay material añadido</div>
-                </div>
-              </td>
-              <td>
-                <i id="maddRowMat" class="add circle icon"></i>
-              </td>
-            </tr>
-          </table>  
-        </div> -->
 
       </div>
 
@@ -565,7 +446,7 @@
     <div class="filtro">
       <input class="prompt" type="text" placeholder="Fecha devolución...">
     </div>
-    <!-- <div class="filtro"></div> -->
+
   </div>
 
   <table id="prestamos" class="ui selectable celled teal table">

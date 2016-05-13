@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
 
-	
-
 	$('form').submit(function(event) {
 		// var user = $('input')[0].value;
 		// var pass = $('input')[1].value;
@@ -24,8 +22,6 @@ jQuery(document).ready(function($) {
 				}
 			}
 		});
-		
 		return false;
-
 	});
 });

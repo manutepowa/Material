@@ -26,7 +26,6 @@
       $_SESSION["errcon"]="SI";
       echo "-2";
     }
-    // header('Location: /Material/index.php');
 
   }
 

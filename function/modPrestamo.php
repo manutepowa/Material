@@ -12,8 +12,6 @@
 	$per = $_POST['per'];
 	$lug = $_POST['lug'];
 
-	//echo "id:".$id." fecha:".$date." persona:".$per." lugar:".$lug;
-
 	$data_POST = array(0 => $per, 1 => $lug);
 	$data_table = array(0 => 'persona', 1 => 'lugar');
 	$data_field = array(0 => 'nombre', 1 => 'lugar');
@@ -35,7 +33,6 @@
 		
 		$info = $row->fetch_array();
 		array_push($data_id, $info[0]);
-		
 	}
 
 	$query = "UPDATE material.prestamo SET fecha_prestamo = '".$date."', id_lugar = ".$data_id[1].", id_persona = ".$data_id[0]." WHERE id_prestamo = ".$id;
@@ -54,7 +51,6 @@
 		$info = $rows->fetch_array();
 
 		$data_new_mat[$key] = $info[0];
-		//echo "Material_new[".$key."]=".$data_new_mat[$key]."<br>";
 	}
 
 	$data_old_mat = array();
@@ -67,18 +63,11 @@
 
 	while($info = $rows->fetch_array()){
 		$data_old_mat[$i] = $info[0];
-		//echo $data_old_mat[$i];
-		//echo "Material_old[".$i."]=".$data_old_mat[$i]."<br>";
 		$i++;
 	}
-	//echo "string1 ";
-	//echo "data_new_mat tamaño: ".count($data_new_mat);
-	//echo array_values($data_new_mat);
-	//echo " <br>data_old_mat tamaño: ".count($data_old_mat);
-	//echo array_values($data_old_mat);
+	
 	for($i=0;$i<count($data_new_mat);$i++){
 		for($j=0;$j<count($data_old_mat);$j++){
-			//echo "new: ".$data_new_mat[$i].", old: ".$data_old_mat[$j];
 			if($data_new_mat[$i]!=$data_old_mat[$j]){
 				$exists++;
 			}
@@ -89,7 +78,6 @@
 		}
 		$exists = 0;
 	}
-	//echo "string2<br>";
 	
 	for($i=0;$i<count($data_old_mat);$i++){
 		for($j=0;$j<count($data_new_mat);$j++){

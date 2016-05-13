@@ -14,6 +14,4 @@
 
 	$conexion->query($query)or die(mysql_error());
 
-
-
 ?>

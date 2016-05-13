@@ -9,15 +9,8 @@
 
 	$search = $_GET['q'];
 
-
-
-//BORRAR
-	// $query = "UPDATE material.persona SET nombre = 'Alberto' WHERE id_persona = 2";
-	// $conexion->query($query)or die(mysql_error());
-
-
 	$query = "SELECT * FROM material.persona WHERE nombre LIKE '%".$search."%'";
-	// $p = array("nombre" => "Angel", "edad" => "23");
+	
 	$row = $conexion->query($query)or die(mysql_error());
 
 	$jsonData = array();

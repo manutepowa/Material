@@ -7,16 +7,12 @@
 		echo "Error";
 	}
 
-	//Recoje del post
 	$nombre = $_POST['nombre'];
-	// $nombre = 'Pepe Saez Perez';
 
 	$query = "INSERT INTO persona(nombre) VALUES('".$nombre."')";
 	$conexion->query($query)or die(mysql_error());
 
 	if($conexion) echo "1";
 	else echo "0";
-
-	// header('Location: /Material/views/listar.php');
 
  ?>

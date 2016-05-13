@@ -8,11 +8,6 @@ h1{
 	font-size: 24pt;
 }
 
-/*div.modal{
-	width: 500px !important;
-	/*margin: 100px auto !important;
-}*/
-
 #prestamos{
 	margin-bottom: 30px;
 }
@@ -46,11 +41,6 @@ h1{
 .icpres{
 	margin-left: 20px;
 }
-
-/*.btnmat{
-	display: inline-block;
-	width: 20%;
-}*/
 
 #modal-add-prest > .content > .description > .ui.relaxed.divided.list > .item > .minus.circle.icon .add.circle.icon{
 	color: blue;
@@ -107,5 +97,3 @@ div.search.medium{float: left; margin-right: 25px;}
 	display: block;
 	margin: 0 auto;
 }
-
-/*div.message.empty{background: #f0f0f0 !important;}*/
