@@ -489,7 +489,7 @@
 		    <!-- <div class="filtro"></div> -->
 		  </div>
 
-		  <table id="prestamos" class="ui selectable celled teal table">
+		  <table id="prestamos" class="ui celled teal table">
 		    <thead>
 		      <tr>
 		        <th>MATERIALES</th>
@@ -509,20 +509,90 @@
 
     </div>
     <div id="side_prestamos" class="ui basic segment">
-      <h3 class="ui header">Préstamos</h3>
-      <p>Apartado para la administración de los préstamos</p>
+    	<div class="ui container">
+      		<h3 class="ui header">Préstamos</h3>
+      		<p>Apartado para la administración de los préstamos</p>
+      	</div>
     </div>
     <div id="side_materiales" class="ui basic segment">
-      <h3 class="ui header">Materiales</h3>
-      <p>Apartado para la administración de los materiales</p>
+    	<div class="ui container">
+      		<h3 class="ui header">Materiales</h3>
+      		<p>A continuación se muestran todos los materiales añadidos en la página.</p>
+			<table id="t_materiales" class="ui celled teal table">
+				<thead>
+					<tr>
+						<th class="ten wide">MATERIAL</th>
+						<th class="three wide">ESTADO</th>
+						<th class="three wide"></th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<table id="t_materiales_hist" class="ui celled teal table">
+				<thead>
+					<tr>
+						<th class="eight wide">PERSONA</th>
+						<th class="four wide">LUGAR</th>
+						<th class="two wide">F. PRÉSTAMO</th>
+						<th class="two wide">F. DEVOLUCIÓN</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
     </div>
     <div id="side_personas" class="ui basic segment">
-      <h3 class="ui header">Personas</h3>
-      <p>Apartado para la administración de las personas</p>
+    	<div class="ui container">
+      		<h3 class="ui header">Personas</h3>
+      		<p>A continuación se muestran todas las personas añadidas en la página.</p>
+      		<table id="t_personas" class="ui celled teal table">
+				<thead>
+					<tr>
+						<th class="ten wide">PERSONA</th>
+						<th class="three wide">ESTADO</th>
+						<th class="three wide"></th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<table id="t_personas_hist" class="ui celled teal table">
+				<thead>
+					<tr>
+						<th class="eight wide">MATERIALES</th>
+						<th class="four wide">LUGAR</th>
+						<th class="two wide">F. PRÉSTAMO</th>
+						<th class="two wide">F. DEVOLUCIÓN</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+      	</div>
     </div>
     <div id="side_lugares" class="ui basic segment">
-      <h3 class="ui header">Lugares</h3>
-      <p>Apartado para la administración de los lugares</p>
+    	<div class="ui container">
+      		<h3 class="ui header">Lugares</h3>
+      		<p>A continuación se muestran todos los lugares añadidos en la página.</p>
+      		<table id="t_lugares" class="ui celled teal table">
+				<thead>
+					<tr>
+						<th class="ten wide">LUGAR</th>
+						<th class="three wide"></th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<table id="t_lugares_hist" class="ui celled teal table">
+				<thead>
+					<tr>
+						<th class="eight wide">MATERIALES</th>
+						<th class="four wide">PERSONA</th>
+						<th class="two wide">F. PRÉSTAMO</th>
+						<th class="two wide">F. DEVOLUCIÓN</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+      	</div>
     </div>
   </div>
 </div>

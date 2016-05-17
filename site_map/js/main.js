@@ -892,7 +892,7 @@ function loadList(q){
 
 						if(p[j][0]==p[j-1][0]){
 
-							$("tr[data-value='" + p[j-1][0] + "']>td:first").append(" | "+p[j][1]);
+							$("tr[data-value='" + p[j-1][0] + "']>td:first").append(" &nbsp;||&nbsp; "+p[j][1]);
 						}
 
 						else{

@@ -1,0 +1,45 @@
+@media only screen and (min-width: 1200px){
+	#side_inicio > .ui.container, #side_prestamos > .ui.container, #side_materiales > .ui.container, #side_personas > .ui.container, #side_lugares > .ui.container{
+		margin-left: 0!important;
+		margin-right: 0!important;
+	}
+}
+
+.sidebar.menu{
+	background: #00B5AD!important;
+}
+
+.ui.visible.inverted.left.vertical.sidebar.menu{
+	box-shadow: none;
+}
+
+.ui.sidebar{
+	/*top: auto!important;*/
+	top: 0;
+}
+
+.ui.left.sidebar, .ui.right.sidebar{
+	width: 210px;
+}
+
+.cabecera.admin{
+	height: 65px;
+}
+
+#menuizq > img{
+	width: 30px;
+	margin: 15px 0 15px 30px;
+}
+
+#menuizq > p{
+	color: #ffffff;
+	/*display: inline-block;*/
+	float: right;
+	margin-top: 30px;
+    margin-right: 55px;
+}
+
+#side_inicio > #advadd, #advmod, #advdev, #advdel{
+	right: 275px!important;
+	top: -12px!important;
+}

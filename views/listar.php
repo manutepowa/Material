@@ -449,7 +449,7 @@
 
   </div>
 
-  <table id="prestamos" class="ui selectable celled teal table">
+  <table id="prestamos" class="ui celled teal table">
     <thead>
       <tr>
         <th>MATERIALES</th>
