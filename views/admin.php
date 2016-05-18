@@ -14,10 +14,10 @@
   <div id="menuizq" class="ui visible inverted left vertical sidebar menu">
   	<img src="../site_map/images/logo.png" alt="logo">
     <p>Materiales SC</p>
-  	<a id="btn_inicio" class="item">
+  	<!-- <a id="btn_inicio" class="item">
       <i class="home icon"></i>
       Inicio
-    </a>
+    </a> -->
     <a id="btn_prestamos" class="item">
       <i class="block layout icon"></i>
       Préstamos
@@ -36,7 +36,8 @@
     </a>
   </div>
   <div class="pusher">
-    <div id="side_inicio" class="ui basic segment">
+    <!-- <div id="side_inicio" class="ui basic segment"> -->
+    <div id="side_prestamos" class="ui basic segment">
       <!-- <h3 class="ui header">Inicio</h3> -->
 
 
@@ -508,14 +509,14 @@
 
 
     </div>
-    <div id="side_prestamos" class="ui basic segment">
+    <!-- <div id="side_prestamos" class="ui basic segment">
     	<div class="ui container">
       		<h3 class="ui header">Préstamos</h3>
       		<p>Apartado para la administración de los préstamos</p>
       	</div>
-    </div>
+    </div> -->
     <div id="side_materiales" class="ui basic segment">
-    	<div class="ui container">
+    	<div id="materiales_container" class="ui container">
       		<h3 class="ui header">Materiales</h3>
       		<p>A continuación se muestran todos los materiales añadidos en la página.</p>
 			<table id="t_materiales" class="ui celled teal table">
@@ -528,6 +529,11 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+		</div>
+		<div id="materiales_container_hist" class="ui container">
+      		<h3 class="ui header">Historial de préstamos</h3>
+      		<p>A continuación se muestran todos los prestamos de <strong></strong>.</p>
+      		<button id="volver_m" class="ui teal basic button"><i class="long arrow left icon"></i>Volver al listado de Materiales</button>
 			<table id="t_materiales_hist" class="ui celled teal table">
 				<thead>
 					<tr>
@@ -542,7 +548,7 @@
 		</div>
     </div>
     <div id="side_personas" class="ui basic segment">
-    	<div class="ui container">
+    	<div id="personas_container" class="ui container">
       		<h3 class="ui header">Personas</h3>
       		<p>A continuación se muestran todas las personas añadidas en la página.</p>
       		<table id="t_personas" class="ui celled teal table">
@@ -555,7 +561,12 @@
 				</thead>
 				<tbody></tbody>
 			</table>
-			<table id="t_personas_hist" class="ui celled teal table">
+      	</div>
+      	<div id="personas_container_hist" class="ui container">
+      		<h3 class="ui header">Historial de préstamos</h3>
+      		<p>A continuación se muestran todos los prestamos de <strong></strong>.</p>
+      		<button id="volver_p" class="ui teal basic button"><i class="long arrow left icon"></i>Volver al listado de Personas</button>
+      		<table id="t_personas_hist" class="ui celled teal table">
 				<thead>
 					<tr>
 						<th class="eight wide">MATERIALES</th>
@@ -569,19 +580,25 @@
       	</div>
     </div>
     <div id="side_lugares" class="ui basic segment">
-    	<div class="ui container">
+    	<div id="lugares_container" class="ui container">
       		<h3 class="ui header">Lugares</h3>
       		<p>A continuación se muestran todos los lugares añadidos en la página.</p>
       		<table id="t_lugares" class="ui celled teal table">
 				<thead>
 					<tr>
 						<th class="ten wide">LUGAR</th>
+						<th class="three wide">ESTADO</th>
 						<th class="three wide"></th>
 					</tr>
 				</thead>
 				<tbody></tbody>
 			</table>
-			<table id="t_lugares_hist" class="ui celled teal table">
+      	</div>
+      	<div id="lugares_container_hist" class="ui container">
+      		<h3 class="ui header">Historial de préstamos</h3>
+      		<p>A continuación se muestran todos los prestamos de <strong></strong>.</p>
+      		<button id="volver_l" class="ui teal basic button"><i class="long arrow left icon"></i>Volver al listado de Lugares</button>
+      		<table id="t_lugares_hist" class="ui celled teal table">
 				<thead>
 					<tr>
 						<th class="eight wide">MATERIALES</th>
