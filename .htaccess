@@ -1,0 +1,6 @@
+#Options +Indexes
+DirectoryIndex index.php
+
+#Enable modRewrite
+RewriteEngine  on
+RewriteBase /

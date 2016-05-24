@@ -9,15 +9,15 @@
 
 	$search = $_GET['q'];
 
-	$query = "SELECT * FROM material.persona WHERE nombre LIKE '%".$search."%'";
-	
+	$query = "SELECT * FROM persona WHERE nombre LIKE '%".$search."%'";
 	$row = $conexion->query($query)or die(mysql_error());
 
 	$jsonData = array();
 	
-	while($rows[] = $row->fetch_all());
+	while($rows[] = $row->fetch_assoc());
 	
 	array_pop($rows);
-	echo json_encode($rows);
+	$jsonData = array('personas' => $rows);
+	echo json_encode($jsonData);
 	
 ?>

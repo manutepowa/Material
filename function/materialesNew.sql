@@ -2,12 +2,12 @@
 -- CREATE DATABASE IF NOT EXISTS `materiales` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 -- USE `materiales`;
 
-drop table if exists material.lineas_prestamo;
-drop table if exists material.prestamo;
-drop table if exists material.persona;
-drop table if exists material.lugar;
-drop table if exists material.material;
-drop table if exists material.usuario;
+drop table if exists lineas_prestamo;
+drop table if exists prestamo;
+drop table if exists persona;
+drop table if exists lugar;
+drop table if exists material;
+drop table if exists usuario;
 
 -- Estructura de la tabla `material`
 CREATE TABLE IF NOT EXISTS `material` (

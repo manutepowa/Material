@@ -3,14 +3,17 @@
 	text-align: left;
 	margin: 0 0 0 0;
 	background: #00B5AD;
-	padding: 15px 100px;
+	padding: 15px 70px 15px 0;
 	color: #ffffff;
 	font-size: 14pt;
+	position: fixed;
+	z-index: 99;
 }
 
 .cabecera img{
 	width: 30px;
 	margin-right: 10px;
+	margin-left: 1%;
 }
 
 .cabecera a{
@@ -32,6 +35,12 @@
 .filtros > .filtro{
 	width: 120px;
 	margin-right: 60px;
+	display: inline-block;
+}
+
+.filtros > .filtro:first{
+	width: 50px;
+	/*margin-right: 60px;*/
 	display: inline-block;
 }
 

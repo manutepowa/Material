@@ -7,7 +7,7 @@
 		echo "Error";
 	}
 
-	$select = 'SELECT count(*) FROM material.prestamo';
+	$select = 'SELECT count(*) FROM prestamo';
 
 	$row = $conexion->query($select)or die(mysql_error());
 

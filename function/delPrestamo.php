@@ -13,7 +13,7 @@
 	// $query = "DELETE FROM material.prestamo WHERE id_prestamo = ".$id;
 
 	// En lugar de eliminarlo, le pondrán el campo 'eliminado' a 1
-	$query = "update material.prestamo set prestamo.eliminado = 1 where prestamo.id_prestamo = ".$id;
+	$query = "update prestamo set prestamo.eliminado = 1 where prestamo.id_prestamo = ".$id;
 
 	$conexion->query($query)or die(mysql_error());
 

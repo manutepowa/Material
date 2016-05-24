@@ -19,7 +19,7 @@
 
 	for ($i=0; $i < 2; $i++) { 
 
-		$select = 'SELECT id_'.$data_table[$i].' FROM material.'.$data_table[$i].' WHERE '.$data_field[$i].' = "'.$data_POST[$i].'"';
+		$select = 'SELECT id_'.$data_table[$i].' FROM '.$data_table[$i].' WHERE '.$data_field[$i].' = "'.$data_POST[$i].'"';
 		$row = $conexion->query($select)or die(mysql_error());
 
 		$info = $row->fetch_array();
@@ -27,7 +27,7 @@
 		array_push($data_id, $info[0]);
 	}
 
-	$insert = 'INSERT INTO material.prestamo(id_prestamo,id_persona,id_lugar,fecha_prestamo,eliminado) VALUES(NULL,'.$data_id[0].','.$data_id[1].', "'.$date.'", 0)';
+	$insert = 'INSERT INTO prestamo(id_prestamo,id_persona,id_lugar,fecha_prestamo,eliminado) VALUES(NULL,'.$data_id[0].','.$data_id[1].', "'.$date.'", 0)';
 	$conexion->query($insert)or die(mysql_error());
 
 	if(!$conexion) echo "0";
@@ -37,7 +37,7 @@
 	$data_mat = array();
 
 	foreach ($_POST['mat'] as $key => $value) { 
-		$select = 'SELECT id_material FROM material.material WHERE descripcion = "'.$value.'"';
+		$select = 'SELECT id_material FROM material WHERE descripcion = "'.$value.'"';
 		$row = $conexion->query($select)or die(mysql_error());
 		
 		$info = $row->fetch_array();
@@ -47,7 +47,7 @@
 	}
 
 	foreach ($data_mat as $key => $value) {
-		$insert = 'INSERT INTO material.lineas_prestamo VALUES ('.$ultimo_ID.','.$value.')';
+		$insert = 'INSERT INTO lineas_prestamo VALUES ('.$ultimo_ID.','.$value.')';
 		$conexion->query($insert)or die(mysql_error()); //error
 		if(!$conexion) echo "3";
 	}

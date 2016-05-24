@@ -28,14 +28,14 @@
 
 	for ($i=0; $i < 2; $i++) { 
 
-		$select = 'SELECT id_'.$data_table[$i].' FROM material.'.$data_table[$i].' WHERE '.$data_field[$i].' = "'.$data_POST[$i].'"';
+		$select = 'SELECT id_'.$data_table[$i].' FROM '.$data_table[$i].' WHERE '.$data_field[$i].' = "'.$data_POST[$i].'"';
 		$row = $conexion->query($select)or die(mysql_error());
 		
 		$info = $row->fetch_array();
 		array_push($data_id, $info[0]);
 	}
 
-	$query = "UPDATE material.prestamo SET fecha_prestamo = '".$date."', id_lugar = ".$data_id[1].", id_persona = ".$data_id[0]." WHERE id_prestamo = ".$id;
+	$query = "UPDATE prestamo SET fecha_prestamo = '".$date."', id_lugar = ".$data_id[1].", id_persona = ".$data_id[0]." WHERE id_prestamo = ".$id;
 
 	$conexion->query($query)or die(mysql_error());
 
@@ -44,7 +44,7 @@
 	$data_new_mat = array();
 
 	foreach ($_POST['mat'] as $key => $value) { 
-		$select = 'SELECT id_material FROM material.material WHERE descripcion = "'.$value.'"';
+		$select = 'SELECT id_material FROM material WHERE descripcion = "'.$value.'"';
 		
 		$rows = $conexion->query($select)or die(mysql_error());
 
@@ -56,7 +56,7 @@
 	$data_old_mat = array();
 
 	// Materiales del prestamo antes de modificar	
-	$select = 'SELECT id_material FROM material.lineas_prestamo WHERE id_prestamo = '.$id.'';
+	$select = 'SELECT id_material FROM lineas_prestamo WHERE id_prestamo = '.$id.'';
 	$rows = $conexion->query($select)or die(mysql_error());
 	
 	$i=0;
@@ -93,13 +93,13 @@
 	}
 	
 	foreach ($data_add_mat as $key => $value) {
-		$insert = 'INSERT INTO material.lineas_prestamo VALUES ('.$id.','.$value.');';
+		$insert = 'INSERT INTO lineas_prestamo VALUES ('.$id.','.$value.');';
 		$conexion->query($insert)or die(mysql_error());
 		if(!$conexion) echo "3";
 	}
 
 	foreach ($data_del_mat as $key => $value) {
-		$delete = 'DELETE FROM material.lineas_prestamo WHERE id_prestamo = '.$id.' AND id_material = '.$value.';';
+		$delete = 'DELETE FROM lineas_prestamo WHERE id_prestamo = '.$id.' AND id_material = '.$value.';';
 		$conexion->query($delete)or die(mysql_error());
 		if(!$conexion) echo "4";
 	}

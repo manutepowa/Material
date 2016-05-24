@@ -1,23 +1,28 @@
 <?php require_once('header.php'); ?>
 
 <div class="cabecera admin">
-  <div class="ui container">
+  <!-- <div class="ui container"> -->
+  	<!-- <div> -->
+		<img src="../site_map/images/logo.png" alt="logo">
+    	<span>Materiales SC</span>
+	<!-- </div> -->
       <!-- <img src="../site_map/images/logo.png" alt="logo">
       Materiales SC -->
       <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
       <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
-  </div>
+  <!-- </div> -->
 </div>
 
 <!-- <div class="ui bottom attached segment pushable"> -->
 <div>
   <div id="menuizq" class="ui visible inverted left vertical sidebar menu">
-  	<img src="../site_map/images/logo.png" alt="logo">
-    <p>Materiales SC</p>
+	
+  	
   	<!-- <a id="btn_inicio" class="item">
       <i class="home icon"></i>
       Inicio
     </a> -->
+    <p></p>
     <a id="btn_prestamos" class="item">
       <i class="block layout icon"></i>
       Préstamos
@@ -35,7 +40,40 @@
       Lugares
     </a>
   </div>
-  <div class="pusher">
+  <div class="admincontainer pusher">
+
+	<div class="center">
+		<svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+		  <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+		    <animateTransform 
+		       attributeName="transform" 
+		       dur="1s" 
+		       type="translate" 
+		       values="0 15 ; 0 -15; 0 15" 
+		       repeatCount="indefinite" 
+		       begin="0.1"/>
+		  </circle>
+		  <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
+		    <animateTransform 
+		       attributeName="transform" 
+		       dur="1s" 
+		       type="translate" 
+		       values="0 10 ; 0 -10; 0 10" 
+		       repeatCount="indefinite" 
+		       begin="0.2"/>
+		  </circle>
+		  <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
+		    <animateTransform 
+		       attributeName="transform" 
+		       dur="1s" 
+		       type="translate" 
+		       values="0 5 ; 0 -5; 0 5" 
+		       repeatCount="indefinite" 
+		       begin="0.3"/>
+		  </circle>
+		</svg>
+	</div>
+
     <!-- <div id="side_inicio" class="ui basic segment"> -->
     <div id="side_prestamos" class="ui basic segment">
       <!-- <h3 class="ui header">Inicio</h3> -->
@@ -460,7 +498,7 @@
 		  </div>
 		</div> -->
 
-		<div class="ui container">
+		<div id="contenido" class="ui container">
 
 		  <div class="filtros">
 

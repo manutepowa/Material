@@ -9,10 +9,10 @@
 
 	$search = $_GET['q'];
 
-	$query = "SELECT material.id_material, material.descripcion FROM material.material, material.lineas_prestamo WHERE material.id_material = lineas_prestamo.id_material AND lineas_prestamo.id_prestamo = ".$search."";
+	$query = "SELECT material.id_material, material.descripcion FROM material, lineas_prestamo WHERE material.id_material = lineas_prestamo.id_material AND lineas_prestamo.id_prestamo = ".$search."";
 	$row = $conexion->query($query)or die(mysql_error());
 	
-	while($rows[] = $row->fetch_all());
+	while($rows[] = $row->fetch_assoc());
 	
 	array_pop($rows);
 	echo json_encode($rows);

@@ -10,7 +10,7 @@
 	$id = $_POST['id-prest'];
 	$date = $_POST['dat-dev'];
 
-	$query = "UPDATE material.prestamo SET fecha_devolucion = '".$date."' WHERE id_prestamo = ".$id;
+	$query = "UPDATE prestamo SET fecha_devolucion = '".$date."' WHERE id_prestamo = ".$id;
 
 	$conexion->query($query)or die(mysql_error());
 

@@ -216,6 +216,8 @@ $(document).ready(function(){
 		var allInputText = $('#modal-add-prest').find(':text');
 		
 		var empty = 0;
+		idmaterial = 1;
+
 		for(var i=2;i<allInputText.length;i++){
 			if(allInputText[i].value==""){
 				empty++;
@@ -308,7 +310,6 @@ $(document).ready(function(){
 	$(document).on('click', '.results', function(){
 		var desc = $(this).parents('tr').find('.description');
 		var value = $(this).siblings('.input').find('input').val();
-		//o(value);
 		desc.html(value);
 	});
 
@@ -324,7 +325,7 @@ $(document).ready(function(){
 
 		var allMat = $("input[name='material[]']");
 		var material = [];
-		o("numero materiales: "+allMat.length);
+		
 		for(var i=0;i<allMat.length;i++){
 			material[i] = allMat[i].value
 			o("material["+i+"]: "+allMat[i].value);
@@ -343,7 +344,7 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date},
 			success: function(event){
-				o("event: "+event);
+				
 				if(event == '1'){
 					$('#advadd').fadeIn('500').delay(5000).fadeOut();
 					$('#persona').val('');
@@ -381,13 +382,14 @@ $(document).ready(function(){
 	      url: '../function/getPerson.php?q={query}'
 	    },
 	    fields: {
-	      results : '0',
-	      title   : '1'
+	      results : 'personas',
+	      title   : 'nombre'
 	    },
 	    minCharacters : 1,
 	    error : {
-	    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addp">Crear persona</button>'
-		},
+	    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addp">Crear persona</button>',
+	    	serverError : '<p class="center bold">Cargando . . .</p>'
+		}
 	  })
 	;
 
@@ -397,13 +399,14 @@ $(document).ready(function(){
 	      url: '../function/getLugar.php?q={query}'
 	    },
 	    fields: {
-	      results : '0',
-	      title   : '1'
+	      results : 'lugares',
+	      title   : 'lugar'
 	    },
 	    minCharacters : 1,
 	    error : {
-	    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addl">Crear lugar</button>'
-		},
+	    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addl">Crear lugar</button>',
+	    	serverError : '<p class="center bold">Cargando . . .</p>'
+		}
 	  })
 	;
 
@@ -414,13 +417,14 @@ $(document).ready(function(){
 		      url: '../function/getMaterial.php?q={query}'
 		    },
 		    fields: {
-		      results : '0',
-		      title   : '1'
+		      results : 'materiales',
+		      title   : 'descripcion'
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addm">Crear material</button>'
-			},
+		    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addm">Crear material</button>',
+		    	serverError : '<p class="center bold">Cargando . . .</p>'
+			}
 		  })
 		;
 	});
@@ -434,10 +438,9 @@ $(document).ready(function(){
 		
 		var allmMat = $("input[name='mmaterial[]']");
 		var mmaterial = [];
-		o("numero materiales: "+allmMat.length);
+		
 		for(var i=0;i<allmMat.length;i++){
-			mmaterial[i] = allmMat[i].value
-			o("mmaterial["+i+"]: "+allmMat[i].value);
+			mmaterial[i] = allmMat[i].value;
 		}
 
 		var mdate = $('#mdate').val();
@@ -445,11 +448,8 @@ $(document).ready(function(){
 		if(mpersona == "" || mlugar == "" || mmaterial == "" || mdate == ""){
 			$('#errmodprescrear').fadeOut(0);
 			$('#errmodpres').fadeIn(0);
-			o("error campo vacio");
 			return false;
 		}
-
-		o("Persona: "+mpersona+" | Lugar: "+mlugar+" | Material: "+mmaterial+" | Fecha: "+mdate);
 
 		$.ajax({
 			url: '../function/modPrestamo.php',
@@ -492,13 +492,14 @@ $(document).ready(function(){
 		      url: '../function/getPerson.php?q={query}'
 		    },
 		    fields: {
-		      results : '0',
-		      title   : '1'
+		      results : 'personas',
+		      title   : 'nombre'
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addmp">Crear persona</button>'
-			},
+		    	noResults   : '<p class="center bold">Persona no encontrada.</p><button class="ui button teal add" id="addmp">Crear persona</button>',
+		    	serverError : '<p class="center bold">Cargando . . .</p>'
+			}
 		  })
 		;
 	});
@@ -510,13 +511,14 @@ $(document).ready(function(){
 		      url: '../function/getLugar.php?q={query}'
 		    },
 		    fields: {
-		      results : '0',
-		      title   : '1'
+		      results : 'lugares',
+		      title   : 'lugar'
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addml">Crear lugar</button>'
-			},
+		    	noResults   : '<p class="center bold">Lugar no encontrado.</p><button class="ui button teal add" id="addml">Crear lugar</button>',
+		    	serverError : '<p class="center bold">Cargando . . .</p>'
+			}
 		  })
 		;
 	});
@@ -528,13 +530,14 @@ $(document).ready(function(){
 		      url: '../function/getMaterial.php?q={query}'
 		    },
 		    fields: {
-		      results : '0',
-		      title   : '1'
+		      results : 'materiales',
+		      title   : 'descripcion'
 		    },
 		    minCharacters : 1,
 		    error : {
-		    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>'
-			},
+		    	noResults   : '<p class="center bold">Material no encontrado.</p><button class="ui button teal add" id="addmm">Crear material</button>',
+		    	serverError : '<p class="center bold">Cargando . . .</p>'
+			}
 		  })
 		;
 	});
@@ -564,103 +567,90 @@ $(document).ready(function(){
 	$(document).on('click', '.mod', function(event) {
 		event.preventDefault();
 
-		id = $(this).siblings('input').val();
-		o("id:"+id);
+		var id = $(this).siblings('input').val();
+
+		presactual = id;
+
 		var dataRow = $(this).parent().parent(); 
 
 		var urlmatprestamo = '../function/getLineasPrestamo.php?q='+id;
 
 		$('#modal-mod-prest .ui.relaxed.divided.list').replaceWith(modPrestamoReset);
 
-		var cnt = 0;
 		var error_field = 0;
-		presactual = 0;
 		
 		$.getJSON(urlmatprestamo, function(mat){
 
 			$.each(mat, function(i, p){
-				for(var j=0; j<p.length; j++){
-					if(presactual==0){
-						var newMat = "<div class='item'>"
-							          +"<table class='maddlistadomat'>"
-							            +"<tr>"
-							              +"<td>"
-							                +"<div class='ui search medium' id='mmat_"+presactual+"'>"
-							                  +"<div class='ui icon input'>"
-							                    +"<input id='mmaterial_"+presactual+"' name='mmaterial[]' data-idmat='"+p[j][0]+"' value='"+p[j][1]+"' class='prompt' type='text' placeholder='Buscar Material...'>"
-							                    +"<i class='search icon'></i>"
-							                  +"</div>"
-							                  +"<div class='results'></div>"
-							                +"</div>"
-							              +"</td>"
-							              +"<td>"
-							                +"<i class='large archive big aligned icon icpres'></i>"
-							              +"</td>"
-							              +"<td>"
-							                +"<div class='content'>"
-							                  +"<div class='description'>No hay material añadido</div>"
-							                +"</div>"
-							              +"</td>"
-							              +"<td>"
-							                +"<i id='maddRowMat' class='add circle icon'></i>"
-							              +"</td>"
-							            +"</tr>"
-							          +"</table>"
-							        +"</div>";
-						$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
-						
-						for(var k=0; k<2; k++){
-							o("mat["+j+"]["+k+"]: "+p[j][k]);
-						}
-					}
-					else{
-						$('#maddRowMat').removeClass('add circle icon').addClass('minus circle icon');
-						$('#maddRowMat').removeAttr('id');
-						var newMat = "<div class='item'>"
-								          +"<table class='maddlistadomat'>"
-								            +"<tr>"
-								              +"<td>"
-								                +"<div class='ui search medium' id='mmat_"+presactual+"'>"
-								                  +"<div class='ui icon input'>"
-								                    +"<input id='mmaterial_"+presactual+"' name='mmaterial[]' data-idmat='"+p[j][0]+"' value='"+p[j][1]+"' class='prompt' type='text' placeholder='Buscar Material...'>"
-								                    +"<i class='search icon'></i>"
-								                  +"</div>"
-								                  +"<div class='results'></div>"
-								                +"</div>"
-								              +"</td>"
-								              +"<td>"
-								                +"<i class='large archive big aligned icon icpres'></i>"
-								              +"</td>"
-								              +"<td>"
-								                +"<div class='content'>"
-								                  +"<div class='description'>No hay material añadido</div>"
-								                +"</div>"
-								              +"</td>"
-								              +"<td>"
-								                +"<i id='maddRowMat' class='add circle icon'></i>"
-								              +"</td>"
-								            +"</tr>"
-								          +"</table>"
-								        +"</div>";
-						$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
-						
-						for(var k=0; k<2; k++){
-							o("mat["+j+"]["+k+"]: "+p[j][k]);
-						}
-					}
-					$('#mmaterial_'+presactual).parents('table').find('.description').html(p[j][1]);
-					presactual++;
-				}
 				
+				if(i==0){
+					var newMat = "<div class='item'>"
+						          +"<table class='maddlistadomat'>"
+						            +"<tr>"
+						              +"<td>"
+						                +"<div class='ui search medium' id='mmat_"+i+"'>"
+						                  +"<div class='ui icon input'>"
+						                    +"<input id='mmaterial_"+i+"' name='mmaterial[]' data-idmat='"+p.id_material+"' value='"+p.descripcion+"' class='prompt' type='text' placeholder='Buscar Material...'>"
+						                    +"<i class='search icon'></i>"
+						                  +"</div>"
+						                  +"<div class='results'></div>"
+						                +"</div>"
+						              +"</td>"
+						              +"<td>"
+						                +"<i class='large archive big aligned icon icpres'></i>"
+						              +"</td>"
+						              +"<td>"
+						                +"<div class='content'>"
+						                  +"<div class='description'>No hay material añadido</div>"
+						                +"</div>"
+						              +"</td>"
+						              +"<td>"
+						                +"<i id='maddRowMat' class='add circle icon'></i>"
+						              +"</td>"
+						            +"</tr>"
+						          +"</table>"
+						        +"</div>";
+					$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
+				}
+				else{
+					$('#maddRowMat').removeClass('add circle icon').addClass('minus circle icon');
+					$('#maddRowMat').removeAttr('id');
+					var newMat = "<div class='item'>"
+						          +"<table class='maddlistadomat'>"
+						            +"<tr>"
+						              +"<td>"
+						                +"<div class='ui search medium' id='mmat_"+i+"'>"
+						                  +"<div class='ui icon input'>"
+						                    +"<input id='mmaterial_"+i+"' name='mmaterial[]' data-idmat='"+p.id_material+"' value='"+p.descripcion+"' class='prompt' type='text' placeholder='Buscar Material...'>"
+						                    +"<i class='search icon'></i>"
+						                  +"</div>"
+						                  +"<div class='results'></div>"
+						                +"</div>"
+						              +"</td>"
+						              +"<td>"
+						                +"<i class='large archive big aligned icon icpres'></i>"
+						              +"</td>"
+						              +"<td>"
+						                +"<div class='content'>"
+						                  +"<div class='description'>No hay material añadido</div>"
+						                +"</div>"
+						              +"</td>"
+						              +"<td>"
+						                +"<i id='maddRowMat' class='add circle icon'></i>"
+						              +"</td>"
+						            +"</tr>"
+						          +"</table>"
+						        +"</div>";
+					$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
+				}
+				$('#mmaterial_'+i).parents('table').find('.description').html(p.descripcion);
 			});
-
 		});
 				
 		var nombreMod = dataRow.children('td').eq(1).text();
 		var materialMod = dataRow.children('td').eq(0).text(); 
 		var lugarMod = dataRow.children('td').eq(2).text(); 
 		var fprestamoMod = dataRow.children('td').eq(3).text(); 
-		o(nombreMod + ' --- ' + materialMod + ' --- ' + lugarMod + ' --- ' + fprestamoMod);
 
 		$('.modal .message').fadeOut(0);
 
@@ -713,8 +703,8 @@ $(document).ready(function(){
 		event.preventDefault();
 
 		var date = $(this).siblings('input[type=date]').val();
+		
 		if(date == ""){
-			
 			$('#errdevpres').fadeIn(300);
 			return false;
 		}
@@ -754,9 +744,7 @@ $(document).ready(function(){
 				}
 				$('#advdel').fadeIn('100').delay(5000).fadeOut();
 			}
-		})
-		;
-		
+		});
 	});
 
 	$(document).on('click', '#addp, #addmp', function(event) {
@@ -775,7 +763,6 @@ $(document).ready(function(){
 				$('#mpersona').focus();
 			}
 		});
-	
 	});
 
 	$(document).on('click', '#addm, #addmm', function(event) {
@@ -796,8 +783,6 @@ $(document).ready(function(){
 				$(inputmodm).focus();
 			}
 		});
-		o("despues "+$(actual).attr('id'));
-		o("despues "+$(actual).parents('#mat_0').find('#material_0').val());
 	});
 
 	$(document).on('click', '#addl, #addml', function(event) {
@@ -816,7 +801,6 @@ $(document).ready(function(){
 				$('#mlugar').focus();
 			}
 		});
-	
 	});
 
 	$('.toggle').change(function(event) {
@@ -827,7 +811,6 @@ $(document).ready(function(){
 			loadList(0);
 		}
 	});
-
 });
 
 function loadList(q){
@@ -835,44 +818,89 @@ function loadList(q){
 
 	$("#prestamos tbody").html("");
 
-	var cnt = 0;
 	var error_field = 0;
-	var presactual = 0;
 
 	$.getJSON(urlprestamo, function(prest){
-		
-		for (var j = 0; j < urlprestamo.length; j++) {
 
+		if(prest.length == 0){
+			var newRow = "<tr class='center'><td colspan='6'>No hay préstamos que cumplan con las características indicadas.</td></tr>";
+			$(newRow).appendTo("#prestamos tbody");
+		}
+		else{
 			$.each(prest, function(i, p){
 				
-				if(cnt != p.length){
+				if(i==0){
+					
+					var fDev;
 
-					if(j==0){
+					if(p.fecha_devolucion){fDev=p.fecha_devolucion;}else{fDev="No devuelto"; error_field = 1;}
 
+					if(error_field == 1){
+						var newRow = "<tr class='negative' data-value='"+p.id_prestamo+"'>";
+						error_field = 0;
+					}
+
+					else{
+						var newRow = "<tr data-value='"+p.id_prestamo+"'>";
+					}
+
+					newRow += 	"<td>"+p.descripcion+"</td>"
+								+"<td>"+p.nombre+"</td>"
+								+"<td>"+p.lugar+"</td>"
+								+"<td>"+p.fecha_prestamo+"</td>"
+								+"<td>"+fDev+"</td>";
+							if (fDev !== 'No devuelto') {
+								newRow +=	"<td style='text-align:center'>"
+									+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon attach'></i></button>"
+									+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+								+"</td>"
+								+"</tr>";
+							}
+							else{
+								newRow +=	"<td style='text-align:center'>"
+									+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
+									+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+								+"</td>"
+								+"</tr>";
+							};
+					$(newRow).appendTo("#prestamos tbody");
+				}
+
+				else{
+					if(p.id_prestamo==prest[i-1].id_prestamo){
+
+						$("tr[data-value='" + prest[i-1].id_prestamo + "']>td:first").append(" &nbsp;||&nbsp; "+p.descripcion);
+					}
+
+					else{
 						var fDev;
-
-						if(p[j][5]){fDev=p[j][5];}else{fDev="No devuelto"; error_field = 1;}
+						if(p.fecha_devolucion){fDev=p.fecha_devolucion;}else{fDev="No devuelto"; error_field = 1;}
 
 						if(error_field == 1){
-							var newRow = "<tr class='negative' data-value='"+p[j][0]+"'>";
+							var newRow = "<tr class='negative' data-value='"+p.id_prestamo+"'>";
+
 							error_field = 0;
 						}
 
 						else{
-							var newRow = "<tr data-value='"+p[j][0]+"'>";
+							var newRow = "<tr data-value='"+p.id_prestamo+"'>";
 						}
 
-						newRow += 	"<td>"+p[j][1]+"</td>"
-									+"<td>"+p[j][2]+"</td>"
-									+"<td>"+p[j][3]+"</td>"
-									+"<td>"+p[j][4]+"</td>"
+						newRow += 	"<td>"+p.descripcion+"</td>"
+									+"<td>"+p.nombre+"</td>"
+									+"<td>"+p.lugar+"</td>"
+									+"<td>"+p.fecha_prestamo+"</td>"
 									+"<td>"+fDev+"</td>";
 								if (fDev !== 'No devuelto') {
 									newRow +=	"<td style='text-align:center'>"
 										+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon attach'></i></button>"
 										+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
 										+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-										+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
+										+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
 									+"</td>"
 									+"</tr>";
 								}
@@ -881,68 +909,15 @@ function loadList(q){
 										+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
 										+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
 										+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-										+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
+										+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
 									+"</td>"
 									+"</tr>";
 								};
+
 						$(newRow).appendTo("#prestamos tbody");
 					}
-
-					else{
-
-						if(p[j][0]==p[j-1][0]){
-
-							$("tr[data-value='" + p[j-1][0] + "']>td:first").append(" &nbsp;||&nbsp; "+p[j][1]);
-						}
-
-						else{
-							var fDev;
-							if(p[j][5]){fDev=p[j][5];}else{fDev="No devuelto"; error_field = 1;}
-
-							if(error_field == 1){
-								var newRow = "<tr class='negative' data-value='"+p[j][0]+"'>";
-
-								error_field = 0;
-							}
-
-							else{
-								var newRow = "<tr data-value='"+p[j][0]+"'>";
-							}
-
-							newRow += 	"<td>"+p[j][1]+"</td>"
-										+"<td>"+p[j][2]+"</td>"
-										+"<td>"+p[j][3]+"</td>"
-										+"<td>"+p[j][4]+"</td>"
-										+"<td>"+fDev+"</td>";
-									if (fDev !== 'No devuelto') {
-										newRow +=	"<td style='text-align:center'>"
-											+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon attach'></i></button>"
-											+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
-											+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-											+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
-										+"</td>"
-										+"</tr>";
-									}
-									else{
-										newRow +=	"<td style='text-align:center'>"
-											+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
-											+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
-											+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-											+"<input type='hidden' name='id-prest' value='"+p[j][0]+"'/>"
-										+"</td>"
-										+"</tr>";
-									};
-
-							$(newRow).appendTo("#prestamos tbody");
-						}
-					}
-					cnt++;
-				}		
+				}	
 			});
-		};
-		if(cnt == 0){
-			var newRow = "<tr class='center'><td colspan='6'>No hay préstamos que cumplan con las características indicadas.</td></tr>";
-			$(newRow).appendTo("#prestamos tbody");
 		}
 	});
 }
