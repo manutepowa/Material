@@ -34,7 +34,7 @@ $(document).ready(function(){
         column = $panel.find($input.parents('div')).index();
         
         $container = $panel.parents('.container');
-        $table = $container.find('.table');
+        $table = $container.find('#prestamos');
 
         if(first == 1){
             $allInfo = $table.find('tbody tr');
@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 		$table.find('tbody .no-result').remove();
         
-        $('.table tbody').html($rows);
+        $('#prestamos tbody').html($rows);
         console.log($filteredRows);
         $filteredRows.remove();
 

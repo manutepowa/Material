@@ -69,18 +69,21 @@
 
 #side_prestamos > #advadd, #advmod, #advdev, #advdel{
 	width: 300px;
-	position: absolute !important;
+	position: fixed;
 	/*right: 15px;
 	top: 40px;*/
 	box-shadow: 0px 3px 5px #ccc !important;
 	z-index: 99;
-	right: 275px!important;
-	top: -12px!important;
+	/*right: 275px!important;
+	top: -12px!important;*/
 	/*visibility: hidden;*/
+	top: 60px;
+	right: 70px;
 }
 
-#side_materiales, #side_personas, #side_lugares{
+#side_prestamos, #side_materiales, #side_personas, #side_lugares{
 	/*visibility: hidden;*/
+	top: 80px;
 }
 
 svg{

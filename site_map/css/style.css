@@ -8,6 +8,7 @@
 	font-size: 14pt;
 	position: fixed;
 	z-index: 99;
+	top: 0;
 }
 
 .cabecera img{

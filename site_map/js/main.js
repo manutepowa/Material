@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	var id;
 	var idmaterial = 1;
 	var totalRows = 1;
 	var presactual = 0;
@@ -344,6 +345,7 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date},
 			success: function(event){
+				//console.log(event);
 				
 				if(event == '1'){
 					$('#advadd').fadeIn('500').delay(5000).fadeOut();
@@ -456,6 +458,7 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'per': mpersona, 'lug': mlugar, 'mat': mmaterial, 'dat': mdate, 'id-prest':id},
 			success: function(event){
+				console.log(event);
 				if(event == '1'){
 					$('#advmod').fadeIn('500').delay(5000).fadeOut();
 					
@@ -549,8 +552,6 @@ $(document).ready(function(){
 		loadList(0);
 	}
 
-	var id;
-
 	$(document).on('click', '.dev', function(event) {
 		event.preventDefault();
 		$('.modal .message').fadeOut(0);
@@ -567,7 +568,7 @@ $(document).ready(function(){
 	$(document).on('click', '.mod', function(event) {
 		event.preventDefault();
 
-		var id = $(this).siblings('input').val();
+		id = $(this).siblings('input').val();
 
 		presactual = id;
 
@@ -679,17 +680,17 @@ $(document).ready(function(){
 		$.ajax({
 			url: '../function/addDevolucion.php',
 			type: 'POST',
-			data: {'dat-dev': date, 'id-prest':id},
-			success: function(e){
-				$('#advdev').fadeIn('500').delay(5000).fadeOut();
-				$('#mod-dev').modal('hide');
-				
-				if($('.toggle').checkbox('is checked')){
-					loadList(1);
-				}
-				else{
-					loadList(0);
-				}
+			data: {'dat-dev': date, 'id-prest':id}
+		}).done(function(){
+			// console.log(event);
+			$('#advdev').fadeIn('500').delay(5000).fadeOut();
+			$('#mod-dev').modal('hide');
+			
+			if($('.toggle').checkbox('is checked')){
+				loadList(1);
+			}
+			else{
+				loadList(0);
 			}
 		});
 		
@@ -712,17 +713,16 @@ $(document).ready(function(){
 		$.ajax({
 			url: '../function/addDevolucion.php',
 			type: 'POST',
-			data: {'dat-dev': date, 'id-prest':id},
-			success: function(e){
-				$('#advdev').fadeIn('500').delay(5000).fadeOut();
-				$('#mod-dev').modal('hide');
-				
-				if($('.toggle').checkbox('is checked')){
-					loadList(1);
-				}
-				else{
-					loadList(0);
-				}
+			data: {'dat-dev': date, 'id-prest':id}
+		}).done(function(){
+			$('#advdev').fadeIn('500').delay(5000).fadeOut();
+			$('#mod-dev').modal('hide');
+			
+			if($('.toggle').checkbox('is checked')){
+				loadList(1);
+			}
+			else{
+				loadList(0);
 			}
 		});
 		$(this).siblings('input[type=date]').val("0000-00-00");
@@ -733,9 +733,9 @@ $(document).ready(function(){
 		$.ajax({
 			url: '../function/delPrestamo.php',
 			type: 'POST',
-			data: {'id-prest': id},
-			success: function(event){
-				
+			data: {'id-prest': id}
+		}).done(function(){
+
 				if($('.toggle').checkbox('is checked')){
 					loadList(1);
 				}
@@ -743,7 +743,6 @@ $(document).ready(function(){
 					loadList(0);
 				}
 				$('#advdel').fadeIn('100').delay(5000).fadeOut();
-			}
 		});
 	});
 

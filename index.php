@@ -1,5 +1,6 @@
 <?php 
-	session_start(); 
+	session_start();
+	if(!empty($_SESSION)){header("Location: ../views/admin.php");}
  ?>
 <!DOCTYPE html>
  <html lang="es">

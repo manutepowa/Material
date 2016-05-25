@@ -14,7 +14,7 @@
 
 	// En lugar de eliminarlo, le pondrán el campo 'eliminado' a 1
 	$query = "update prestamo set prestamo.eliminado = 1 where prestamo.id_prestamo = ".$id;
-
+	
 	$conexion->query($query)or die(mysql_error());
 
 
