@@ -30,13 +30,6 @@ $(document).ready(function(){
 		$('#side_materiales').hide();
 		$('#side_personas').hide();
 		$('#side_lugares').hide();
-
-		if($('.toggle').checkbox('is checked')){
-			loadList(1);
-		}
-		else{
-			loadList(0);
-		}
 	});
 
 	$(document).on('click', '#btn_materiales', function(){
@@ -130,49 +123,20 @@ $(document).ready(function(){
 
 });
 
-
-function Loader(){
-	
-	$('#loader').removeClass('ui dimmer modals page transition hidden');
-	$('#loader').addClass('ui dimmer modals page transition visible active');
-	$('#loader').html('<div class="ui active dimmer">'
-						 +'<div class="ui text loader">Cargando...</div>'
-					 +'</div>');
-}
-
-function Loader2(){
-
-	$('#loader2').css('display','');
-	$('#loader2').css('z-index','1');
-	$('#loader2').html('<div class="loader JS_on">'
-				 			+'<span class="binary"></span>'
-							+'<span class="binary"></span>'
-							+'<span class="getting-there">CARGANDO&hellip;</span>'
-						+'</div>');
-};
-
-
 function loadMateriales(){
 	var urlmateriales = '../function/loadMateriales.php';
 
 	$("#t_materiales tbody").html("");
+
 	var error_field = 0;
 
-	$.ajax({
-		url: urlmateriales,
-		beforeSend: Loader2
-	})
-	.done(function(event){
-		//console.log(event);	
-		var mat = $.parseJSON(event);
+	$.getJSON(urlmateriales, function(mat){
+
 		if(mat.length == 0){
 			var newRow = "<tr class='center'><td colspan='6'>No hay ningún material añadido en la web.</td></tr>";
-		$(newRow).appendTo("#t_materiales tbody");
+			$(newRow).appendTo("#t_materiales tbody");
 		}
 		else{
-			//$('#loader').removeClass('ui dimmer modals page transition visible active');
-			//$('#loader').addClass('ui dimmer modals page transition hidden');
-			// $('#loader2').css('display','none');
 			$.each(mat, function(i, p){
 
 				if(i!=0 && p.id_material==mat[i-1].id_material){
@@ -209,8 +173,6 @@ function loadMateriales(){
 					$(newRow).appendTo("#t_materiales tbody");
 				}		
 			});
-			$('#loader2').css('display','none');
-			$('#t_materiales').css('visibility','visible');
 		}
 	});
 }
@@ -222,13 +184,7 @@ function loadMaterialesHistorial(mat, id){
 
 	var error_field = 0;
 
-	$.ajax({
-		url: urlmaterial,
-		beforeSend: Loader2
-	})
-	.done(function(event){
-		//console.log(event);	
-		var mate = $.parseJSON(event);
+	$.getJSON(urlmaterial, function(mate){
 
 		$('#materiales_container_hist > p > strong').html(mat);
 
@@ -237,8 +193,7 @@ function loadMaterialesHistorial(mat, id){
 			$(newRow).appendTo("#t_materiales_hist tbody");
 		}
 		else{
-			//$('#loader').removeClass('ui dimmer modals page transition visible active');
-			//$('#loader').addClass('ui dimmer modals page transition hidden');
+			
 			$.each(mate, function(i, p){
 			
 				var fDev;
@@ -260,8 +215,6 @@ function loadMaterialesHistorial(mat, id){
 						+"</tr>";
 				$(newRow).appendTo("#t_materiales_hist tbody");	
 			});
-			$('#loader2').css('display','none');
-			$('#t_materiales_hist').css('visibility','visible');
 		}
 	});
 }
@@ -273,21 +226,14 @@ function loadPersonas(){
 
 	var error_field = 0;
 
-	$.ajax({
-		url: urlpersonas,
-		beforeSend: Loader2
-	})
-	.done(function(event){
-
-		var pers = $.parseJSON(event);
+	$.getJSON(urlpersonas, function(pers){
 
 		if(pers.length == 0){
 			var newRow = "<tr class='center'><td colspan='6'>No hay ninguna persona añadida en la web.</td></tr>";
 			$(newRow).appendTo("#t_personas tbody");
 		}
+
 		else{
-			// $('#loader').removeClass('ui dimmer modals page transition visible active');
-			// $('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(pers, function(i, p){
 				
 				if(i!=0 && p.id_persona==pers[i-1].id_persona){
@@ -324,10 +270,8 @@ function loadPersonas(){
 					$(newRow).appendTo("#t_personas tbody");
 				}		
 			});
-			$('#loader2').css('display','none');
-			$('#t_personas').css('visibility','visible');
-		}
-	});		
+		}		
+	});
 }
 
 function loadPersonasHistorial(per, id){
@@ -337,13 +281,7 @@ function loadPersonasHistorial(per, id){
 
 	var error_field = 0;
 
-	$.ajax({
-		url: urlpersona,
-		beforeSend: Loader2
-	})
-	.done(function(event){
-
-		var pers = $.parseJSON(event);
+	$.getJSON(urlpersona, function(pers){
 
 		$('#personas_container_hist > p > strong').html(per);
 
@@ -352,8 +290,6 @@ function loadPersonasHistorial(per, id){
 			$(newRow).appendTo("#t_personas_hist tbody");
 		}
 		else{
-			$('#loader').removeClass('ui dimmer modals page transition visible active');
-			$('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(pers, function(i, p){
 
 				if(i!=0 && p.id_prestamo==pers[i-1].id_prestamo){
@@ -382,10 +318,8 @@ function loadPersonasHistorial(per, id){
 					$(newRow).appendTo("#t_personas_hist tbody");
 				}
 			});
-			$('#loader2').css('display','none');
-			$('#t_personas_hist').css('visibility','visible');
 		}
-	});	
+	});
 }
 
 function loadLugares(){
@@ -395,13 +329,7 @@ function loadLugares(){
 
 	var error_field = 0;
 
-	$.ajax({
-		url: urllugares,
-		beforeSend: Loader2
-	})
-	.done(function(event){
-
-		var lug = $.parseJSON(event);
+	$.getJSON(urllugares, function(lug){
 
 		if(lug.length == 0){
 			var newRow = "<tr class='center'><td colspan='6'>No hay ningún lugar añadido en la web.</td></tr>";
@@ -409,8 +337,6 @@ function loadLugares(){
 		}
 
 		else{
-			// $('#loader').removeClass('ui dimmer modals page transition visible active');
-			// $('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(lug, function(i, p){
 				
 				if(i!=0 && p.id_lugar==lug[i-1].id_lugar){
@@ -447,8 +373,6 @@ function loadLugares(){
 					$(newRow).appendTo("#t_lugares tbody");
 				}	
 			});
-			$('#loader2').css('display','none');
-			$('#t_lugares').css('visibility','visible');
 		}
 	});
 }
@@ -460,13 +384,7 @@ function loadLugaresHistorial(lug, id){
 
 	var error_field = 0;
 
-	$.ajax({
-		url: urllugar,
-		beforeSend: Loader2
-	})
-	.done(function(event){
-
-		var lugar = $.parseJSON(event);
+	$.getJSON(urllugar, function(lugar){
 
 		$('#lugares_container_hist > p > strong').html(lug);
 
@@ -475,8 +393,6 @@ function loadLugaresHistorial(lug, id){
 			$(newRow).appendTo("#t_lugares_hist tbody");
 		}
 		else{
-			// $('#loader').removeClass('ui dimmer modals page transition visible active');
-			// $('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(lugar, function(i, p){
 				
 				if(i!=0 && p.id_prestamo==lugar[i-1].id_prestamo){
@@ -505,8 +421,6 @@ function loadLugaresHistorial(lug, id){
 					$(newRow).appendTo("#t_lugares_hist tbody");
 				}		
 			});
-			$('#loader2').css('display','none');
-			$('#t_lugares_hist').css('visibility','visible');
 		}
-	});	
+	});
 }

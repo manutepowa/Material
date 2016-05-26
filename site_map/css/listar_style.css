@@ -93,6 +93,6 @@ div.search.medium{float: left; margin-right: 25px;}
 }*/
 
 #addp, #addm, #addl, #addmp, #addmm, #addml{
-	display: block;
+	/*display: block;*/
 	margin: 0 auto;
 }

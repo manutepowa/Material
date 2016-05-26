@@ -32,32 +32,6 @@
 	/*width: 210px;*/
 	width: 13%;
 }
-/*
-.cabecera.admin{
-	height: 65px;
-	z-index: 99;
-}
-
-#menuizq > img{
-	z-index: 1!important;
-}
-
-#menuizq > img{
-	width: 30px;
-	margin: 15px 0 15px 30px;
-}
-
-#menuizq > p{
-	color: #ffffff;
-	float: right;
-	margin-top: 30px;
-    margin-right: 55px;
-}*/
-
-/*#side_inicio > #advadd, #advmod, #advdev, #advdel{
-	right: 275px!important;
-	top: -12px!important;
-}*/
 
 #menuizq{
 	z-index: 1!important;
@@ -68,15 +42,12 @@
 }
 
 #side_prestamos > #advadd, #advmod, #advdev, #advdel{
+	/*display: block;*/
 	width: 300px;
 	position: fixed;
-	/*right: 15px;
-	top: 40px;*/
 	box-shadow: 0px 3px 5px #ccc !important;
 	z-index: 99;
-	/*right: 275px!important;
-	top: -12px!important;*/
-	/*visibility: hidden;*/
+	visibility: hidden;
 	top: 60px;
 	right: 70px;
 }
@@ -86,10 +57,6 @@
 	top: 80px;
 }
 
-svg{
-  width: 100px;
-  height: 100px;
-  margin: 20px;
-  /*display: inline-block;*/
-  /*text-align: center;*/
+#prestamos, #t_materiales, #t_personas, #t_lugares, #t_materiales_hist, #t_personas_hist, #t_lugares_hist{
+	visibility: hidden;
 }

@@ -348,7 +348,13 @@ $(document).ready(function(){
 				//console.log(event);
 				
 				if(event == '1'){
-					$('#advadd').fadeIn('500').delay(5000).fadeOut();
+					// $('#advadd').fadeIn('500').delay(5000).fadeOut();
+					$('#advadd').css('display','block');
+					$('#advadd').css('visibility','visible');
+					$('#advadd').delay(5000).queue(function (next){ 
+						$(this).css('visibility', 'hidden'); 
+						next();
+					});
 					$('#persona').val('');
 					$('#lugar').val('');
 					$('#material').val('');
@@ -460,7 +466,12 @@ $(document).ready(function(){
 			success: function(event){
 				console.log(event);
 				if(event == '1'){
-					$('#advmod').fadeIn('500').delay(5000).fadeOut();
+					$('#advmod').css('display','block');
+					$('#advmod').css('visibility','visible');
+					$('#advmod').delay(5000).queue(function (next){ 
+						$(this).css('visibility', 'hidden'); 
+						next();
+					});
 					
 					if($('.toggle').checkbox('is checked')){
 						loadList(1);
@@ -683,7 +694,14 @@ $(document).ready(function(){
 			data: {'dat-dev': date, 'id-prest':id}
 		}).done(function(){
 			// console.log(event);
-			$('#advdev').fadeIn('500').delay(5000).fadeOut();
+			// $('#advdev').fadeIn('500').delay(5000).fadeOut();
+			$('#advdev').css('display','block');
+			$('#advdev').css('visibility','visible');
+			$('#advdev').delay(5000).queue(function (next){ 
+				$(this).css('visibility', 'hidden'); 
+				next();
+			});
+
 			$('#mod-dev').modal('hide');
 			
 			if($('.toggle').checkbox('is checked')){
@@ -715,7 +733,13 @@ $(document).ready(function(){
 			type: 'POST',
 			data: {'dat-dev': date, 'id-prest':id}
 		}).done(function(){
-			$('#advdev').fadeIn('500').delay(5000).fadeOut();
+			// $('#advdev').fadeIn('500').delay(5000).fadeOut();
+			$('#advdev').css('display','block');
+			$('#advdev').css('visibility','visible');
+			$('#advdev').delay(5000).queue(function (next){ 
+				$(this).css('visibility', 'hidden'); 
+				next();
+			});
 			$('#mod-dev').modal('hide');
 			
 			if($('.toggle').checkbox('is checked')){
@@ -736,13 +760,19 @@ $(document).ready(function(){
 			data: {'id-prest': id}
 		}).done(function(){
 
-				if($('.toggle').checkbox('is checked')){
-					loadList(1);
-				}
-				else{
-					loadList(0);
-				}
-				$('#advdel').fadeIn('100').delay(5000).fadeOut();
+			if($('.toggle').checkbox('is checked')){
+				loadList(1);
+			}
+			else{
+				loadList(0);
+			}
+			// $('#advdel').fadeIn('100').delay(5000).fadeOut();
+			$('#advdel').css('display','block');
+			$('#advdel').css('visibility','visible');
+			$('#advdel').delay(5000).queue(function (next){ 
+				$(this).css('visibility', 'hidden'); 
+				next();
+			});
 		});
 	});
 
@@ -802,13 +832,18 @@ $(document).ready(function(){
 		});
 	});
 
-	$('.toggle').change(function(event) {
+	$('.toggle').change(function() {
+		$('.filtro input:text').val('');
 		if($(this).checkbox('is checked')){
 			loadList(1);
 		}
 		else{
 			loadList(0);
 		}
+	});
+
+	$('.filtro input:text').focus(function(){
+		$('.filtro input:text').val('');
 	});
 });
 
@@ -819,7 +854,13 @@ function loadList(q){
 
 	var error_field = 0;
 
-	$.getJSON(urlprestamo, function(prest){
+	$.ajax({
+		url: urlprestamo,
+		beforeSend: Loader2
+	})
+	.done(function(event){
+
+		var prest = $.parseJSON(event);
 
 		if(prest.length == 0){
 			var newRow = "<tr class='center'><td colspan='6'>No hay préstamos que cumplan con las características indicadas.</td></tr>";
@@ -917,6 +958,8 @@ function loadList(q){
 					}
 				}	
 			});
+			$('#loader2').css('display','none');
+			$('#prestamos').css('visibility','visible');
 		}
 	});
 }

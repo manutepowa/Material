@@ -42,6 +42,10 @@
   </div>
   <div class="admincontainer pusher">
 
+  <div id="loader"></div>
+
+  <div id="loader2"></div>
+
 	<!-- <div class="center">
 		<svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
 		  <circle fill="#00B5AD" stroke="none" cx="6" cy="50" r="6">
