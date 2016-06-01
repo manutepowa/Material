@@ -270,7 +270,7 @@
 		                </div>
 		              </td>
 		              <td>
-		                <i id="addRowMat" class="add circle icon"></i>
+		                <i id="addRowMat" class="add circle icon"></i><!-- <i class="minus circle icon"></i> -->
 		              </td>
 		            </tr>
 		          </table>  

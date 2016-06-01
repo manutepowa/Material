@@ -65,6 +65,10 @@
     transition: background-color .1s ease,color .1s ease,box-shadow .1s ease,border-color .1s ease;
 }
 
+.toggle{
+	z-index: 1;
+}
+
 .nprestamo{
 	width: 18%;
 	display: inline-block;

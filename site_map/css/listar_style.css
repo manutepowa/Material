@@ -42,19 +42,27 @@ h1{
 	margin-left: 20px;
 }
 
-#modal-add-prest > .content > .description > .ui.relaxed.divided.list > .item > .minus.circle.icon .add.circle.icon{
+/*#modal-add-prest > .content > .description > .ui.relaxed.divided.list > .item > .minus.circle.icon .add.circle.icon{
 	color: blue;
-}
+}*/
 
-.addlistadomat td:nth-child(3), .maddlistadomat td:nth-child(3), .modper td:nth-child(3), .modlug td:nth-child(3), .moddate td:nth-child(3), .addper td:nth-child(3), .addlug td:nth-child(3), .adddate td:nth-child(3){
-	width: 50%;
+/*.addlistadomat td:nth-child(1), .addlistadomatm td:nth-child(1), .modper td:nth-child(1), .modlug td:nth-child(1), .moddate td:nth-child(1), .addper td:nth-child(1), .addlug td:nth-child(1), .adddate td:nth-child(1){{
+	width: 50%!important;
+}*/
+
+.addlistadomat td:nth-child(3), .addlistadomatm td:nth-child(3), .modper td:nth-child(3), .modlug td:nth-child(3), .moddate td:nth-child(3), .addper td:nth-child(3), .addlug td:nth-child(3), .adddate td:nth-child(3){
+	width: 45%;
 	padding-left: 5px;
 }
 
+.addlistadomat td:nth-child(4), .addlistadomatm td:nth-child(4){
+	width: 20%;
+}
+
 .add.circle.icon{
-	/*color: #21ba45;*/
 	font-size: 2em;
 	padding-top: 7px;
+	display: inline-block;
 }
 
 .add.circle.icon:hover{
@@ -62,9 +70,9 @@ h1{
 }
 
 .minus.circle.icon{
-	/*color: #db2828;*/
 	font-size: 2em;
 	padding-top: 7px;
+	display: inline-block;
 }
 
 .minus.circle.icon:hover{
@@ -76,6 +84,10 @@ h1{
 	padding-bottom: 2px;
 }
 
+.ui.dimmer{
+	background-color: rgba(0,0,0,.85);
+}
+
 #mod-dev > .content > .negative{
 	width: 70%;
 	margin-left: 15%;
@@ -83,16 +95,7 @@ h1{
 
 div.search.medium{float: left; margin-right: 25px;}
 
-/*#advadd, #advmod, #advdev, #advdel{
-	width: 300px;
-	position: absolute !important;
-	right: 15px;
-	top: 40px;
-	box-shadow: 0px 3px 5px #ccc !important;
-	z-index: 99;
-}*/
-
 #addp, #addm, #addl, #addmp, #addmm, #addml{
-	/*display: block;*/
+	display: block;
 	margin: 0 auto;
 }
