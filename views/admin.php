@@ -1,16 +1,10 @@
 <?php require_once('header.php'); ?>
 
 <div class="cabecera admin">
-  <!-- <div class="ui container"> -->
-  	<!-- <div> -->
-		<img src="../site_map/images/logo.png" alt="logo">
-    	<span>Materiales SC</span>
-	<!-- </div> -->
-      <!-- <img src="../site_map/images/logo.png" alt="logo">
-      Materiales SC -->
-      <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
-      <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
-  <!-- </div> -->
+	<img src="../site_map/images/logo.png" alt="logo">
+    <span>Materiales SC</span>
+    <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
+    <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
 </div>
 
 <!-- <div class="ui bottom attached segment pushable"> -->
@@ -45,6 +39,34 @@
   <div id="loader"></div>
 
   <div id="loader2"></div>
+
+    <div class="ui positive message" id="advadd">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Préstamo añadido con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advmod">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Préstamo modificado con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advdev">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Préstamo devuelto con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advdel">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Préstamo eliminado con éxito!
+	  </div>
+	</div>
 
 	<!-- <div class="center">
 		<svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
@@ -83,7 +105,7 @@
       <!-- <h3 class="ui header">Inicio</h3> -->
 
 
-		<div class="ui small modal btnAddUser">
+		<!-- <div class="ui small modal btnAddUser">
 		  <div class="header">
 		    Añadir Persona
 		  </div>
@@ -159,7 +181,7 @@
 		      </form>
 		    </div>
 		  </div>
-		</div>
+		</div> -->
 
 		<div class="ui small modal" id="modal-add-prest">
 		  
@@ -428,7 +450,7 @@
 
 		</div>
 
-		<div class="ui positive message" id="advadd">
+		<!-- <div class="ui positive message" id="advadd">
 		  <i class="close icon"></i>
 		  <div class="header">
 		    ¡Préstamo añadido con éxito!
@@ -454,7 +476,7 @@
 		  <div class="header">
 		    ¡Préstamo eliminado con éxito!
 		  </div>
-		</div>
+		</div> -->
 
 		<div class="ui small modal" id="mod-dev">
 		  <div class="header">

@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-	//$('#side_inicio').hide();
 	$('#side_prestamos').hide();
 	$('#side_materiales').hide();
 	$('#side_personas').hide();
@@ -10,22 +9,11 @@ $(document).ready(function(){
 	$('#personas_container_hist').hide();
 	$('#lugares_container_hist').hide();
 
-	//$('#side_inicio').show();
 	$('#side_prestamos').show();
 	
-	//$('#btn_inicio').addClass("active");
 	$('#btn_prestamos').addClass("active");
 
-	/*$(document).on('click', '#btn_inicio', function(){
-		//$('#side_inicio').show();
-		$('#side_prestamos').hide();
-		$('#side_materiales').hide();
-		$('#side_personas').hide();
-		$('#side_lugares').hide();
-	});*/
-
 	$(document).on('click', '#btn_prestamos', function(){
-		//$('#side_inicio').hide();
 		$('#side_prestamos').show();
 		$('#side_materiales').hide();
 		$('#side_personas').hide();
@@ -40,7 +28,6 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_materiales', function(){
-		//$('#side_inicio').hide();
 		$('#side_prestamos').hide();
 		$('#side_materiales').show();
 		$('#side_personas').hide();
@@ -53,7 +40,6 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_personas', function(){
-		//$('#side_inicio').hide();
 		$('#side_prestamos').hide();
 		$('#side_materiales').hide();
 		$('#side_personas').show();
@@ -66,7 +52,6 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_lugares', function(){
-		//$('#side_inicio').hide();
 		$('#side_prestamos').hide();
 		$('#side_materiales').hide();
 		$('#side_personas').hide();
@@ -78,8 +63,8 @@ $(document).ready(function(){
 		loadLugares();
 	});
 
-	$(document).on('click', '.item', function(event){
-		$('.item').removeClass("active");
+	$(document).on('click', '#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares', function(event){
+		$('#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares').removeClass("active");
 		$(this).addClass("active");
 	});
 
@@ -163,16 +148,12 @@ function loadMateriales(){
 		beforeSend: Loader2
 	})
 	.done(function(event){
-		//console.log(event);	
 		var mat = $.parseJSON(event);
 		if(mat.length == 0){
 			var newRow = "<tr class='center'><td colspan='6'>No hay ningún material añadido en la web.</td></tr>";
 		$(newRow).appendTo("#t_materiales tbody");
 		}
 		else{
-			//$('#loader').removeClass('ui dimmer modals page transition visible active');
-			//$('#loader').addClass('ui dimmer modals page transition hidden');
-			// $('#loader2').css('display','none');
 			$.each(mat, function(i, p){
 
 				if(i!=0 && p.id_material==mat[i-1].id_material){
@@ -227,7 +208,6 @@ function loadMaterialesHistorial(mat, id){
 		beforeSend: Loader2
 	})
 	.done(function(event){
-		//console.log(event);	
 		var mate = $.parseJSON(event);
 
 		$('#materiales_container_hist > p > strong').html(mat);
@@ -237,8 +217,6 @@ function loadMaterialesHistorial(mat, id){
 			$(newRow).appendTo("#t_materiales_hist tbody");
 		}
 		else{
-			//$('#loader').removeClass('ui dimmer modals page transition visible active');
-			//$('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(mate, function(i, p){
 			
 				var fDev;
@@ -286,8 +264,6 @@ function loadPersonas(){
 			$(newRow).appendTo("#t_personas tbody");
 		}
 		else{
-			// $('#loader').removeClass('ui dimmer modals page transition visible active');
-			// $('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(pers, function(i, p){
 				
 				if(i!=0 && p.id_persona==pers[i-1].id_persona){
@@ -409,8 +385,6 @@ function loadLugares(){
 		}
 
 		else{
-			// $('#loader').removeClass('ui dimmer modals page transition visible active');
-			// $('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(lug, function(i, p){
 				
 				if(i!=0 && p.id_lugar==lug[i-1].id_lugar){
@@ -475,8 +449,6 @@ function loadLugaresHistorial(lug, id){
 			$(newRow).appendTo("#t_lugares_hist tbody");
 		}
 		else{
-			// $('#loader').removeClass('ui dimmer modals page transition visible active');
-			// $('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(lugar, function(i, p){
 				
 				if(i!=0 && p.id_prestamo==lugar[i-1].id_prestamo){

@@ -9,7 +9,33 @@ $(document).ready(function(){
  		console.log(debug);
  	}
 
-	var addPrestamoReset = "<div class='ui relaxed divided list'>"
+	var addPrestamoReset = "<div class='item'>"
+					          +"<table class='addlistadomat'>"
+					            +"<tr>"
+					             +" <td>"
+					               +"<div class='ui search medium' id='mat_0'>"
+					                  +"<div class='ui icon input'>"
+					                    +"<input id='material_0' name='material[]' class='prompt' type='text' placeholder='Buscar Material...'>"
+					                    +"<i class='search icon'></i>"
+					                  +"</div>"
+					                  +"<div class='results'></div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td>"
+					                +"<i class='large archive big aligned icon icpres'></i>"
+					              +"</td>"
+					              +"<td>"
+					                +"<div class='content'>"
+					                  +"<div class='description'>No hay material añadido</div>"
+					                +"</div>"
+					             +"</td>"
+					              +"<td>"
+					                +"<i id='addRowMat' class='add circle icon'></i>"
+					              +"</td>"
+					            +"</tr>"
+					          +"</table>"
+					        +"</div>";
+						/*"<div class='ui relaxed divided list'>"
 							+"<div class='item'>"
 					          +"<table class='addper'>"
 					            +"<tr>"
@@ -112,7 +138,7 @@ $(document).ready(function(){
 					            +"</tr>"
 					          +"</table>"
 					        +"</div>"
-					       +"</div>";
+					       +"</div>";*/
 
 	var modPrestamoReset = "<div class='ui relaxed divided list'>"
 							+"<div class='item'>"
@@ -194,12 +220,15 @@ $(document).ready(function(){
 
 	$('.toggle').checkbox('set checked');
 
-	$('#erraddpres').fadeOut(0);
-	$('#erraddprescrear').fadeOut(0);
+	// $('#erraddpres').fadeOut(0);
+	// $('#erraddprescrear').fadeOut(0);
 	
 	$('#advadd > .close.icon, #advmod > .close.icon, #advdev > .close.icon, #advdel > .close.icon').on('click', function() {
 	    $(this).closest('.ui.positive.message').hide();
-	    console.log("cerrar mensaje");
+	});
+
+	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon').on('click', function() {
+	    $(this).closest('.ui.negative.message').hide();
 	});
 
 	$('.toggle').change(function() {
@@ -236,7 +265,7 @@ $(document).ready(function(){
 			$(this).closest('.item').remove();
 			$ultimo = contenedor.find('.item:last');
 			$icono = $ultimo.find('.circle');
-			console.log(padre.find('table[class ^= addlistadomat]')[0].className);
+			
 			if(padre.find('table[class ^= addlistadomat]')[0].className=="addlistadomatm"){
 				$icono.removeClass('minus circle icon').addClass('add circle icon').attr('id','maddRowMat');
 			}
@@ -265,7 +294,7 @@ $(document).ready(function(){
 		var allInputText = $('#modal-add-prest').find(':text');
 		
 		var empty = 0;
-		idmaterial = 1;
+		// idmaterial = 1;
 
 		// console.log(allInputText.length);
 		// for(var i=0;i<allInputText.length;i++){
@@ -548,7 +577,7 @@ $(document).ready(function(){
 									});
 									$('#persona').val('');
 									$('#lugar').val('');
-									$('#material').val('');
+									// $('#material').val('');
 									$('#date').val('');
 								
 									// if($('.toggle').checkbox('is checked')){
@@ -559,7 +588,25 @@ $(document).ready(function(){
 									// }
 									changetoggle();
 
-									$('#modal-add-prest .ui.relaxed.divided.list').replaceWith(addPrestamoReset);
+
+
+									// $('#modal-add-prest .ui.relaxed.divided.list').replaceWith(addPrestamoReset);
+									// $('#modal-add-prest').
+									var count = $("#modal-add-prest .item").length;
+									console.log(count);
+
+									$("#modal-add-prest .item:nth-child(1)").find('.description').text("No hay persona añadida");
+									$("#modal-add-prest .item:nth-child(2)").find('.description').text("No hay lugar añadido");
+									$("#modal-add-prest .item:nth-child(3)").find('.description').text("No hay fecha añadida");
+									
+									for(i=4;i<=count;i++){
+										// $("#modal-add-prest .item:nth-child("+i+")").css('backgroundColor','blue');
+										// $("#modal-add-prest .item:nth-child("+i+")").remove();
+										$("#modal-add-prest .item:last-child").remove();
+									}
+
+									$('#modal-add-prest .ui.relaxed.divided.list').append(addPrestamoReset);
+
 									idmaterial=1;
 								}
 								else if(event == '2'){
@@ -600,6 +647,7 @@ $(document).ready(function(){
 		$('#modal-mod-prest .ui.relaxed.divided.list').replaceWith(modPrestamoReset);
 
 		var error_field = 0;
+		var cnt = 0;
 		
 		$.getJSON(urlmatprestamo, function(mat){
 
@@ -667,7 +715,11 @@ $(document).ready(function(){
 					$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
 				}
 				$('#mmaterial_'+i).parents('table').find('.description').html(p.descripcion);
+				cnt++;
 			});
+			if(cnt == 1){
+				$('.minus.circle.icon').remove();
+			}
 		});
 				
 		var nombreMod = dataRow.children('td').eq(1).text();
@@ -869,7 +921,7 @@ $(document).ready(function(){
 			success: function(event){
 				if(event != '1'){alert("¡Error al añadir la nueva persona!"); return false;}
 				
-				$('#per').focus(); //antes habia #persona
+				$('#persona').focus(); //antes habia #persona
 				$('#mpersona').focus();
 			}
 		});
