@@ -12,18 +12,41 @@ h1{
 	margin-bottom: 30px;
 }
 
-.ui.table thead tr:first-child>th:last-child{
+/*.ui.table thead tr:first-child{
+	width: 18%;
+}*/
+#prestamos thead tr:first-child>th:first-child{
+	width: 2%;
+	/*padding: 0;*/
+}
+
+#prestamos tr td:first-child{
+	padding: 0 0 0 3px;
+	margin: 0;
+	text-align: center;
+}
+
+textarea{
+	/*width: 90%!important;*/
+	margin: 3px 0!important;
+}
+
+.ui.celled.table tr td:nth-child(5), .ui.celled.table tr th:nth-child(5), .ui.celled.table tr td:nth-child(6), .ui.celled.table tr th:nth-child(6){
 	width: 16%;
 }
 
-.ui.celled.table tr td:nth-child(4), .ui.celled.table tr th:nth-child(4), .ui.celled.table tr td:nth-child(5), .ui.celled.table tr th:nth-child(5){
-	width: 11%;
+.columna1{
+	display: inline-block;
+	width: 30%;
+	text-align: center;
+	margin: 20px 0;
 }
 
-.columna{
+.columna2{
 	display: inline-block;
-	width: 45%;
+	width: 65%;
 	text-align: center;
+	margin: 20px 0;
 }
 
 .center{
@@ -91,6 +114,7 @@ h1{
 #mod-dev > .content > .negative{
 	width: 70%;
 	margin-left: 15%;
+	text-align: center;
 }
 
 div.search.medium{float: left; margin-right: 25px;}
@@ -98,4 +122,33 @@ div.search.medium{float: left; margin-right: 25px;}
 #addp, #addm, #addl, #addmp, #addmm, #addml{
 	display: block;
 	margin: 0 auto;
+}
+
+.info.circle.icon{
+	color: #00B5AD;
+	background: none;
+}
+
+#administrar_container .ui.secondary.pointing.menu .item.active{
+	border-color: #00B5AD;
+}
+
+.dropdown .add{
+	margin-top: 15px;
+	margin-right: 5px;
+}
+
+.dropdown span{
+	font-weight: bold;
+}
+
+#administrar_container .ui.submit.button:hover{
+	background: #00B5AD;
+	color: #ffffff;
+}
+
+.titform{
+	font-size: 14pt;
+	font-weight: bold;
+	margin: 10px 0 20px 0;
 }

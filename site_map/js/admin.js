@@ -1,9 +1,17 @@
 $(document).ready(function(){
 
+	// $('.ui.dropdown').dropdown({
+	// 	action: 'nothing',
+	// 	action: 'hide'
+	// });
+
+	/* INICIO ADMIN USER */
+
 	$('#side_prestamos').hide();
 	$('#side_materiales').hide();
 	$('#side_personas').hide();
 	$('#side_lugares').hide();
+	$('#side_administrar').hide();
 
 	$('#materiales_container_hist').hide();
 	$('#personas_container_hist').hide();
@@ -18,6 +26,7 @@ $(document).ready(function(){
 		$('#side_materiales').hide();
 		$('#side_personas').hide();
 		$('#side_lugares').hide();
+		$('#side_administrar').hide();
 
 		if($('.toggle').checkbox('is checked')){
 			loadList(1);
@@ -32,6 +41,7 @@ $(document).ready(function(){
 		$('#side_materiales').show();
 		$('#side_personas').hide();
 		$('#side_lugares').hide();
+		$('#side_administrar').hide();
 
 		$('#materiales_container_hist').hide();
 		$('#materiales_container').show();
@@ -44,6 +54,7 @@ $(document).ready(function(){
 		$('#side_materiales').hide();
 		$('#side_personas').show();
 		$('#side_lugares').hide();
+		$('#side_administrar').hide();
 
 		$('#personas_container_hist').hide();
 		$('#personas_container').show();
@@ -56,6 +67,7 @@ $(document).ready(function(){
 		$('#side_materiales').hide();
 		$('#side_personas').hide();
 		$('#side_lugares').show();
+		$('#side_administrar').hide();
 
 		$('#lugares_container_hist').hide();
 		$('#lugares_container').show();
@@ -63,8 +75,20 @@ $(document).ready(function(){
 		loadLugares();
 	});
 
-	$(document).on('click', '#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares', function(event){
-		$('#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares').removeClass("active");
+	$(document).on('click', '#btn_administrar', function(){
+		$('#side_prestamos').hide();
+		$('#side_materiales').hide();
+		$('#side_personas').hide();
+		$('#side_lugares').hide();
+		$('#side_administrar').show();
+
+		$('#administrar_container').show();
+
+		loadLugares();
+	});
+
+	$(document).on('click', '#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares, #btn_administrar', function(event){
+		$('#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares, #btn_administrar').removeClass("active");
 		$(this).addClass("active");
 	});
 
@@ -112,6 +136,248 @@ $(document).ready(function(){
 		$('#lugares_container_hist').hide();
 		$('#lugares_container').show();
 	});
+	/* FIN ADMIN USER */
+
+	/* INICIO ADMIN DASHBOARD */
+	$('#prestamos_segment').hide();
+	$('#materiales_segment').hide();
+	$('#personas_segment').hide();
+	$('#lugares_segment').hide();
+	$('#usuarios_segment').hide();
+
+	$('#addprestamo_segment').hide();
+	$('#addmaterial_segment').hide();
+	$('#addpersona_segment').hide();
+	$('#addlugar_segment').hide();
+	$('#addusuario_segment').hide();
+
+	$('#prestamos_segment').show();
+	$('#btn_admin_pres').addClass("active");
+
+	$(document).on('click', '#btn_admin_pres', function(){
+		$('#prestamos_segment').show();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_pres').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_mat', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').show();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_mat').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_per', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').show();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_per').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_lug', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').show();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_lug').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_usu', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').show();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_usu').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_addpres', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').show();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
+		$('#btn_admin_pres').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_addmat', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').show();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
+		$('#btn_admin_mat').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_addper', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').show();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
+		$('#btn_admin_per').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_addlug', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').show();
+		$('#addusuario_segment').hide();
+
+		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
+		$('#btn_admin_lug').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_addusu', function(){
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').show();
+
+		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
+		$('#btn_admin_usu').addClass("active");
+	});
+
+	$(document).on('click', '#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu', function(event){
+		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
+		$(this).addClass("active");
+	});
+	/* FIN ADMIN DASHBOARD */
+
+	/* INICIO ADMIN FORMS ADD */
+	// $('.fluid.selection.dropdown').dropdown();
+
+	// $('#addusuario_segment .form')
+	//   .form({
+	//     fields: {
+	//       usuario: {
+	//         identifier: 'usuario',
+	//         rules: [
+	//           {
+	//             type   : 'empty',
+	//             prompt : 'Por favor, introduzca el nombre de usuario'
+	//           }
+	//         ]
+	//       },
+	//       privilegios: {
+	//         identifier: 'privilegios',
+	//         rules: [
+	//           {
+	//             type   : 'empty',
+	//             prompt : 'Por favor, seleccione los privilegios del usuario'
+	//           }
+	//         ]
+	//       },
+	//       contrasena: {
+	//         identifier: 'contrasena',
+	//         rules: [
+	//           {
+	//             type   : 'empty',
+	//             prompt : 'Por favor, introduzca la contraseña'
+	//           },
+	//           {
+	//             type   : 'minLength[4]',
+	//             prompt : 'La contraseña debe tener al menos {ruleValue} caracteres'
+	//           }
+	//         ]
+	//       },
+	//       repcontrasena: {
+	//         identifier: 'repcontrasena',
+	//         rules: [
+	//           {
+	//             type   : 'empty',
+	//             prompt : 'Por favor, introduzca de nuevo la contraseña'
+	//           },
+	//           {
+	//             type   : 'match[contrasena]',
+	//             prompt : 'Ambas contraseñas deben coincidir'
+	//           }
+	//         ]
+	//       }
+	//     }
+	//   })
+	// ;
 
 });
 

@@ -164,7 +164,6 @@ $(document).ready(function(){
 					              +"<td></td>"
 					            +"</tr>"
 					          +"</table>"
-
 					  		+"</div>"
 
 					  		+"<div class='item'>"
@@ -192,17 +191,40 @@ $(document).ready(function(){
 					          +"</table>"
 					  		+"</div>"
 
-					  		+"<div class='item'>"
+					  		// +"<div class='item'>"
+					    //       +"<table class='moddate'>"
+					    //         +"<tr>"
+					    //           +"<td>"
+					    //             +"<div class='ui search medium' id='dat'>"
+					    //               +"<div class='ui left icon input'>"
+					    //                 +"<input type='date' placeholder='Fecha' id='mdate'>"
+					    //                 +"<i class='calendar icon'></i>"
+					    //               +"</div>"
+					    //               +"<div class='results'></div>"
+					    //             +"</div>"
+					    //           +"</td>"
+					    //           +"<td>"
+					    //             +"<i class='large calendar big aligned icon icpres'></i>"
+					    //           +"</td>"
+					    //           +"<td>"
+					    //             +"<div class='content'>"
+					    //               +"<div class='description'>No hay fecha añadida</div>"
+					    //             +"</div>"
+					    //           +"</td>"
+					    //           +"<td></td>"
+					    //         +"</tr>"
+					    //       +"</table>"
+					  		// +"</div>"
+					    //    +"</div>";
+
+					    	+"<div class='item'>"
 					          +"<table class='moddate'>"
 					            +"<tr>"
 					              +"<td>"
-					                +"<div class='ui search medium' id='dat'>"
-					                  +"<div class='ui left icon input'>"
-					                    +"<input type='date' placeholder='Fecha' id='mdate'>"
-					                    +"<i class='calendar icon'></i>"
-					                  +"</div>"
-					                  +"<div class='results'></div>"
-					                +"</div>"
+					                +"<div class='ui input'>"
+						                +"<input type='date' id='mdate'>"
+						                +"<input type='time' id='mtime'>"
+						            +"</div>"
 					              +"</td>"
 					              +"<td>"
 					                +"<i class='large calendar big aligned icon icpres'></i>"
@@ -216,18 +238,23 @@ $(document).ready(function(){
 					            +"</tr>"
 					          +"</table>"
 					  		+"</div>"
-					       +"</div>";
+
+					        +"<div class='item'>"
+						  		+"<div class='ui form'>"
+							        +"<div class='field'>"
+									    +"<textarea id='mobser' placeholder='Observaciones...' rows='2'></textarea>"
+									+"</div>"
+								+"</div>"
+							+"</div>"
+						  +"</div>";
 
 	$('.toggle').checkbox('set checked');
 
-	// $('#erraddpres').fadeOut(0);
-	// $('#erraddprescrear').fadeOut(0);
-	
-	$('#advadd > .close.icon, #advmod > .close.icon, #advdev > .close.icon, #advdel > .close.icon').on('click', function() {
+	$('#advadd > .close.icon, #advmod > .close.icon, #advdev > .close.icon, #advdel > .close.icon, #advaddpre > .close.icon, #advaddmat > .close.icon, #advaddper > .close.icon, #advaddlug > .close.icon, #advaddusu > .close.icon').on('click', function() {
 	    $(this).closest('.ui.positive.message').hide();
 	});
 
-	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon').on('click', function() {
+	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon, #erraddusu > .close.icon, #erraddusupass > .close.icon').on('click', function() {
 	    $(this).closest('.ui.negative.message').hide();
 	});
 
@@ -252,10 +279,6 @@ $(document).ready(function(){
 
 	changetoggle();
 
-	$('.filtro input:text').focus(function(){
-		$('.filtro input:text').val('');
-	});
-
 	$(document).on('click', '.minus.circle.icon', function(event) {
 
 		var padre = $(this).closest('table[class ^= addlistadomat]').parent('.item');
@@ -273,15 +296,15 @@ $(document).ready(function(){
 				$icono.removeClass('minus circle icon').addClass('add circle icon').attr('id','addRowMat');
 			}
 			
-			if(!$ultimo.is(':nth-child(4)')){
+			if(!$ultimo.is(':nth-child(5)')){
 				$ultimo.find('td:last-child').append('<i class="minus circle icon"></i>');
 			}
 		}
 		else{
 			$ultimo = contenedor.find('.item:last');
-			if(!$ultimo.is(':nth-child(4)')){
+			if(!$ultimo.is(':nth-child(5)')){
 				$(this).closest('.item').remove();
-				if($ultimo.is(':nth-child(4)')){
+				if($ultimo.is(':nth-child(5)')){
 					$icono = $ultimo.find('.minus.circle.icon');
 					$icono.remove();
 				}
@@ -294,13 +317,7 @@ $(document).ready(function(){
 		var allInputText = $('#modal-add-prest').find(':text');
 		
 		var empty = 0;
-		// idmaterial = 1;
-
-		// console.log(allInputText.length);
-		// for(var i=0;i<allInputText.length;i++){
-		// 	console.log(allInputText[i].value);
-		// }
-
+		
 		for(var i=2;i<allInputText.length;i++){
 			if(allInputText[i].value==""){
 				empty++;
@@ -311,9 +328,8 @@ $(document).ready(function(){
 			return false;
 		}
 
-		// $(this).removeClass('add circle icon').addClass('minus circle icon');
 		var padre = $(this).closest('.addlistadomat').parent('.item');
-		if(padre.is(':nth-child(4)')){
+		if(padre.is(':nth-child(5)')){
 			$(this).removeClass('add circle icon').addClass('minus circle icon');
 		}
 		else{
@@ -367,10 +383,8 @@ $(document).ready(function(){
 			return false;
 		}
 
-		//$(this).removeClass('add circle icon').addClass('minus circle icon');
-
 		var padre = $(this).closest('.addlistadomatm').parent('.item');
-		if(padre.is(':nth-child(4)')){
+		if(padre.is(':nth-child(5)')){
 			$(this).removeClass('add circle icon').addClass('minus circle icon');
 		}
 		else{
@@ -413,9 +427,38 @@ $(document).ready(function(){
 		desc.html(value);
 	});
 
+	$('.ui.accordion')
+  .accordion('refresh')
+;
+
+// 	function (event) {
+//     if (event.which == 13 || event.keyCode == 13) {
+//         //code to execute here
+//         return false;
+//     }
+//     return true;
+// };
+
 	$(document).on('change', 'input[type=date]', function(){
 		var desc = $(this).parents('tr').find('.description');
-		desc.html('Prestado el '+$(this).val());
+		var time = $(this).siblings('input[type=time]').val();
+		if(time == ""){
+			desc.html('Prestado el '+dateToString($(this).val()));
+		}
+		else{
+			desc.html('Prestado el '+dateToString($(this).val())+' a las '+time);
+		}
+	});
+
+	$(document).on('change', 'input[type=time]', function(){
+		var desc = $(this).parents('tr').find('.description');
+		var date = $(this).siblings('input[type=date]').val();
+		if($(this).val() == ""){
+			desc.html('Prestado el '+dateToString(date));
+		}
+		else{
+			desc.html('Prestado el '+dateToString(date)+' a las '+$(this).val());
+		}
 	});
 
 	$('#per')
@@ -551,8 +594,13 @@ $(document).ready(function(){
 					}
 
 					var date = $('#date').val();
+					var time = $('#time').val();
+					var user = $('#op-modal').data('user');
+					var obser = $('#obser').val();
 
-				    if(persona == "" || lugar == "" || nomaterial != 0 || date == ""){
+					o(user);
+
+				    if(persona == "" || lugar == "" || nomaterial != 0 || date == "" || time == ""){
 						$('#erraddprescrear').fadeOut(0);
 						$('#erraddpres').fadeIn(0);
 						
@@ -564,7 +612,7 @@ $(document).ready(function(){
 						$.ajax({
 							url: '../function/addPrestamo.php',
 							type: 'POST',
-							data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date},
+							data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date, 'time': time, 'user': user, 'obser': obser},
 							success: function(event){
 								
 								if(event == '1'){
@@ -577,31 +625,19 @@ $(document).ready(function(){
 									});
 									$('#persona').val('');
 									$('#lugar').val('');
-									// $('#material').val('');
+									$('#obser').val('');
 									$('#date').val('');
+									$('#time').val('');
 								
-									// if($('.toggle').checkbox('is checked')){
-									// 	loadList(1);
-									// }
-									// else{
-									// 	loadList(0);
-									// }
 									changetoggle();
 
-
-
-									// $('#modal-add-prest .ui.relaxed.divided.list').replaceWith(addPrestamoReset);
-									// $('#modal-add-prest').
 									var count = $("#modal-add-prest .item").length;
-									console.log(count);
 
 									$("#modal-add-prest .item:nth-child(1)").find('.description').text("No hay persona añadida");
 									$("#modal-add-prest .item:nth-child(2)").find('.description').text("No hay lugar añadido");
 									$("#modal-add-prest .item:nth-child(3)").find('.description').text("No hay fecha añadida");
 									
-									for(i=4;i<=count;i++){
-										// $("#modal-add-prest .item:nth-child("+i+")").css('backgroundColor','blue');
-										// $("#modal-add-prest .item:nth-child("+i+")").remove();
+									for(i=5;i<=count;i++){
 										$("#modal-add-prest .item:last-child").remove();
 									}
 
@@ -631,16 +667,14 @@ $(document).ready(function(){
 		;
 	});
 
-	// $('.modal .message').hide();
-
 	$(document).on('click', '.mod', function(event) {
 		event.preventDefault();
 
-		id = $(this).siblings('input').val();
+		id = $(this).parent().parent().siblings('input').val();
 
 		presactual = id;
 
-		var dataRow = $(this).parent().parent(); 
+		var dataRow = $(this).parent().parent().parent().parent(); 
 
 		var urlmatprestamo = '../function/getLineasPrestamo.php?q='+id;
 
@@ -683,8 +717,6 @@ $(document).ready(function(){
 					$(newMat).appendTo('#modal-mod-prest .ui.relaxed.divided.list');
 				}
 				else{
-					// $('#maddRowMat').removeClass('add circle icon').addClass('minus circle icon');
-					// $('#maddRowMat').removeAttr('id');
 					$('#maddRowMat').remove();
 					var newMat = "<div class='item'>"
 						          +"<table class='addlistadomatm'>"
@@ -722,20 +754,27 @@ $(document).ready(function(){
 			}
 		});
 				
-		var nombreMod = dataRow.children('td').eq(1).text();
-		var materialMod = dataRow.children('td').eq(0).text(); 
-		var lugarMod = dataRow.children('td').eq(2).text(); 
-		var fprestamoMod = dataRow.children('td').eq(3).text(); 
+		var observacionesMod = dataRow.children('td').eq(0).find('i').data('content');
+		var usuarioMod = dataRow.children('td').eq(0).find('i').data('user');
+		var materialMod = dataRow.children('td').eq(1).text();
+		var nombreMod = dataRow.children('td').eq(2).text();
+		var lugarMod = dataRow.children('td').eq(3).text();
+		var ftprestamoMod = dataRow.children('td').eq(4).text();
+
+		var fprestamoMod = stringToDate(ftprestamoMod.substring(0,10));
+		var tprestamoMod = ftprestamoMod.substring(17,23);
 
 		$('.modal .message').fadeOut(0);
 
 		$('#modal-mod-prest').find('#mpersona').val(nombreMod);
 		$('#modal-mod-prest').find('#mlugar').val(lugarMod);
 		$('#modal-mod-prest').find('#mdate').val(fprestamoMod);
+		$('#modal-mod-prest').find('#mtime').val(tprestamoMod);
+		$('#modal-mod-prest').find('#mobser').val(observacionesMod);
 
 		$('#mpersona').parents('tr').find('.description').html(nombreMod);
 		$('#mlugar').parents('tr').find('.description').html(lugarMod);
-		$('#mdate').parents('tr').find('.description').html('Prestado el '+fprestamoMod);
+		$('#mdate').parents('tr').find('.description').html('Prestado el '+dateToString(fprestamoMod)+' a las '+tprestamoMod);
 
 		$('#modal-mod-prest')
 			.modal({
@@ -755,8 +794,11 @@ $(document).ready(function(){
 					}
 
 					var mdate = $('#mdate').val();
+					var mtime = $('#mtime').val();
+					var muser = usuarioMod;
+					var mobser = $('#mobser').val();
 					
-					if(mpersona == "" || mlugar == "" || nommaterial != 0 || mdate == ""){
+					if(mpersona == "" || mlugar == "" || nommaterial != 0 || mdate == "" || mtime == ""){
 						$('#errmodprescrear').fadeOut(0);
 						$('#errmodpres').fadeIn(0);
 
@@ -768,7 +810,7 @@ $(document).ready(function(){
 						$.ajax({
 							url: '../function/modPrestamo.php',
 							type: 'POST',
-							data: {'per': mpersona, 'lug': mlugar, 'mat': mmaterial, 'dat': mdate, 'id-prest':id},
+							data: {'per': mpersona, 'lug': mlugar, 'mat': mmaterial, 'dat': mdate, 'time': mtime, 'user': muser, 'obser': mobser, 'id-prest':id},
 							success: function(event){
 								console.log(event);
 								if(event == '1'){
@@ -780,13 +822,7 @@ $(document).ready(function(){
 									});
 
 									changetoggle();
-									
-									// if($('.toggle').checkbox('is checked')){
-									// 	loadList(1);
-									// }
-									// else{
-									// 	loadList(0);
-									// }
+
 								}
 								else if(event == '2'){
 									o("Error update material.prestamo");
@@ -818,13 +854,15 @@ $(document).ready(function(){
 	$(document).on('click', '.dev', function(event) {
 		event.preventDefault();
 		$('.modal .message').fadeOut(0);
-		id = $(this).siblings('input').val();
+		id = $(this).parent().parent().siblings('input').val();
+		// o(id);
 		$('#mod-dev').modal('show');
 	});
 
 	$(document).on('click', '.del', function(event) {
 		event.preventDefault();
-		id = $(this).siblings('input').val();
+		id = $(this).parent().parent().siblings('input').val();
+		// o(id);
 		$('#mod-del').modal('show');
 	});
 
@@ -834,11 +872,12 @@ $(document).ready(function(){
 		var d = new Date();
 		var  month = d.getMonth()+1;
 		var date = d.getFullYear()+'-'+month+'-'+d.getDate();
+		var time = d.getHours()+":"+d.getMinutes();
 
 		$.ajax({
 			url: '../function/addDevolucion.php',
 			type: 'POST',
-			data: {'dat-dev': date, 'id-prest':id}
+			data: {'dat-dev': date, 'time-dev': time, 'id-prest':id}
 		}).done(function(){
 			
 			$('#advdev').css('display','block');
@@ -862,16 +901,17 @@ $(document).ready(function(){
 		event.preventDefault();
 
 		var date = $(this).siblings('input[type=date]').val();
+		var time = $(this).siblings('input[type=time]').val();
 		
-		if(date == ""){
-			$('#errdevpres').fadeIn(300);
+		if(date == "" || time == ""){
+			$('#errdevpres').fadeIn(0);
 			return false;
 		}
 
 		$.ajax({
 			url: '../function/addDevolucion.php',
 			type: 'POST',
-			data: {'dat-dev': date, 'id-prest':id}
+			data: {'dat-dev': date, 'time-dev': time, 'id-prest':id}
 		}).done(function(){
 			
 			$('#advdev').css('display','block');
@@ -884,7 +924,8 @@ $(document).ready(function(){
 
 			changetoggle();
 		});
-		$(this).siblings('input[type=date]').val("0000-00-00");
+		$(this).siblings('input[type=date]').val("");
+		$(this).siblings('input[type=time]').val("");
 	});
 
 	$(document).on('click', '.approve', function(event) {
@@ -962,6 +1003,7 @@ $(document).ready(function(){
 			url: '../function/addLugar.php',
 			type: 'POST',
 			data: {'lugar': valor},
+			beforeSend: Loader2,
 			success: function(event){
 				if(event != '1'){alert("¡Error al añadir el nuevo lugar!"); return false;}
 				
@@ -971,7 +1013,142 @@ $(document).ready(function(){
 		});
 	});
 
+	$('#addusuario_segment .success.message').hide();
+
+	$('#addusuario').submit(function() {
+
+		// $('#addusuario_segment .success.message').show();
+
+		return false;
+	});
+
+	$('#erraddusu').fadeOut(0);
+	$('#erraddusupass').fadeOut(0);
+
+	$('#addusuario').form({ 
+		onSuccess: function() {
+
+			$('#erraddusu').fadeOut(0);
+			$('#erraddusupass').fadeOut(0);
+
+			// console.log("onSuccess");
+			
+			var usuario = $('#addusuario').find('input[name="usuario"]').val();
+			var contrasena = $('#addusuario').find('input[name="contrasena"]').val();
+			var repcontrasena = $('#addusuario').find('input[name="repcontrasena"]').val();
+			var privilegios = $('#addusuario').find('select[name="privilegios"]').val();
+
+		    if(usuario == "" || contrasena == "" || repcontrasena == "" || privilegios == ""){
+				$('#erraddusu').fadeIn(0);
+				console.log("onSuccess if");
+				return false;
+			}
+
+			else if(repcontrasena != contrasena){
+				$('#erraddusupass').fadeIn(0);
+				console.log("onSuccess else if");
+				return false;
+			}
+
+			else{
+				
+				console.log("onSuccess else");
+				$.ajax({
+					url: '../function/addUsuario.php',
+					type: 'POST',
+					data: {'usuario': usuario, 'privilegios': privilegios, 'contrasena': contrasena},
+					beforeSend: Loader2,
+					// data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date, 'time': time, 'user': user, 'obser': obser},
+					success: function(event){
+						
+						if(event == '1'){
+							
+							$('#advaddusu').css('display','block');
+							$('#advaddusu').css('visibility','visible');
+							$('#advaddusu').delay(5000).queue(function (next){ 
+								$(this).css('visibility', 'hidden'); 
+								next();
+							});
+
+							$('#addusuario').find('input[name="usuario"]').val('');
+							$('#addusuario').find('input[name="contrasena"]').val('');
+							$('#addusuario').find('input[name="repcontrasena"]').val('');
+
+							$('.ui.dropdown.selection').find('.text').addClass('default');
+							$('.ui.dropdown.selection').find('.text.default').html('Seleccionar privilegios');
+							$('.ui.dropdown.selection').find('.item.active.selected').removeClass('active selected');
+
+							$('#addusuario_segment').hide();
+							$('#usuarios_segment').show();
+
+							$('#loader2').css('display','none');
+							$('#prestamos').css('visibility','visible');
+						}
+						else{
+							console.log("ERROR AL AÑADIR UN NUEVO USUARIO");
+							// $('.modal .message').fadeOut(0);
+							// $('#modal-add-prest').modal('show');
+							// $('#erraddprescrear').fadeIn(0);
+						}
+					}
+
+				});
+			}
+
+		}
+	
+	});
+
+	/*function submitForm() {
+
+		var usuario = $('#addusuario').find('input[name="usuario"]').val();
+		var contrasena = $('#addusuario').find('input[name="contrasena"]').val();
+		var privilegios = $('#addusuario').find('select[name="privilegios"]').val();
+
+		$.ajax({
+			type: 'POST', 
+			url: '../function/addUsuario.php', 
+			data: {'usuario': usuario, 'privilegios': privilegios, 'contrasena': contrasena}, 
+			success: onFormSubmitted 
+		});
+	}
+
+	// Handle post response
+	function onFormSubmitted(response) {
+		// Do something with response ...
+		console.log("Prestamo añadido");
+		$('#addusuario_segment .success.message').show();
+	}*/
+
 });
+
+function dateToString(date){
+
+	var string;
+	var d, m, y;
+
+	y = date.substring(0,4);
+	m = date.substring(5,7);
+	d = date.substring(8,10);
+
+	string = d+"/"+m+"/"+y;
+
+	return string;
+}
+
+function stringToDate(string){
+	
+	var date;
+	var ds, ms, ys;
+
+	ds = string.substring(0,2);
+	ms = string.substring(3,5);
+	ys = string.substring(6,10);
+
+	date = ys+"-"+ms+"-"+ds;
+
+	return date;
+}
 
 function loadList(q){
 	var urlprestamo = '../function/getPrestamo.php?q='+q;
@@ -979,6 +1156,10 @@ function loadList(q){
 	$("#prestamos tbody").html("");
 
 	var error_field = 0;
+	var fechaprest;
+	var horaprest;
+	var fechadev;
+	var horadev;
 
 	$.ajax({
 		url: urlprestamo,
@@ -989,17 +1170,28 @@ function loadList(q){
 		var prest = $.parseJSON(event);
 
 		if(prest.length == 0){
-			var newRow = "<tr class='center'><td colspan='6'>No hay préstamos que cumplan con las características indicadas.</td></tr>";
+			var newRow = "<tr class='center'><td colspan='7'>No hay préstamos que cumplan con las características indicadas.</td></tr>";
 			$(newRow).appendTo("#prestamos tbody");
 		}
 		else{
 			$.each(prest, function(i, p){
 				
+				fechaprest = dateToString(p.fecha_prestamo.substring(0,10));
+				horaprest = p.fecha_prestamo.substring(11,16);
+				
 				if(i==0){
 					
 					var fDev;
 
-					if(p.fecha_devolucion){fDev=p.fecha_devolucion;}else{fDev="No devuelto"; error_field = 1;}
+					if(p.fecha_devolucion){
+						fechadev = dateToString(p.fecha_devolucion.substring(0,10));
+						horadev = p.fecha_devolucion.substring(11,16);
+						fDev = fechadev+" a las "+horadev;
+					}
+					else{
+						fDev="No devuelto";
+						error_field = 1;
+					}
 
 					if(error_field == 1){
 						var newRow = "<tr class='negative' data-value='"+p.id_prestamo+"'>";
@@ -1010,28 +1202,54 @@ function loadList(q){
 						var newRow = "<tr data-value='"+p.id_prestamo+"'>";
 					}
 
-					newRow += 	"<td>"+p.descripcion+"</td>"
+					newRow += 	"<td><i class='large info circle icon' data-user='"+p.id_usuario+"' data-title='Dado de alta por: "+p.nombre_usuario+"' data-content='"+p.observaciones+"' data-variation='inverted very wide'></i></td>"
+								+"<td>"+p.descripcion+"</td>"
 								+"<td>"+p.nombre+"</td>"
 								+"<td>"+p.lugar+"</td>"
-								+"<td>"+p.fecha_prestamo+"</td>"
+								+"<td>"+fechaprest+" a las "+horaprest+"</td>"
 								+"<td>"+fDev+"</td>";
 							if (fDev !== 'No devuelto') {
-								newRow +=	"<td style='text-align:center'>"
-									+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon attach'></i></button>"
-									+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
-									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-									+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
-								+"</td>"
-								+"</tr>";
+								// newRow +=	"<td style='text-align:center'>"
+								// 	+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon checked calendar'></i></button>"
+								// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+								// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+								// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+								// +"</td>"
+								// +"</tr>";
+
+								newRow +=  "<td style='text-align:center'>"
+												+"<div class='ui icon top left pointing dropdown button'>"
+												  +"<i class='setting icon'></i>"
+												  +"<div class='menu'>"
+												    +"<div class='dev disabled item'><i class='checked calendar icon'></i>Devolver</div>"
+												    +"<div class='mod item'><i class='edit icon'></i>Modificar</div>"
+												    +"<div class='del item'><i class='trash icon'></i>Eliminar</div>"
+												  +"</div>"
+												+"</div>"
+												+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+											+"</td>"
+										  +"</tr>";
 							}
 							else{
-								newRow +=	"<td style='text-align:center'>"
-									+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
-									+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
-									+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-									+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
-								+"</td>"
-								+"</tr>";
+								// newRow +=	"<td style='text-align:center'>"
+								// 	+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon checked calendar'></i></button>"
+								// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+								// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+								// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+								// +"</td>"
+								// +"</tr>";
+								newRow +=  "<td style='text-align:center'>"
+												+"<div class='ui icon top left pointing dropdown button'>"
+												  +"<i class='setting icon'></i>"
+												  +"<div class='menu'>"
+												    +"<div class='dev item'><i class='checked calendar icon'></i>Devolver</div>"
+												    +"<div class='mod item'><i class='edit icon'></i>Modificar</div>"
+												    +"<div class='del item'><i class='trash icon'></i>Eliminar</div>"
+												  +"</div>"
+												+"</div>"
+												+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+											+"</td>"
+										  +"</tr>";
 							};
 					$(newRow).appendTo("#prestamos tbody");
 				}
@@ -1039,12 +1257,20 @@ function loadList(q){
 				else{
 					if(p.id_prestamo==prest[i-1].id_prestamo){
 
-						$("tr[data-value='" + prest[i-1].id_prestamo + "']>td:first").append(" &nbsp;||&nbsp; "+p.descripcion);
+						$("tr[data-value='" + prest[i-1].id_prestamo + "']>td:nth-child(2)").append(" &nbsp;<strong>||</strong>&nbsp; "+p.descripcion);
 					}
 
 					else{
 						var fDev;
-						if(p.fecha_devolucion){fDev=p.fecha_devolucion;}else{fDev="No devuelto"; error_field = 1;}
+						if(p.fecha_devolucion){
+							fechadev = dateToString(p.fecha_devolucion.substring(0,10));
+							horadev = p.fecha_devolucion.substring(11,16);
+							fDev = fechadev+" a las "+horadev;
+						}
+						else{
+							fDev="No devuelto";
+							error_field = 1;
+						}
 
 						if(error_field == 1){
 							var newRow = "<tr class='negative' data-value='"+p.id_prestamo+"'>";
@@ -1056,34 +1282,70 @@ function loadList(q){
 							var newRow = "<tr data-value='"+p.id_prestamo+"'>";
 						}
 
-						newRow += 	"<td>"+p.descripcion+"</td>"
+						newRow += 	"<td><i class='large info circle icon' data-user='"+p.id_usuario+"' data-title='Dado de alta por: "+p.nombre_usuario+"' data-content='"+p.observaciones+"' data-variation='inverted very wide'></i></td>"
+						// newRow += 	"<td><i class='large info circle icon' data-content='"+p.observaciones+" y mas cosas' data-variation='inverted very wide'></i></td>"
+									+"<td>"+p.descripcion+"</td>"
 									+"<td>"+p.nombre+"</td>"
 									+"<td>"+p.lugar+"</td>"
-									+"<td>"+p.fecha_prestamo+"</td>"
+									+"<td>"+fechaprest+" a las "+horaprest+"</td>"
 									+"<td>"+fDev+"</td>";
 								if (fDev !== 'No devuelto') {
-									newRow +=	"<td style='text-align:center'>"
-										+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon attach'></i></button>"
-										+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
-										+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-										+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
-									+"</td>"
-									+"</tr>";
+									// newRow +=	"<td style='text-align:center'>"
+									// 	+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon checked calendar'></i></button>"
+									// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+									// +"</td>"
+									// +"</tr>";
+									newRow +=  "<td style='text-align:center'>"
+												+"<div class='ui icon top left pointing dropdown button'>"
+												  +"<i class='setting icon'></i>"
+												  +"<div class='menu'>"
+												    +"<div class='dev disabled item'><i class='checked calendar icon'></i>Devolver</div>"
+												    +"<div class='mod item'><i class='edit icon'></i>Modificar</div>"
+												    +"<div class='del item'><i class='trash icon'></i>Eliminar</div>"
+												  +"</div>"
+												+"</div>"
+												+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+											+"</td>"
+										  +"</tr>";
 								}
 								else{
-									newRow +=	"<td style='text-align:center'>"
-										+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon attach'></i></button>"
-										+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
-										+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
-										+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
-									+"</td>"
-									+"</tr>";
+									// newRow +=	"<td style='text-align:center'>"
+									// 	+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon checked calendar'></i></button>"
+									// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+									// +"</td>"
+									// +"</tr>";
+									newRow +=  "<td style='text-align:center'>"
+												+"<div class='ui icon top left pointing dropdown button'>"
+												  +"<i class='setting icon'></i>"
+												  +"<div class='menu'>"
+												    +"<div class='dev item'><i class='checked calendar icon'></i>Devolver</div>"
+												    +"<div class='mod item'><i class='edit icon'></i>Modificar</div>"
+												    +"<div class='del item'><i class='trash icon'></i>Eliminar</div>"
+												  +"</div>"
+												+"</div>"
+												+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+											+"</td>"
+										  +"</tr>";
 								};
 
 						$(newRow).appendTo("#prestamos tbody");
 					}
 				}	
 			});
+			$('.info.circle.icon').popup();
+			
+			$('body .ui.dropdown').dropdown({
+				action: 'nothing',
+				action: 'hide'
+			});
+
+			// $('.fluid.dropdown').dropdown();
+			$('#addusuario_segment .ui.dropdown').dropdown();
+
 			$('#loader2').css('display','none');
 			$('#prestamos').css('visibility','visible');
 		}

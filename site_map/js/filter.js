@@ -1,4 +1,5 @@
 var first = 1;
+var reset; 
 
 // FUNCION PARA QUITAR ACENTOS Y Ñ´s
 var normalize = (function() {
@@ -23,7 +24,8 @@ var normalize = (function() {
 })();
 
 $(document).ready(function(){
-	$('.filtros .filtro input').keyup(function(e){
+
+    $('.filtros .filtro input').keyup(function(e){
 		var code = e.keyCode || e.which;
         if (code == '9') return;
         
@@ -45,6 +47,7 @@ $(document).ready(function(){
 
         if (code  == '8'){
             $rows = $allInfo;
+            console.log($allInfo);
         }
         else{
             if(first == 1){
@@ -56,20 +59,35 @@ $(document).ready(function(){
         }
 
 		var $filteredRows = $rows.filter(function(){
-            var value = normalize($(this).find('td').eq(column-1).text().toLowerCase());
+            var value = normalize($(this).find('td').eq(column).text().toLowerCase());
             return value.indexOf(inputContent) === -1;
         });
 
 		$table.find('tbody .no-result').remove();
         
         $('#prestamos tbody').html($rows);
-        console.log($filteredRows);
+        // console.log($filteredRows);
         $filteredRows.remove();
 
         if ($filteredRows.length === $rows.length) {
-            $table.find('tbody').prepend($("<tr class='center'><td colspan='6'>No hay préstamos que cumplan con las características indicadas.</td></tr>"));
+            $table.find('tbody').prepend($("<tr class='center'><td colspan='7'>No hay préstamos que cumplan con las características indicadas.</td></tr>"));
         }
 
+        reset = $allInfo;
+
         first = 0;
+
+        $('body .ui.dropdown').dropdown({
+            action: 'nothing',
+            action: 'hide'
+        });
     });
+
+    $('.filtro input:text').focus(function(){
+        $('.filtro input:text').val('');
+        // console.log(reset);
+        // $('#prestamos tbody').html(reset);
+        $('#prestamos tbody').html(reset);
+    });
+
 });

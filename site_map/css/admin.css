@@ -5,6 +5,10 @@
 	}
 }*/
 
+.ui.button{
+	margin-right: 0;
+}
+
 .ui.visible.left.sidebar~.fixed, .ui.visible.left.sidebar~.pusher{
 	transform: none;
 }
@@ -50,7 +54,7 @@
 	top: 60px;
 	right: 70px;
 }*/
-.admincontainer.pusher > #advadd, #advmod, #advdev, #advdel{
+.admincontainer.pusher > #advadd, #advmod, #advdev, #advdel, #advaddpre, #advaddmat, #advaddper, #advaddlug, #advaddusu{
 	width: 300px;
 	position: fixed;
 	box-shadow: 0px 3px 5px #ccc !important;
@@ -60,12 +64,19 @@
 	right: 70px;
 }
 
-
-#side_prestamos, #side_materiales, #side_personas, #side_lugares{
+#side_prestamos, #side_materiales, #side_personas, #side_lugares, #side_administrar{
 	/*visibility: hidden;*/
 	top: 80px;
 }
 
 #prestamos, #t_materiales, #t_personas, #t_lugares, #t_materiales_hist, #t_personas_hist, #t_lugares_hist{
 	visibility: hidden;
+}
+
+.usuario{
+	float: right;
+	color: #ffffff;
+	font-size: 11pt;
+	margin-top: 8px;
+	margin-right: 30px;
 }

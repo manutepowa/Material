@@ -9,8 +9,11 @@
 
 	$id = $_POST['id-prest'];
 	$date = $_POST['dat-dev'];
+	$time = $_POST['time-dev'];
 
-	$query = "UPDATE prestamo SET fecha_devolucion = '".$date."' WHERE id_prestamo = ".$id;
+	$datetime = $date." ".$time.":00";
+
+	$query = "UPDATE prestamo SET fecha_devolucion = '".$datetime."' WHERE id_prestamo = ".$id;
 echo $query;
 	$conexion->query($query)or die(mysql_error());
 

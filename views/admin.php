@@ -4,7 +4,10 @@
 	<img src="../site_map/images/logo.png" alt="logo">
     <span>Materiales SC</span>
     <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
-    <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
+    <a id="op-modal" <?php echo "data-user='".$_SESSION["id_user"]."'"; ?> class="ui teal button"><i class="add icon"></i>Préstamo</a>
+    <?php 
+    	echo "<span class='usuario'>Usuario: &nbsp;&nbsp;<strong>".$_SESSION["user"]."</strong></span>";
+    ?>
 </div>
 
 <!-- <div class="ui bottom attached segment pushable"> -->
@@ -33,6 +36,18 @@
       <i class="world icon"></i>
       Lugares
     </a>
+    <?php 
+
+    	if($_SESSION["admin"] == "SI"){
+	    	echo "<a id='btn_administrar' class='item'>
+				    <i class='settings icon'></i>
+				    Administrar
+				</a>";
+    	}
+
+    	// echo "<p class='usuario'>Usuario: &nbsp;&nbsp;<strong>".$_SESSION["user"]."</strong></p>";
+
+     ?>
   </div>
   <div class="admincontainer pusher">
 
@@ -65,6 +80,41 @@
 	  <i class="close icon"></i>
 	  <div class="header">
 	    ¡Préstamo eliminado con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advaddpre">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Préstamo añadido con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advaddmat">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Material añadido con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advaddper">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Persona añadida con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advaddlug">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Lugar añadido con éxito!
+	  </div>
+	</div>
+
+	<div class="ui positive message" id="advaddusu">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    ¡Usuario añadido con éxito!
 	  </div>
 	</div>
 
@@ -195,7 +245,7 @@
 
 		      <div class="ui relaxed divided list">
 
-		  		  <div class="item">
+		  		<div class="item">
 
 		          <table class="addper">
 		            <tr>
@@ -219,9 +269,9 @@
 		              <td></td>
 		            </tr>
 		          </table>
-		  		  </div>
+		  		</div>
 
-		  		  <div class="item">
+		  		<div class="item">
 		          <table class="addlug">
 		            <tr>
 		              <td>
@@ -244,9 +294,9 @@
 		              <td></td>
 		            </tr>
 		          </table>
-		  		  </div>
+		  		</div>
 
-		  		  <div class="item">
+		  		  <!-- <div class="item">
 		          <table class="adddate">
 		            <tr>
 		              <td>
@@ -269,7 +319,37 @@
 		              <td></td>
 		            </tr>
 		          </table>
-		  		  </div>
+		  		  </div> -->
+
+		  		<div class="item">
+		          <table class="adddate">
+		            <tr>
+		              <td>
+		              	<div class="ui input">
+			                <input type="date" id="date">
+			                <input type="time" id="time">
+			            </div>
+		              </td>
+		              <td>
+		                <i class="large calendar big aligned icon icpres"></i>
+		              </td>
+		              <td>
+		                <div class="content">
+		                  <div class="description">No hay fecha añadida</div>
+		                </div>
+		              </td>
+		              <td></td>
+		            </tr>
+		          </table>
+		  		</div>
+				
+				<div class="item">
+			  		<div class="ui form">
+				        <div class="field">
+						    <textarea id="obser" placeholder="Observaciones..." rows="2"></textarea>
+						</div>
+					</div>
+				</div>
 
 		        <div class="item">
 		          <table class="addlistadomat">
@@ -397,13 +477,10 @@
 		          <table class="moddate">
 		            <tr>
 		              <td>
-		                <div class="ui search medium" id="mdat">
-		                  <div class="ui left icon input">
-		                    <input type="date" placeholder="Fecha" id="mdate">
-		                    <i class="calendar icon"></i>
-		                  </div>
-		                  <div class="results"></div>
-		                </div>
+		                <div class="ui input">
+			                <input type="date" id="mdate">
+			                <input type="time" id="mtime">
+			            </div>
 		              </td>
 		              <td>
 		                <i class="large calendar big aligned icon icpres"></i>
@@ -483,20 +560,21 @@
 		    Devolución del préstamo
 		  </div>
 		  <div class="content row">
-		      <p>Indique si quiere usar la fecha actual o una fecha diferente como fecha de devolución del préstamo.</p>
-		    <div class="columna">
-		      <button class="ui button teal" id="actual-date">Devolver hoy</button>
+		      <p>Indique si quiere usar la fecha y hora actual, o una fecha y hora diferente como fecha de devolución.</p>
+		    <div class="columna1">
+		      <button class="ui button teal" id="actual-date">Devolver ahora</button>
 		    </div>
-		    <div class="columna">
+		    <div class="columna2">
 		      <div class="ui action input">
 		        <input type="date" name="dat-dev">
-		        <button class="ui icon button" id="date-select">Devolver este día</button>
+		        <input type="time" name="time-dev">
+		        <button class="ui icon button" id="date-select">Devolver este día y hora</button>
 		      </div>
 		    </div> 
 		    <div id="errdevpres" class="ui negative message">
 		      <i class="close icon"></i>
 		      <div class="header">
-		        Debe indicar la fecha de devolución.
+		        Debe indicar la fecha y hora de devolución.
 		      </div>
 		    </div>
 		  </div>
@@ -557,11 +635,12 @@
 		  <table id="prestamos" class="ui celled teal table">
 		    <thead>
 		      <tr>
+		        <th></th>
 		        <th>MATERIALES</th>
-		        <th>PERSONA</th>
+		        <th>RESPONSABLE</th>
 		        <th>LUGAR</th>
-		        <th>F. PRÉSTAMO</th>
-		        <th>F. DEVOLUCIÓN</th>
+		        <th>FECHA PRÉSTAMO</th>
+		        <th>FECHA DEVOLUCIÓN</th>
 		        <th></th>
 		      </tr>
 		    </thead>
@@ -601,10 +680,10 @@
 			<table id="t_materiales_hist" class="ui celled teal table">
 				<thead>
 					<tr>
-						<th class="eight wide">PERSONA</th>
+						<th class="six wide">PERSONA</th>
 						<th class="four wide">LUGAR</th>
-						<th class="two wide">F. PRÉSTAMO</th>
-						<th class="two wide">F. DEVOLUCIÓN</th>
+						<th class="three wide">F. PRÉSTAMO</th>
+						<th class="three wide">F. DEVOLUCIÓN</th>
 					</tr>
 				</thead>
 				<tbody></tbody>
@@ -633,10 +712,10 @@
       		<table id="t_personas_hist" class="ui celled teal table">
 				<thead>
 					<tr>
-						<th class="eight wide">MATERIALES</th>
+						<th class="six wide">MATERIALES</th>
 						<th class="four wide">LUGAR</th>
-						<th class="two wide">F. PRÉSTAMO</th>
-						<th class="two wide">F. DEVOLUCIÓN</th>
+						<th class="three wide">F. PRÉSTAMO</th>
+						<th class="three wide">F. DEVOLUCIÓN</th>
 					</tr>
 				</thead>
 				<tbody></tbody>
@@ -665,14 +744,360 @@
       		<table id="t_lugares_hist" class="ui celled teal table">
 				<thead>
 					<tr>
-						<th class="eight wide">MATERIALES</th>
+						<th class="six wide">MATERIALES</th>
 						<th class="four wide">PERSONA</th>
-						<th class="two wide">F. PRÉSTAMO</th>
-						<th class="two wide">F. DEVOLUCIÓN</th>
+						<th class="three wide">F. PRÉSTAMO</th>
+						<th class="three wide">F. DEVOLUCIÓN</th>
 					</tr>
 				</thead>
 				<tbody></tbody>
 			</table>
+      	</div>
+    </div>
+    <div id="side_administrar" class="ui basic segment">
+    	<div id="administrar_container" class="ui container">
+      		<h3 class="ui header">Administrar</h3>
+      		<p>Apartado para la administración de préstamos, materiales, personas, lugares y usuarios.</p>
+			<div class="ui secondary pointing menu">
+				<a id="btn_admin_pres" class="item">Préstamos</a>
+				<a id="btn_admin_mat" class="item">Materiales</a>
+				<a id="btn_admin_per" class="item">Personas</a>
+				<a id="btn_admin_lug" class="item">Lugares</a>
+				<a id="btn_admin_usu" class="item">Usuarios</a>
+				<div class="right menu">
+					<!-- <a class="ui item"><i class="add icon teal"></i></a> -->
+					<div class="ui icon top right pointing dropdown">
+					  <i class="add icon teal" title="Añadir"></i><span>Nuevo</span>
+					  <div class="menu">
+					    <div id="btn_admin_addpres" class="item"><i class="block layout icon"></i>Préstamo</div>
+					    <div id="btn_admin_addmat" class="item"><i class="archive icon"></i>Material</div>
+					    <div id="btn_admin_addper" class="item"><i class="user icon"></i>Persona</div>
+					    <div id="btn_admin_addlug" class="item"><i class="world icon"></i>Lugar</div>
+					    <div id="btn_admin_addusu" class="item"><i class="users icon"></i>Usuario</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="ui segment">
+				<div id="prestamos_segment">
+					<!-- <div class="ui styled accordion">
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    What is a dog?
+					  </div>
+					  <div class="content">
+					    <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+					  </div>
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    What kinds of dogs are there?
+					  </div>
+					  <div class="content">
+					    <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+					  </div>
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    How do you acquire a dog?
+					  </div>
+					  <div class="content">
+					    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+					    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+					  </div>
+					</div> -->
+					<!-- <div class="ui accordion"> -->
+						<table class="ui teal table accordion">
+							<thead>
+								<tr>
+									<th>Food</th>
+									<th>Calories</th>
+									<th>Protein</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="title">
+									<td>Apples</td>
+									<td>200</td>
+									<td>0g</td>
+								</tr>
+								<tr class="content">
+									<td>Orange</td>
+									<td>310</td>
+									<td>0g</td>
+								</tr>
+								<tr class="title">
+									<td>Apples</td>
+									<td>200</td>
+									<td>0g</td>
+								</tr>
+								<tr class="content">
+									<td>Orange</td>
+									<td>310</td>
+									<td>0g</td>
+								</tr>
+								<tr class="title">
+									<td>Apples</td>
+									<td>200</td>
+									<td>0g</td>
+								</tr>
+								<tr class="content">
+									<td>Orange</td>
+									<td>310</td>
+									<td>0g</td>
+								</tr>
+							</tbody>
+						</table>
+					<!-- </div> -->
+
+					<!-- <div class="ui styled accordion">
+					
+						<table>
+							<tr>
+								<th>MATERIALES</th>
+								<th>RESPONSABLE</th>
+								<th>LUGAR</th>
+								<th>FECHA PRÉSTAMO</th>
+								<th>FECHA DEVOLUCIÓN</th>
+							</tr>
+							<tr class="title">
+								<td>Marerial 1</td>
+								<td>Responsable 1</td>
+								<td>Lugar 1</td>
+								<td>Fecha préstamo 1</td>
+								<td>Fecha devolución 1</td>
+							</tr>
+							<tr class="content">
+								<td colspan="5"><p>Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila </p></td>
+							</tr>
+							<tr class="title">
+								<td>Marerial 2</td>
+								<td>Responsable 2</td>
+								<td>Lugar 2</td>
+								<td>Fecha préstamo 2</td>
+								<td>Fecha devolución 2</td>
+							</tr>
+							<tr class="content">
+								<td colspan="5"><p>Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila </p></td>
+							</tr>
+						</table>
+
+					</div> -->
+				</div>
+				<div id="materiales_segment">
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+					<p>Apartado para la administración de materiales.</p>
+				</div>
+				<div id="personas_segment">
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+				</div>
+				<div id="lugares_segment">
+					<p>Apartado para la administración de lugares.</p>
+					<p>Apartado para la administración de lugares.</p>
+				</div>
+				<div id="usuarios_segment">
+					<p>Apartado para la administración de usuarios.</p>
+					<p>Apartado para la administración de usuarios.</p>
+					<p>Apartado para la administración de usuarios.</p>
+					<p>Apartado para la administración de usuarios.</p>
+				</div>
+				<div id="addprestamo_segment">
+					<div class="ui equal width form">
+						<div class="center titform">Añadir un nuevo préstamo</div>
+						<div class="fields">
+								<div class="five wide field">
+								<label>Persona</label>
+								<input type="text" placeholder="Nombre completo . . .">
+							</div>
+								<div class="five wide field">
+								<label>Lugar</label>
+								<input type="text" placeholder="Lugar donde se utilizará el material . . .">
+							</div>
+							<div class="four wide field">
+								<label>Fecha</label>
+								<div class="ui left icon input">
+									<input type="date">
+									<i class="calendar icon"></i>
+								</div>
+							</div>
+							<div class="two wide field">
+								<label>Hora</label>
+								<div class="ui left icon input">
+									<input type="time">
+									<i class="time icon"></i>
+								</div>
+							</div>
+						</div>
+						<div class="fields">
+							<div class="field">
+								<label>Observaciones</label>
+								<textarea rows="3" placeholder="Campo no obligatorio. Se podrá anotar el programa o la tarea a la que se destinará el material prestado . . ."></textarea>
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear préstamo</div>
+						</div>
+					</div>
+				</div>
+				<div id="addmaterial_segment">
+					<div class="ui form">
+						<div class="center titform">Añadir un nuevo material</div>
+						<div class="center inline fields">
+							<div class="four wide field"></div>
+							<div class="eight wide field">
+								<label>Material</label>
+								<input type="text" placeholder="Ej: Trípode 1 . . .">
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear material</div>
+						</div>
+					</div>
+				</div>
+				<div id="addpersona_segment">
+					<div class="ui form">
+						<div class="center titform">Añadir una nueva persona</div>
+						<div class="center inline fields">
+							<div class="four wide field"></div>
+							<div class="eight wide field">
+								<label>Persona</label>
+								<input type="text" placeholder="Ej: Francisco Martínez . . .">
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear persona</div>
+						</div>
+					</div>
+				</div>
+				<div id="addlugar_segment">
+					<!-- <div class="ui equal width form">
+						<div class="fields">
+							<div class="field">
+								<label>Username</label>
+								<input type="text" placeholder="Username">
+							</div>
+							<div class="field">
+								<label>Password</label>
+								<input type="password">
+							</div>
+						</div>
+						<div class="fields">
+								<div class="field">
+								<label>First name</label>
+								<input type="text" placeholder="First Name">
+							</div>
+								<div class="field">
+								<label>Middle name</label>
+								<input type="text" placeholder="Middle Name">
+							</div>
+							<div class="field">
+								<label>Last name</label>
+								<input type="text" placeholder="Last Name">
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear lugar</div>
+						</div>
+					</div> -->
+					<div class="ui form">
+						<div class="center titform">Añadir un nuevo lugar</div>
+						<div class="center inline fields">
+							<div class="four wide field"></div>
+							<div class="eight wide field">
+								<label>Lugar</label>
+								<input type="text" placeholder="Ej: Ed. Altet - Elche . . .">
+							</div>
+							<!-- <div class="field">
+								<label>Password</label>
+								<input type="password">
+							</div> -->
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear lugar</div>
+						</div>
+					</div>
+
+				</div>
+				<div id="addusuario_segment">
+					<form id="addusuario" class="ui form" action="">
+						<div class="ui equal width form">
+							<div class="center titform">Añadir un nuevo usuario</div>
+							<div class="fields">
+									<div class="field">
+									<label>Usuario</label>
+									<input type="text" name="usuario" placeholder="Nombre de usuario . . .">
+								</div>
+								<div class="field">
+									<label>Privilegios del usuario</label>
+									<select class="ui dropdown" name="privilegios">
+										<option value="">Seleccionar privilegios</option>
+										<option value="0">Editor</option>
+										<option value="1">Administrador</option>
+									</select>
+									<!-- <div class="ui fluid selection dropdown">
+										<i class="dropdown icon"></i>
+										<span class="default text">Seleccionar privilegios</span>
+										<div class="menu">
+											<div class="item">
+												<i class="write right floated icon"></i>
+												Editor
+											</div>
+											<div class="item">
+												<i class="protect right floated icon"></i>
+												Administrador
+											</div>
+										</div>
+									</div> -->
+								</div>
+							</div>
+							<div class="fields">
+								<div class="field">
+									<label>Contraseña</label>
+									<input type="password" name="contrasena" placeholder="Escribir contraseña . . .">
+								</div>
+								<div class="field">
+									<label>Repetir contraseña</label>
+									<input type="password" name="repcontrasena" placeholder="Repetir contraseña . . .">
+								</div>
+							</div>
+
+							<div id="erraddusu" class="ui negative message">
+								<i class="close icon"></i>
+								<div class="header">
+									Rellene todos los campos, ninguno puede quedar vacío.
+								</div>
+							</div>
+
+							<div id="erraddusupass" class="ui negative message">
+								<i class="close icon"></i>
+								<div class="header">
+									Las contraseñas no coinciden, revíselas para continuar.
+								</div>
+							</div>
+
+							<div class="center">
+								<div class="ui submit button">Crear usuario</div>
+							</div>
+							<!-- <div class="ui success message">
+								<div class="header">Alta completada</div>
+								<p>El usuario ha sido creado con éxtito.</p>
+							</div> -->
+							<!-- <div class="ui error message"></div> -->
+						</div>
+					</form>
+				</div>
+			</div>
       	</div>
     </div>
   </div>

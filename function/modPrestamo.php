@@ -11,6 +11,11 @@
 	$date = $_POST['dat'];
 	$per = $_POST['per'];
 	$lug = $_POST['lug'];
+	$time = $_POST['time'];
+	$user = $_POST['user'];
+	$obser = $_POST['obser'];
+
+	$datetime = $date." ".$time.":00";
 
 	$data_POST = array(0 => $per, 1 => $lug);
 	$data_table = array(0 => 'persona', 1 => 'lugar');
@@ -35,7 +40,7 @@
 		array_push($data_id, $info[0]);
 	}
 
-	$query = "UPDATE prestamo SET fecha_prestamo = '".$date."', id_lugar = ".$data_id[1].", id_persona = ".$data_id[0]." WHERE id_prestamo = ".$id;
+	$query = "UPDATE prestamo SET fecha_prestamo = '".$datetime."', id_lugar = ".$data_id[1].", id_persona = ".$data_id[0].", id_usuario = ".$user.", observaciones = '".$obser."' WHERE id_prestamo = ".$id;
 
 	$conexion->query($query)or die(mysql_error());
 
