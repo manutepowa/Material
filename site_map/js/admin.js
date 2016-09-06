@@ -7,19 +7,24 @@ $(document).ready(function(){
 
 	/* INICIO ADMIN USER */
 
+	$('#side_administrar').hide();
 	$('#side_prestamos').hide();
 	$('#side_materiales').hide();
 	$('#side_personas').hide();
 	$('#side_lugares').hide();
-	$('#side_administrar').hide();
 
 	$('#materiales_container_hist').hide();
 	$('#personas_container_hist').hide();
 	$('#lugares_container_hist').hide();
 
-	$('#side_prestamos').show();
+	$('#side_administrar').show();
 	
-	$('#btn_prestamos').addClass("active");
+	$('#btn_administrar').addClass("active");
+
+	$(document).on('click', '#administrar_container .ui.icon.top.right.pointing.dropdown', function(){
+		/* necesario por un error no detectado (añade la clase activa tras añadir un prestamo desde Admin prestamos)*/
+		$('#btn_admin_addpres').removeClass("active selected");
+	});
 
 	$(document).on('click', '#btn_prestamos', function(){
 		$('#side_prestamos').show();
@@ -151,8 +156,8 @@ $(document).ready(function(){
 	$('#addlugar_segment').hide();
 	$('#addusuario_segment').hide();
 
-	$('#prestamos_segment').show();
-	$('#btn_admin_pres').addClass("active");
+	$('#addprestamo_segment').show();
+	$('#erraddprestamo').fadeOut(0);$('#btn_admin_pres').addClass("active");
 
 	$(document).on('click', '#btn_admin_pres', function(){
 		$('#prestamos_segment').show();
@@ -235,6 +240,9 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_admin_addpres', function(){
+		$('#addprestamo').submit(function() {return false;});
+		$('#erraddprestamo').fadeOut(0);
+
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
 		$('#personas_segment').hide();
@@ -252,6 +260,9 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_admin_addmat', function(){
+		$('#addmaterial').submit(function() {return false;});
+		$('#erraddmat').fadeOut(0);
+
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
 		$('#personas_segment').hide();
@@ -269,6 +280,9 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_admin_addper', function(){
+		$('#addpersona').submit(function() {return false;});
+		$('#erraddper').fadeOut(0);
+
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
 		$('#personas_segment').hide();
@@ -286,6 +300,9 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_admin_addlug', function(){
+		$('#addlugar').submit(function() {return false;});
+		$('#erraddlug').fadeOut(0);
+
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
 		$('#personas_segment').hide();
@@ -303,6 +320,11 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#btn_admin_addusu', function(){
+		$('#addusuario').submit(function() {return false;});
+		$('#erraddusu').fadeOut(0);
+		$('#erraddusupass').fadeOut(0);
+		$('#erraddusuname').fadeOut(0);
+
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
 		$('#personas_segment').hide();
@@ -402,6 +424,11 @@ function Loader2(){
 						+'</div>');
 };
 
+function Loader3(){
+	$('.section').css('display','table');
+	$('.section').css('visibility','visible');
+};
+
 
 function loadMateriales(){
 	var urlmateriales = '../function/loadMateriales.php';
@@ -411,7 +438,7 @@ function loadMateriales(){
 
 	$.ajax({
 		url: urlmateriales,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 		var mat = $.parseJSON(event);
@@ -456,7 +483,9 @@ function loadMateriales(){
 					$(newRow).appendTo("#t_materiales tbody");
 				}		
 			});
-			$('#loader2').css('display','none');
+			// $('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#t_materiales').css('visibility','visible');
 		}
 	});
@@ -471,7 +500,7 @@ function loadMaterialesHistorial(mat, id){
 
 	$.ajax({
 		url: urlmaterial,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 		var mate = $.parseJSON(event);
@@ -504,7 +533,9 @@ function loadMaterialesHistorial(mat, id){
 						+"</tr>";
 				$(newRow).appendTo("#t_materiales_hist tbody");	
 			});
-			$('#loader2').css('display','none');
+			// $('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#t_materiales_hist').css('visibility','visible');
 		}
 	});
@@ -519,7 +550,7 @@ function loadPersonas(){
 
 	$.ajax({
 		url: urlpersonas,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 
@@ -566,7 +597,9 @@ function loadPersonas(){
 					$(newRow).appendTo("#t_personas tbody");
 				}		
 			});
-			$('#loader2').css('display','none');
+			// $('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#t_personas').css('visibility','visible');
 		}
 	});		
@@ -581,7 +614,7 @@ function loadPersonasHistorial(per, id){
 
 	$.ajax({
 		url: urlpersona,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 
@@ -624,7 +657,9 @@ function loadPersonasHistorial(per, id){
 					$(newRow).appendTo("#t_personas_hist tbody");
 				}
 			});
-			$('#loader2').css('display','none');
+			// $('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#t_personas_hist').css('visibility','visible');
 		}
 	});	
@@ -639,7 +674,7 @@ function loadLugares(){
 
 	$.ajax({
 		url: urllugares,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 
@@ -687,7 +722,9 @@ function loadLugares(){
 					$(newRow).appendTo("#t_lugares tbody");
 				}	
 			});
-			$('#loader2').css('display','none');
+			// $('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#t_lugares').css('visibility','visible');
 		}
 	});
@@ -702,7 +739,7 @@ function loadLugaresHistorial(lug, id){
 
 	$.ajax({
 		url: urllugar,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 
@@ -743,7 +780,9 @@ function loadLugaresHistorial(lug, id){
 					$(newRow).appendTo("#t_lugares_hist tbody");
 				}		
 			});
-			$('#loader2').css('display','none');
+			// $('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#t_lugares_hist').css('visibility','visible');
 		}
 	});	

@@ -1,18 +1,11 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  font-size: 40px;
-  color: #000;
-  text-align: center;
-}
-
 .section {
   background-color:rgba(255,255,255,0.8);
-  /*background: green;*/
-  display: table;
+  visibility: hidden;
+  display: none;
+  position: absolute;
   width: 87%;
   height: 100%;
+  z-index: 50;
 }
 
 .centro{
@@ -20,13 +13,13 @@ body {
   display: table-cell;
   position: relative;
   color: #000;
+  text-align: center;
 }
 
 .centro img{
-  /*display: block;*/
-  text-align: center;
-  vertical-align: middle;
-  display: table-cell;
+  display: block;
+  margin: 10px auto;
+  width: 80px;
 }
 
 .loader {

@@ -254,7 +254,7 @@ $(document).ready(function(){
 	    $(this).closest('.ui.positive.message').hide();
 	});
 
-	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon, #erraddusu > .close.icon, #erraddusupass > .close.icon').on('click', function() {
+	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon, #erraddprestamo > .close.icon, #erraddmat > .close.icon, #erraddper > .close.icon, #erraddlug > .close.icon, #erraddusu > .close.icon, #erraddusupass > .close.icon, #erraddusuname > .close.icon').on('click', function() {
 	    $(this).closest('.ui.negative.message').hide();
 	});
 
@@ -268,15 +268,9 @@ $(document).ready(function(){
 		}
 	});
 
-	function changetoggle(){
-		if($('.toggle').checkbox('is checked')){
-			loadList(1);
-		}
-		else{
-			loadList(0);
-		}
-	}
-
+	SelectMateriales();
+	SelectPersonas();
+	SelectLugares();
 	changetoggle();
 
 	$(document).on('click', '.minus.circle.icon', function(event) {
@@ -427,9 +421,7 @@ $(document).ready(function(){
 		desc.html(value);
 	});
 
-	$('.ui.accordion')
-  .accordion('refresh')
-;
+	$('.ui.accordion').accordion();
 
 // 	function (event) {
 //     if (event.which == 13 || event.keyCode == 13) {
@@ -439,7 +431,7 @@ $(document).ready(function(){
 //     return true;
 // };
 
-	$(document).on('change', 'input[type=date]', function(){
+	$(document).on('change', '#modal-add-prest input[type=date], #modal-mod-prest input[type=date]', function(){
 		var desc = $(this).parents('tr').find('.description');
 		var time = $(this).siblings('input[type=time]').val();
 		if(time == ""){
@@ -450,7 +442,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on('change', 'input[type=time]', function(){
+	$(document).on('change', '#modal-add-prest input[type=time], #modal-mod-prest input[type=time]', function(){
 		var desc = $(this).parents('tr').find('.description');
 		var date = $(this).siblings('input[type=date]').val();
 		if($(this).val() == ""){
@@ -570,7 +562,7 @@ $(document).ready(function(){
 		  })
 		;
 	});
-
+/*
 	$(document).on('click', '#op-modal', function(event) {
 
 		$('#erraddpres').fadeOut(0);
@@ -665,7 +657,7 @@ $(document).ready(function(){
 			})
 			.modal('show')
 		;
-	});
+	});*/
 
 	$(document).on('click', '.mod', function(event) {
 		event.preventDefault();
@@ -1003,7 +995,7 @@ $(document).ready(function(){
 			url: '../function/addLugar.php',
 			type: 'POST',
 			data: {'lugar': valor},
-			beforeSend: Loader2,
+			// beforeSend: Loader3,
 			success: function(event){
 				if(event != '1'){alert("¡Error al añadir el nuevo lugar!"); return false;}
 				
@@ -1013,26 +1005,239 @@ $(document).ready(function(){
 		});
 	});
 
-	$('#addusuario_segment .success.message').hide();
+	$('#addprestamo').form({ 
+		onSuccess: function() {
+			
+			if (event.keyCode == 13 || event.which == 13) {
+		        return false;
+		    }
 
-	$('#addusuario').submit(function() {
+			$('#erraddprestamo').fadeOut(0);
 
-		// $('#addusuario_segment .success.message').show();
+			var materiales = $('select[name="materiales"]').val();
 
-		return false;
+			var usuario = $('#addprestamo').find('.ui.submit.button').data('user');
+			var persona = $('#addprestamo').find('select[name="persona"]').val();
+			var lugar = $('#addprestamo').find('select[name="lugar"]').val();
+			var date = $('#addprestamo').find('input[name="date"]').val();
+			var time = $('#addprestamo').find('input[name="time"]').val();
+			var observaciones = $('#addprestamo').find('textarea[name="observaciones"]').val();
+
+			console.log("usuario: "+usuario+", persona: "+persona+", lugar: "+lugar+", fecha: "+date+", hora: "+time+", observaciones: "+observaciones+", materiales: "+materiales);
+
+		    if(persona == "" || lugar == "" || date == "" || time == "" || materiales == null){
+				$('#erraddprestamo').fadeIn(0);
+				return false;
+			}
+
+			else{
+				$.ajax({
+					url: '../function/addPrestamo.php',
+					type: 'POST',
+					data: {'per': persona, 'lug': lugar, 'dat': date, 'time': time, 'user': usuario, 'obser': observaciones, 'mat': materiales},
+					beforeSend: Loader3,
+					success: function(event){
+						
+						if(event == '1'){
+							
+							$('#advaddpre').css('display','block');
+							$('#advaddpre').css('visibility','visible');
+							$('#advaddpre').delay(5000).queue(function (next){ 
+								$(this).css('visibility', 'hidden'); 
+								next();
+							});
+
+							$('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text').addClass('default');
+							$('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text.default').html('Nombre completo . . .');
+							$('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
+
+							$('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text').addClass('default');
+							$('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text.default').html('Lugar donde se utilizará el material . . .');
+							$('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
+
+							$('#addprestamo').find('input[name="lugar"]').val('');
+							$('#addprestamo').find('input[name="date"]').val('');
+							$('#addprestamo').find('input[name="time"]').val('');
+							$('#addprestamo').find('textarea[name="observaciones"]').val('');
+
+							$("#addprestamo .ui.multiple.selection.dropdown").dropdown('clear');
+
+							$('#addprestamo_segment').hide();
+							$('#prestamos_segment').show();
+
+							$('.section').css('visibility','hidden');
+							$('.section').css('display','none');
+						}
+						else{
+							console.log(event);
+							console.log("ERROR AL AÑADIR UN NUEVO PRESTAMO");
+						}
+					}
+				});
+			}
+		}
 	});
 
-	$('#erraddusu').fadeOut(0);
-	$('#erraddusupass').fadeOut(0);
+	$('#addmaterial').form({ 
+		onSuccess: function() {
+
+			if (event.keyCode == 13 || event.which == 13) {
+		        return false;
+		    }
+
+			$('#erraddmat').fadeOut(0);
+
+			var material = $('#addmaterial').find('input[name="material"]').val();
+
+		    if(material == ""){
+				$('#erraddmat').fadeIn(0);
+				return false;
+			}
+
+			else{
+				$.ajax({
+					url: '../function/addMaterial.php',
+					type: 'POST',
+					data: {'descripcion': material},
+					beforeSend: Loader3,
+					success: function(event){
+						
+						if(event == '1'){
+							
+							$('#advaddmat').css('display','block');
+							$('#advaddmat').css('visibility','visible');
+							$('#advaddmat').delay(5000).queue(function (next){ 
+								$(this).css('visibility', 'hidden'); 
+								next();
+							});
+
+							$('#addmaterial').find('input[name="material"]').val('');
+
+							$('#addmaterial_segment').hide();
+							$('#materiales_segment').show();
+
+							$('.section').css('visibility','hidden');
+							$('.section').css('display','none');
+						}
+						else{
+							console.log("ERROR AL AÑADIR UN NUEVO MATERIAL");
+						}
+					}
+				});
+			}
+		}
+	});
+
+	$('#addpersona').form({ 
+		onSuccess: function() {
+
+			if (event.keyCode == 13 || event.which == 13) {
+		        return false;
+		    }
+
+			$('#erraddper').fadeOut(0);
+
+			var persona = $('#addpersona').find('input[name="persona"]').val();
+
+		    if(persona == ""){
+				$('#erraddper').fadeIn(0);
+				return false;
+			}
+
+			else{
+				$.ajax({
+					url: '../function/addPerson.php',
+					type: 'POST',
+					data: {'nombre': persona},
+					beforeSend: Loader3,
+					success: function(event){
+						
+						if(event == '1'){
+							
+							$('#advaddper').css('display','block');
+							$('#advaddper').css('visibility','visible');
+							$('#advaddper').delay(5000).queue(function (next){ 
+								$(this).css('visibility', 'hidden'); 
+								next();
+							});
+
+							$('#addpersona').find('input[name="persona"]').val('');
+
+							$('#addpersona_segment').hide();
+							$('#personas_segment').show();
+
+							$('.section').css('visibility','hidden');
+							$('.section').css('display','none');
+						}
+						else{
+							console.log("ERROR AL AÑADIR UNA NUEVA PERSONA");
+						}
+					}
+				});
+			}
+		}
+	});
+
+	$('#addlugar').form({ 
+		onSuccess: function() {
+
+			if (event.keyCode == 13 || event.which == 13) {
+		        return false;
+		    }
+
+			$('#erraddlug').fadeOut(0);
+
+			var lugar = $('#addlugar').find('input[name="lugar"]').val();
+
+		    if(lugar == ""){
+				$('#erraddlug').fadeIn(0);
+				return false;
+			}
+
+			else{
+				$.ajax({
+					url: '../function/addLugar.php',
+					type: 'POST',
+					data: {'lugar': lugar},
+					beforeSend: Loader3,
+					success: function(event){
+						
+						if(event == '1'){
+							
+							$('#advaddlug').css('display','block');
+							$('#advaddlug').css('visibility','visible');
+							$('#advaddlug').delay(5000).queue(function (next){ 
+								$(this).css('visibility', 'hidden'); 
+								next();
+							});
+
+							$('#addlugar').find('input[name="lugar"]').val('');
+
+							$('#addlugar_segment').hide();
+							$('#lugares_segment').show();
+
+							$('.section').css('visibility','hidden');
+							$('.section').css('display','none');
+						}
+						else{
+							console.log("ERROR AL AÑADIR UN NUEVO LUGAR");
+						}
+					}
+				});
+			}
+		}
+	});
 
 	$('#addusuario').form({ 
 		onSuccess: function() {
 
+			if (event.keyCode == 13 || event.which == 13) {
+		        return false;
+		    }
+
 			$('#erraddusu').fadeOut(0);
 			$('#erraddusupass').fadeOut(0);
 
-			// console.log("onSuccess");
-			
 			var usuario = $('#addusuario').find('input[name="usuario"]').val();
 			var contrasena = $('#addusuario').find('input[name="contrasena"]').val();
 			var repcontrasena = $('#addusuario').find('input[name="repcontrasena"]').val();
@@ -1040,87 +1245,90 @@ $(document).ready(function(){
 
 		    if(usuario == "" || contrasena == "" || repcontrasena == "" || privilegios == ""){
 				$('#erraddusu').fadeIn(0);
-				console.log("onSuccess if");
 				return false;
 			}
 
 			else if(repcontrasena != contrasena){
 				$('#erraddusupass').fadeIn(0);
-				console.log("onSuccess else if");
 				return false;
 			}
 
 			else{
-				
-				console.log("onSuccess else");
+
 				$.ajax({
-					url: '../function/addUsuario.php',
+					url: '../function/checkUser.php',
 					type: 'POST',
-					data: {'usuario': usuario, 'privilegios': privilegios, 'contrasena': contrasena},
-					beforeSend: Loader2,
-					// data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date, 'time': time, 'user': user, 'obser': obser},
+					data: {'usuario': usuario},
+					beforeSend: Loader3,
 					success: function(event){
+
+						console.log("event checkUser: "+event);
 						
-						if(event == '1'){
+						if(event == '0'){
 							
-							$('#advaddusu').css('display','block');
-							$('#advaddusu').css('visibility','visible');
-							$('#advaddusu').delay(5000).queue(function (next){ 
-								$(this).css('visibility', 'hidden'); 
-								next();
+							$.ajax({
+								url: '../function/addUsuario.php',
+								type: 'POST',
+								data: {'usuario': usuario, 'privilegios': privilegios, 'contrasena': contrasena},
+								beforeSend: Loader3,
+								success: function(e){
+						
+									console.log("event addUser: "+e);
+									
+									if(e == '1'){
+										
+										$('#advaddusu').css('display','block');
+										$('#advaddusu').css('visibility','visible');
+										$('#advaddusu').delay(5000).queue(function (next){ 
+											$(this).css('visibility', 'hidden'); 
+											next();
+										});
+
+										$('#addusuario').find('input[name="usuario"]').val('');
+										$('#addusuario').find('input[name="contrasena"]').val('');
+										$('#addusuario').find('input[name="repcontrasena"]').val('');
+
+										$('.ui.dropdown.selection').find('.text').addClass('default');
+										$('.ui.dropdown.selection').find('.text.default').html('Seleccionar privilegios');
+										$('.ui.dropdown.selection').find('.item.active.selected').removeClass('active selected');
+
+										$('#addusuario_segment').hide();
+										$('#usuarios_segment').show();
+
+										$('.section').css('visibility','hidden');
+										$('.section').css('display','none');
+									}
+									else{
+										console.log("ERROR AL AÑADIR UN NUEVO USUARIO");
+									}
+								}
 							});
 
-							$('#addusuario').find('input[name="usuario"]').val('');
-							$('#addusuario').find('input[name="contrasena"]').val('');
-							$('#addusuario').find('input[name="repcontrasena"]').val('');
-
-							$('.ui.dropdown.selection').find('.text').addClass('default');
-							$('.ui.dropdown.selection').find('.text.default').html('Seleccionar privilegios');
-							$('.ui.dropdown.selection').find('.item.active.selected').removeClass('active selected');
-
-							$('#addusuario_segment').hide();
-							$('#usuarios_segment').show();
-
-							$('#loader2').css('display','none');
-							$('#prestamos').css('visibility','visible');
 						}
 						else{
-							console.log("ERROR AL AÑADIR UN NUEVO USUARIO");
-							// $('.modal .message').fadeOut(0);
-							// $('#modal-add-prest').modal('show');
-							// $('#erraddprescrear').fadeIn(0);
+							$('#erraddusuname').fadeIn(0);
+							$('.section').css('visibility','hidden');
+							$('.section').css('display','none');
+							return false;
 						}
 					}
-
 				});
-			}
 
+				
+			}
 		}
-	
 	});
 
-	/*function submitForm() {
-
-		var usuario = $('#addusuario').find('input[name="usuario"]').val();
-		var contrasena = $('#addusuario').find('input[name="contrasena"]').val();
-		var privilegios = $('#addusuario').find('select[name="privilegios"]').val();
-
-		$.ajax({
-			type: 'POST', 
-			url: '../function/addUsuario.php', 
-			data: {'usuario': usuario, 'privilegios': privilegios, 'contrasena': contrasena}, 
-			success: onFormSubmitted 
-		});
-	}
-
-	// Handle post response
-	function onFormSubmitted(response) {
-		// Do something with response ...
-		console.log("Prestamo añadido");
-		$('#addusuario_segment .success.message').show();
-	}*/
-
 });
+
+function changetoggle(){
+	if($('.toggle').checkbox('is checked')){
+		loadList(1);
+	}
+	else{
+		loadList(0);
+	}
+}
 
 function dateToString(date){
 
@@ -1150,6 +1358,72 @@ function stringToDate(string){
 	return date;
 }
 
+function SelectMateriales(){
+
+	var allmateriales = '../function/getMaterial.php?q=all';
+
+	$.ajax({
+		url: allmateriales,
+	})
+	.done(function(event){
+		var mat = $.parseJSON(event);
+		$.each(mat, function(i, m){
+			$.each(m, function(i){
+				$('select[name="materiales"]').append($('<option>', { 
+					// value: m[i].id_material,
+					value: m[i].descripcion,
+					text : m[i].descripcion 
+				}));
+			});
+		});
+		// $('select[name="materiales"]').dropdown();
+	});
+}
+
+function SelectPersonas(){
+
+	var allpersonas = '../function/getPerson.php?q=all';
+
+	$.ajax({
+		url: allpersonas,
+	})
+	.done(function(event){
+		var per = $.parseJSON(event);
+		$.each(per, function(i, p){
+			$.each(p, function(i){
+				$('select[name="persona"]').append($('<option>', { 
+					// value: p[i].id_persona,
+					value: p[i].nombre,
+					text : p[i].nombre 
+				}));
+			});
+		});
+		// $('select[name="persona"]').dropdown();
+	});
+}
+
+function SelectLugares(){
+
+	var alllugares = '../function/getLugar.php?q=all';
+
+	$.ajax({
+		url: alllugares,
+	})
+	.done(function(event){
+		var lug = $.parseJSON(event);
+		$.each(lug, function(i, l){
+			$.each(l, function(i){
+				$('select[name="lugar"]').append($('<option>', { 
+					// value: l[i].id_lugar,
+					value: l[i].lugar,
+					text : l[i].lugar 
+				}));
+			});
+		});
+		// $('select[name="lugar"]').dropdown();
+	});
+}
+
 function loadList(q){
 	var urlprestamo = '../function/getPrestamo.php?q='+q;
 
@@ -1163,7 +1437,7 @@ function loadList(q){
 
 	$.ajax({
 		url: urlprestamo,
-		beforeSend: Loader2
+		beforeSend: Loader3
 	})
 	.done(function(event){
 
@@ -1338,15 +1612,17 @@ function loadList(q){
 			});
 			$('.info.circle.icon').popup();
 			
-			$('body .ui.dropdown').dropdown({
+			$('#prestamos .ui.dropdown, #administrar_container .ui.secondary.pointing.menu .ui.dropdown').dropdown({
 				action: 'nothing',
 				action: 'hide'
 			});
 
-			// $('.fluid.dropdown').dropdown();
 			$('#addusuario_segment .ui.dropdown').dropdown();
+			$('#addprestamo .ui.search.selection.dropdown').dropdown();
+			$('#addprestamo .ui.multiple.selection.dropdown').dropdown();
 
-			$('#loader2').css('display','none');
+			$('.section').css('visibility','hidden');
+			$('.section').css('display','none');
 			$('#prestamos').css('visibility','visible');
 		}
 	});

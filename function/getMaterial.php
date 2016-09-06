@@ -9,7 +9,14 @@
 
 	$search = $_GET['q'];
 
-	$query = "SELECT * FROM material WHERE descripcion LIKE '%".$search."%'";
+	if($search == "all"){
+		$query = "SELECT * FROM material";
+	}
+
+	else{
+		$query = "SELECT * FROM material WHERE descripcion LIKE '%".$search."%'";
+	}
+
 	$row = $conexion->query($query)or die(mysql_error());
 
 	$jsonData = array();

@@ -142,6 +142,10 @@ div.search.medium{float: left; margin-right: 25px;}
 	font-weight: bold;
 }
 
+.ui.multiple.selection.dropdown{
+	width: 100%!important;
+}
+
 #administrar_container .ui.submit.button:hover{
 	background: #00B5AD;
 	color: #ffffff;

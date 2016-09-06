@@ -9,7 +9,14 @@
 
 	$search = $_GET['q'];
 
-	$query = "SELECT * FROM persona WHERE nombre LIKE '%".$search."%'";
+	if($search == "all"){
+		$query = "SELECT * FROM persona";
+	}
+
+	else{
+		$query = "SELECT * FROM persona WHERE nombre LIKE '%".$search."%'";
+	}
+
 	$row = $conexion->query($query)or die(mysql_error());
 
 	$jsonData = array();

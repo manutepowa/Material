@@ -4,7 +4,7 @@
 	<img src="../site_map/images/logo.png" alt="logo">
     <span>Materiales SC</span>
     <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
-    <a id="op-modal" <?php echo "data-user='".$_SESSION["id_user"]."'"; ?> class="ui teal button"><i class="add icon"></i>Préstamo</a>
+    <!-- <a id="op-modal" <?//php echo "data-user='".$_SESSION["id_user"]."'"; ?> class="ui teal button"><i class="add icon"></i>Préstamo</a> -->
     <?php 
     	echo "<span class='usuario'>Usuario: &nbsp;&nbsp;<strong>".$_SESSION["user"]."</strong></span>";
     ?>
@@ -20,6 +20,18 @@
       Inicio
     </a> -->
     <p></p>
+    <a id="btn_administrar" class="item">
+      <!-- <i class="settings icon"></i> -->
+      <i class="add icon"></i>
+		<?php 
+			if($_SESSION["admin"] == "SI"){
+				echo "Administrar";
+			}
+			else{
+				echo "Dar de alta";
+			}
+		?>
+    </a>
     <a id="btn_prestamos" class="item">
       <i class="block layout icon"></i>
       Préstamos
@@ -36,14 +48,15 @@
       <i class="world icon"></i>
       Lugares
     </a>
+
     <?php 
 
-    	if($_SESSION["admin"] == "SI"){
-	    	echo "<a id='btn_administrar' class='item'>
-				    <i class='settings icon'></i>
-				    Administrar
-				</a>";
-    	}
+    // 	if($_SESSION["admin"] == "SI"){
+	   //  	echo "<a id='btn_administrar' class='item'>
+				//     <i class='settings icon'></i>
+				//     Administrar
+				// </a>";
+    // 	}
 
     	// echo "<p class='usuario'>Usuario: &nbsp;&nbsp;<strong>".$_SESSION["user"]."</strong></p>";
 
@@ -52,6 +65,14 @@
   <div class="admincontainer pusher">
 
   <div id="loader"></div>
+
+	<section class="section">
+		<div class="centro"> 
+			<img src="../site_map/images/logoumh.png" alt="Cargando...">
+			<span class="loader loader-simple"></span>
+			<!-- Cargando... -->
+		</div>
+	</section>	
 
   <div id="loader2"></div>
 
@@ -149,6 +170,410 @@
 		  </circle>
 		</svg>
 	</div> -->
+
+	<div id="side_administrar" class="ui basic segment">
+    	<div id="administrar_container" class="ui container">
+      		<h3 class="ui header">
+      			<?php 
+					if($_SESSION["admin"] == "SI"){
+						echo "Administrar";
+					}
+					else{
+						echo "Dar de alta";
+					}
+				?>
+      		</h3>
+      		<?php 
+				if($_SESSION["admin"] == "SI"){
+					echo "<p>Apartado para administrar los préstamos, materiales, personas, lugares y usuarios.</p>";
+				}
+				else{
+					echo "<p>Apartado para dar de alta préstamos, materiales, personas, lugares y usuarios.</p>";
+				}
+			?>
+      		
+			<div class="ui secondary pointing menu">
+				<?php 
+					if($_SESSION["admin"] == "SI"){
+						echo "<a id='btn_admin_pres' class='item'>Préstamos</a>
+							  <a id='btn_admin_mat' class='item'>Materiales</a>
+							  <a id='btn_admin_per' class='item'>Personas</a>
+							  <a id='btn_admin_lug' class='item'>Lugares</a>
+							  <a id='btn_admin_usu' class='item'>Usuarios</a>";
+					}
+				?>
+				<div class="right menu">
+					<!-- <a class="ui item"><i class="add icon teal"></i></a> -->
+					<div class="ui icon top right pointing dropdown">
+					  <i class="add icon teal" title="Añadir"></i><span>Nuevo</span>
+					  <div class="menu">
+					    <div id="btn_admin_addpres" class="item"><i class="block layout icon"></i>Préstamo</div>
+					    <div id="btn_admin_addmat" class="item"><i class="archive icon"></i>Material</div>
+					    <div id="btn_admin_addper" class="item"><i class="user icon"></i>Persona</div>
+					    <div id="btn_admin_addlug" class="item"><i class="world icon"></i>Lugar</div>
+					    <div id="btn_admin_addusu" class="item"><i class="users icon"></i>Usuario</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="ui segment">
+
+				<div id="addprestamo_segment">
+					<form id="addprestamo" class="ui equal width form" action="">
+						<div class="center titform">Añadir un nuevo préstamo</div>
+						<div class="fields">
+								<div class="five wide field">
+								<label>Persona</label>
+								<select class="ui search selection dropdown" name="persona">
+									<option value="">Nombre completo . . .</option>
+								</select>
+							</div>
+								<div class="five wide field">
+								<label>Lugar</label>
+								<select class="ui search selection dropdown" name="lugar">
+									<option value="">Lugar donde se utilizará el material . . .</option>
+								</select>
+							</div>
+							<div class="four wide field">
+								<label>Fecha</label>
+								<div class="ui left icon input">
+									<input type="date" name="date">
+									<i class="calendar icon"></i>
+								</div>
+							</div>
+							<div class="two wide field">
+								<label>Hora</label>
+								<div class="ui left icon input">
+									<input type="time" name="time">
+									<i class="time icon"></i>
+								</div>
+							</div>
+						</div>
+						<div class="fields">
+							<div class="field">
+								<label>Observaciones</label>
+								<textarea rows="3" name="observaciones" placeholder="Campo no obligatorio. Se podrá anotar el programa o la tarea a la que se destinará el material prestado . . ."></textarea>
+							</div>
+						</div>
+						<div class="center inline fields">
+							<div class="three wide field"></div>
+							<div class="eight wide field center">
+								<label>Materiales</label>
+								<select class="ui multiple selection dropdown" name="materiales" multiple="">
+									<option value="">Seleccionar materiales . . .</option>
+								</select>
+							</div>
+							<div class="four wide field"></div>
+						</div>
+						<div id="erraddprestamo" class="ui negative message">
+							<i class="close icon"></i>
+							<div class="header">
+								Rellene todos los campos, ninguno puede quedar vacío salvo las observaciones.
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button" <?php echo "data-user='".$_SESSION["id_user"]."'"; ?>>Crear préstamo</div>
+						</div>
+					</form>
+				</div>
+
+				<div id="prestamos_segment">
+					<!-- <div class="ui styled accordion">
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    What is a dog?
+					  </div>
+					  <div class="content">
+					    <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+					  </div>
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    What kinds of dogs are there?
+					  </div>
+					  <div class="content">
+					    <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+					  </div>
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    How do you acquire a dog?
+					  </div>
+					  <div class="content">
+					    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+					    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+					  </div>
+					</div> -->
+					<!-- <div class="ui accordion"> -->
+						<table class="ui teal table accordion">
+							<thead>
+								<tr>
+									<th>Food</th>
+									<th>Calories</th>
+									<th>Protein</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="title">
+									<td>Apples</td>
+									<td>200</td>
+									<td>0g</td>
+								</tr>
+								<tr class="content">
+									<td>Orange</td>
+									<td>310</td>
+									<td>0g</td>
+								</tr>
+								<tr class="title">
+									<td>Apples</td>
+									<td>200</td>
+									<td>0g</td>
+								</tr>
+								<tr class="content">
+									<td>Orange</td>
+									<td>310</td>
+									<td>0g</td>
+								</tr>
+								<tr class="title">
+									<td>Apples</td>
+									<td>200</td>
+									<td>0g</td>
+								</tr>
+								<tr class="content">
+									<td>Orange</td>
+									<td>310</td>
+									<td>0g</td>
+								</tr>
+							</tbody>
+						</table>
+					<!-- </div> -->
+
+					<!-- <div class="ui styled accordion">
+					
+						<table>
+							<tr>
+								<th>MATERIALES</th>
+								<th>RESPONSABLE</th>
+								<th>LUGAR</th>
+								<th>FECHA PRÉSTAMO</th>
+								<th>FECHA DEVOLUCIÓN</th>
+							</tr>
+							<tr class="title">
+								<td>Marerial 1</td>
+								<td>Responsable 1</td>
+								<td>Lugar 1</td>
+								<td>Fecha préstamo 1</td>
+								<td>Fecha devolución 1</td>
+							</tr>
+							<tr class="content">
+								<td colspan="5"><p>Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila </p></td>
+							</tr>
+							<tr class="title">
+								<td>Marerial 2</td>
+								<td>Responsable 2</td>
+								<td>Lugar 2</td>
+								<td>Fecha préstamo 2</td>
+								<td>Fecha devolución 2</td>
+							</tr>
+							<tr class="content">
+								<td colspan="5"><p>Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila </p></td>
+							</tr>
+						</table>
+
+					</div> -->
+				</div>
+
+				<div id="addmaterial_segment">
+					<form id="addmaterial" class="ui form" action="">
+						<div class="center titform">Añadir un nuevo material</div>
+						<div class="center inline fields">
+							<div class="four wide field"></div>
+							<div class="eight wide field">
+								<label>Descripción</label>
+								<input type="text" name="material" placeholder="Ej: Trípode 1 . . .">
+							</div>
+						</div>
+						<div id="erraddmat" class="ui negative message">
+							<i class="close icon"></i>
+							<div class="header">
+								Rellene el campo destinado para el material, no puede quedar vacío.
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear material</div>
+						</div>
+					</form>
+				</div>
+
+				<div id="materiales_segment">
+				
+					<div class="ui accordion">
+					  <!-- <div class="title active">
+					    <i class="dropdown icon"></i>
+					    What is a dog?
+					  </div>
+					  <div class="content active">
+					    <p class="transition visible" style="display: block !important;">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+					  </div> -->
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    What kinds of dogs are there?
+					  </div>
+					  <div class="content">
+					    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+					  </div>
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    How do you acquire a dog?
+					  </div>
+					  <div class="content">
+					    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+					    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+					  </div>
+					  <div class="title">
+					    <i class="dropdown icon"></i>
+					    Micrófono de corbata
+					  </div>
+					  <div class="content">
+					    <p><table class="ui teal table">
+					    	<tr>
+					    		<td>hola</td>
+					    		<td>adios</td>
+					    	</tr>
+					    	<tr>
+					    		<td>buenas</td>
+					    		<td>tardes</td>
+					    	</tr>
+					    </table></p>
+					  </div>
+					</div>
+		
+				</div>
+
+				<div id="addpersona_segment">
+					<form id="addpersona" class="ui form" action="">
+						<div class="center titform">Añadir una nueva persona</div>
+						<div class="center inline fields">
+							<div class="four wide field"></div>
+							<div class="eight wide field">
+								<label>Nombre</label>
+								<input type="text" name="persona" placeholder="Ej: Francisco Martínez . . .">
+							</div>
+						</div>
+						<div id="erraddper" class="ui negative message">
+							<i class="close icon"></i>
+							<div class="header">
+								Rellene el campo destinado para el nombre, no puede quedar vacío.
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear persona</div>
+						</div>
+					</form>
+				</div>
+
+				<div id="personas_segment">
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+					<p>Apartado para la administración de personas.</p>
+				</div>
+
+				<div id="addlugar_segment">
+					<form id="addlugar" class="ui form" action="">
+						<div class="center titform">Añadir un nuevo lugar</div>
+						<div class="center inline fields">
+							<div class="four wide field"></div>
+							<div class="eight wide field">
+								<label>Lugar</label>
+								<input type="text" name="lugar" placeholder="Ej: Ed. Altet - Elche . . .">
+							</div>
+						</div>
+						<div id="erraddlug" class="ui negative message">
+							<i class="close icon"></i>
+							<div class="header">
+								Rellene el campo destinado para el lugar, no puede quedar vacío.
+							</div>
+						</div>
+						<div class="center">
+							<div class="ui submit button">Crear lugar</div>
+						</div>
+					</form>
+				</div>
+
+				<div id="lugares_segment">
+					<p>Apartado para la administración de lugares.</p>
+					<p>Apartado para la administración de lugares.</p>
+				</div>
+
+				<div id="addusuario_segment">
+					<form id="addusuario" class="ui form" action="">
+						<div class="ui equal width form">
+							<div class="center titform">Añadir un nuevo usuario</div>
+							<div class="fields">
+									<div class="field">
+									<label>Usuario</label>
+									<input type="text" name="usuario" placeholder="Nombre de usuario . . .">
+								</div>
+								<div class="field">
+									<label>Privilegios del usuario</label>
+									<select class="ui dropdown" name="privilegios">
+										<option value="">Seleccionar privilegios</option>
+										<option value="0">Editor</option>
+										<option value="1">Administrador</option>
+									</select>
+								</div>
+							</div>
+							<div class="fields">
+								<div class="field">
+									<label>Contraseña</label>
+									<input type="password" name="contrasena" placeholder="Escribir contraseña . . .">
+								</div>
+								<div class="field">
+									<label>Repetir contraseña</label>
+									<input type="password" name="repcontrasena" placeholder="Repetir contraseña . . .">
+								</div>
+							</div>
+
+							<div id="erraddusu" class="ui negative message">
+								<i class="close icon"></i>
+								<div class="header">
+									Rellene todos los campos, ninguno puede quedar vacío.
+								</div>
+							</div>
+
+							<div id="erraddusupass" class="ui negative message">
+								<i class="close icon"></i>
+								<div class="header">
+									Las contraseñas no coinciden, revíselas para continuar.
+								</div>
+							</div>
+
+							<div id="erraddusuname" class="ui negative message">
+								<i class="close icon"></i>
+								<div class="header">
+									Ya existe un usuario con ese nombre, pruebe con otro diferente.
+								</div>
+							</div>
+
+							<div class="center">
+								<div class="ui submit button">Crear usuario</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div id="usuarios_segment">
+					<p>Apartado para la administración de usuarios.</p>
+					<p>Apartado para la administración de usuarios.</p>
+					<p>Apartado para la administración de usuarios.</p>
+					<p>Apartado para la administración de usuarios.</p>
+				</div>
+				
+			</div>
+      	</div>
+    </div>
 
     <!-- <div id="side_inicio" class="ui basic segment"> -->
     <div id="side_prestamos" class="ui basic segment">
@@ -754,352 +1179,7 @@
 			</table>
       	</div>
     </div>
-    <div id="side_administrar" class="ui basic segment">
-    	<div id="administrar_container" class="ui container">
-      		<h3 class="ui header">Administrar</h3>
-      		<p>Apartado para la administración de préstamos, materiales, personas, lugares y usuarios.</p>
-			<div class="ui secondary pointing menu">
-				<a id="btn_admin_pres" class="item">Préstamos</a>
-				<a id="btn_admin_mat" class="item">Materiales</a>
-				<a id="btn_admin_per" class="item">Personas</a>
-				<a id="btn_admin_lug" class="item">Lugares</a>
-				<a id="btn_admin_usu" class="item">Usuarios</a>
-				<div class="right menu">
-					<!-- <a class="ui item"><i class="add icon teal"></i></a> -->
-					<div class="ui icon top right pointing dropdown">
-					  <i class="add icon teal" title="Añadir"></i><span>Nuevo</span>
-					  <div class="menu">
-					    <div id="btn_admin_addpres" class="item"><i class="block layout icon"></i>Préstamo</div>
-					    <div id="btn_admin_addmat" class="item"><i class="archive icon"></i>Material</div>
-					    <div id="btn_admin_addper" class="item"><i class="user icon"></i>Persona</div>
-					    <div id="btn_admin_addlug" class="item"><i class="world icon"></i>Lugar</div>
-					    <div id="btn_admin_addusu" class="item"><i class="users icon"></i>Usuario</div>
-					  </div>
-					</div>
-				</div>
-			</div>
-			<div class="ui segment">
-				<div id="prestamos_segment">
-					<!-- <div class="ui styled accordion">
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    What is a dog?
-					  </div>
-					  <div class="content">
-					    <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-					  </div>
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    What kinds of dogs are there?
-					  </div>
-					  <div class="content">
-					    <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-					  </div>
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    How do you acquire a dog?
-					  </div>
-					  <div class="content">
-					    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-					    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-					  </div>
-					</div> -->
-					<!-- <div class="ui accordion"> -->
-						<table class="ui teal table accordion">
-							<thead>
-								<tr>
-									<th>Food</th>
-									<th>Calories</th>
-									<th>Protein</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="title">
-									<td>Apples</td>
-									<td>200</td>
-									<td>0g</td>
-								</tr>
-								<tr class="content">
-									<td>Orange</td>
-									<td>310</td>
-									<td>0g</td>
-								</tr>
-								<tr class="title">
-									<td>Apples</td>
-									<td>200</td>
-									<td>0g</td>
-								</tr>
-								<tr class="content">
-									<td>Orange</td>
-									<td>310</td>
-									<td>0g</td>
-								</tr>
-								<tr class="title">
-									<td>Apples</td>
-									<td>200</td>
-									<td>0g</td>
-								</tr>
-								<tr class="content">
-									<td>Orange</td>
-									<td>310</td>
-									<td>0g</td>
-								</tr>
-							</tbody>
-						</table>
-					<!-- </div> -->
-
-					<!-- <div class="ui styled accordion">
-					
-						<table>
-							<tr>
-								<th>MATERIALES</th>
-								<th>RESPONSABLE</th>
-								<th>LUGAR</th>
-								<th>FECHA PRÉSTAMO</th>
-								<th>FECHA DEVOLUCIÓN</th>
-							</tr>
-							<tr class="title">
-								<td>Marerial 1</td>
-								<td>Responsable 1</td>
-								<td>Lugar 1</td>
-								<td>Fecha préstamo 1</td>
-								<td>Fecha devolución 1</td>
-							</tr>
-							<tr class="content">
-								<td colspan="5"><p>Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila </p></td>
-							</tr>
-							<tr class="title">
-								<td>Marerial 2</td>
-								<td>Responsable 2</td>
-								<td>Lugar 2</td>
-								<td>Fecha préstamo 2</td>
-								<td>Fecha devolución 2</td>
-							</tr>
-							<tr class="content">
-								<td colspan="5"><p>Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila </p></td>
-							</tr>
-						</table>
-
-					</div> -->
-				</div>
-				<div id="materiales_segment">
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-					<p>Apartado para la administración de materiales.</p>
-				</div>
-				<div id="personas_segment">
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-				</div>
-				<div id="lugares_segment">
-					<p>Apartado para la administración de lugares.</p>
-					<p>Apartado para la administración de lugares.</p>
-				</div>
-				<div id="usuarios_segment">
-					<p>Apartado para la administración de usuarios.</p>
-					<p>Apartado para la administración de usuarios.</p>
-					<p>Apartado para la administración de usuarios.</p>
-					<p>Apartado para la administración de usuarios.</p>
-				</div>
-				<div id="addprestamo_segment">
-					<div class="ui equal width form">
-						<div class="center titform">Añadir un nuevo préstamo</div>
-						<div class="fields">
-								<div class="five wide field">
-								<label>Persona</label>
-								<input type="text" placeholder="Nombre completo . . .">
-							</div>
-								<div class="five wide field">
-								<label>Lugar</label>
-								<input type="text" placeholder="Lugar donde se utilizará el material . . .">
-							</div>
-							<div class="four wide field">
-								<label>Fecha</label>
-								<div class="ui left icon input">
-									<input type="date">
-									<i class="calendar icon"></i>
-								</div>
-							</div>
-							<div class="two wide field">
-								<label>Hora</label>
-								<div class="ui left icon input">
-									<input type="time">
-									<i class="time icon"></i>
-								</div>
-							</div>
-						</div>
-						<div class="fields">
-							<div class="field">
-								<label>Observaciones</label>
-								<textarea rows="3" placeholder="Campo no obligatorio. Se podrá anotar el programa o la tarea a la que se destinará el material prestado . . ."></textarea>
-							</div>
-						</div>
-						<div class="center">
-							<div class="ui submit button">Crear préstamo</div>
-						</div>
-					</div>
-				</div>
-				<div id="addmaterial_segment">
-					<div class="ui form">
-						<div class="center titform">Añadir un nuevo material</div>
-						<div class="center inline fields">
-							<div class="four wide field"></div>
-							<div class="eight wide field">
-								<label>Material</label>
-								<input type="text" placeholder="Ej: Trípode 1 . . .">
-							</div>
-						</div>
-						<div class="center">
-							<div class="ui submit button">Crear material</div>
-						</div>
-					</div>
-				</div>
-				<div id="addpersona_segment">
-					<div class="ui form">
-						<div class="center titform">Añadir una nueva persona</div>
-						<div class="center inline fields">
-							<div class="four wide field"></div>
-							<div class="eight wide field">
-								<label>Persona</label>
-								<input type="text" placeholder="Ej: Francisco Martínez . . .">
-							</div>
-						</div>
-						<div class="center">
-							<div class="ui submit button">Crear persona</div>
-						</div>
-					</div>
-				</div>
-				<div id="addlugar_segment">
-					<!-- <div class="ui equal width form">
-						<div class="fields">
-							<div class="field">
-								<label>Username</label>
-								<input type="text" placeholder="Username">
-							</div>
-							<div class="field">
-								<label>Password</label>
-								<input type="password">
-							</div>
-						</div>
-						<div class="fields">
-								<div class="field">
-								<label>First name</label>
-								<input type="text" placeholder="First Name">
-							</div>
-								<div class="field">
-								<label>Middle name</label>
-								<input type="text" placeholder="Middle Name">
-							</div>
-							<div class="field">
-								<label>Last name</label>
-								<input type="text" placeholder="Last Name">
-							</div>
-						</div>
-						<div class="center">
-							<div class="ui submit button">Crear lugar</div>
-						</div>
-					</div> -->
-					<div class="ui form">
-						<div class="center titform">Añadir un nuevo lugar</div>
-						<div class="center inline fields">
-							<div class="four wide field"></div>
-							<div class="eight wide field">
-								<label>Lugar</label>
-								<input type="text" placeholder="Ej: Ed. Altet - Elche . . .">
-							</div>
-							<!-- <div class="field">
-								<label>Password</label>
-								<input type="password">
-							</div> -->
-						</div>
-						<div class="center">
-							<div class="ui submit button">Crear lugar</div>
-						</div>
-					</div>
-
-				</div>
-				<div id="addusuario_segment">
-					<form id="addusuario" class="ui form" action="">
-						<div class="ui equal width form">
-							<div class="center titform">Añadir un nuevo usuario</div>
-							<div class="fields">
-									<div class="field">
-									<label>Usuario</label>
-									<input type="text" name="usuario" placeholder="Nombre de usuario . . .">
-								</div>
-								<div class="field">
-									<label>Privilegios del usuario</label>
-									<select class="ui dropdown" name="privilegios">
-										<option value="">Seleccionar privilegios</option>
-										<option value="0">Editor</option>
-										<option value="1">Administrador</option>
-									</select>
-									<!-- <div class="ui fluid selection dropdown">
-										<i class="dropdown icon"></i>
-										<span class="default text">Seleccionar privilegios</span>
-										<div class="menu">
-											<div class="item">
-												<i class="write right floated icon"></i>
-												Editor
-											</div>
-											<div class="item">
-												<i class="protect right floated icon"></i>
-												Administrador
-											</div>
-										</div>
-									</div> -->
-								</div>
-							</div>
-							<div class="fields">
-								<div class="field">
-									<label>Contraseña</label>
-									<input type="password" name="contrasena" placeholder="Escribir contraseña . . .">
-								</div>
-								<div class="field">
-									<label>Repetir contraseña</label>
-									<input type="password" name="repcontrasena" placeholder="Repetir contraseña . . .">
-								</div>
-							</div>
-
-							<div id="erraddusu" class="ui negative message">
-								<i class="close icon"></i>
-								<div class="header">
-									Rellene todos los campos, ninguno puede quedar vacío.
-								</div>
-							</div>
-
-							<div id="erraddusupass" class="ui negative message">
-								<i class="close icon"></i>
-								<div class="header">
-									Las contraseñas no coinciden, revíselas para continuar.
-								</div>
-							</div>
-
-							<div class="center">
-								<div class="ui submit button">Crear usuario</div>
-							</div>
-							<!-- <div class="ui success message">
-								<div class="header">Alta completada</div>
-								<p>El usuario ha sido creado con éxtito.</p>
-							</div> -->
-							<!-- <div class="ui error message"></div> -->
-						</div>
-					</form>
-				</div>
-			</div>
-      	</div>
-    </div>
+    
   </div>
 </div>
 

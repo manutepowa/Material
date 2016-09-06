@@ -10,7 +10,11 @@ jQuery(document).ready(function($) {
 			url: 'function/login.php',
 			type: 'POST',
 			data: data,
+			beforeSend: Loader,
 			success: function(event){
+				$('.section').css('visibility','hidden');
+				$('.section').css('display','none');
+
 				if(event == '1'){
 					window.location = 'views/admin.php';
 				}
@@ -24,4 +28,11 @@ jQuery(document).ready(function($) {
 		});
 		return false;
 	});
+
+
+	function Loader(){
+		$('.section').css('display','table');
+		$('.section').css('visibility','visible');
+	};
+
 });

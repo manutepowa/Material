@@ -9,7 +9,32 @@
  	<title>Materiales OC</title>
  	<link rel="shortcut icon" href="site_map/images/favicon.png">
  	<link rel="stylesheet" href="site_map/Semantic-UI-CSS-master/semantic.min.css">
- 	<style type="text/css">body {background-color: #DADADA;}body > .grid {height: 100%;}.image {margin-top: -100px;}.column {max-width: 450px;}.powers{font-size: 7pt;text-align: center;}</style>
+ 	<style type="text/css">body {background-color: #DADADA;}body > .grid {height: 100%;}.image {margin-top: -100px;}.column {max-width: 450px;}.powers{font-size: 7pt;text-align: center;}
+
+.section{
+	background-color:rgba(255,255,255,0.8);
+	visibility: hidden;
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 50;
+}
+.centro{
+  vertical-align: middle;
+  display: table-cell;
+  position: relative;
+  color: #000;
+  text-align: center;
+}
+
+.centro img{
+  display: block;
+  margin: 10px auto;
+  width: 80px;
+}</style>
  </head>
  <body>
  	<div class="ui middle aligned center aligned grid">
@@ -44,6 +69,13 @@
 	  </div>
 	</div>
 
+	<section class="section">
+		<div class="centro"> 
+			<img src="../site_map/images/logoumh.png" alt="Cargando...">
+			<span class="loader loader-simple"></span>
+			<!-- Cargando... -->
+		</div>
+	</section>
 
 	<div class="powers">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
  	<script src="site_map/js/jquery-1.11.3.min.js"></script>

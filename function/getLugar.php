@@ -9,7 +9,14 @@
 
 	$search = $_GET['q'];
 
-	$query = "SELECT * FROM lugar WHERE lugar LIKE '%".$search."%'";
+	if($search == "all"){
+		$query = "SELECT * FROM lugar";
+	}
+
+	else{
+		$query = "SELECT * FROM lugar WHERE lugar LIKE '%".$search."%'";
+	}
+	
 	$row = $conexion->query($query)or die(mysql_error());
 
 	$jsonData = array();
