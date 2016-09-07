@@ -35,6 +35,110 @@ $(document).ready(function(){
 					            +"</tr>"
 					          +"</table>"
 					        +"</div>";
+						/*"<div class='ui relaxed divided list'>"
+							+"<div class='item'>"
+					          +"<table class='addper'>"
+					            +"<tr>"
+					              +"<td>"
+					                +"<div class='ui search medium' id='per'>"
+					                  +"<div class='ui icon input'>"
+					                    +"<input id='persona' class='prompt' type='text' placeholder='Buscar Persona...'>"
+					                    +"<i class='search icon'></i>"
+					                  +"</div>"
+					                  +"<div class='results'></div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td>"
+					                +"<i class='large user big aligned icon icpres'></i>"
+					              +"</td>"
+					              +"<td>"
+					                +"<div class='content'>"
+					                  +"<div class='description'>No hay persona añadida</div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td></td>"
+					            +"</tr>"
+					          +"</table>"
+
+					  		+"</div>"
+
+					  		+"<div class='item'>"
+					          +"<table class='addlug'>"
+					            +"<tr>"
+					              +"<td>"
+					                +"<div class='ui search medium' id='lug'>"
+					                  +"<div class='ui icon input'>"
+					                    +"<input id='lugar' class='prompt' type='text' placeholder='Buscar Lugar...'>"
+					                    +"<i class='search icon'></i>"
+					                  +"</div>"
+					                  +"<div class='results'></div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td>"
+					                +"<i class='large world big aligned icon icpres'></i>"
+					              +"</td>"
+					              +"<td>"
+					                +"<div class='content'>"
+					                  +"<div class='description'>No hay lugar añadido</div>"
+					               +"</div>"
+					              +"</td>"
+					              +"<td></td>"
+					            +"</tr>"
+					          +"</table>"
+					  		+"</div>"
+
+					  		+"<div class='item'>"
+					          +"<table class='adddate'>"
+					            +"<tr>"
+					              +"<td>"
+					                +"<div class='ui search medium' id='dat'>"
+					                  +"<div class='ui left icon input'>"
+					                    +"<input type='date' placeholder='Fecha' id='date'>"
+					                    +"<i class='calendar icon'></i>"
+					                  +"</div>"
+					                  +"<div class='results'></div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td>"
+					                +"<i class='large calendar big aligned icon icpres'></i>"
+					              +"</td>"
+					              +"<td>"
+					                +"<div class='content'>"
+					                  +"<div class='description'>No hay fecha añadida</div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td></td>"
+					            +"</tr>"
+					          +"</table>"
+					  		+"</div>"
+
+					        +"<div class='item'>"
+					          +"<table class='addlistadomat'>"
+					            +"<tr>"
+					             +" <td>"
+					               +"<div class='ui search medium' id='mat_0'>"
+					                  +"<div class='ui icon input'>"
+					                    +"<input id='material_0' name='material[]' class='prompt' type='text' placeholder='Buscar Material...'>"
+					                    +"<i class='search icon'></i>"
+					                  +"</div>"
+					                  +"<div class='results'></div>"
+					                +"</div>"
+					              +"</td>"
+					              +"<td>"
+					                +"<i class='large archive big aligned icon icpres'></i>"
+					              +"</td>"
+					              +"<td>"
+					                +"<div class='content'>"
+					                  +"<div class='description'>No hay material añadido</div>"
+					                +"</div>"
+					             +"</td>"
+					              +"<td>"
+					                +"<i id='addRowMat' class='add circle icon'></i>"
+					              +"</td>"
+					            +"</tr>"
+					          +"</table>"
+					        +"</div>"
+					       +"</div>";*/
 
 	var modPrestamoReset = "<div class='ui relaxed divided list'>"
 							+"<div class='item'>"
@@ -87,6 +191,32 @@ $(document).ready(function(){
 					          +"</table>"
 					  		+"</div>"
 
+					  		// +"<div class='item'>"
+					    //       +"<table class='moddate'>"
+					    //         +"<tr>"
+					    //           +"<td>"
+					    //             +"<div class='ui search medium' id='dat'>"
+					    //               +"<div class='ui left icon input'>"
+					    //                 +"<input type='date' placeholder='Fecha' id='mdate'>"
+					    //                 +"<i class='calendar icon'></i>"
+					    //               +"</div>"
+					    //               +"<div class='results'></div>"
+					    //             +"</div>"
+					    //           +"</td>"
+					    //           +"<td>"
+					    //             +"<i class='large calendar big aligned icon icpres'></i>"
+					    //           +"</td>"
+					    //           +"<td>"
+					    //             +"<div class='content'>"
+					    //               +"<div class='description'>No hay fecha añadida</div>"
+					    //             +"</div>"
+					    //           +"</td>"
+					    //           +"<td></td>"
+					    //         +"</tr>"
+					    //       +"</table>"
+					  		// +"</div>"
+					    //    +"</div>";
+
 					    	+"<div class='item'>"
 					          +"<table class='moddate'>"
 					            +"<tr>"
@@ -124,7 +254,7 @@ $(document).ready(function(){
 	    $(this).closest('.ui.positive.message').hide();
 	});
 
-	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon, #erraddprestamo > .close.icon, #erraddmat > .close.icon, #erraddper > .close.icon, #erraddlug > .close.icon, #erraddusu > .close.icon, #erraddusupass > .close.icon, #erraddusuname > .close.icon, #erraddmaterial > .close.icon, #erraddpersona > .close.icon, #erraddlugar > .close.icon').on('click', function() {
+	$('#erraddpres > .close.icon, #erraddprescrear > .close.icon, #errmodpres > .close.icon, #errmodprescrear > .close.icon, #erraddprestamo > .close.icon, #erraddmat > .close.icon, #erraddper > .close.icon, #erraddlug > .close.icon, #erraddusu > .close.icon, #erraddusupass > .close.icon, #erraddusuname > .close.icon').on('click', function() {
 	    $(this).closest('.ui.negative.message').hide();
 	});
 
@@ -877,7 +1007,7 @@ $(document).ready(function(){
 
 	$('#addprestamo').form({ 
 		onSuccess: function() {
-
+			
 			if (event.keyCode == 13 || event.which == 13) {
 		        return false;
 		    }
@@ -892,9 +1022,8 @@ $(document).ready(function(){
 			var date = $('#addprestamo').find('input[name="date"]').val();
 			var time = $('#addprestamo').find('input[name="time"]').val();
 			var observaciones = $('#addprestamo').find('textarea[name="observaciones"]').val();
-			var creacion = actualDate();
-console.log(creacion);
-			console.log("usuario: "+usuario+", persona: "+persona+", lugar: "+lugar+", fecha: "+date+", hora: "+time+", observaciones: "+observaciones+", materiales: "+materiales+", creacion: "+creacion);
+
+			console.log("usuario: "+usuario+", persona: "+persona+", lugar: "+lugar+", fecha: "+date+", hora: "+time+", observaciones: "+observaciones+", materiales: "+materiales);
 
 		    if(persona == "" || lugar == "" || date == "" || time == "" || materiales == null){
 				$('#erraddprestamo').fadeIn(0);
@@ -905,12 +1034,11 @@ console.log(creacion);
 				$.ajax({
 					url: '../function/addPrestamo.php',
 					type: 'POST',
-					data: {'per': persona, 'lug': lugar, 'dat': date, 'time': time, 'user': usuario, 'obser': observaciones, 'mat': materiales, 'creac': creacion},
+					data: {'per': persona, 'lug': lugar, 'dat': date, 'time': time, 'user': usuario, 'obser': observaciones, 'mat': materiales},
 					beforeSend: Loader3,
 					success: function(event){
 						
 						if(event == '1'){
-							$(".ui.multiple.selection.dropdown").dropdown('clear');
 							
 							$('#advaddpre').css('display','block');
 							$('#advaddpre').css('visibility','visible');
@@ -932,15 +1060,13 @@ console.log(creacion);
 							$('#addprestamo').find('input[name="time"]').val('');
 							$('#addprestamo').find('textarea[name="observaciones"]').val('');
 
-							
+							$("#addprestamo .ui.multiple.selection.dropdown").dropdown('clear');
 
 							$('#addprestamo_segment').hide();
 							$('#prestamos_segment').show();
 
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
-
-							
 						}
 						else{
 							console.log(event);
@@ -960,7 +1086,6 @@ console.log(creacion);
 		    }
 
 			$('#erraddmat').fadeOut(0);
-			$('#erraddmaterial').fadeOut(0);
 
 			var material = $('#addmaterial').find('input[name="material"]').val();
 
@@ -976,8 +1101,6 @@ console.log(creacion);
 					data: {'descripcion': material},
 					beforeSend: Loader3,
 					success: function(event){
-
-						console.log(event);
 						
 						if(event == '1'){
 							
@@ -996,14 +1119,6 @@ console.log(creacion);
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
 						}
-						else if(event == '2'){
-							$('#erraddmaterial').fadeIn(0);
-
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
-
-							return false;
-						}
 						else{
 							console.log("ERROR AL AÑADIR UN NUEVO MATERIAL");
 						}
@@ -1021,7 +1136,6 @@ console.log(creacion);
 		    }
 
 			$('#erraddper').fadeOut(0);
-			$('#erraddpersona').fadeOut(0);
 
 			var persona = $('#addpersona').find('input[name="persona"]').val();
 
@@ -1055,14 +1169,6 @@ console.log(creacion);
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
 						}
-						else if(event == '2'){
-							$('#erraddpersona').fadeIn(0);
-
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
-
-							return false;
-						}
 						else{
 							console.log("ERROR AL AÑADIR UNA NUEVA PERSONA");
 						}
@@ -1080,7 +1186,6 @@ console.log(creacion);
 		    }
 
 			$('#erraddlug').fadeOut(0);
-			$('#erraddlugar').fadeOut(0);
 
 			var lugar = $('#addlugar').find('input[name="lugar"]').val();
 
@@ -1113,14 +1218,6 @@ console.log(creacion);
 
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
-						}
-						else if(event == '2'){
-							$('#erraddlugar').fadeIn(0);
-
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
-
-							return false;
 						}
 						else{
 							console.log("ERROR AL AÑADIR UN NUEVO LUGAR");
@@ -1233,32 +1330,6 @@ function changetoggle(){
 	}
 }
 
-function actualDate(){
-	var cero = "0";
-
-	var date = new Date();
-
-	var acthora = date.getHours();
-	if(acthora.toString().length==1){var h = cero.concat(acthora);}
-	else{var h = acthora;}
-
-	var actmin = date.getMinutes();
-	if(actmin.toString().length==1){var min = cero.concat(actmin);}
-	else{var min = actmin;}
-
-	var actdia = date.getDate();
-	if(actdia.toString().length==1){var d = cero.concat(actdia);}
-	else{var d = actdia;}
-
-	var actmes = date.getMonth()+1;
-	if(actmes.toString().length==1){var m = cero.concat(actmes);}
-	else{var m = actmes;}
-
-	var a = date.getFullYear();
-	
-	return d+"/"+m+"/"+a+" a las "+h+":"+min;
-}
-
 function dateToString(date){
 
 	var string;
@@ -1299,11 +1370,13 @@ function SelectMateriales(){
 		$.each(mat, function(i, m){
 			$.each(m, function(i){
 				$('select[name="materiales"]').append($('<option>', { 
+					// value: m[i].id_material,
 					value: m[i].descripcion,
 					text : m[i].descripcion 
 				}));
 			});
 		});
+		// $('select[name="materiales"]').dropdown();
 	});
 }
 
@@ -1319,11 +1392,13 @@ function SelectPersonas(){
 		$.each(per, function(i, p){
 			$.each(p, function(i){
 				$('select[name="persona"]').append($('<option>', { 
+					// value: p[i].id_persona,
 					value: p[i].nombre,
 					text : p[i].nombre 
 				}));
 			});
 		});
+		// $('select[name="persona"]').dropdown();
 	});
 }
 
@@ -1339,11 +1414,13 @@ function SelectLugares(){
 		$.each(lug, function(i, l){
 			$.each(l, function(i){
 				$('select[name="lugar"]').append($('<option>', { 
+					// value: l[i].id_lugar,
 					value: l[i].lugar,
 					text : l[i].lugar 
 				}));
 			});
 		});
+		// $('select[name="lugar"]').dropdown();
 	});
 }
 
@@ -1399,13 +1476,21 @@ function loadList(q){
 						var newRow = "<tr data-value='"+p.id_prestamo+"'>";
 					}
 
-					newRow += 	"<td><i class='large info circle icon' data-user='"+p.id_usuario+"' data-title='Creado el &#39;"+p.fecha_creacion+"&#39; por &#39;"+p.nombre_usuario+"&#39;' data-content='"+p.observaciones+"' data-variation='inverted very wide'></i></td>"
+					newRow += 	"<td><i class='large info circle icon' data-user='"+p.id_usuario+"' data-title='Dado de alta por: "+p.nombre_usuario+"' data-content='"+p.observaciones+"' data-variation='inverted very wide'></i></td>"
 								+"<td>"+p.descripcion+"</td>"
 								+"<td>"+p.nombre+"</td>"
 								+"<td>"+p.lugar+"</td>"
 								+"<td>"+fechaprest+" a las "+horaprest+"</td>"
 								+"<td>"+fDev+"</td>";
 							if (fDev !== 'No devuelto') {
+								// newRow +=	"<td style='text-align:center'>"
+								// 	+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon checked calendar'></i></button>"
+								// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+								// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+								// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+								// +"</td>"
+								// +"</tr>";
+
 								newRow +=  "<td style='text-align:center'>"
 												+"<div class='ui icon top left pointing dropdown button'>"
 												  +"<i class='setting icon'></i>"
@@ -1420,6 +1505,13 @@ function loadList(q){
 										  +"</tr>";
 							}
 							else{
+								// newRow +=	"<td style='text-align:center'>"
+								// 	+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon checked calendar'></i></button>"
+								// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+								// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+								// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+								// +"</td>"
+								// +"</tr>";
 								newRow +=  "<td style='text-align:center'>"
 												+"<div class='ui icon top left pointing dropdown button'>"
 												  +"<i class='setting icon'></i>"
@@ -1464,13 +1556,21 @@ function loadList(q){
 							var newRow = "<tr data-value='"+p.id_prestamo+"'>";
 						}
 
-						newRow += 	"<td><i class='large info circle icon' data-user='"+p.id_usuario+"' data-title='Creado el &#39;"+p.fecha_creacion+"&#39; por &#39;"+p.nombre_usuario+"&#39;' data-content='"+p.observaciones+"' data-variation='inverted very wide'></i></td>"
+						newRow += 	"<td><i class='large info circle icon' data-user='"+p.id_usuario+"' data-title='Dado de alta por: "+p.nombre_usuario+"' data-content='"+p.observaciones+"' data-variation='inverted very wide'></i></td>"
+						// newRow += 	"<td><i class='large info circle icon' data-content='"+p.observaciones+" y mas cosas' data-variation='inverted very wide'></i></td>"
 									+"<td>"+p.descripcion+"</td>"
 									+"<td>"+p.nombre+"</td>"
 									+"<td>"+p.lugar+"</td>"
 									+"<td>"+fechaprest+" a las "+horaprest+"</td>"
 									+"<td>"+fDev+"</td>";
 								if (fDev !== 'No devuelto') {
+									// newRow +=	"<td style='text-align:center'>"
+									// 	+"<button title='Devolver' class='dev ui teal icon button' disabled><i class='large icon checked calendar'></i></button>"
+									// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+									// +"</td>"
+									// +"</tr>";
 									newRow +=  "<td style='text-align:center'>"
 												+"<div class='ui icon top left pointing dropdown button'>"
 												  +"<i class='setting icon'></i>"
@@ -1485,6 +1585,13 @@ function loadList(q){
 										  +"</tr>";
 								}
 								else{
+									// newRow +=	"<td style='text-align:center'>"
+									// 	+"<button title='Devolver' class='dev ui teal icon button'><i class='large icon checked calendar'></i></button>"
+									// 	+"<button title='Modificar' class='mod ui icon button'><i class='large icon edit'></i></button>"
+									// 	+"<button title='Borrar' class='del ui icon button'><i class='large icon trash'></i></button>"
+									// 	+"<input type='hidden' name='id-prest' value='"+p.id_prestamo+"'/>"
+									// +"</td>"
+									// +"</tr>";
 									newRow +=  "<td style='text-align:center'>"
 												+"<div class='ui icon top left pointing dropdown button'>"
 												  +"<i class='setting icon'></i>"

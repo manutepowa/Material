@@ -47,7 +47,7 @@
   border-radius: 50px;
   border: 6px solid transparent;
   border-top-color: #000;
-  animation: load 1s linear infinte;
+  animation: load 1s linear infinite;
   -webkit-animation: load 1s linear infinite;
   -o-animation: load 1s linear infinite;
 }
@@ -76,7 +76,7 @@
     transform: rotate(360deg);
   }
 }
-
+/*
 @keyframes load-reverse {
   0% {
     transform: rotate(0deg);
@@ -100,7 +100,7 @@
   100% {
     transform: rotate(-360deg);
   }
-}
+}*/
 
 /*#loader2{
   background: #99A6A5;

@@ -9,32 +9,7 @@
  	<title>Materiales OC</title>
  	<link rel="shortcut icon" href="site_map/images/favicon.png">
  	<link rel="stylesheet" href="site_map/Semantic-UI-CSS-master/semantic.min.css">
- 	<style type="text/css">body {background-color: #DADADA;}body > .grid {height: 100%;}.image {margin-top: -100px;}.column {max-width: 450px;}.powers{font-size: 7pt;text-align: center;}
-
-.section{
-	background-color:rgba(255,255,255,0.8);
-	visibility: hidden;
-	display: none;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 50;
-}
-.centro{
-  vertical-align: middle;
-  display: table-cell;
-  position: relative;
-  color: #000;
-  text-align: center;
-}
-
-.centro img{
-  display: block;
-  margin: 10px auto;
-  width: 80px;
-}</style>
+ 	<link rel="stylesheet" href="../site_map/css/index.css">
  </head>
  <body>
  	<div class="ui middle aligned center aligned grid">

@@ -397,6 +397,12 @@
 								Rellene el campo destinado para el material, no puede quedar vacío.
 							</div>
 						</div>
+						<div id="erraddmaterial" class="ui negative message">
+							<i class="close icon"></i>
+							<div class="header">
+								ERROR: Ya existe un material llamado así.
+							</div>
+						</div>
 						<div class="center">
 							<div class="ui submit button">Crear material</div>
 						</div>
@@ -462,6 +468,12 @@
 							<i class="close icon"></i>
 							<div class="header">
 								Rellene el campo destinado para el nombre, no puede quedar vacío.
+							</div>
+						</div>
+						<div id="erraddpersona" class="ui negative message">
+							<i class="close icon"></i>
+							<div class="header">
+								ERROR: Ya existe una persona llamada así.
 							</div>
 						</div>
 						<div class="center">

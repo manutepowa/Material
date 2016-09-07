@@ -29,7 +29,6 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 
-
 	function Loader(){
 		$('.section').css('display','table');
 		$('.section').css('visibility','visible');

@@ -13,6 +13,7 @@
 	$time = $_POST['time'];
 	$user = $_POST['user'];
 	$obser = $_POST['obser'];
+	$creac = $_POST['creac'];
 
 	$datetime = $date." ".$time.":00";
 
@@ -32,7 +33,10 @@
 		array_push($data_id, $info[0]);
 	}
 
-	$insert = 'INSERT INTO prestamo(id_prestamo,id_persona,id_lugar,id_usuario,fecha_prestamo,observaciones,eliminado) VALUES(NULL,'.$data_id[0].','.$data_id[1].', '.$user.', "'.$datetime.'", "'.$obser.'", 0)';
+	$insert = 'INSERT INTO prestamo(id_prestamo,id_persona,id_lugar,id_usuario,fecha_creacion,fecha_prestamo,observaciones,eliminado) VALUES(NULL,'.$data_id[0].','.$data_id[1].', '.$user.', "'.$creac.'", "'.$datetime.'", "'.$obser.'", 0)';
+	// echo $insert;
+
+
 	$conexion->query($insert)or die(mysql_error());
 
 	if(!$conexion) echo "0";

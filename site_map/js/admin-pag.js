@@ -262,7 +262,6 @@ $(document).ready(function(){
 	$(document).on('click', '#btn_admin_addmat', function(){
 		$('#addmaterial').submit(function() {return false;});
 		$('#erraddmat').fadeOut(0);
-		$('#erraddmaterial').fadeOut(0);
 
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
@@ -283,7 +282,6 @@ $(document).ready(function(){
 	$(document).on('click', '#btn_admin_addper', function(){
 		$('#addpersona').submit(function() {return false;});
 		$('#erraddper').fadeOut(0);
-		$('#erraddpersona').fadeOut(0);
 
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
@@ -304,7 +302,6 @@ $(document).ready(function(){
 	$(document).on('click', '#btn_admin_addlug', function(){
 		$('#addlugar').submit(function() {return false;});
 		$('#erraddlug').fadeOut(0);
-		$('#erraddlugar').fadeOut(0);
 
 		$('#prestamos_segment').hide();
 		$('#materiales_segment').hide();
