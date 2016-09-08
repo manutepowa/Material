@@ -1,5 +1,5 @@
 <?php 
-
+	session_start();
 	require_once($_SERVER['DOCUMENT_ROOT'].'/Material/function/connect_mysqli.php');
 	$conexion = connect();
 	if ($conexion->connect_error) {
@@ -60,5 +60,8 @@
 		$conexion->query($insert)or die(mysql_error()); //error
 		if(!$conexion) echo "3";
 	}
+	// print_r($_SESSION["addPrestamoOK"]);
+	// $_SESSION["addPrestamoOK"]="SI";
+	// print_r($_SESSION["addPrestamoOK"]);
 	echo "1";
 ?>

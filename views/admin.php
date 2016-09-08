@@ -14,11 +14,6 @@
 <div>
   <div id="menuizq" class="ui visible inverted left vertical sidebar menu">
 	
-  	
-  	<!-- <a id="btn_inicio" class="item">
-      <i class="home icon"></i>
-      Inicio
-    </a> -->
     <p></p>
     <a id="btn_administrar" class="item">
       <!-- <i class="settings icon"></i> -->
@@ -49,18 +44,6 @@
       Lugares
     </a>
 
-    <?php 
-
-    // 	if($_SESSION["admin"] == "SI"){
-	   //  	echo "<a id='btn_administrar' class='item'>
-				//     <i class='settings icon'></i>
-				//     Administrar
-				// </a>";
-    // 	}
-
-    	// echo "<p class='usuario'>Usuario: &nbsp;&nbsp;<strong>".$_SESSION["user"]."</strong></p>";
-
-     ?>
   </div>
   <div class="admincontainer pusher">
 
@@ -139,38 +122,6 @@
 	  </div>
 	</div>
 
-	<!-- <div class="center">
-		<svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-		  <circle fill="#00B5AD" stroke="none" cx="6" cy="50" r="6">
-		    <animateTransform 
-		       attributeName="transform" 
-		       dur="1s" 
-		       type="translate" 
-		       values="0 15 ; 0 -15; 0 15" 
-		       repeatCount="indefinite" 
-		       begin="0.1"/>
-		  </circle>
-		  <circle fill="#00B5AD" stroke="none" cx="30" cy="50" r="6">
-		    <animateTransform 
-		       attributeName="transform" 
-		       dur="1s" 
-		       type="translate" 
-		       values="0 10 ; 0 -10; 0 10" 
-		       repeatCount="indefinite" 
-		       begin="0.2"/>
-		  </circle>
-		  <circle fill="#00B5AD" stroke="none" cx="54" cy="50" r="6">
-		    <animateTransform 
-		       attributeName="transform" 
-		       dur="1s" 
-		       type="translate" 
-		       values="0 5 ; 0 -5; 0 5" 
-		       repeatCount="indefinite" 
-		       begin="0.3"/>
-		  </circle>
-		</svg>
-	</div> -->
-
 	<div id="side_administrar" class="ui basic segment">
     	<div id="administrar_container" class="ui container">
       		<h3 class="ui header">
@@ -219,7 +170,7 @@
 			<div class="ui segment">
 
 				<div id="addprestamo_segment">
-					<form id="addprestamo" class="ui equal width form" action="">
+					<form id="addprestamo" class="ui equal width form">
 						<div class="center titform">Añadir un nuevo préstamo</div>
 						<div class="fields">
 								<div class="five wide field">
@@ -278,111 +229,15 @@
 				</div>
 
 				<div id="prestamos_segment">
-					<!-- <div class="ui styled accordion">
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    What is a dog?
-					  </div>
-					  <div class="content">
-					    <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-					  </div>
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    What kinds of dogs are there?
-					  </div>
-					  <div class="content">
-					    <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-					  </div>
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    How do you acquire a dog?
-					  </div>
-					  <div class="content">
-					    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-					    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-					  </div>
-					</div> -->
-					<!-- <div class="ui accordion"> -->
-						<table class="ui teal table accordion">
-							<thead>
-								<tr>
-									<th>Food</th>
-									<th>Calories</th>
-									<th>Protein</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="title">
-									<td>Apples</td>
-									<td>200</td>
-									<td>0g</td>
-								</tr>
-								<tr class="content">
-									<td>Orange</td>
-									<td>310</td>
-									<td>0g</td>
-								</tr>
-								<tr class="title">
-									<td>Apples</td>
-									<td>200</td>
-									<td>0g</td>
-								</tr>
-								<tr class="content">
-									<td>Orange</td>
-									<td>310</td>
-									<td>0g</td>
-								</tr>
-								<tr class="title">
-									<td>Apples</td>
-									<td>200</td>
-									<td>0g</td>
-								</tr>
-								<tr class="content">
-									<td>Orange</td>
-									<td>310</td>
-									<td>0g</td>
-								</tr>
-							</tbody>
-						</table>
-					<!-- </div> -->
-
-					<!-- <div class="ui styled accordion">
-					
-						<table>
-							<tr>
-								<th>MATERIALES</th>
-								<th>RESPONSABLE</th>
-								<th>LUGAR</th>
-								<th>FECHA PRÉSTAMO</th>
-								<th>FECHA DEVOLUCIÓN</th>
-							</tr>
-							<tr class="title">
-								<td>Marerial 1</td>
-								<td>Responsable 1</td>
-								<td>Lugar 1</td>
-								<td>Fecha préstamo 1</td>
-								<td>Fecha devolución 1</td>
-							</tr>
-							<tr class="content">
-								<td colspan="5"><p>Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila Contenido de la primera fila </p></td>
-							</tr>
-							<tr class="title">
-								<td>Marerial 2</td>
-								<td>Responsable 2</td>
-								<td>Lugar 2</td>
-								<td>Fecha préstamo 2</td>
-								<td>Fecha devolución 2</td>
-							</tr>
-							<tr class="content">
-								<td colspan="5"><p>Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila Contenido de la segunda fila </p></td>
-							</tr>
-						</table>
-
-					</div> -->
+					<?php 
+						if($_SESSION["admin"] == "SI"){
+							echo 'Aquí se podrán modificar y eliminar los préstamos.';
+						}
+					?>
 				</div>
 
 				<div id="addmaterial_segment">
-					<form id="addmaterial" class="ui form" action="">
+					<form id="addmaterial" class="ui form">
 						<div class="center titform">Añadir un nuevo material</div>
 						<div class="center inline fields">
 							<div class="four wide field"></div>
@@ -410,52 +265,15 @@
 				</div>
 
 				<div id="materiales_segment">
-				
-					<div class="ui accordion">
-					  <!-- <div class="title active">
-					    <i class="dropdown icon"></i>
-					    What is a dog?
-					  </div>
-					  <div class="content active">
-					    <p class="transition visible" style="display: block !important;">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-					  </div> -->
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    What kinds of dogs are there?
-					  </div>
-					  <div class="content">
-					    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-					  </div>
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    How do you acquire a dog?
-					  </div>
-					  <div class="content">
-					    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-					    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-					  </div>
-					  <div class="title">
-					    <i class="dropdown icon"></i>
-					    Micrófono de corbata
-					  </div>
-					  <div class="content">
-					    <p><table class="ui teal table">
-					    	<tr>
-					    		<td>hola</td>
-					    		<td>adios</td>
-					    	</tr>
-					    	<tr>
-					    		<td>buenas</td>
-					    		<td>tardes</td>
-					    	</tr>
-					    </table></p>
-					  </div>
-					</div>
-		
+					<?php 
+						if($_SESSION["admin"] == "SI"){
+							echo 'Aquí se podrán modificar y eliminar los materiales.';
+						}
+					?>		
 				</div>
 
 				<div id="addpersona_segment">
-					<form id="addpersona" class="ui form" action="">
+					<form id="addpersona" class="ui form">
 						<div class="center titform">Añadir una nueva persona</div>
 						<div class="center inline fields">
 							<div class="four wide field"></div>
@@ -483,17 +301,15 @@
 				</div>
 
 				<div id="personas_segment">
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
-					<p>Apartado para la administración de personas.</p>
+					<?php 
+						if($_SESSION["admin"] == "SI"){
+							echo 'Aquí se podrán modificar y eliminar las personas.';
+						}
+					?>
 				</div>
 
 				<div id="addlugar_segment">
-					<form id="addlugar" class="ui form" action="">
+					<form id="addlugar" class="ui form">
 						<div class="center titform">Añadir un nuevo lugar</div>
 						<div class="center inline fields">
 							<div class="four wide field"></div>
@@ -515,8 +331,11 @@
 				</div>
 
 				<div id="lugares_segment">
-					<p>Apartado para la administración de lugares.</p>
-					<p>Apartado para la administración de lugares.</p>
+					<?php 
+						if($_SESSION["admin"] == "SI"){
+							echo 'Aquí se podrán modificar y eliminar los lugares.';
+						}
+					?>
 				</div>
 
 				<div id="addusuario_segment">
@@ -577,98 +396,18 @@
 				</div>
 
 				<div id="usuarios_segment">
-					<p>Apartado para la administración de usuarios.</p>
-					<p>Apartado para la administración de usuarios.</p>
-					<p>Apartado para la administración de usuarios.</p>
-					<p>Apartado para la administración de usuarios.</p>
+					<?php 
+						if($_SESSION["admin"] == "SI"){
+							echo 'Aquí se podrán modificar y eliminar los usuarios.';
+						}
+					?>
 				</div>
 				
 			</div>
       	</div>
     </div>
 
-    <!-- <div id="side_inicio" class="ui basic segment"> -->
     <div id="side_prestamos" class="ui basic segment">
-      <!-- <h3 class="ui header">Inicio</h3> -->
-
-
-		<!-- <div class="ui small modal btnAddUser">
-		  <div class="header">
-		    Añadir Persona
-		  </div>
-		  <div class="paddingContent ui grid centered">
-		    <div class="five wide column">
-		      <div class="image content">
-		        <div class="ui centered image">
-		          <img class="center" src="../site_map/images/addUser.png" height="128" width="128">
-		        </div>
-		      </div>
-		    </div>
-		    <div class="seven wide column">
-		      <form class="ui form" action="../function/addPerson.php" method="POST">
-		          <div class="field">
-		            <label>Nombre y apellidos</label>
-		            <input type="text" name="nombre" id="nombre" placeholder="Nombre y apellidos">
-		          </div>
-		          <div class="ui rightAlign">
-		            <button class="ourColor ui right aligned button" type="submit">Añadir</button>
-		          </div>
-		      </form>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="ui small modal btnAddMaterial">
-		  <div class="header">
-		    Añadir nuevo material
-		  </div>
-		  <div class="paddingContent ui grid centered">
-		    <div class="five wide column">
-		      <div class="image content">
-		        <div class="ui centered image">
-		          <img class="center" src="../site_map/images/LogoColor.png" height="128" width="128">
-		        </div>
-		      </div>
-		    </div>
-		    <div class="seven wide column">
-		      <form class="ui form" action="../function/addMaterial.php" method="POST">
-		          <div class="field">
-		            <label>Nombre</label>
-		            <input type="text" name="descripcion" id="descripcion" placeholder="Nombre y apellidos">
-		          </div>
-		          <div class="ui rightAlign">
-		            <button class="ourColor ui right aligned button" type="submit">Añadir</button>
-		          </div>
-		      </form>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="ui small modal btnAddLugar">
-		  <div class="header">
-		    Añadir nuevo lugar
-		  </div>
-		  <div class="paddingContent ui grid centered">
-		    <div class="five wide column">
-		      <div class="image content">
-		        <div class="ui centered image">
-		          <img class="center" src="../site_map/images/location.png" height="128" width="128">
-		        </div>
-		      </div>
-		    </div>
-		    <div class="seven wide column">
-		      <form class="ui form" action="../function/addLugar.php" method="POST">
-		          <div class="field">
-		            <label>Lugar</label>
-		            <input type="text" name="lugar" id="alugar" placeholder="Nombre y apellidos">
-		          </div>
-		          <div class="ui rightAlign">
-		            <button class="ourColor ui right aligned button" type="submit">Añadir</button>
-		          </div>
-		      </form>
-		    </div>
-		  </div>
-		</div> -->
 
 		<div class="ui small modal" id="modal-add-prest">
 		  
@@ -732,31 +471,6 @@
 		            </tr>
 		          </table>
 		  		</div>
-
-		  		  <!-- <div class="item">
-		          <table class="adddate">
-		            <tr>
-		              <td>
-		                <div class="ui search medium" id="dat">
-		                  <div class="ui left icon input">
-		                    <input type="date" placeholder="Fecha" id="date">
-		                    <i class="calendar icon"></i>
-		                  </div>
-		                  <div class="results"></div>
-		                </div>
-		              </td>
-		              <td>
-		                <i class="large calendar big aligned icon icpres"></i>
-		              </td>
-		              <td>
-		                <div class="content">
-		                  <div class="description">No hay fecha añadida</div>
-		                </div>
-		              </td>
-		              <td></td>
-		            </tr>
-		          </table>
-		  		  </div> -->
 
 		  		<div class="item">
 		          <table class="adddate">
@@ -964,34 +678,6 @@
 
 		</div>
 
-		<!-- <div class="ui positive message" id="advadd">
-		  <i class="close icon"></i>
-		  <div class="header">
-		    ¡Préstamo añadido con éxito!
-		  </div>
-		</div>
-
-		<div class="ui positive message" id="advmod">
-		  <i class="close icon"></i>
-		  <div class="header">
-		    ¡Préstamo modificado con éxito!
-		  </div>
-		</div>
-
-		<div class="ui positive message" id="advdev">
-		  <i class="close icon"></i>
-		  <div class="header">
-		    ¡Préstamo devuelto con éxito!
-		  </div>
-		</div>
-
-		<div class="ui positive message" id="advdel">
-		  <i class="close icon"></i>
-		  <div class="header">
-		    ¡Préstamo eliminado con éxito!
-		  </div>
-		</div> -->
-
 		<div class="ui small modal" id="mod-dev">
 		  <div class="header">
 		    Devolución del préstamo
@@ -1030,25 +716,18 @@
 		  </div>
 		</div>
 
-		<!-- <div class="cabecera">
-		  <div class="ui container">
-		      <img src="../site_map/images/logo.png" alt="logo">
-		      Materiales SC
-		      <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
-		      <a id="op-modal" class="ui teal button"><i class="add icon"></i>Préstamo</a>
-		  </div>
-		</div> -->
-
 		<div id="contenido" class="ui container">
 
 		  <div class="filtros">
 
 		    <div class="filtro">
-		      No devueltos: <br>
+		      <!-- No devueltos: <br> -->
+		      <span>Todos</span>
 		      <div class="ui fitted toggle checkbox">
 		        <input type="checkbox">
 		        <label></label>
 		      </div>
+		      <span>No devueltos</span>
 		    </div>
 		    
 		    <div class="filtro">
@@ -1089,12 +768,7 @@
 
 
     </div>
-    <!-- <div id="side_prestamos" class="ui basic segment">
-    	<div class="ui container">
-      		<h3 class="ui header">Préstamos</h3>
-      		<p>Apartado para la administración de los préstamos</p>
-      	</div>
-    </div> -->
+
     <div id="side_materiales" class="ui basic segment">
     	<div id="materiales_container" class="ui container">
       		<h3 class="ui header">Materiales</h3>

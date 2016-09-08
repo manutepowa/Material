@@ -143,6 +143,31 @@ $(document).ready(function(){
 	SelectLugares();
 	changetoggle();
 
+	function getCookie(cname) {
+	    var name = cname + "=";
+	    var ca = document.cookie.split(';');
+	    for(var i = 0; i <ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') {
+	            c = c.substring(1);
+	        }
+	        if (c.indexOf(name) == 0) {
+	            return c.substring(name.length,c.length);
+	        }
+	    }
+	    return "";
+	}
+
+	if(getCookie("addPrestamoOK")=="SI"){
+		$('#advaddpre').css('display','block');
+		$('#advaddpre').css('visibility','visible');
+		$('#advaddpre').delay(5000).queue(function (next){ 
+			$(this).css('visibility', 'hidden'); 
+			next();
+		});
+		document.cookie = "addPrestamoOK=NO";
+	}
+
 	$(document).on('click', '.minus.circle.icon', function(event) {
 
 		var padre = $(this).closest('table[class ^= addlistadomat]').parent('.item');
@@ -910,35 +935,38 @@ console.log(creacion);
 					success: function(event){
 						
 						if(event == '1'){
-							$(".ui.multiple.selection.dropdown").dropdown('clear');
+							// alert('Antes del reload');
+							document.cookie = "addPrestamoOK=SI";
+							location.reload();
+							// $(".ui.multiple.selection.dropdown").dropdown('clear');
 							
-							$('#advaddpre').css('display','block');
-							$('#advaddpre').css('visibility','visible');
-							$('#advaddpre').delay(5000).queue(function (next){ 
-								$(this).css('visibility', 'hidden'); 
-								next();
-							});
+							// $('#advaddpre').css('display','block');
+							// $('#advaddpre').css('visibility','visible');
+							// $('#advaddpre').delay(5000).queue(function (next){ 
+							// 	$(this).css('visibility', 'hidden'); 
+							// 	next();
+							// });
 
-							$('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text').addClass('default');
-							$('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text.default').html('Nombre completo . . .');
-							$('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
+							// $('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text').addClass('default');
+							// $('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text.default').html('Nombre completo . . .');
+							// $('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
 
-							$('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text').addClass('default');
-							$('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text.default').html('Lugar donde se utilizará el material . . .');
-							$('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
+							// $('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text').addClass('default');
+							// $('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text.default').html('Lugar donde se utilizará el material . . .');
+							// $('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
 
-							$('#addprestamo').find('input[name="lugar"]').val('');
-							$('#addprestamo').find('input[name="date"]').val('');
-							$('#addprestamo').find('input[name="time"]').val('');
-							$('#addprestamo').find('textarea[name="observaciones"]').val('');
+							// $('#addprestamo').find('input[name="lugar"]').val('');
+							// $('#addprestamo').find('input[name="date"]').val('');
+							// $('#addprestamo').find('input[name="time"]').val('');
+							// $('#addprestamo').find('textarea[name="observaciones"]').val('');
 
 							
 
-							$('#addprestamo_segment').hide();
-							$('#prestamos_segment').show();
+							// $('#addprestamo_segment').hide();
+							// $('#prestamos_segment').show();
 
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
+							// $('.section').css('visibility','hidden');
+							// $('.section').css('display','none');
 
 							
 						}
@@ -990,8 +1018,8 @@ console.log(creacion);
 
 							$('#addmaterial').find('input[name="material"]').val('');
 
-							$('#addmaterial_segment').hide();
-							$('#materiales_segment').show();
+							// $('#addmaterial_segment').hide();
+							// $('#materiales_segment').show();
 
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
@@ -1049,8 +1077,8 @@ console.log(creacion);
 
 							$('#addpersona').find('input[name="persona"]').val('');
 
-							$('#addpersona_segment').hide();
-							$('#personas_segment').show();
+							// $('#addpersona_segment').hide();
+							// $('#personas_segment').show();
 
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
@@ -1108,8 +1136,8 @@ console.log(creacion);
 
 							$('#addlugar').find('input[name="lugar"]').val('');
 
-							$('#addlugar_segment').hide();
-							$('#lugares_segment').show();
+							// $('#addlugar_segment').hide();
+							// $('#lugares_segment').show();
 
 							$('.section').css('visibility','hidden');
 							$('.section').css('display','none');
@@ -1195,8 +1223,8 @@ console.log(creacion);
 										$('.ui.dropdown.selection').find('.text.default').html('Seleccionar privilegios');
 										$('.ui.dropdown.selection').find('.item.active.selected').removeClass('active selected');
 
-										$('#addusuario_segment').hide();
-										$('#usuarios_segment').show();
+										// $('#addusuario_segment').hide();
+										// $('#usuarios_segment').show();
 
 										$('.section').css('visibility','hidden');
 										$('.section').css('display','none');

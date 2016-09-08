@@ -39,10 +39,14 @@
 	display: inline-block;
 }
 
-.filtros > .filtro:first{
-	width: 50px;
-	/*margin-right: 60px;*/
+.filtros > .filtro:first-child{
+	width: 200px;
+	margin-right: 0px;
 	display: inline-block;
+}
+
+.filtro > span{
+	margin: 0 5px;
 }
 
 .filtro .prompt{

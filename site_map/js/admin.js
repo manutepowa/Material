@@ -349,61 +349,6 @@ $(document).ready(function(){
 		$(this).addClass("active");
 	});
 	/* FIN ADMIN DASHBOARD */
-
-	/* INICIO ADMIN FORMS ADD */
-	// $('.fluid.selection.dropdown').dropdown();
-
-	// $('#addusuario_segment .form')
-	//   .form({
-	//     fields: {
-	//       usuario: {
-	//         identifier: 'usuario',
-	//         rules: [
-	//           {
-	//             type   : 'empty',
-	//             prompt : 'Por favor, introduzca el nombre de usuario'
-	//           }
-	//         ]
-	//       },
-	//       privilegios: {
-	//         identifier: 'privilegios',
-	//         rules: [
-	//           {
-	//             type   : 'empty',
-	//             prompt : 'Por favor, seleccione los privilegios del usuario'
-	//           }
-	//         ]
-	//       },
-	//       contrasena: {
-	//         identifier: 'contrasena',
-	//         rules: [
-	//           {
-	//             type   : 'empty',
-	//             prompt : 'Por favor, introduzca la contraseña'
-	//           },
-	//           {
-	//             type   : 'minLength[4]',
-	//             prompt : 'La contraseña debe tener al menos {ruleValue} caracteres'
-	//           }
-	//         ]
-	//       },
-	//       repcontrasena: {
-	//         identifier: 'repcontrasena',
-	//         rules: [
-	//           {
-	//             type   : 'empty',
-	//             prompt : 'Por favor, introduzca de nuevo la contraseña'
-	//           },
-	//           {
-	//             type   : 'match[contrasena]',
-	//             prompt : 'Ambas contraseñas deben coincidir'
-	//           }
-	//         ]
-	//       }
-	//     }
-	//   })
-	// ;
-
 });
 
 
