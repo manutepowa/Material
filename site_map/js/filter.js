@@ -1,4 +1,6 @@
 var first = 1;
+var firstC = 1;
+var firstU = 1;
 var reset; 
 
 // FUNCION PARA QUITAR ACENTOS Y Ñ´s
@@ -81,19 +83,28 @@ $(document).ready(function(){
             $table.find('tbody').prepend($("<tr class='center'><td colspan='7'>No hay préstamos que cumplan con las características indicadas.</td></tr>"));
         }
 
-        reset = $allInfo;
-
         first = 0;
 
         $('body .ui.dropdown').dropdown({
             action: 'nothing',
             action: 'hide'
         });
+
+        $('.info.circle.icon').popup();
     
         var filterVacio = $(this).val();
-        if(filterVacio=='')
-        {
-            $('#prestamos tbody').html(reset);
+
+        if(filterVacio==''){
+
+            if($('.toggle').checkbox('is checked')){
+                reset = $resetChecked;
+                $('#prestamos tbody').html(reset);
+            }
+            else{
+                reset = $resetUnchecked;
+                $('#prestamos tbody').html(reset);
+            }
+            
             var paginaActual = $('a[id^=numPagina].item.active').text().trim();
             $('#prestamos').find('tbody tr').hide().slice((paginaActual*15)-15, paginaActual*15).show();
             $('#paginadorPrestamos').show();
@@ -102,12 +113,37 @@ $(document).ready(function(){
                 action: 'nothing',
                 action: 'hide'
             });
+
+            $('.info.circle.icon').popup();
         }
     });
 
     $('.filtro input:text').focus(function(){
+
+        if($('.toggle').checkbox('is checked')){
+            if(firstC == 1){
+                $resetChecked = $('#prestamos').find('tbody tr');
+                firstC = 0;
+            }
+        }
+        else{
+            if(firstU == 1){
+                $resetUnchecked = $('#prestamos').find('tbody tr');
+                firstU = 0;
+            }
+        }
+        
         $('.filtro input:text').val('');
-        $('#prestamos tbody').html(reset);
+
+        if($('.toggle').checkbox('is checked')){
+            reset = $resetChecked;
+            $('#prestamos tbody').html(reset);
+        }
+        else{
+            reset = $resetUnchecked;
+            $('#prestamos tbody').html(reset);
+        }
+
         var paginaActual = $('a[id^=numPagina].item.active').text().trim();
         $('#prestamos').find('tbody tr').hide().slice((paginaActual*15)-15, paginaActual*15).show();
         $('#paginadorPrestamos').show();
@@ -116,5 +152,7 @@ $(document).ready(function(){
             action: 'nothing',
             action: 'hide'
         });
+
+        $('.info.circle.icon').popup();
     });
 });

@@ -611,7 +611,6 @@ $(document).ready(function(){
 							type: 'POST',
 							data: {'per': mpersona, 'lug': mlugar, 'mat': mmaterial, 'dat': mdate, 'time': mtime, 'user': muser, 'obser': mobser, 'id-prest':id},
 							success: function(event){
-								console.log(event);
 								if(event == '1'){
 									$('#advmod').css('display','block');
 									$('#advmod').css('visibility','visible');
@@ -843,7 +842,6 @@ $(document).ready(function(){
 							location.reload();
 						}
 						else{
-							console.log(event);
 							console.log("ERROR AL AÑADIR UN NUEVO PRESTAMO");
 						}
 					}
@@ -1412,7 +1410,6 @@ function incluirPaginador(idTabla, idPaginador)
 	$( idPaginador+" a[id^=numPagina]" ).click(function( event ) {
  
         var paginaActual = $(this).text().trim();
-        console.log('pagina actual '+paginaActual);
 
         $( "a.item" ).removeClass('active');
         $(this).addClass( 'item active' );
@@ -1423,7 +1420,7 @@ function incluirPaginador(idTabla, idPaginador)
     $(idPaginador+" #btnPagSiguiente").click(function (event){
 
     	numPagina = $(idPaginador+' a[id^=numPagina].item.active').text().trim();
-    	console.log('num pagina Siguiente '+numPagina);
+
     	siguientePagina = parseInt(numPagina);
 
 		siguientePagina++;
@@ -1444,7 +1441,7 @@ function incluirPaginador(idTabla, idPaginador)
 	 $(idPaginador+" #btnPagAtras").click(function (event){
 
     	numPagina = $( idPaginador+' a[id^=numPagina].item.active' ).text().trim();
-    	console.log('num pagina atras '+numPagina);
+
     	anteriorPagina = parseInt(numPagina);
 
 		anteriorPagina--;

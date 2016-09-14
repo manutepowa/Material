@@ -13,6 +13,7 @@
 	$row = $conexion->query($query)or die(mysql_error());
 
 	if($row->num_rows>0) echo "2";
+	
 	else{
 		$query = "INSERT INTO material(descripcion) VALUES('".$descripcion."')";
 		$conexion->query($query)or die(mysql_error());
@@ -20,7 +21,5 @@
 		if($conexion) echo "1";
 		else echo "0";
 	}
-
-	
 
  ?>

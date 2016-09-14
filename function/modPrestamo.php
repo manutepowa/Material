@@ -50,7 +50,7 @@
 
 	foreach ($_POST['mat'] as $key => $value) { 
 		$newvalue = str_replace('"', '\"', $value);
-		// $newvalue = str_replace("'", "\'", $value);
+
 		$select = 'SELECT id_material FROM material WHERE descripcion = "'.$newvalue.'"';
 		
 		$rows = $conexion->query($select)or die(mysql_error());

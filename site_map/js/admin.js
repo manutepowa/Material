@@ -82,10 +82,11 @@ $(document).ready(function(){
 
 		$('#administrar_container').show();
 
-		loadLugares();
+		$('#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares, #btn_administrar').removeClass("active");
+		$('#btn_administrar').addClass("active");
 	});
 
-	$(document).on('click', '#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares, #btn_administrar', function(event){
+	$(document).on('click', '#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares', function(event){
 		$('#btn_prestamos, #btn_materiales, #btn_personas, #btn_lugares, #btn_administrar').removeClass("active");
 		$(this).addClass("active");
 	});

@@ -34,8 +34,6 @@
 	}
 
 	$insert = 'INSERT INTO prestamo(id_prestamo,id_persona,id_lugar,id_usuario,fecha_creacion,fecha_prestamo,observaciones,eliminado) VALUES(NULL,'.$data_id[0].','.$data_id[1].', '.$user.', "'.$creac.'", "'.$datetime.'", "'.$obser.'", 0)';
-	// echo $insert;
-
 
 	$conexion->query($insert)or die(mysql_error());
 

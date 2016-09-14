@@ -43,12 +43,9 @@
 				echo '<a class="item">'.$i.'</a>';
 		}
 	}
-
 		
 	echo '<a class="item"><i class="angle right icon"></i></a>';
 	echo "</div>";
-
-
 
 ?>
 
