@@ -14,7 +14,7 @@
 .cabecera img{
 	width: 30px;
 	margin-right: 10px;
-	margin-left: 1%;
+	margin-left: 20px;
 }
 
 .cabecera a{
@@ -26,6 +26,16 @@
 
 .cabecera a:hover{
 	color: rgb(240, 240, 240);
+}
+
+.logo{
+	display: inline-block;
+	width: 200px;
+}
+
+.logo:hover{
+	cursor: hand;
+	cursor: pointer;
 }
 
 .filtros{
@@ -103,8 +113,3 @@
 	transition: .2s !important;
 	border: 2px solid #00B5AD;
 }
-
-.fitted label{
-	/*background: red !important;*/
-}
-

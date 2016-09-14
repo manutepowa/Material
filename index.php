@@ -48,7 +48,6 @@
 		<div class="centro"> 
 			<img src="../site_map/images/logoumh.png" alt="Cargando...">
 			<span class="loader loader-simple"></span>
-			<!-- Cargando... -->
 		</div>
 	</section>
 

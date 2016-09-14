@@ -1,10 +1,3 @@
-/*@media only screen and (min-width: 1200px){
-	#side_inicio > .ui.container, #side_prestamos > .ui.container, #side_materiales > .ui.container, #side_personas > .ui.container, #side_lugares > .ui.container{
-		margin-left: 0!important;
-		margin-right: 0!important;
-	}
-}*/
-
 .ui.button{
 	margin-right: 0;
 }
@@ -20,7 +13,6 @@
 .admincontainer{
 	width: 87%!important;
 	margin-left: 13%!important;
-	/*text-align: center;*/
 }
 
 .ui.visible.inverted.left.vertical.sidebar.menu{
@@ -28,12 +20,10 @@
 }
 
 .ui.sidebar{
-	/*top: auto!important;*/
 	top: 0;
 }
 
 .ui.left.sidebar, .ui.right.sidebar{
-	/*width: 210px;*/
 	width: 13%;
 }
 
@@ -45,15 +35,6 @@
 	margin-top: 65px;
 }
 
-/*#side_prestamos > #advadd, #advmod, #advdev, #advdel{
-	width: 300px;
-	position: fixed;
-	box-shadow: 0px 3px 5px #ccc !important;
-	z-index: 99;
-	visibility: hidden;
-	top: 60px;
-	right: 70px;
-}*/
 .admincontainer.pusher > #advadd, #advmod, #advdev, #advdel, #advaddpre, #advaddmat, #advaddper, #advaddlug, #advaddusu{
 	width: 300px;
 	position: fixed;
@@ -64,17 +45,7 @@
 	right: 70px;
 }
 
-/*.admincontainer.pusher > #advaddpre{
-	width: 300px;
-	position: fixed;
-	box-shadow: 0px 3px 5px #ccc !important;
-	z-index: 99;
-	top: 60px;
-	right: 70px;
-}*/
-
 #side_prestamos, #side_materiales, #side_personas, #side_lugares, #side_administrar{
-	/*visibility: hidden;*/
 	top: 80px;
 }
 

@@ -1,11 +1,7 @@
 jQuery(document).ready(function($) {
 
-	// document.cookie = "addPrestamoOK=NO";
-
 	$('form').submit(function(event) {
-		// var user = $('input')[0].value;
-		// var pass = $('input')[1].value;
-
+		
 		var data = $(this).serialize();
 
 		$.ajax({

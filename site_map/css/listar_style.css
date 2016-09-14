@@ -12,12 +12,8 @@ h1{
 	margin-bottom: 30px;
 }
 
-/*.ui.table thead tr:first-child{
-	width: 18%;
-}*/
 #prestamos thead tr:first-child>th:first-child{
 	width: 2%;
-	/*padding: 0;*/
 }
 
 #prestamos tr td:first-child{
@@ -27,7 +23,6 @@ h1{
 }
 
 textarea{
-	/*width: 90%!important;*/
 	margin: 3px 0!important;
 }
 
@@ -64,14 +59,6 @@ textarea{
 .icpres{
 	margin-left: 20px;
 }
-
-/*#modal-add-prest > .content > .description > .ui.relaxed.divided.list > .item > .minus.circle.icon .add.circle.icon{
-	color: blue;
-}*/
-
-/*.addlistadomat td:nth-child(1), .addlistadomatm td:nth-child(1), .modper td:nth-child(1), .modlug td:nth-child(1), .moddate td:nth-child(1), .addper td:nth-child(1), .addlug td:nth-child(1), .adddate td:nth-child(1){{
-	width: 50%!important;
-}*/
 
 .addlistadomat td:nth-child(3), .addlistadomatm td:nth-child(3), .modper td:nth-child(3), .modlug td:nth-child(3), .moddate td:nth-child(3), .addper td:nth-child(3), .addlug td:nth-child(3), .adddate td:nth-child(3){
 	width: 45%;

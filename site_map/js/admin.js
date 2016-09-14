@@ -1,12 +1,5 @@
 $(document).ready(function(){
 
-	// $('.ui.dropdown').dropdown({
-	// 	action: 'nothing',
-	// 	action: 'hide'
-	// });
-
-	/* INICIO ADMIN USER */
-
 	$('#side_administrar').hide();
 	$('#side_prestamos').hide();
 	$('#side_materiales').hide();
@@ -80,7 +73,7 @@ $(document).ready(function(){
 		loadLugares();
 	});
 
-	$(document).on('click', '#btn_administrar', function(){
+	$(document).on('click', '#btn_administrar, .logo', function(){
 		$('#side_prestamos').hide();
 		$('#side_materiales').hide();
 		$('#side_personas').hide();
@@ -141,23 +134,40 @@ $(document).ready(function(){
 		$('#lugares_container_hist').hide();
 		$('#lugares_container').show();
 	});
-	/* FIN ADMIN USER */
 
-	/* INICIO ADMIN DASHBOARD */
-	$('#prestamos_segment').hide();
-	$('#materiales_segment').hide();
-	$('#personas_segment').hide();
-	$('#lugares_segment').hide();
-	$('#usuarios_segment').hide();
+	if(getCookie("delPrestamoOK")=="SI"){
+		$('#side_administrar').hide();
+		$('#btn_administrar').removeClass("active");
 
-	$('#addprestamo_segment').hide();
-	$('#addmaterial_segment').hide();
-	$('#addpersona_segment').hide();
-	$('#addlugar_segment').hide();
-	$('#addusuario_segment').hide();
+		$('#side_prestamos').show();
+		$('#btn_prestamos').addClass("active");
 
-	$('#addprestamo_segment').show();
-	$('#erraddprestamo').fadeOut(0);$('#btn_admin_pres').addClass("active");
+		$('#advdel').css('display','block');
+		$('#advdel').css('visibility','visible');
+		$('#advdel').delay(5000).queue(function (next){ 
+			$(this).css('visibility', 'hidden'); 
+			next();
+		});
+
+		document.cookie = "delPrestamoOK=NO";
+	}
+	else{
+		$('#prestamos_segment').hide();
+		$('#materiales_segment').hide();
+		$('#personas_segment').hide();
+		$('#lugares_segment').hide();
+		$('#usuarios_segment').hide();
+
+		$('#addprestamo_segment').hide();
+		$('#addmaterial_segment').hide();
+		$('#addpersona_segment').hide();
+		$('#addlugar_segment').hide();
+		$('#addusuario_segment').hide();
+
+		$('#addprestamo_segment').show();
+		$('#erraddprestamo').fadeOut(0);
+		$('#btn_admin_pres').addClass("active");
+	}
 
 	$(document).on('click', '#btn_admin_pres', function(){
 		$('#prestamos_segment').show();
@@ -348,35 +358,13 @@ $(document).ready(function(){
 		$('#btn_admin_pres, #btn_admin_mat, #btn_admin_per, #btn_admin_lug, #btn_admin_usu').removeClass("active");
 		$(this).addClass("active");
 	});
-	/* FIN ADMIN DASHBOARD */
+
 });
 
-
 function Loader(){
-	
-	$('#loader').removeClass('ui dimmer modals page transition hidden');
-	$('#loader').addClass('ui dimmer modals page transition visible active');
-	$('#loader').html('<div class="ui active dimmer">'
-						 +'<div class="ui text loader">Cargando...</div>'
-					 +'</div>');
-}
-
-function Loader2(){
-
-	$('#loader2').css('display','');
-	$('#loader2').css('z-index','1');
-	$('#loader2').html('<div class="loader JS_on">'
-				 			+'<span class="binary"></span>'
-							+'<span class="binary"></span>'
-							+'<span class="getting-there">CARGANDO&hellip;</span>'
-						+'</div>');
-};
-
-function Loader3(){
 	$('.section').css('display','table');
 	$('.section').css('visibility','visible');
 };
-
 
 function loadMateriales(){
 	var urlmateriales = '../function/loadMateriales.php';
@@ -386,7 +374,7 @@ function loadMateriales(){
 
 	$.ajax({
 		url: urlmateriales,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 		var mat = $.parseJSON(event);
@@ -431,11 +419,16 @@ function loadMateriales(){
 					$(newRow).appendTo("#t_materiales tbody");
 				}		
 			});
-			// $('#loader2').css('display','none');
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#t_materiales').css('visibility','visible');
+
+			//********************************* INCLUIR PAGINADOR MATERIALES *********************************
+
+			incluirPaginador('#t_materiales','#paginadorMateriales');// (idTabla , idPaginador)
+			
+			//************************************************************************************************
 		}
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#t_materiales').css('visibility','visible');
 	});
 }
 
@@ -448,7 +441,7 @@ function loadMaterialesHistorial(mat, id){
 
 	$.ajax({
 		url: urlmaterial,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 		var mate = $.parseJSON(event);
@@ -481,11 +474,16 @@ function loadMaterialesHistorial(mat, id){
 						+"</tr>";
 				$(newRow).appendTo("#t_materiales_hist tbody");	
 			});
-			// $('#loader2').css('display','none');
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#t_materiales_hist').css('visibility','visible');
+
+			//*********************** INCLUIR PAGINADOR MATERIALES HISTORIAL *********************************
+
+			incluirPaginador('#t_materiales_hist','#paginadorMaterialesHist');// (idTabla , idPaginador)
+			
+			//************************************************************************************************
 		}
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#t_materiales_hist').css('visibility','visible');
 	});
 }
 
@@ -498,7 +496,7 @@ function loadPersonas(){
 
 	$.ajax({
 		url: urlpersonas,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 
@@ -545,11 +543,16 @@ function loadPersonas(){
 					$(newRow).appendTo("#t_personas tbody");
 				}		
 			});
-			// $('#loader2').css('display','none');
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#t_personas').css('visibility','visible');
+
+			//******************************** INCLUIR PAGINADOR PERSONAS **********************************
+
+			incluirPaginador('#t_personas','#paginadorPersonas');// (idTabla , idPaginador)
+			
+			//**********************************************************************************************
 		}
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#t_personas').css('visibility','visible');
 	});		
 }
 
@@ -562,7 +565,7 @@ function loadPersonasHistorial(per, id){
 
 	$.ajax({
 		url: urlpersona,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 
@@ -575,8 +578,6 @@ function loadPersonasHistorial(per, id){
 			$(newRow).appendTo("#t_personas_hist tbody");
 		}
 		else{
-			$('#loader').removeClass('ui dimmer modals page transition visible active');
-			$('#loader').addClass('ui dimmer modals page transition hidden');
 			$.each(pers, function(i, p){
 
 				if(i!=0 && p.id_prestamo==pers[i-1].id_prestamo){
@@ -605,11 +606,16 @@ function loadPersonasHistorial(per, id){
 					$(newRow).appendTo("#t_personas_hist tbody");
 				}
 			});
-			// $('#loader2').css('display','none');
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#t_personas_hist').css('visibility','visible');
+
+			//*********************** INCLUIR PAGINADOR PERSONAS HISTORIAL *********************************
+
+			incluirPaginador('#t_personas_hist','#paginadorPersonasHist');// (idTabla , idPaginador)
+			
+			//************************************************************************************************
 		}
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#t_personas_hist').css('visibility','visible');
 	});	
 }
 
@@ -622,7 +628,7 @@ function loadLugares(){
 
 	$.ajax({
 		url: urllugares,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 
@@ -670,11 +676,16 @@ function loadLugares(){
 					$(newRow).appendTo("#t_lugares tbody");
 				}	
 			});
-			// $('#loader2').css('display','none');
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#t_lugares').css('visibility','visible');
+
+			//******************************** INCLUIR PAGINADOR LUGARES ***********************************
+
+			incluirPaginador('#t_lugares','#paginadorLugares');// (idTabla , idPaginador)
+			
+			//**********************************************************************************************
 		}
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#t_lugares').css('visibility','visible');
 	});
 }
 
@@ -687,7 +698,7 @@ function loadLugaresHistorial(lug, id){
 
 	$.ajax({
 		url: urllugar,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 
@@ -728,10 +739,15 @@ function loadLugaresHistorial(lug, id){
 					$(newRow).appendTo("#t_lugares_hist tbody");
 				}		
 			});
-			// $('#loader2').css('display','none');
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#t_lugares_hist').css('visibility','visible');
+
+			//*********************** INCLUIR PAGINADOR LUGARES HISTORIAL *********************************
+
+			incluirPaginador('#t_lugares_hist','#paginadorLugaresHist');// (idTabla , idPaginador)
+			
+			//************************************************************************************************
 		}
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#t_lugares_hist').css('visibility','visible');
 	});	
 }

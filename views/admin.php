@@ -1,22 +1,22 @@
 <?php require_once('header.php'); ?>
 
 <div class="cabecera admin">
-	<img src="../site_map/images/logo.png" alt="logo">
-    <span>Materiales SC</span>
+	<div class="logo">
+		<img src="../site_map/images/logo.png" alt="logo">
+    	<span>Materiales SC</span>
+	</div>
+	
     <a href="../function/salir.php" class="ui teal button">Cerrar sesión</a>
-    <!-- <a id="op-modal" <?//php echo "data-user='".$_SESSION["id_user"]."'"; ?> class="ui teal button"><i class="add icon"></i>Préstamo</a> -->
     <?php 
     	echo "<span class='usuario'>Usuario: &nbsp;&nbsp;<strong>".$_SESSION["user"]."</strong></span>";
     ?>
 </div>
 
-<!-- <div class="ui bottom attached segment pushable"> -->
 <div>
   <div id="menuizq" class="ui visible inverted left vertical sidebar menu">
 	
     <p></p>
     <a id="btn_administrar" class="item">
-      <!-- <i class="settings icon"></i> -->
       <i class="add icon"></i>
 		<?php 
 			if($_SESSION["admin"] == "SI"){
@@ -47,17 +47,12 @@
   </div>
   <div class="admincontainer pusher">
 
-  <div id="loader"></div>
-
 	<section class="section">
 		<div class="centro"> 
 			<img src="../site_map/images/logoumh.png" alt="Cargando...">
 			<span class="loader loader-simple"></span>
-			<!-- Cargando... -->
 		</div>
 	</section>	
-
-  <div id="loader2"></div>
 
     <div class="ui positive message" id="advadd">
 	  <i class="close icon"></i>
@@ -154,7 +149,6 @@
 					}
 				?>
 				<div class="right menu">
-					<!-- <a class="ui item"><i class="add icon teal"></i></a> -->
 					<div class="ui icon top right pointing dropdown">
 					  <i class="add icon teal" title="Añadir"></i><span>Nuevo</span>
 					  <div class="menu">
@@ -523,7 +517,7 @@
 		                </div>
 		              </td>
 		              <td>
-		                <i id="addRowMat" class="add circle icon"></i><!-- <i class="minus circle icon"></i> -->
+		                <i id="addRowMat" class="add circle icon"></i>
 		              </td>
 		            </tr>
 		          </table>  
@@ -721,7 +715,6 @@
 		  <div class="filtros">
 
 		    <div class="filtro">
-		      <!-- No devueltos: <br> -->
 		      <span>Todos</span>
 		      <div class="ui fitted toggle checkbox">
 		        <input type="checkbox">
@@ -745,7 +738,6 @@
 		    <div class="filtro">
 		      <input class="prompt" type="text" placeholder="Fecha devolución...">
 		    </div>
-		    <!-- <div class="filtro"></div> -->
 		  </div>
 
 		  <table id="prestamos" class="ui celled teal table">
@@ -763,6 +755,14 @@
 		    <tbody>
 		    </tbody>
 		  </table>
+
+		  <div class="center">
+			  	<div id="paginadorPrestamos" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LOS PRESTAMOS -->
+					
+				</div>
+			</div>
 
 		</div>
 
@@ -783,6 +783,15 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="center">
+			  	<div id="paginadorMateriales" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LOS MATERIALES -->
+
+				</div>
+			</div>
+
 		</div>
 		<div id="materiales_container_hist" class="ui container">
       		<h3 class="ui header">Historial de préstamos</h3>
@@ -799,6 +808,15 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="center">
+			  	<div id="paginadorMaterialesHist" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LOS MATERIALES HISTORIAL -->
+
+				</div>
+			</div>
+
 		</div>
     </div>
     <div id="side_personas" class="ui basic segment">
@@ -815,6 +833,15 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="center">
+			  	<div id="paginadorPersonas" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LAS PERSONAS -->
+
+				</div>
+			</div>
+
       	</div>
       	<div id="personas_container_hist" class="ui container">
       		<h3 class="ui header">Historial de préstamos</h3>
@@ -831,6 +858,15 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="center">
+			  	<div id="paginadorPersonasHist" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LAS PERSONAS HISTORIAL -->
+
+				</div>
+			</div>
+
       	</div>
     </div>
     <div id="side_lugares" class="ui basic segment">
@@ -847,6 +883,15 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="center">
+			  	<div id="paginadorLugares" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LOS LUGARES -->
+
+				</div>
+			</div>
+
       	</div>
       	<div id="lugares_container_hist" class="ui container">
       		<h3 class="ui header">Historial de préstamos</h3>
@@ -863,6 +908,15 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="center">
+			  	<div id="paginadorLugaresHist" class="ui borderless pagination menu">
+
+					<!-- AQUI VAN LAS PAGINAS DEL PAGINADOR DE LOS LUGARES HISTORIAL -->
+
+				</div>
+			</div>
+
       	</div>
     </div>
     

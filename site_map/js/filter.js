@@ -25,9 +25,18 @@ var normalize = (function() {
 
 $(document).ready(function(){
 
-    $('.filtros .filtro input').keyup(function(e){
-		var code = e.keyCode || e.which;
-        if (code == '9') return;
+    $('.filtros .filtro input:text').keyup(function(e){
+        var totalFilasTablaPrestamos = $('#prestamos').find('tbody tr').length;
+        $('#prestamos').find('tbody tr').hide().slice(0, totalFilasTablaPrestamos).show();
+        $('#paginadorPrestamos').hide();
+        var code = e.keyCode || e.which;
+        if (code == '9')
+        {
+            var paginaActual = $('a[id^=numPagina].item.active').text().trim();
+            $('#prestamos').find('tbody tr').hide().slice((paginaActual*15)-15, paginaActual*15).show();
+            $('#paginadorPrestamos').show();
+            return;
+        }
         
         var $input = $(this);
 
@@ -47,7 +56,6 @@ $(document).ready(function(){
 
         if (code  == '8'){
             $rows = $allInfo;
-            console.log($allInfo);
         }
         else{
             if(first == 1){
@@ -58,15 +66,15 @@ $(document).ready(function(){
             }
         }
 
-		var $filteredRows = $rows.filter(function(){
-            var value = normalize($(this).find('td').eq(column).text().toLowerCase());
+        var $filteredRows = $rows.filter(function(){
+            var value = normalize($(this).find('td').eq(column).text().toLowerCase()); 
             return value.indexOf(inputContent) === -1;
         });
 
-		$table.find('tbody .no-result').remove();
+        $table.find('tbody .no-result').remove();
         
         $('#prestamos tbody').html($rows);
-        // console.log($filteredRows);
+
         $filteredRows.remove();
 
         if ($filteredRows.length === $rows.length) {
@@ -81,13 +89,32 @@ $(document).ready(function(){
             action: 'nothing',
             action: 'hide'
         });
+    
+        var filterVacio = $(this).val();
+        if(filterVacio=='')
+        {
+            $('#prestamos tbody').html(reset);
+            var paginaActual = $('a[id^=numPagina].item.active').text().trim();
+            $('#prestamos').find('tbody tr').hide().slice((paginaActual*15)-15, paginaActual*15).show();
+            $('#paginadorPrestamos').show();
+
+            $('body .ui.dropdown').dropdown({
+                action: 'nothing',
+                action: 'hide'
+            });
+        }
     });
 
     $('.filtro input:text').focus(function(){
         $('.filtro input:text').val('');
-        // console.log(reset);
-        // $('#prestamos tbody').html(reset);
         $('#prestamos tbody').html(reset);
+        var paginaActual = $('a[id^=numPagina].item.active').text().trim();
+        $('#prestamos').find('tbody tr').hide().slice((paginaActual*15)-15, paginaActual*15).show();
+        $('#paginadorPrestamos').show();
+        
+        $('body .ui.dropdown').dropdown({
+            action: 'nothing',
+            action: 'hide'
+        });
     });
-
 });

@@ -143,21 +143,6 @@ $(document).ready(function(){
 	SelectLugares();
 	changetoggle();
 
-	function getCookie(cname) {
-	    var name = cname + "=";
-	    var ca = document.cookie.split(';');
-	    for(var i = 0; i <ca.length; i++) {
-	        var c = ca[i];
-	        while (c.charAt(0)==' ') {
-	            c = c.substring(1);
-	        }
-	        if (c.indexOf(name) == 0) {
-	            return c.substring(name.length,c.length);
-	        }
-	    }
-	    return "";
-	}
-
 	if(getCookie("addPrestamoOK")=="SI"){
 		$('#advaddpre').css('display','block');
 		$('#advaddpre').css('visibility','visible');
@@ -166,6 +151,36 @@ $(document).ready(function(){
 			next();
 		});
 		document.cookie = "addPrestamoOK=NO";
+	}
+
+	if(getCookie("addMaterialOK")=="SI"){
+		$('#advaddmat').css('display','block');
+		$('#advaddmat').css('visibility','visible');
+		$('#advaddmat').delay(5000).queue(function (next){ 
+			$(this).css('visibility', 'hidden'); 
+			next();
+		});
+		document.cookie = "addMaterialOK=NO";
+	}
+
+	if(getCookie("addPersonaOK")=="SI"){
+		$('#advaddper').css('display','block');
+		$('#advaddper').css('visibility','visible');
+		$('#advaddper').delay(5000).queue(function (next){ 
+			$(this).css('visibility', 'hidden'); 
+			next();
+		});
+		document.cookie = "addPersonaOK=NO";
+	}
+
+	if(getCookie("addLugarOK")=="SI"){
+		$('#advaddlug').css('display','block');
+		$('#advaddlug').css('visibility','visible');
+		$('#advaddlug').delay(5000).queue(function (next){ 
+			$(this).css('visibility', 'hidden'); 
+			next();
+		});
+		document.cookie = "addLugarOK=NO";
 	}
 
 	$(document).on('click', '.minus.circle.icon', function(event) {
@@ -318,14 +333,6 @@ $(document).ready(function(){
 
 	$('.ui.accordion').accordion();
 
-// 	function (event) {
-//     if (event.which == 13 || event.keyCode == 13) {
-//         //code to execute here
-//         return false;
-//     }
-//     return true;
-// };
-
 	$(document).on('change', '#modal-add-prest input[type=date], #modal-mod-prest input[type=date]', function(){
 		var desc = $(this).parents('tr').find('.description');
 		var time = $(this).siblings('input[type=time]').val();
@@ -457,104 +464,9 @@ $(document).ready(function(){
 		  })
 		;
 	});
-/*
-	$(document).on('click', '#op-modal', function(event) {
-
-		$('#erraddpres').fadeOut(0);
-		$('#erraddprescrear').fadeOut(0);
-		
-		$('#modal-add-prest')
-			.modal({
-				blurring: true,
-				onApprove : function() {
-					var nomaterial = 0;
-					var persona = $('#persona').val();
-					var lugar = $('#lugar').val();
-
-					var allMat = $("input[name='material[]']");
-					var material = [];
-					
-					for(var i=0;i<allMat.length;i++){
-						material[i] = allMat[i].value;
-						if(material[i]==""){nomaterial++;}
-						o("material["+i+"]: "+allMat[i].value);
-					}
-
-					var date = $('#date').val();
-					var time = $('#time').val();
-					var user = $('#op-modal').data('user');
-					var obser = $('#obser').val();
-
-					o(user);
-
-				    if(persona == "" || lugar == "" || nomaterial != 0 || date == "" || time == ""){
-						$('#erraddprescrear').fadeOut(0);
-						$('#erraddpres').fadeIn(0);
-						
-						return false;
-					}
-
-					else{
-						
-						$.ajax({
-							url: '../function/addPrestamo.php',
-							type: 'POST',
-							data: {'per': persona, 'lug': lugar, 'mat': material, 'dat': date, 'time': time, 'user': user, 'obser': obser},
-							success: function(event){
-								
-								if(event == '1'){
-									
-									$('#advadd').css('display','block');
-									$('#advadd').css('visibility','visible');
-									$('#advadd').delay(5000).queue(function (next){ 
-										$(this).css('visibility', 'hidden'); 
-										next();
-									});
-									$('#persona').val('');
-									$('#lugar').val('');
-									$('#obser').val('');
-									$('#date').val('');
-									$('#time').val('');
-								
-									changetoggle();
-
-									var count = $("#modal-add-prest .item").length;
-
-									$("#modal-add-prest .item:nth-child(1)").find('.description').text("No hay persona añadida");
-									$("#modal-add-prest .item:nth-child(2)").find('.description').text("No hay lugar añadido");
-									$("#modal-add-prest .item:nth-child(3)").find('.description').text("No hay fecha añadida");
-									
-									for(i=5;i<=count;i++){
-										$("#modal-add-prest .item:last-child").remove();
-									}
-
-									$('#modal-add-prest .ui.relaxed.divided.list').append(addPrestamoReset);
-
-									idmaterial=1;
-								}
-								else if(event == '2'){
-									o("Error material select");
-								}
-								else if(event == '3'){
-									o("Error material insert");
-								}
-								else{
-									$('.modal .message').fadeOut(0);
-									$('#modal-add-prest').modal('show');
-									$('#erraddprescrear').fadeIn(0);
-								}
-							}
-
-						});
-					}
-
-				}
-			})
-			.modal('show')
-		;
-	});*/
 
 	$(document).on('click', '.mod', function(event) {
+		
 		event.preventDefault();
 
 		id = $(this).parent().parent().siblings('input').val();
@@ -742,14 +654,12 @@ $(document).ready(function(){
 		event.preventDefault();
 		$('.modal .message').fadeOut(0);
 		id = $(this).parent().parent().siblings('input').val();
-		// o(id);
 		$('#mod-dev').modal('show');
 	});
 
 	$(document).on('click', '.del', function(event) {
 		event.preventDefault();
 		id = $(this).parent().parent().siblings('input').val();
-		// o(id);
 		$('#mod-del').modal('show');
 	});
 
@@ -820,17 +730,14 @@ $(document).ready(function(){
 		$.ajax({
 			url: '../function/delPrestamo.php',
 			type: 'POST',
-			data: {'id-prest': id}
-		}).done(function(){
-
-			changetoggle();
-
-			$('#advdel').css('display','block');
-			$('#advdel').css('visibility','visible');
-			$('#advdel').delay(5000).queue(function (next){ 
-				$(this).css('visibility', 'hidden'); 
-				next();
-			});
+			data: {'id-prest': id},
+			beforeSend: Loader,
+			success: function(event){
+				if(event == '1'){
+					document.cookie = "delPrestamoOK=SI";
+					location.reload();
+				}
+			}
 		});
 	});
 
@@ -849,7 +756,7 @@ $(document).ready(function(){
 			success: function(event){
 				if(event != '1'){alert("¡Error al añadir la nueva persona!"); return false;}
 				
-				$('#persona').focus(); //antes habia #persona
+				$('#persona').focus();
 				$('#mpersona').focus();
 			}
 		});
@@ -890,7 +797,6 @@ $(document).ready(function(){
 			url: '../function/addLugar.php',
 			type: 'POST',
 			data: {'lugar': valor},
-			// beforeSend: Loader3,
 			success: function(event){
 				if(event != '1'){alert("¡Error al añadir el nuevo lugar!"); return false;}
 				
@@ -918,8 +824,6 @@ $(document).ready(function(){
 			var time = $('#addprestamo').find('input[name="time"]').val();
 			var observaciones = $('#addprestamo').find('textarea[name="observaciones"]').val();
 			var creacion = actualDate();
-console.log(creacion);
-			console.log("usuario: "+usuario+", persona: "+persona+", lugar: "+lugar+", fecha: "+date+", hora: "+time+", observaciones: "+observaciones+", materiales: "+materiales+", creacion: "+creacion);
 
 		    if(persona == "" || lugar == "" || date == "" || time == "" || materiales == null){
 				$('#erraddprestamo').fadeIn(0);
@@ -931,44 +835,12 @@ console.log(creacion);
 					url: '../function/addPrestamo.php',
 					type: 'POST',
 					data: {'per': persona, 'lug': lugar, 'dat': date, 'time': time, 'user': usuario, 'obser': observaciones, 'mat': materiales, 'creac': creacion},
-					beforeSend: Loader3,
+					beforeSend: Loader,
 					success: function(event){
 						
 						if(event == '1'){
-							// alert('Antes del reload');
 							document.cookie = "addPrestamoOK=SI";
 							location.reload();
-							// $(".ui.multiple.selection.dropdown").dropdown('clear');
-							
-							// $('#advaddpre').css('display','block');
-							// $('#advaddpre').css('visibility','visible');
-							// $('#advaddpre').delay(5000).queue(function (next){ 
-							// 	$(this).css('visibility', 'hidden'); 
-							// 	next();
-							// });
-
-							// $('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text').addClass('default');
-							// $('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.text.default').html('Nombre completo . . .');
-							// $('#addprestamo .five.wide.field:first-child .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
-
-							// $('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text').addClass('default');
-							// $('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.text.default').html('Lugar donde se utilizará el material . . .');
-							// $('#addprestamo .five.wide.field:nth-child(2) .ui.search.selection.dropdown').find('.item.active.selected').removeClass('active selected');
-
-							// $('#addprestamo').find('input[name="lugar"]').val('');
-							// $('#addprestamo').find('input[name="date"]').val('');
-							// $('#addprestamo').find('input[name="time"]').val('');
-							// $('#addprestamo').find('textarea[name="observaciones"]').val('');
-
-							
-
-							// $('#addprestamo_segment').hide();
-							// $('#prestamos_segment').show();
-
-							// $('.section').css('visibility','hidden');
-							// $('.section').css('display','none');
-
-							
 						}
 						else{
 							console.log(event);
@@ -1002,27 +874,12 @@ console.log(creacion);
 					url: '../function/addMaterial.php',
 					type: 'POST',
 					data: {'descripcion': material},
-					beforeSend: Loader3,
+					beforeSend: Loader,
 					success: function(event){
 
-						console.log(event);
-						
 						if(event == '1'){
-							
-							$('#advaddmat').css('display','block');
-							$('#advaddmat').css('visibility','visible');
-							$('#advaddmat').delay(5000).queue(function (next){ 
-								$(this).css('visibility', 'hidden'); 
-								next();
-							});
-
-							$('#addmaterial').find('input[name="material"]').val('');
-
-							// $('#addmaterial_segment').hide();
-							// $('#materiales_segment').show();
-
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
+							document.cookie = "addMaterialOK=SI";
+							location.reload();
 						}
 						else if(event == '2'){
 							$('#erraddmaterial').fadeIn(0);
@@ -1063,25 +920,12 @@ console.log(creacion);
 					url: '../function/addPerson.php',
 					type: 'POST',
 					data: {'nombre': persona},
-					beforeSend: Loader3,
+					beforeSend: Loader,
 					success: function(event){
 						
 						if(event == '1'){
-							
-							$('#advaddper').css('display','block');
-							$('#advaddper').css('visibility','visible');
-							$('#advaddper').delay(5000).queue(function (next){ 
-								$(this).css('visibility', 'hidden'); 
-								next();
-							});
-
-							$('#addpersona').find('input[name="persona"]').val('');
-
-							// $('#addpersona_segment').hide();
-							// $('#personas_segment').show();
-
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
+							document.cookie = "addPersonaOK=SI";
+							location.reload();
 						}
 						else if(event == '2'){
 							$('#erraddpersona').fadeIn(0);
@@ -1122,25 +966,12 @@ console.log(creacion);
 					url: '../function/addLugar.php',
 					type: 'POST',
 					data: {'lugar': lugar},
-					beforeSend: Loader3,
+					beforeSend: Loader,
 					success: function(event){
 						
 						if(event == '1'){
-							
-							$('#advaddlug').css('display','block');
-							$('#advaddlug').css('visibility','visible');
-							$('#advaddlug').delay(5000).queue(function (next){ 
-								$(this).css('visibility', 'hidden'); 
-								next();
-							});
-
-							$('#addlugar').find('input[name="lugar"]').val('');
-
-							// $('#addlugar_segment').hide();
-							// $('#lugares_segment').show();
-
-							$('.section').css('visibility','hidden');
-							$('.section').css('display','none');
+							document.cookie = "addLugarOK=SI";
+							location.reload();
 						}
 						else if(event == '2'){
 							$('#erraddlugar').fadeIn(0);
@@ -1190,22 +1021,18 @@ console.log(creacion);
 					url: '../function/checkUser.php',
 					type: 'POST',
 					data: {'usuario': usuario},
-					beforeSend: Loader3,
+					beforeSend: Loader,
 					success: function(event){
 
-						console.log("event checkUser: "+event);
-						
 						if(event == '0'){
 							
 							$.ajax({
 								url: '../function/addUsuario.php',
 								type: 'POST',
 								data: {'usuario': usuario, 'privilegios': privilegios, 'contrasena': contrasena},
-								beforeSend: Loader3,
+								beforeSend: Loader,
 								success: function(e){
 						
-									console.log("event addUser: "+e);
-									
 									if(e == '1'){
 										
 										$('#advaddusu').css('display','block');
@@ -1222,9 +1049,6 @@ console.log(creacion);
 										$('.ui.dropdown.selection').find('.text').addClass('default');
 										$('.ui.dropdown.selection').find('.text.default').html('Seleccionar privilegios');
 										$('.ui.dropdown.selection').find('.item.active.selected').removeClass('active selected');
-
-										// $('#addusuario_segment').hide();
-										// $('#usuarios_segment').show();
 
 										$('.section').css('visibility','hidden');
 										$('.section').css('display','none');
@@ -1244,8 +1068,6 @@ console.log(creacion);
 						}
 					}
 				});
-
-				
 			}
 		}
 	});
@@ -1388,7 +1210,7 @@ function loadList(q){
 
 	$.ajax({
 		url: urlprestamo,
-		beforeSend: Loader3
+		beforeSend: Loader
 	})
 	.done(function(event){
 
@@ -1531,20 +1353,130 @@ function loadList(q){
 					}
 				}	
 			});
-			$('.info.circle.icon').popup();
+
+			//********************************* INCLUIR PAGINADOR PRESTAMOS *********************************
+
+			incluirPaginador('#prestamos','#paginadorPrestamos');// (idTabla , idPaginador)
 			
-			$('#prestamos .ui.dropdown, #administrar_container .ui.secondary.pointing.menu .ui.dropdown').dropdown({
-				action: 'nothing',
-				action: 'hide'
-			});
-
-			$('#addusuario_segment .ui.dropdown').dropdown();
-			$('#addprestamo .ui.search.selection.dropdown').dropdown();
-			$('#addprestamo .ui.multiple.selection.dropdown').dropdown();
-
-			$('.section').css('visibility','hidden');
-			$('.section').css('display','none');
-			$('#prestamos').css('visibility','visible');
+			//***********************************************************************************************
 		}
+
+		$('.info.circle.icon').popup();
+			
+		$('#prestamos .ui.dropdown, #administrar_container .ui.secondary.pointing.menu .ui.dropdown').dropdown({
+			action: 'nothing',
+			action: 'hide'
+		});
+
+		$('#addusuario_segment .ui.dropdown').dropdown();
+		$('#addprestamo .ui.search.selection.dropdown').dropdown();
+		$('#addprestamo .ui.multiple.selection.dropdown').dropdown();
+
+		$('.section').css('visibility','hidden');
+		$('.section').css('display','none');
+		$('#prestamos').css('visibility','visible');
 	});
+}
+
+function incluirPaginador(idTabla, idPaginador)
+{
+	// ********************************************* PAGINADOR *****************************************************
+	// 
+	// http://jsfiddle.net/gabrieleromanato/Xugej/ ejemplo Paginador con jQuery
+	// 
+	
+
+	//----------------------------------------> VISTA PAGINADOR <--------------------------------------------------
+	var totalFilasTablaPrestamos = $(idTabla).find('tbody tr').length;
+	
+	$(idTabla).find('tbody tr').hide().slice(0, 15).show();
+	totalPaginasPrestamos = totalFilasTablaPrestamos / 15; // math.ceil redondea el resoltado por encima
+
+	var paginador = "<a id='btnPagAtras' class='item'><i class='left arrow icon'></i>Atras</a>"
+						+"<a id='numPagina1' class='item active'>1</a>";
+					for(i=2; i<=Math.ceil(totalPaginasPrestamos); i++)
+					{
+						paginador += "<a id='numPagina"+i+"' class='item'>"+i+"</a>";
+					}
+						  
+					paginador += "<a id='btnPagSiguiente' class='item'>Siguiente <i class='icon right arrow'></i></a>";
+	$(idPaginador).html(paginador);
+	//----------------------------------------> FIN VISTA PAGINADOR <----------------------------------------------
+
+
+	//---------------------------------------------> LOGICA PAGINADOR <--------------------------------------------
+	var numPagina = 0;
+	var intNumPagina = 0;
+
+
+	$( idPaginador+" a[id^=numPagina]" ).click(function( event ) {
+ 
+        var paginaActual = $(this).text().trim();
+        console.log('pagina actual '+paginaActual);
+
+        $( "a.item" ).removeClass('active');
+        $(this).addClass( 'item active' );
+        $(idTabla).find('tbody tr').hide().slice((paginaActual*15)-15, paginaActual*15).show();
+        
+    });
+
+    $(idPaginador+" #btnPagSiguiente").click(function (event){
+
+    	numPagina = $(idPaginador+' a[id^=numPagina].item.active').text().trim();
+    	console.log('num pagina Siguiente '+numPagina);
+    	siguientePagina = parseInt(numPagina);
+
+		siguientePagina++;
+
+		if(siguientePagina>Math.ceil(totalPaginasPrestamos))
+		{
+			return;
+		}
+		else
+		{
+			$( "a.item" ).removeClass('active');
+			$( idPaginador+' #numPagina'+siguientePagina ).addClass('active');
+			$(idTabla).find('tbody tr').hide().slice((siguientePagina*15)-15, siguientePagina*15).show();
+		}
+
+	});
+
+	 $(idPaginador+" #btnPagAtras").click(function (event){
+
+    	numPagina = $( idPaginador+' a[id^=numPagina].item.active' ).text().trim();
+    	console.log('num pagina atras '+numPagina);
+    	anteriorPagina = parseInt(numPagina);
+
+		anteriorPagina--;
+
+		if(anteriorPagina<=0)
+		{
+			return;
+		}
+		else
+		{
+			$( "a.item" ).removeClass('active');
+			$( idPaginador+' #numPagina'+anteriorPagina ).addClass('active');
+			$(idTabla).find('tbody tr').hide().slice((anteriorPagina*15)-15, anteriorPagina*15).show();
+		}
+
+	});
+	//---------------------------------------------> FIN LOGICA PAGINADOR <--------------------------------------------
+
+	// ********************************************* FIN PAGINADOR ****************************************************
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
 }

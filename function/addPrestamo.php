@@ -60,8 +60,5 @@
 		$conexion->query($insert)or die(mysql_error()); //error
 		if(!$conexion) echo "3";
 	}
-	// print_r($_SESSION["addPrestamoOK"]);
-	// $_SESSION["addPrestamoOK"]="SI";
-	// print_r($_SESSION["addPrestamoOK"]);
 	echo "1";
 ?>
