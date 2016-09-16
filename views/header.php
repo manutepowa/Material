@@ -18,10 +18,15 @@
  	<link rel="shortcut icon" href="../site_map/images/favicon.png">
  	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="../site_map/Semantic-UI-CSS-master/semantic.min.css">
- 	<link rel="stylesheet" href="../site_map/css/listar_style.css">
+<!--  	<link rel="stylesheet" href="../site_map/css/listar_style.css">
  	<link rel="stylesheet" href="../site_map/css/style.css">
  	<link rel="stylesheet" href="../site_map/css/admin.css">
- 	<link rel="stylesheet" href="../site_map/css/style_loader.css">
+ 	<link rel="stylesheet" href="../site_map/css/style_loader.css"> -->
+
+ 	<link rel="stylesheet" href="../site_map/distcss/listar_style.min.css">
+ 	<link rel="stylesheet" href="../site_map/distcss/style.min.css">
+ 	<link rel="stylesheet" href="../site_map/distcss/admin.min.css">
+ 	<link rel="stylesheet" href="../site_map/distcss/style_loader.min.css">
 
  </head>
  <body>
